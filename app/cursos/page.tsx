@@ -33,7 +33,7 @@ export default function CursosPage() {
     return activeCategory === 'Todos' || course.category === activeCategory;
   });
 
-  const handleOpenDrawer = (course) => {
+  const handleOpenDrawer = (course: any) => {
     setSelectedCourse(course);
     setIsDrawerOpen(true);
   };

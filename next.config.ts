@@ -1,17 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // 1. Ativa a exportação estática (gera a pasta 'out')
-  output: 'export',
+  output: "export",
+  basePath: "/ALBA", // Lembre-se de deixar o nome exato do seu repositório
   
-  // 2. Desativa a otimização de imagens padrão (obrigatório para exportação estática no GitHub Pages)
+  // O images fica aqui na raiz, fora de qualquer "experimental"
   images: {
     unoptimized: true,
   },
-  
-  // 3. Define o caminho base. Substitua 'alba' pelo nome exato do repositório no GitHub
-  // Exemplo: se o seu repositório se chama 'alba-site', mude para '/alba-site'
-  basePath: '/alba',
 };
 
 export default nextConfig;
