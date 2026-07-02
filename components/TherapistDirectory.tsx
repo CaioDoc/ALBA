@@ -76,7 +76,7 @@ const quickFilters = ['Todos', 'Clínica Geral', 'Panchakarma', 'Nutrição', 'M
 export const TherapistDirectory = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeFilter, setActiveFilter] = useState('Todos');
-  const [selectedTherapist, setSelectedTherapist] = useState(null);
+  const [selectedTherapist, setSelectedTherapist] = useState<any>(null);
 
   // Lógica de Filtragem
   const filteredTherapists = therapistsData.filter((therapist) => {
