@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 
-export const CourseDrawer = ({ course, isOpen, onClose }) => {
+export const CourseDrawer = ({ course, isOpen, onClose }: any) => {
   // Trava o scroll da página quando a drawer está aberta
   useEffect(() => {
     if (isOpen) {
