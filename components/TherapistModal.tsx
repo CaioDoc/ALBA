@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 import { SkillBadge } from './SkillBadge';
 
-export const TherapistModal = ({ therapist, isOpen, onClose }) => {
+export const TherapistModal = ({ therapist, isOpen, onClose }: any) => {
   // Trava o scroll da página de fundo quando o modal abre
   useEffect(() => {
     if (isOpen) {
