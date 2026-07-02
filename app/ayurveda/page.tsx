@@ -1,5 +1,16 @@
 import React from 'react';
-import { Navbar } from '../../components/Navbar'; // Voltando duas pastas para achar os componentes
+import Link from 'next/link';
+import type { Metadata } from 'next';
+import { Navbar } from '../../components/Navbar';
+
+export const metadata: Metadata = {
+  title: 'O que é Ayurveda',
+  description: 'Descubra o Ayurveda, o sistema de saúde integrativa mais antigo do mundo. Conheça os Doshas (Vata, Pitta, Kapha), os cinco elementos e como a medicina ayurvédica pode transformar sua saúde.',
+  openGraph: {
+    title: 'O que é Ayurveda | ALBA',
+    description: 'Descubra o Ayurveda, o sistema de saúde integrativa mais antigo do mundo.',
+  },
+};
 
 export default function AyurvedaPage() {
   return (
@@ -34,7 +45,7 @@ export default function AyurvedaPage() {
             
             <h2 className="text-2xl font-bold text-stone-900 mt-12 mb-4">Os Cinco Elementos e os Doshas</h2>
             <p className="mb-6 text-stone-600 leading-relaxed">
-              Segundo a filosofia ayurvédica, tudo no universo — incluindo o corpo humano — é composto por cinco elementos fundamentais: <strong>Éter (Espaço), Ar, Fogo, Água e Terra</strong>. A combinação desses elementos dá origem aos três biotipos básicos ou "Doshas".
+              Segundo a filosofia ayurvédica, tudo no universo — incluindo o corpo humano — é composto por cinco elementos fundamentais: <strong>Éter (Espaço), Ar, Fogo, Água e Terra</strong>. A combinação desses elementos dá origem aos três biotipos básicos ou &quot;Doshas&quot;.
             </p>
             <p className="mb-12 text-stone-600 leading-relaxed">
               Todos nós possuímos os três Doshas, mas geralmente um ou dois são predominantes. Conhecer a sua constituição única (Prakriti) é o primeiro passo para o autoconhecimento e a cura.
@@ -94,10 +105,12 @@ export default function AyurvedaPage() {
           <p className="text-emerald-100 mb-10 text-lg">
             Um terapeuta ayurvédico credenciado pode avaliar o seu pulso, sua rotina e criar um plano de saúde personalizado para você.
           </p>
-          {/* Botão com cursor-pointer explícito garantido */}
-          <button className="cursor-pointer bg-white text-emerald-900 px-8 py-4 rounded-2xl font-bold hover:bg-stone-100 transition-all duration-300 active:scale-95 shadow-xl">
+          <Link href="/profissionais" className="cursor-pointer bg-white text-emerald-900 px-8 py-4 rounded-2xl font-bold hover:bg-stone-100 transition-all duration-300 active:scale-95 shadow-xl inline-flex items-center justify-center gap-2">
             Encontrar um Terapeuta
-          </button>
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </Link>
         </div>
       </section>
 

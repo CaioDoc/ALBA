@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from 'react';
+import Link from 'next/link';
 
 interface Activity {
   id: string;
@@ -46,6 +47,7 @@ export const ActivityDrawer: React.FC<ActivityDrawerProps> = ({ activity, isOpen
           <img src={activity.image} alt={activity.title} className="w-full h-full object-cover" />
           <button 
             onClick={onClose}
+            aria-label="Fechar"
             className="absolute top-6 right-6 w-10 h-10 bg-black/20 backdrop-blur-md hover:bg-black/40 text-white rounded-full flex items-center justify-center transition-colors cursor-pointer"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -82,18 +84,21 @@ export const ActivityDrawer: React.FC<ActivityDrawerProps> = ({ activity, isOpen
             {activity.description}
           </p>
           <p className="text-stone-600 leading-relaxed text-sm italic">
-            * Todas as atividades da ABRA são conduzidas por profissionais certificados e experientes, respeitando os preceitos clássicos da tradição védica.
+            * Todas as atividades da ALBA são conduzidas por profissionais certificados e experientes, respeitando os preceitos clássicos da tradição védica.
           </p>
         </div>
 
         {/* Botão de Ação no Rodapé */}
         <div className="p-6 bg-white border-t border-stone-100 flex-shrink-0">
-          <button className="w-full bg-emerald-800 text-white py-4 rounded-xl font-bold hover:bg-emerald-900 transition-all active:scale-[0.98] shadow-md flex justify-center items-center gap-2 cursor-pointer">
+          <Link 
+            href="/associe-se"
+            className="w-full bg-emerald-800 text-white py-4 rounded-xl font-bold hover:bg-emerald-900 transition-all active:scale-[0.98] shadow-md flex justify-center items-center gap-2 cursor-pointer"
+          >
             Agendar / Inscrever-se
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
-          </button>
+          </Link>
         </div>
 
       </div>

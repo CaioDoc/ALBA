@@ -8,14 +8,14 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="w-full bg-stone-900/95 backdrop-blur-md border-b border-stone-800 sticky top-0 z-50">
+      <nav className="w-full bg-stone-900/95 backdrop-blur-md border-b border-stone-800 sticky top-0 z-50" aria-label="Navegação principal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
           {/* Logo Oficial com Link para a Home */}
           <Link href="/" className="flex-shrink-0 flex items-center cursor-pointer transition-transform hover:scale-105">
             <img 
               src="https://www.ayurvedica.org/wp-content/uploads/2019/05/miniLogo.png" 
-              alt="Logo Associação Brasileira de Ayurveda" 
+              alt="Logo Associação Luso-Brasileira de Ayurveda"
               className="h-14 w-auto object-contain"
             />
           </Link>
@@ -42,11 +42,11 @@ export const Navbar = () => {
             aria-label="Alternar menu"
           >
             {isMobileMenuOpen ? (
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             ) : (
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             )}

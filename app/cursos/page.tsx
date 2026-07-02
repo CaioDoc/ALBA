@@ -4,7 +4,19 @@ import React, { useState } from 'react';
 import { Navbar } from '../../components/Navbar';
 import { CourseDrawer } from '../../components/CourseDrawer';
 
-const allCoursesData = [
+interface Course {
+  id: number;
+  title: string;
+  category: string;
+  workload: string;
+  format: string;
+  image: string;
+  date: string;
+  description: string;
+  price: string;
+}
+
+const allCoursesData: Course[] = [
   {
     id: 1, title: 'Formação Profissional em Terapeuta Ayurvédico', category: 'Formação', workload: '300h', format: 'Híbrido', image: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=600&auto=format&fit=crop', date: 'Início em Março de 2027', description: 'Curso completo voltado para quem deseja se profissionalizar na medicina milenar indiana. Inclui anatomia ayurvédica, patologia, farmacologia e estágio supervisionado.', price: 'Inscrições Abertas'
   },
@@ -26,14 +38,14 @@ const categories = ['Todos', 'Formação', 'Especialização', 'Workshops', 'Ime
 
 export default function CursosPage() {
   const [activeCategory, setActiveCategory] = useState('Todos');
-  const [selectedCourse, setSelectedCourse] = useState(null);
+  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const filteredCourses = allCoursesData.filter((course) => {
     return activeCategory === 'Todos' || course.category === activeCategory;
   });
 
-  const handleOpenDrawer = (course: any) => {
+  const handleOpenDrawer = (course: Course) => {
     setSelectedCourse(course);
     setIsDrawerOpen(true);
   };

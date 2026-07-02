@@ -1,5 +1,15 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import { Navbar } from '../../components/Navbar';
+
+export const metadata: Metadata = {
+  title: 'Quem Somos',
+  description: 'Conheça a Associação Luso-Brasileira de Ayurveda (ALBA). Nossa história, missão e compromisso com a promoção da Medicina Ayurvédica em Portugal e Brasil.',
+  openGraph: {
+    title: 'Quem Somos | ALBA',
+    description: 'Conheça a Associação Luso-Brasileira de Ayurveda e nossa história.',
+  },
+};
 
 export default function QuemSomosPage() {
   return (

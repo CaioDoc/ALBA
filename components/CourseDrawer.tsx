@@ -1,8 +1,25 @@
 "use client";
 
 import React, { useEffect } from 'react';
+import Link from 'next/link';
 
-export const CourseDrawer = ({ course, isOpen, onClose }: any) => {
+interface CourseDrawerProps {
+  course: {
+    id: number | string;
+    title: string;
+    category: string;
+    image: string;
+    date: string;
+    workload: string;
+    format: string;
+    price: string;
+    description: string;
+  } | null;
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export const CourseDrawer = ({ course, isOpen, onClose }: CourseDrawerProps) => {
   // Trava o scroll da página quando a drawer está aberta
   useEffect(() => {
     if (isOpen) {
@@ -31,6 +48,7 @@ export const CourseDrawer = ({ course, isOpen, onClose }: any) => {
           <img src={course.image} alt={course.title} className="w-full h-full object-cover" />
           <button 
             onClick={onClose}
+            aria-label="Fechar"
             className="absolute top-6 right-6 w-10 h-10 bg-white/20 backdrop-blur-md hover:bg-white/40 text-white rounded-full flex items-center justify-center transition-colors cursor-pointer"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -73,12 +91,15 @@ export const CourseDrawer = ({ course, isOpen, onClose }: any) => {
 
         {/* Rodapé Fixo com Botão de Inscrição */}
         <div className="p-6 bg-white border-t border-stone-100 flex-shrink-0">
-          <button className="w-full bg-emerald-800 text-white py-4 rounded-xl font-bold hover:bg-emerald-900 transition-all active:scale-[0.98] shadow-md flex justify-center items-center gap-2 cursor-pointer">
+          <Link 
+            href="/associe-se"
+            className="w-full bg-emerald-800 text-white py-4 rounded-xl font-bold hover:bg-emerald-900 transition-all active:scale-[0.98] shadow-md flex justify-center items-center gap-2 cursor-pointer"
+          >
             Garantir Minha Vaga
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
-          </button>
+          </Link>
         </div>
 
       </div>

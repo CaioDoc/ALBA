@@ -4,7 +4,19 @@ import React, { useRef, useState } from 'react';
 import Link from 'next/link';
 import { CourseDrawer } from './CourseDrawer';
 
-const coursesData = [
+interface Course {
+  id: number;
+  title: string;
+  category: string;
+  workload: string;
+  format: string;
+  image: string;
+  date: string;
+  description: string;
+  price: string;
+}
+
+const coursesData: Course[] = [
   { id: 1, title: 'Formação em Terapeuta Ayurvédico', category: 'Formação Completa', workload: '300h', format: 'Híbrido', image: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=600&auto=format&fit=crop', date: 'Início em Março', description: 'Curso completo voltado para quem deseja se profissionalizar na medicina milenar indiana.', price: 'Inscrições Abertas' },
   { id: 2, title: 'Workshop de Culinária Ayurvédica', category: 'Workshop Prático', workload: '16h', format: 'Presencial', image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=600&auto=format&fit=crop', date: '15 de Abril', description: 'Aprenda a utilizar temperos para equilibrar seu Dosha.', price: 'Vagas Limitadas' },
   { id: 3, title: 'Retiro de Desintoxicação (Panchakarma)', category: 'Imersão', workload: '7 Dias', format: 'Presencial', image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop', date: 'Maio a Junho', description: 'Imersão sob supervisão de terapeutas.', price: 'Últimas Vagas' },
@@ -13,7 +25,7 @@ const coursesData = [
 
 export const CourseCarousel = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [selectedCourse, setSelectedCourse] = useState<any>(null);
+  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const scroll = (direction: 'left' | 'right') => {
@@ -22,7 +34,7 @@ export const CourseCarousel = () => {
     }
   };
 
-  const handleOpenDrawer = (course: any) => {
+  const handleOpenDrawer = (course: Course) => {
     setSelectedCourse(course);
     setIsDrawerOpen(true);
   };

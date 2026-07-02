@@ -3,7 +3,24 @@
 import React, { useEffect } from 'react';
 import { SkillBadge } from './SkillBadge';
 
-export const TherapistModal = ({ therapist, isOpen, onClose }: any) => {
+interface TherapistModalProps {
+  therapist: {
+    id: string;
+    name: string;
+    role: string;
+    registry: string;
+    location: string;
+    avatar: string;
+    bio: string;
+    whatsapp?: string;
+    website?: string;
+    skills: Array<{ id: string; name: string; slug: string }>;
+  } | null;
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export const TherapistModal = ({ therapist, isOpen, onClose }: TherapistModalProps) => {
   // Trava o scroll da página de fundo quando o modal abre
   useEffect(() => {
     if (isOpen) {
@@ -31,6 +48,7 @@ export const TherapistModal = ({ therapist, isOpen, onClose }: any) => {
         {/* Botão de Fechar */}
         <button 
           onClick={onClose}
+          aria-label="Fechar"
           className="cursor-pointer absolute top-6 right-6 w-10 h-10 bg-stone-100 hover:bg-stone-200 text-stone-600 rounded-full flex items-center justify-center transition-colors z-20"
         >
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -71,7 +89,7 @@ export const TherapistModal = ({ therapist, isOpen, onClose }: any) => {
           <div className="mb-10">
             <h3 className="text-lg font-bold text-stone-900 mb-3">Especialidades</h3>
             <div className="flex flex-wrap gap-2">
-              {therapist.skills.map((skill: any) => (
+              {therapist.skills.map((skill) => (
                 <SkillBadge key={skill.id} name={skill.name} slug={skill.slug} />
               ))}
             </div>
@@ -79,15 +97,30 @@ export const TherapistModal = ({ therapist, isOpen, onClose }: any) => {
 
           {/* Call to Action (Contato) */}
           <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-stone-100">
-            <button className="cursor-pointer flex-1 bg-emerald-800 text-white py-4 rounded-xl font-bold hover:bg-emerald-900 transition-all active:scale-[0.98] flex justify-center items-center gap-2">
+            <a 
+              href={`https://wa.me/${therapist.whatsapp?.replace(/[^0-9]/g, '') || '351919075904'}`}
+              target="_blank"
+              rel="noreferrer"
+              className="cursor-pointer flex-1 bg-emerald-800 text-white py-4 rounded-xl font-bold hover:bg-emerald-900 transition-all active:scale-[0.98] flex justify-center items-center gap-2"
+            >
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
               </svg>
               Enviar WhatsApp
-            </button>
-            <button className="cursor-pointer flex-1 bg-stone-100 text-stone-700 py-4 rounded-xl font-bold hover:bg-stone-200 transition-all active:scale-[0.98]">
-              Visitar Site
-            </button>
+            </a>
+            {therapist.website && (
+              <a 
+                href={therapist.website}
+                target="_blank"
+                rel="noreferrer"
+                className="cursor-pointer flex-1 bg-stone-100 text-stone-700 py-4 rounded-xl font-bold hover:bg-stone-200 transition-all active:scale-[0.98] flex justify-center items-center gap-2"
+              >
+                Visitar Site
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            )}
           </div>
 
         </div>

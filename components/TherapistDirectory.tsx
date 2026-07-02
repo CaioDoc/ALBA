@@ -4,13 +4,25 @@ import React, { useState } from 'react';
 import { TherapistCard } from './TherapistCard';
 import { TherapistModal } from './TherapistModal';
 
-// Nossos dados de teste
-const therapistsData = [
+interface Therapist {
+  id: string;
+  name: string;
+  role: string;
+  registry: string;
+  location: string;
+  avatar: string;
+  bio: string;
+  whatsapp?: string;
+  website?: string;
+  skills: Array<{ id: string; name: string; slug: string }>;
+}
+
+const therapistsData: Therapist[] = [
   {
     id: 'prof-1',
     name: 'Dra. Aline Carvalho',
     role: 'Médica Ayurvédica',
-    registry: 'ABRA-SP 1024',
+    registry: 'ALBA-SP 1024',
     location: 'São Paulo, SP & Online',
     avatar: 'https://images.unsplash.com/photo-1594824406951-31823095b27b?q=80&w=200&auto=format&fit=crop',
     bio: 'Especialista em saúde da mulher e nutrição ayurvédica. Foco em tratamentos preventivos, gestão de estresse e desintoxicação profunda.',
@@ -24,7 +36,7 @@ const therapistsData = [
     id: 'prof-2',
     name: 'Thiago Mendes',
     role: 'Terapeuta Corporal',
-    registry: 'ABRA-RJ 2155',
+    registry: 'ALBA-RJ 2155',
     location: 'Rio de Janeiro, RJ',
     avatar: 'https://images.unsplash.com/photo-1552058544-f2b08422138a?q=80&w=200&auto=format&fit=crop',
     bio: 'Com mais de 10 anos de prática, Thiago é focado no alinhamento físico e energético, utilizando técnicas manuais tradicionais da Índia.',
@@ -38,7 +50,7 @@ const therapistsData = [
     id: 'prof-3',
     name: 'Julia Santini',
     role: 'Consultora de Bem-estar',
-    registry: 'ABRA-MG 3012',
+    registry: 'ALBA-MG 3012',
     location: 'Atendimento 100% Online',
     avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&auto=format&fit=crop',
     bio: 'Ajudando você a construir uma rotina diária (Dinacharya) sustentável. Foco em fitoterapia e reequilíbrio emocional através dos temperos.',
@@ -76,7 +88,7 @@ const quickFilters = ['Todos', 'Clínica Geral', 'Panchakarma', 'Nutrição', 'M
 export const TherapistDirectory = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeFilter, setActiveFilter] = useState('Todos');
-  const [selectedTherapist, setSelectedTherapist] = useState<any>(null);
+  const [selectedTherapist, setSelectedTherapist] = useState<Therapist | null>(null);
 
   // Lógica de Filtragem
   const filteredTherapists = therapistsData.filter((therapist) => {

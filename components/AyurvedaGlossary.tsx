@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 
 // Dados do Glossário
 const glossaryData = [
@@ -88,12 +89,12 @@ export const AyurvedaGlossary = () => {
                     <p className="text-stone-600 leading-relaxed">
                       {item.description}
                     </p>
-                    <button className="cursor-pointer mt-6 text-sm font-bold text-emerald-700 hover:text-emerald-800 flex items-center gap-1 transition-colors">
+                    <Link href="/profissionais" className="cursor-pointer mt-6 text-sm font-bold text-emerald-700 hover:text-emerald-800 flex items-center gap-1 transition-colors">
                       Encontrar terapeuta com esta especialidade
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
-                    </button>
+                    </Link>
                   </div>
 
                   {/* Imagem Ilustrativa */}

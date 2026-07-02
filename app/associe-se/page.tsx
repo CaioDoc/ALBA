@@ -1,5 +1,15 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import { Navbar } from '../../components/Navbar';
+
+export const metadata: Metadata = {
+  title: 'Associe-se',
+  description: 'Torne-se um associado da ALBA. Acesse benefícios exclusivos, eventos, cursos e networking com profissionais de Ayurveda em Portugal e Brasil.',
+  openGraph: {
+    title: 'Associe-se | ALBA',
+    description: 'Torne-se um associado da ALBA e acesse benefícios exclusivos.',
+  },
+};
 
 export default function AssociesePage() {
   return (
@@ -20,7 +30,7 @@ export default function AssociesePage() {
             </h1>
             
             <p className="text-lg text-stone-600 leading-relaxed mb-10">
-              Seja você um terapeuta experiente, um estudante em formação ou um simpatizante das práticas integrativas, a ABRA tem um espaço para você.
+              Seja você um terapeuta experiente, um estudante em formação ou um simpatizante das práticas integrativas, a ALBA tem um espaço para você.
             </p>
 
             <div className="space-y-8">

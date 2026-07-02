@@ -23,7 +23,7 @@ export default function ArtigoDetalhePage({ params }: { params: { id: string } }
       <section className="py-16 px-4">
         <div className="max-w-3xl mx-auto prose prose-stone md:prose-lg">
           <p className="lead text-xl text-stone-600 leading-relaxed mb-8">
-            O Ayurveda, frequentemente traduzido como a "Ciência da Vida", é um sistema de medicina tradicional que se originou na Índia há mais de 5.000 anos. Ele oferece uma abordagem holística para a saúde, focando não apenas no tratamento de doenças, mas na prevenção e promoção do bem-estar contínuo.
+            O Ayurveda, frequentemente traduzido como a &quot;Ciência da Vida&quot;, é um sistema de medicina tradicional que se originou na Índia há mais de 5.000 anos. Ele oferece uma abordagem holística para a saúde, focando não apenas no tratamento de doenças, mas na prevenção e promoção do bem-estar contínuo.
           </p>
           <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=800&auto=format&fit=crop" alt="Ayurveda Capa" className="rounded-3xl w-full object-cover h-80 my-8 shadow-md" />
           <h2 className="text-2xl font-serif text-stone-900 mt-10 mb-4">Os Três Doshas Fundamentais</h2>

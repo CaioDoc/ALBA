@@ -1,6 +1,16 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import { Navbar } from '../../components/Navbar';
 import { TherapistDirectory } from '../../components/TherapistDirectory';
+
+export const metadata: Metadata = {
+  title: 'Rede de Terapeutas',
+  description: 'Encontre terapeutas ayurvédicos credenciados pela ALBA em todo o Brasil e Portugal. Profissionais qualificados para cuidar da sua saúde integral.',
+  openGraph: {
+    title: 'Rede de Terapeutas | ALBA',
+    description: 'Encontre terapeutas ayurvédicos credenciados pela ALBA.',
+  },
+};
 
 export default function ProfissionaisPage() {
   return (
@@ -14,7 +24,7 @@ export default function ProfissionaisPage() {
             Rede de Terapeutas
           </h1>
           <p className="text-lg text-stone-600 max-w-2xl mx-auto">
-            Todos os profissionais listados abaixo são membros ativos da Associação Brasileira de Ayurveda, comprometidos com a ética e a saúde integral.
+            Todos os profissionais listados abaixo são membros ativos da Associação Luso-Brasileira de Ayurveda, comprometidos com a ética e a saúde integral.
           </p>
         </div>
       </section>

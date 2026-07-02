@@ -27,7 +27,7 @@ export default function Home() {
             </h1>
             
             <p className="text-lg text-stone-500 mb-10 leading-relaxed max-w-lg">
-              A Associação Brasileira de Ayurveda promove o conhecimento milenar para o bem-estar, conectando você a terapeutas credenciados em todo o território nacional.
+              A Associação Luso-Brasileira de Ayurveda promove o conhecimento milenar para o bem-estar, conectando você a terapeutas credenciados em todo o território nacional.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">

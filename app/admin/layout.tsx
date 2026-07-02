@@ -21,19 +21,19 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   return (
     <div className="min-h-screen bg-stone-100 flex font-sans text-stone-800">
       
-      <aside className={`bg-stone-900 text-stone-300 transition-all duration-300 flex flex-col ${isSidebarOpen ? 'w-64' : 'w-20'} fixed md:relative z-50 h-screen shadow-2xl`}>
+      <aside className={`bg-stone-900 text-stone-300 transition-all duration-300 flex flex-col ${isSidebarOpen ? 'w-64' : 'w-20'} fixed md:relative z-50 h-screen shadow-2xl`} aria-label="Barra lateral de administração">
         <div className="h-20 flex items-center justify-between px-4 border-b border-stone-800 flex-shrink-0">
           {isSidebarOpen ? (
             <img src="https://www.ayurvedica.org/wp-content/uploads/2019/05/miniLogo.png" alt="ALBA Admin" className="h-8 w-auto" />
           ) : (
             <div className="w-8 h-8 bg-emerald-800 rounded-full flex items-center justify-center text-white font-serif text-sm">A</div>
           )}
-          <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="cursor-pointer text-stone-400 hover:text-white md:hidden">
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+          <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} aria-label="Fechar menu" className="cursor-pointer text-stone-400 hover:text-white md:hidden">
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
         </div>
 
-        <nav className="flex-1 overflow-y-auto py-6 space-y-1 px-3 hide-scrollbar">
+        <nav className="flex-1 overflow-y-auto py-6 space-y-1 px-3 hide-scrollbar" aria-label="Menu de administração">
           {menuItems.map((item) => {
             // CORREÇÃO AQUI: Se for a home do admin, valida a igualdade exata para não conflitar com sub-pastas
             const isActive = item.path === '/admin' 
@@ -52,8 +52,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </nav>
 
         <div className="p-4 border-t border-stone-800">
-          <Link href="/" className="cursor-pointer flex items-center gap-3 text-stone-400 hover:text-red-400 transition-colors w-full px-3 py-2">
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
+          <Link href="/" aria-label="Sair do painel" className="cursor-pointer flex items-center gap-3 text-stone-400 hover:text-red-400 transition-colors w-full px-3 py-2">
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
             {isSidebarOpen && <span className="text-sm font-medium">Sair</span>}
           </Link>
         </div>
@@ -62,8 +62,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <main className="flex-1 flex flex-col h-screen overflow-hidden">
         <header className="h-20 bg-white border-b border-stone-200 flex items-center justify-between px-8 flex-shrink-0">
           <div className="flex items-center gap-4">
-            <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="cursor-pointer text-stone-500 hover:text-emerald-700 hidden md:block">
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
+            <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} aria-label="Alternar menu lateral" className="cursor-pointer text-stone-500 hover:text-emerald-700 hidden md:block">
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
             </button>
             <h1 className="text-xl text-stone-900 font-bold">Painel de Gestão</h1>
           </div>

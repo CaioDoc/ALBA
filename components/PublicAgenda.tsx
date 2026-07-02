@@ -3,13 +3,22 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { EventDrawer } from './EventDrawer';
 
-const upcomingEvents = [
+interface Event {
+  id: number;
+  day: string;
+  month: string;
+  title: string;
+  location: string;
+  type: string;
+}
+
+const upcomingEvents: Event[] = [
   { id: 1, day: '20', month: 'JUL', title: 'Palestra Gratuita: Ayurveda e Saúde Mental', location: 'Transmissão via YouTube Live', type: 'Palestra Online' },
   { id: 2, day: '10', month: 'SET', title: 'Workshop de Massagem Indian Head (Champi)', location: 'Sede da ALBA - São Paulo, SP', type: 'Prática Presencial' },
 ];
 
 export const PublicAgenda = () => {
-  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
 
   return (
     <section className="py-24 px-4 bg-white border-t border-stone-100">
@@ -34,7 +43,7 @@ export const PublicAgenda = () => {
                 <h3 className="text-xl font-serif text-stone-900 mb-2">{event.title}</h3>
                 <p className="text-sm text-stone-500">{event.location}</p>
               </div>
-              <button onClick={() => setSelectedEvent(event as any)} className="cursor-pointer w-full sm:w-auto text-center bg-stone-900 text-white px-6 py-3 rounded-xl text-sm font-bold hover:bg-emerald-800 transition-all whitespace-nowrap">
+              <button onClick={() => setSelectedEvent(event)} className="cursor-pointer w-full sm:w-auto text-center bg-stone-900 text-white px-6 py-3 rounded-xl text-sm font-bold hover:bg-emerald-800 transition-all whitespace-nowrap">
                 Garantir Vaga
               </button>
             </div>
