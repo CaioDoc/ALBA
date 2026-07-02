@@ -71,7 +71,7 @@ export const TherapistModal = ({ therapist, isOpen, onClose }: any) => {
           <div className="mb-10">
             <h3 className="text-lg font-bold text-stone-900 mb-3">Especialidades</h3>
             <div className="flex flex-wrap gap-2">
-              {therapist.skills.map(skill => (
+              {therapist.skills.map((skill: any) => (
                 <SkillBadge key={skill.id} name={skill.name} slug={skill.slug} />
               ))}
             </div>
