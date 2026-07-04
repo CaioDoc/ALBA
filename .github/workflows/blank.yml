@@ -23,7 +23,7 @@ jobs:
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "24" # Atualizado para a versão recomendada pelo GitHub
+          node-version: "22"
 
       - name: Configurar Páginas do GitHub
         uses: actions/configure-pages@v4
@@ -35,6 +35,8 @@ jobs:
 
       - name: Buildar e Exportar Projeto
         run: npm run build
+        env:
+          NODE_OPTIONS: "--no-deprecation"
 
       - name: Upload do Artefato
         uses: actions/upload-pages-artifact@v3
