@@ -7,7 +7,7 @@ const initialEvents = [
   { id: 1, title: 'Congresso Luso-Brasileiro de Ayurveda', date: '12 a 15 de Novembro, 2026', location: 'Lisboa, Portugal (Transmissão Online)', type: 'Congresso', status: 'Confirmado' },
   { id: 2, title: 'Palestra Gratuita: Ayurveda e Saúde Mental', date: '20 de Julho, 2026 - 19h30', location: 'YouTube Live', type: 'Palestra', status: 'Confirmado' },
   { id: 3, title: 'Encontro Mensal de Associados (Networking)', date: '05 de Agosto, 2026 - 18h00', location: 'Google Meet', type: 'Reunião Interna', status: 'Confirmado' },
-  { id: 4, title: 'Workshop de Massagem Indian Head (Champi)', date: '10 de Setembro, 2026', location: 'Sede São Paulo, SP', type: 'Workshop Prático', status: 'Lotação Esgotada' },
+  { id: 4, title: 'Workshop de Massagem Indian Head (Champi)', date: '10 de Setembro, 2026', location: 'Sede São Paulo, SP', type: 'Workshop Prático', status: 'Esgotado' },
 ];
 
 export default function AdminAgendaPage() {
@@ -83,7 +83,7 @@ export default function AdminAgendaPage() {
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
+            <table className="w-full text-left border-collapse text-sm">
               <thead>
                 <tr className="bg-white border-b border-stone-200 text-stone-500 text-sm">
                   <th className="p-6 font-medium">Data e Hora</th>
@@ -103,7 +103,7 @@ export default function AdminAgendaPage() {
                     </td>
                     <td className="p-6">
                       <p className="font-bold text-stone-900">{event.title}</p>
-                      <p className="text-xs text-stone-500 uppercase tracking-wider mt-1">{event.type}</p>
+                      <p className="text-sm text-stone-500 uppercase tracking-wider mt-1">{event.type}</p>
                     </td>
                     <td className="p-6 text-stone-600 text-sm flex items-center gap-2 mt-2">
                       <svg className="w-4 h-4 text-stone-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
@@ -112,13 +112,13 @@ export default function AdminAgendaPage() {
                     <td className="p-6">
                       <span className={`px-3 py-1 rounded-full text-xs font-bold ${
                         event.status === 'Confirmado' ? 'bg-blue-100 text-blue-800' : 
-                        event.status === 'Lotação Esgotada' ? 'bg-orange-100 text-orange-800' : 
+                        event.status === 'Esgotado' ? 'bg-orange-100 text-orange-800' : 
                         'bg-red-100 text-red-800'
                       }`}>
                         {event.status}
                       </span>
                     </td>
-                    <td className="p-6 text-right space-x-3">
+                    <td className="p-6 flex items-center justify-end gap-3">
                       <button onClick={() => setView('form')} className="cursor-pointer text-stone-400 hover:text-emerald-600 transition-colors" title="Editar Evento">
                         <svg className="w-5 h-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
                       </button>
@@ -170,7 +170,7 @@ export default function AdminAgendaPage() {
               <label className="block text-sm font-medium text-stone-700 mb-2">Status do Evento</label>
               <select className="cursor-pointer w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all font-bold text-stone-700">
                 <option>Confirmado</option>
-                <option>Lotação Esgotada</option>
+                <option>Esgotado</option>
                 <option>Cancelado / Adiado</option>
               </select>
             </div>

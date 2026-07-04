@@ -95,7 +95,7 @@ export default function AdminAssociadosPage() {
 
           {/* Tabela de Associados */}
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
+            <table className="w-full text-left border-collapse text-sm">
               <thead>
                 <tr className="bg-white border-b border-stone-200 text-stone-500 text-sm">
                   <th className="p-6 font-medium">Profissional</th>
@@ -115,7 +115,7 @@ export default function AdminAssociadosPage() {
                         </div>
                         <div>
                           <p className="font-bold text-stone-900">{assoc.name}</p>
-                          <p className="text-xs text-stone-500">{assoc.email}</p>
+                          <p className="text-sm text-stone-500">{assoc.email}</p>
                         </div>
                       </div>
                     </td>

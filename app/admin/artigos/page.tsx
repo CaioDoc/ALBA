@@ -144,7 +144,7 @@ export default function AdminArtigosPage() {
       {view === 'list' && (
         <div className="bg-white rounded-[2rem] border border-stone-200 overflow-hidden shadow-sm">
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
+            <table className="w-full text-left border-collapse text-sm">
               <thead>
                 <tr className="bg-stone-50 border-b border-stone-200 text-stone-500 text-sm">
                   <th className="p-6 font-medium">Título do Artigo</th>

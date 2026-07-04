@@ -85,7 +85,7 @@ export default function AdminCursosPage() {
 
           {/* Tabela */}
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
+            <table className="w-full text-left border-collapse text-sm">
               <thead>
                 <tr className="bg-white border-b border-stone-200 text-stone-500 text-sm">
                   <th className="p-6 font-medium">Nome do Curso</th>
@@ -103,7 +103,7 @@ export default function AdminCursosPage() {
                     </td>
                     <td className="p-6 text-stone-600 text-sm">
                       <span className="block font-medium">{course.category}</span>
-                      <span className="text-stone-400 text-xs">{course.format} • {course.workload}</span>
+                      <span className="text-stone-400 text-sm">{course.format} • {course.workload}</span>
                     </td>
                     <td className="p-6 text-stone-500 font-medium">
                       {course.students} <span className="text-xs font-normal">alunos</span>
