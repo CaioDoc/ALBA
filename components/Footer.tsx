@@ -12,9 +12,9 @@ export const Footer = () => {
         <div className="space-y-6">
           <Link href="/" className="cursor-pointer inline-block bg-white p-3 rounded-2xl shadow-lg transition-transform hover:scale-105">
             <img 
-              src="https://www.ayurvedica.org/wp-content/uploads/2019/05/miniLogo.png" 
+              src="/ALBA/logo_alba_magenta.svg" 
               alt="Logo ALBA" 
-              className="h-10 w-auto object-contain"
+              className="h-14 w-auto object-contain"
             />
           </Link>
           <p className="text-sm leading-relaxed text-stone-400">
