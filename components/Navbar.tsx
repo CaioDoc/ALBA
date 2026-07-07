@@ -26,6 +26,7 @@ export const Navbar = () => {
             <Link href="/quem-somos" className="cursor-pointer hover:text-white transition-colors">Quem Somos</Link>
             <Link href="/atividades" className="cursor-pointer hover:text-white transition-colors">Atividades</Link>
             <Link href="/cursos" className="cursor-pointer hover:text-white transition-colors">Cursos</Link>
+            <Link href="/loja" className="cursor-pointer hover:text-white transition-colors text-emerald-400 font-bold">Loja</Link>
             <Link href="/artigos" className="cursor-pointer hover:text-white transition-colors">Artigos</Link>
             <Link href="/profissionais" className="cursor-pointer hover:text-white transition-colors">Profissionais</Link>
           </div>
@@ -73,6 +74,9 @@ export const Navbar = () => {
             </Link>
             <Link href="/cursos" onClick={() => setIsMobileMenuOpen(false)} className="cursor-pointer text-stone-300 hover:text-white font-medium text-lg py-2 border-b border-stone-800">
               Cursos
+            </Link>
+            <Link href="/loja" onClick={() => setIsMobileMenuOpen(false)} className="cursor-pointer text-emerald-400 hover:text-emerald-300 font-bold text-lg py-2 border-b border-stone-800">
+              Loja
             </Link>
             <Link href="/artigos" onClick={() => setIsMobileMenuOpen(false)} className="cursor-pointer text-stone-300 hover:text-white font-medium text-lg py-2 border-b border-stone-800">
               Artigos
