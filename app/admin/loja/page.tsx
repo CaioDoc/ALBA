@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 
+const API_URL = 'https://ayurvedica.org/api/loja.php';
+
 // Interface do Produto
 interface Product {
   id: string;
@@ -18,6 +20,7 @@ export default function AdminLojaPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [view, setView] = useState<'list' | 'form'>('list');
+  const [isLoading, setIsLoading] = useState(true);
   
   // Estado do formulário
   const [formData, setFormData] = useState<Product>({
@@ -31,32 +34,21 @@ export default function AdminLojaPage() {
     status: 'Ativo'
   });
 
-  // Carregar produtos do localStorage ao iniciar
+  // Carregar produtos da API MySQL ao iniciar
   useEffect(() => {
-    const savedProducts = localStorage.getItem('@alba:loja:produtos');
-    if (savedProducts) {
-      try {
-        setProducts(JSON.parse(savedProducts));
-      } catch (e) {
-        console.error('Erro ao carregar produtos', e);
-      }
-    } else {
-      // Produtos de exemplo caso esteja vazio
-      const mockProducts = [
-        {
-          id: 'prod-1',
-          title: 'Guia Prático de Culinária Ayurvédica',
-          category: 'E-book',
-          price: 'R$ 47,90',
-          image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=600&auto=format&fit=crop',
-          description: 'Aprenda a aplicar os princípios do Ayurveda na sua cozinha diária para mais saúde e vitalidade.',
-          hotmartLink: 'https://pay.hotmart.com/exemplo1',
-          status: 'Ativo'
+    fetch(API_URL)
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) {
+          setProducts(data);
         }
-      ];
-      setProducts(mockProducts);
-      localStorage.setItem('@alba:loja:produtos', JSON.stringify(mockProducts));
-    }
+      })
+      .catch(err => {
+        console.error('Erro ao buscar da API', err);
+        // Fallback apenas para não ficar tela em branco se a API ainda não existir
+        setProducts([]);
+      })
+      .finally(() => setIsLoading(false));
   }, []);
 
   const filteredProducts = products.filter(product => 
@@ -64,11 +56,15 @@ export default function AdminLojaPage() {
     product.category.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleDelete = (id: string) => {
+  const handleDelete = async (id: string) => {
     if(confirm('Tem certeza que deseja deletar este produto? Ele não aparecerá mais na Loja pública.')) {
-      const updatedProducts = products.filter(p => p.id !== id);
-      setProducts(updatedProducts);
-      localStorage.setItem('@alba:loja:produtos', JSON.stringify(updatedProducts));
+      try {
+        await fetch(`${API_URL}?id=${id}`, { method: 'DELETE' });
+        setProducts(products.filter(p => p.id !== id));
+      } catch (err) {
+        console.error('Erro ao deletar', err);
+        alert('Erro ao tentar deletar o produto no servidor.');
+      }
     }
   };
 
@@ -91,25 +87,33 @@ export default function AdminLojaPage() {
     setView('form');
   };
 
-  const handleSalvar = (e: React.FormEvent) => {
+  const handleSalvar = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    let updatedProducts;
-    
-    // Se já tiver ID, é edição
-    if (formData.id) {
-      updatedProducts = products.map(p => p.id === formData.id ? formData : p);
-    } else {
-      // Se não, é criação (gera ID falso)
-      const newProduct = { ...formData, id: 'prod-' + Date.now().toString() };
-      updatedProducts = [newProduct, ...products];
+    const productData = { ...formData };
+    if (!productData.id) {
+      productData.id = 'prod-' + Date.now().toString();
     }
     
-    setProducts(updatedProducts);
-    localStorage.setItem('@alba:loja:produtos', JSON.stringify(updatedProducts));
-    
-    alert('Produto salvo com sucesso e já está disponível na Loja!');
-    setView('list');
+    try {
+      await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(productData)
+      });
+      
+      if (formData.id) {
+        setProducts(products.map(p => p.id === formData.id ? productData : p));
+      } else {
+        setProducts([productData, ...products]);
+      }
+      
+      alert('Produto salvo com sucesso no Banco de Dados cPanel!');
+      setView('list');
+    } catch (err) {
+      console.error('Erro ao salvar', err);
+      alert('Erro ao conectar com o banco de dados. Verifique a API.');
+    }
   };
 
   return (
@@ -120,7 +124,7 @@ export default function AdminLojaPage() {
         <div>
           <h2 className="text-3xl font-serif text-stone-900">Integração Hotmart (Loja)</h2>
           <p className="text-stone-500 mt-1">
-            Gerencie e-books, ferramentas e produtos digitais conectados ao checkout da Hotmart.
+            Gerencie e-books, ferramentas e produtos digitais no banco de dados cPanel conectados à Hotmart.
           </p>
         </div>
         
@@ -176,9 +180,15 @@ export default function AdminLojaPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-stone-100">
-                {filteredProducts.length === 0 ? (
+                {isLoading ? (
                   <tr>
-                    <td colSpan={5} className="p-12 text-center text-stone-500">Nenhum produto encontrado.</td>
+                    <td colSpan={5} className="p-12 text-center text-stone-500">
+                       Carregando banco de dados... (Pode falhar se a API não estiver no ar ainda)
+                    </td>
+                  </tr>
+                ) : filteredProducts.length === 0 ? (
+                  <tr>
+                    <td colSpan={5} className="p-12 text-center text-stone-500">Nenhum produto cadastrado no banco de dados.</td>
                   </tr>
                 ) : filteredProducts.map((product) => (
                   <tr key={product.id} className="hover:bg-stone-50/50 transition-colors">
@@ -234,7 +244,7 @@ export default function AdminLojaPage() {
       {view === 'form' && (
         <form onSubmit={handleSalvar} className="bg-white rounded-[2rem] border border-stone-200 p-8 shadow-sm">
           <h3 className="text-xl font-serif text-stone-900 mb-6 border-b border-stone-100 pb-4">
-            {formData.id ? 'Editar Produto' : 'Cadastrar Novo Produto Hotmart'}
+            {formData.id ? 'Editar Produto (MySQL)' : 'Cadastrar Novo Produto Hotmart (MySQL)'}
           </h3>
           
           <div className="grid md:grid-cols-2 gap-6 mb-8">

@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { Navbar } from '../../components/Navbar';
 import Link from 'next/link';
 
+const API_URL = 'https://ayurvedica.org/api/loja.php';
+
 // Interface do Produto
 interface Product {
   id: string;
@@ -19,34 +21,24 @@ interface Product {
 export default function LojaPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [activeCategory, setActiveCategory] = useState('Todos');
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Carregar produtos do localStorage ao iniciar
+  // Carregar produtos da API MySQL ao iniciar
   useEffect(() => {
-    const savedProducts = localStorage.getItem('@alba:loja:produtos');
-    if (savedProducts) {
-      try {
-        const allProducts = JSON.parse(savedProducts) as Product[];
-        // Filtrar apenas os ativos para exibir na loja pública
-        const activeProducts = allProducts.filter(p => p.status === 'Ativo');
-        setProducts(activeProducts);
-      } catch (e) {
-        console.error('Erro ao carregar produtos', e);
-      }
-    } else {
-      // Produtos de exemplo caso não tenha nada no localStorage ainda
-      setProducts([
-        {
-          id: 'prod-1',
-          title: 'Guia Prático de Culinária Ayurvédica',
-          category: 'E-book',
-          price: 'R$ 47,90',
-          image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=600&auto=format&fit=crop',
-          description: 'Aprenda a aplicar os princípios do Ayurveda na sua cozinha diária para mais saúde e vitalidade.',
-          hotmartLink: 'https://pay.hotmart.com/exemplo1',
-          status: 'Ativo'
+    fetch(API_URL)
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) {
+          // Filtrar apenas os ativos para exibir na loja pública
+          const activeProducts = data.filter(p => p.status === 'Ativo');
+          setProducts(activeProducts);
         }
-      ]);
-    }
+      })
+      .catch(err => {
+        console.error('Erro ao carregar produtos', err);
+        setProducts([]);
+      })
+      .finally(() => setIsLoading(false));
   }, []);
 
   const categories = ['Todos', ...Array.from(new Set(products.map(p => p.category)))];
@@ -94,13 +86,18 @@ export default function LojaPage() {
           )}
 
           {/* Grid de Produtos */}
-          {filteredProducts.length === 0 ? (
+          {isLoading ? (
+            <div className="text-center py-20">
+              <div className="w-12 h-12 border-4 border-emerald-800 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+              <h3 className="text-xl font-bold text-stone-600">Carregando loja...</h3>
+            </div>
+          ) : filteredProducts.length === 0 ? (
             <div className="text-center py-20">
               <svg className="w-16 h-16 text-stone-300 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
               </svg>
               <h3 className="text-xl font-bold text-stone-600">Nenhum produto disponível</h3>
-              <p className="text-stone-500 mt-2">No momento não temos produtos nesta categoria. Volte em breve!</p>
+              <p className="text-stone-500 mt-2">No momento não temos produtos disponíveis. Volte em breve!</p>
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
