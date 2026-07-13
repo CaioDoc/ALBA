@@ -26,7 +26,7 @@ export default function CursosPage() {
   const [courses, setCourses] = useState<any[]>([]);
 
   useEffect(() => {
-    const savedCourses = localStorage.getItem('alba_cursos_v2');
+    const savedCourses = localStorage.getItem('alba_cursos_v3');
     if (savedCourses) {
       setCourses(JSON.parse(savedCourses));
     } else {

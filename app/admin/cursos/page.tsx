@@ -9,12 +9,12 @@ export default function AdminCursosPage() {
   const [view, setView] = useState<'list' | 'form'>('list');
 
   useEffect(() => {
-    const savedCourses = localStorage.getItem('alba_cursos_v2');
+    const savedCourses = localStorage.getItem('alba_cursos_v3');
     if (savedCourses) {
       setCourses(JSON.parse(savedCourses));
     } else {
       setCourses(scrapedCourses);
-      localStorage.setItem('alba_cursos_v2', JSON.stringify(scrapedCourses));
+      localStorage.setItem('alba_cursos_v3', JSON.stringify(scrapedCourses));
     }
   }, []);
 
@@ -27,7 +27,7 @@ export default function AdminCursosPage() {
     if(confirm('Tem certeza que deseja deletar ou suspender este curso permanentemente?')) {
       const newCourses = courses.filter(c => c.id !== id);
       setCourses(newCourses);
-      localStorage.setItem('alba_cursos_v2', JSON.stringify(newCourses));
+      localStorage.setItem('alba_cursos_v3', JSON.stringify(newCourses));
     }
   };
 
