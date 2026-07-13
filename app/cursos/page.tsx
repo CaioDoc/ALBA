@@ -23,7 +23,7 @@ export default function CursosPage() {
   const [activeCategory, setActiveCategory] = useState('Todos');
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [courses, setCourses] = useState([]);
+  const [courses, setCourses] = useState<any[]>([]);
 
   useEffect(() => {
     const savedCourses = localStorage.getItem('alba_cursos_v2');

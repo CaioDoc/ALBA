@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { initialCourses as scrapedCourses } from '../../../data/cursos.js';
 
 export default function AdminCursosPage() {
-  const [courses, setCourses] = useState([]);
+  const [courses, setCourses] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [view, setView] = useState<'list' | 'form'>('list');
 
