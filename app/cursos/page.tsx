@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from '../../components/Navbar';
 import { CourseDrawer } from '../../components/CourseDrawer';
+import { initialCourses as scrapedCourses } from '../../data/cursos.js';
 
 interface Course {
   id: number;
@@ -16,32 +17,24 @@ interface Course {
   price: string;
 }
 
-const allCoursesData: Course[] = [
-  {
-    id: 1, title: 'Formação Profissional em Terapeuta Ayurvédico', category: 'Formação', workload: '300h', format: 'Híbrido', image: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=600&auto=format&fit=crop', date: 'Início em Março de 2027', description: 'Curso completo voltado para quem deseja se profissionalizar na medicina milenar indiana. Inclui anatomia ayurvédica, patologia, farmacologia e estágio supervisionado.', price: 'Inscrições Abertas'
-  },
-  {
-    id: 2, title: 'Workshop Intensivo de Culinária Ayurvédica', category: 'Workshops', workload: '16h', format: 'Presencial', image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=600&auto=format&fit=crop', date: '15 e 16 de Abril', description: 'Aprenda a utilizar os temperos, especiarias e combinações corretas de alimentos para acender o seu fogo digestivo (Agni) e equilibrar o seu Dosha no dia a dia.', price: 'Vagas Limitadas'
-  },
-  {
-    id: 3, title: 'Retiro Avançado de Desintoxicação e Panchakarma', category: 'Imersões', workload: '7 Dias', format: 'Presencial', image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop', date: '12 a 19 de Maio', description: 'Uma experiência de imersão total sob a supervisão de médicos e terapeutas experientes. Inclui alimentação personalizada, massagens diárias e práticas de purificação.', price: 'Últimas Vagas'
-  },
-  {
-    id: 4, title: 'Especialização em Saúde da Mulher e Ginecologia Ayurvédica', category: 'Especialização', workload: '60h', format: 'Online', image: 'https://images.unsplash.com/photo-1594824406951-31823095b27b?q=80&w=600&auto=format&fit=crop', date: 'Acesso Imediato', description: 'Curso de extensão voltado para terapeutas que desejam aprofundar os cuidados nos ciclos femininos, desde a menarca até a menopausa, utilizando fitoterapia e rotinas de autocuidado.', price: 'Disponível'
-  },
-  {
-    id: 5, title: 'Introdução ao Ayurveda: Princípios Básicos para o Cotidiano', category: 'Workshops', workload: '8h', format: 'Online (Ao Vivo)', image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=600&auto=format&fit=crop', date: '05 de Junho', description: 'Ideal para iniciantes. Entenda de forma simples o conceito dos cinco elementos, como identificar traços do seu biotipo e pequenos hábitos para implementar amanhã.', price: 'Inscrições Abertas'
-  }
-];
-
-const categories = ['Todos', 'Formação', 'Especialização', 'Workshops', 'Imersões'];
+const categories = ['Todos', 'Yoga', 'Massagens Ayurvédicas', 'Medicina Ayurvédica', 'Estudos Holísticos'];
 
 export default function CursosPage() {
   const [activeCategory, setActiveCategory] = useState('Todos');
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [courses, setCourses] = useState([]);
 
-  const filteredCourses = allCoursesData.filter((course) => {
+  useEffect(() => {
+    const savedCourses = localStorage.getItem('alba_cursos_v2');
+    if (savedCourses) {
+      setCourses(JSON.parse(savedCourses));
+    } else {
+      setCourses(scrapedCourses);
+    }
+  }, []);
+
+  const filteredCourses = courses.filter((course) => {
     return activeCategory === 'Todos' || course.category === activeCategory;
   });
 
@@ -85,7 +78,7 @@ export default function CursosPage() {
             {filteredCourses.map((course) => (
               <div key={course.id} className="group bg-white rounded-[2.5rem] border border-stone-100 shadow-sm flex flex-col justify-between overflow-hidden">
                 <div className="h-56 w-full overflow-hidden relative">
-                  <img src={course.image} alt={course.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <img src={course.image || 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=600&auto=format&fit=crop'} alt={course.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                   <div className="absolute top-4 left-4 bg-white/95 px-3 py-1 rounded-full text-xs font-bold text-emerald-800">{course.category}</div>
                 </div>
                 <div className="p-8 pb-4 flex-1">

@@ -1,19 +1,22 @@
 "use client";
 
-import React, { useState } from 'react';
-
-// Dados simulados dos cursos
-const initialCourses = [
-  { id: 1, title: 'Formação Profissional em Terapeuta Ayurvédico', category: 'Formação', workload: '300h', format: 'Híbrido', status: 'Inscrições Abertas', students: 45 },
-  { id: 2, title: 'Workshop Intensivo de Culinária Ayurvédica', category: 'Workshops', workload: '16h', format: 'Presencial', status: 'Vagas Limitadas', students: 18 },
-  { id: 3, title: 'Retiro Avançado de Desintoxicação', category: 'Imersões', workload: '7 Dias', format: 'Presencial', status: 'Últimas Vagas', students: 10 },
-  { id: 4, title: 'Introdução aos Doshas na Vida Moderna', category: 'Workshops', workload: '8h', format: 'Online', status: 'Encerrado', students: 120 },
-];
+import React, { useState, useEffect } from 'react';
+import { initialCourses as scrapedCourses } from '../../../data/cursos.js';
 
 export default function AdminCursosPage() {
-  const [courses, setCourses] = useState(initialCourses);
+  const [courses, setCourses] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [view, setView] = useState<'list' | 'form'>('list');
+
+  useEffect(() => {
+    const savedCourses = localStorage.getItem('alba_cursos_v2');
+    if (savedCourses) {
+      setCourses(JSON.parse(savedCourses));
+    } else {
+      setCourses(scrapedCourses);
+      localStorage.setItem('alba_cursos_v2', JSON.stringify(scrapedCourses));
+    }
+  }, []);
 
   const filteredCourses = courses.filter(course => 
     course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -22,13 +25,15 @@ export default function AdminCursosPage() {
 
   const handleDelete = (id: number) => {
     if(confirm('Tem certeza que deseja deletar ou suspender este curso permanentemente?')) {
-      setCourses(courses.filter(c => c.id !== id));
+      const newCourses = courses.filter(c => c.id !== id);
+      setCourses(newCourses);
+      localStorage.setItem('alba_cursos_v2', JSON.stringify(newCourses));
     }
   };
 
   const handleSalvar = (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Curso salvo com sucesso e publicado na página de Cursos!');
+    alert('Função de edição ainda em desenvolvimento. (Em breve!)');
     setView('list');
   };
 
