@@ -44,6 +44,8 @@ export const metadata: Metadata = {
   },
 };
 
+import Script from 'next/script';
+
 export default function RootLayout({
   children,
 }: {
@@ -52,6 +54,24 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body>
+        {/* Elemento oculto do Google Translate */}
+        <div id="google_translate_element" style={{ display: 'none' }}></div>
+        <Script
+          src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+          strategy="afterInteractive"
+        />
+        <Script id="google-translate-init" strategy="afterInteractive">
+          {`
+            function googleTranslateElementInit() {
+              new google.translate.TranslateElement({
+                pageLanguage: 'pt',
+                includedLanguages: 'pt,en,es,fr',
+                autoDisplay: false
+              }, 'google_translate_element');
+            }
+          `}
+        </Script>
+        
         {/* O children representa todo o conteúdo das suas páginas (Home, Cursos, etc) */}
         {children}
         
