@@ -40,9 +40,22 @@ const initialLeads = [
 ];
 
 export default function AdminLeadsPage() {
-  const [leads, setLeads] = useState(initialLeads);
-  const [selectedLead, setSelectedLead] = useState(initialLeads[0]);
+  const [leads, setLeads] = useState<any[]>([]);
+  const [selectedLead, setSelectedLead] = useState<any>(null);
   const [filter, setFilter] = useState('Todos');
+
+  React.useEffect(() => {
+    const savedLeads = localStorage.getItem('alba_leads');
+    if (savedLeads) {
+      const parsed = JSON.parse(savedLeads);
+      setLeads(parsed);
+      setSelectedLead(parsed[0]);
+    } else {
+      setLeads(initialLeads);
+      setSelectedLead(initialLeads[0]);
+      localStorage.setItem('alba_leads', JSON.stringify(initialLeads));
+    }
+  }, []);
 
   const filteredLeads = leads.filter(lead => {
     if (filter === 'Novos') return lead.status === 'Novo';

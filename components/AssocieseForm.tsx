@@ -19,6 +19,16 @@ const atividadesList = [
 function FormContent() {
   const searchParams = useSearchParams();
   const [selectedInteresse, setSelectedInteresse] = useState('');
+  
+  const [formData, setFormData] = useState({
+    nome: '',
+    email: '',
+    telefone: '',
+    tipo: 'Profissional Formado',
+    mensagem: ''
+  });
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
     const interesseParam = searchParams.get('interesse');
@@ -27,14 +37,63 @@ function FormContent() {
     }
   }, [searchParams]);
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Ler leads existentes
+    const existingLeads = JSON.parse(localStorage.getItem('alba_leads') || '[]');
+    
+    // Criar novo lead
+    const newLead = {
+      id: Date.now(),
+      name: formData.nome,
+      email: formData.email,
+      phone: formData.telefone,
+      type: 'Associe-se',
+      category: formData.tipo,
+      date: new Date().toLocaleDateString('pt-BR') + ', ' + new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
+      status: 'Novo',
+      message: selectedInteresse ? `Interesse selecionado: ${selectedInteresse}\n\n${formData.mensagem}` : formData.mensagem
+    };
+    
+    // Salvar e atualizar view
+    localStorage.setItem('alba_leads', JSON.stringify([newLead, ...existingLeads]));
+    setIsSubmitted(true);
+  };
+
+  if (isSubmitted) {
+    return (
+      <div className="bg-emerald-50 text-emerald-800 p-8 rounded-2xl border border-emerald-200 text-center animate-fade-in-up">
+        <svg className="w-16 h-16 mx-auto mb-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <h3 className="text-2xl font-serif mb-2">Solicitação Enviada!</h3>
+        <p className="text-sm">Recebemos seus dados com sucesso. Nossa equipe entrará em contato em breve através do seu WhatsApp ou E-mail.</p>
+        <button 
+          onClick={() => {
+            setIsSubmitted(false);
+            setFormData({nome: '', email: '', telefone: '', tipo: 'Profissional Formado', mensagem: ''});
+            setSelectedInteresse('');
+          }}
+          className="cursor-pointer mt-6 px-6 py-2 bg-emerald-800 text-white rounded-xl font-bold hover:bg-emerald-900 transition-all text-sm"
+        >
+          Enviar Nova Mensagem
+        </button>
+      </div>
+    );
+  }
+
   return (
-    <form className="space-y-6">
+    <form className="space-y-6" onSubmit={handleSubmit}>
       {/* Nome */}
       <div>
         <label htmlFor="nome" className="block text-sm font-medium text-stone-700 mb-2">Nome Completo</label>
         <input 
           type="text" 
           id="nome"
+          required
+          value={formData.nome}
+          onChange={(e) => setFormData({...formData, nome: e.target.value})}
           className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
           placeholder="Ex: Dra. Julia Santini"
         />
@@ -47,6 +106,9 @@ function FormContent() {
           <input 
             type="email" 
             id="email"
+            required
+            value={formData.email}
+            onChange={(e) => setFormData({...formData, email: e.target.value})}
             className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
             placeholder="seu@email.com"
           />
@@ -56,6 +118,9 @@ function FormContent() {
           <input 
             type="tel" 
             id="telefone"
+            required
+            value={formData.telefone}
+            onChange={(e) => setFormData({...formData, telefone: e.target.value})}
             className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
             placeholder="(00) 00000-0000"
           />
@@ -67,6 +132,8 @@ function FormContent() {
         <label htmlFor="tipo" className="block text-sm font-medium text-stone-700 mb-2">Categoria Desejada</label>
         <select 
           id="tipo"
+          value={formData.tipo}
+          onChange={(e) => setFormData({...formData, tipo: e.target.value})}
           className="cursor-pointer w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
         >
           <option>Profissional Formado</option>
@@ -104,6 +171,8 @@ function FormContent() {
         <textarea 
           id="mensagem"
           rows={4}
+          value={formData.mensagem}
+          onChange={(e) => setFormData({...formData, mensagem: e.target.value})}
           className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all resize-none"
           placeholder="Sua formação, onde atua, ou dúvidas sobre a atividade/curso..."
         ></textarea>
@@ -111,7 +180,7 @@ function FormContent() {
 
       {/* Botão de Envio */}
       <button 
-        type="button" 
+        type="submit" 
         className="cursor-pointer w-full bg-emerald-800 text-white py-4 rounded-xl font-bold hover:bg-emerald-900 transition-all active:scale-[0.98] shadow-md flex justify-center items-center gap-2"
       >
         Enviar Solicitação
