@@ -12,13 +12,23 @@ interface Event {
   type: string;
 }
 
-const upcomingEvents: Event[] = [
-  { id: 1, day: '20', month: 'JUL', title: 'Palestra Gratuita: Ayurveda e Saúde Mental', location: 'Transmissão via YouTube Live', type: 'Palestra Online' },
-  { id: 2, day: '10', month: 'SET', title: 'Workshop de Massagem Indian Head (Champi)', location: 'Sede da ALBA - São Paulo, SP', type: 'Prática Presencial' },
-];
-
 export const PublicAgenda = () => {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
+  const [upcomingEvents, setUpcomingEvents] = useState<Event[]>([]);
+
+  React.useEffect(() => {
+    const saved = localStorage.getItem('alba_agenda');
+    if (saved) {
+      setUpcomingEvents(JSON.parse(saved).filter((e: any) => e.status !== 'Cancelado / Adiado'));
+    } else {
+      const initial: Event[] = [
+        { id: 1, day: '20', month: 'JUL', title: 'Palestra Gratuita: Ayurveda e Saúde Mental', location: 'Transmissão via YouTube Live', type: 'Palestra Online' },
+        { id: 2, day: '10', month: 'SET', title: 'Workshop de Massagem Indian Head (Champi)', location: 'Sede da ALBA - São Paulo, SP', type: 'Prática Presencial' },
+      ];
+      setUpcomingEvents(initial);
+      localStorage.setItem('alba_agenda', JSON.stringify(initial));
+    }
+  }, []);
 
   return (
     <section className="py-24 px-4 bg-white border-t border-stone-100">

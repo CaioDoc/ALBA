@@ -11,9 +11,29 @@ const initialEvents = [
 ];
 
 export default function AdminAgendaPage() {
-  const [events, setEvents] = useState(initialEvents);
+  const [events, setEvents] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [view, setView] = useState<'list' | 'form'>('list');
+
+  const [formData, setFormData] = useState({
+    title: '',
+    type: 'Palestra',
+    date: '', // Will be parsed to day/month for public view
+    location: '',
+    status: 'Confirmado',
+    description: ''
+  });
+  const [editingId, setEditingId] = useState<number | null>(null);
+
+  React.useEffect(() => {
+    const saved = localStorage.getItem('alba_agenda');
+    if (saved) {
+      setEvents(JSON.parse(saved));
+    } else {
+      setEvents(initialEvents);
+      localStorage.setItem('alba_agenda', JSON.stringify(initialEvents));
+    }
+  }, []);
 
   const filteredEvents = events.filter(event => 
     event.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -22,12 +42,64 @@ export default function AdminAgendaPage() {
 
   const handleDelete = (id: number) => {
     if(confirm('Deseja realmente cancelar e remover este evento da agenda pública?')) {
-      setEvents(events.filter(e => e.id !== id));
+      const newEvents = events.filter(e => e.id !== id);
+      setEvents(newEvents);
+      localStorage.setItem('alba_agenda', JSON.stringify(newEvents));
     }
+  };
+
+  const handleEdit = (evt: any) => {
+    setEditingId(evt.id);
+    setFormData({
+      title: evt.title || '',
+      type: evt.type || 'Palestra',
+      date: evt.date || '',
+      location: evt.location || '',
+      status: evt.status || 'Confirmado',
+      description: evt.description || ''
+    });
+    setView('form');
+  };
+
+  const handleNovo = () => {
+    setEditingId(null);
+    setFormData({
+      title: '',
+      type: 'Palestra',
+      date: '',
+      location: '',
+      status: 'Confirmado',
+      description: ''
+    });
+    setView('form');
   };
 
   const handleSalvar = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Auto generate day and month from date string if possible, or use defaults
+    const parts = formData.date.split(' ');
+    const day = parts[0] || '01';
+    let month = parts[2] || 'JAN'; // "20 de Julho" -> parts[0]="20", parts[1]="de", parts[2]="Julho"
+    if (month.length > 3) month = month.substring(0, 3).toUpperCase();
+
+    const novoEvento = {
+      id: editingId || Date.now(),
+      ...formData,
+      day,
+      month
+    };
+
+    let newEvents;
+    if (editingId) {
+      newEvents = events.map(ev => ev.id === editingId ? novoEvento : ev);
+    } else {
+      newEvents = [...events, novoEvento];
+    }
+
+    setEvents(newEvents);
+    localStorage.setItem('alba_agenda', JSON.stringify(newEvents));
+
     alert('Evento salvo e publicado na Agenda Oficial!');
     setView('list');
   };
@@ -119,7 +191,7 @@ export default function AdminAgendaPage() {
                       </span>
                     </td>
                     <td className="p-6 flex items-center justify-end gap-3">
-                      <button onClick={() => setView('form')} className="cursor-pointer text-stone-400 hover:text-emerald-600 transition-colors" title="Editar Evento">
+                      <button onClick={() => handleEdit(event)} className="cursor-pointer text-stone-400 hover:text-emerald-600 transition-colors" title="Editar Evento">
                         <svg className="w-5 h-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
                       </button>
                       <button onClick={() => handleDelete(event.id)} className="cursor-pointer text-stone-400 hover:text-red-500 transition-colors" title="Cancelar Evento">
@@ -142,12 +214,12 @@ export default function AdminAgendaPage() {
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <div className="md:col-span-2">
               <label className="block text-sm font-medium text-stone-700 mb-2">Título do Evento</label>
-              <input type="text" required className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" placeholder="Ex: Palestra Magna: Os segredos do Agni" />
+              <input type="text" required value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" placeholder="Ex: Palestra Magna: Os segredos do Agni" />
             </div>
 
             <div>
               <label className="block text-sm font-medium text-stone-700 mb-2">Tipo de Evento</label>
-              <select className="cursor-pointer w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all">
+              <select value={formData.type} onChange={e => setFormData({...formData, type: e.target.value})} className="cursor-pointer w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all">
                 <option>Palestra</option>
                 <option>Congresso</option>
                 <option>Reunião Interna (Associados)</option>
@@ -158,17 +230,17 @@ export default function AdminAgendaPage() {
 
             <div>
               <label className="block text-sm font-medium text-stone-700 mb-2">Data e Horário</label>
-              <input type="text" required className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" placeholder="Ex: 20 de Julho, 2026 - 19h30" />
+              <input type="text" required value={formData.date} onChange={e => setFormData({...formData, date: e.target.value})} className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" placeholder="Ex: 20 de Julho, 2026 - 19h30" />
             </div>
 
             <div>
               <label className="block text-sm font-medium text-stone-700 mb-2">Local ou Plataforma (Link)</label>
-              <input type="text" className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" placeholder="Ex: YouTube Live ou Rua Exemplo, 123" />
+              <input type="text" value={formData.location} onChange={e => setFormData({...formData, location: e.target.value})} className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" placeholder="Ex: YouTube Live ou Rua Exemplo, 123" />
             </div>
 
             <div>
               <label className="block text-sm font-medium text-stone-700 mb-2">Status do Evento</label>
-              <select className="cursor-pointer w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all font-bold text-stone-700">
+              <select value={formData.status} onChange={e => setFormData({...formData, status: e.target.value})} className="cursor-pointer w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all font-bold text-stone-700">
                 <option>Confirmado</option>
                 <option>Esgotado</option>
                 <option>Cancelado / Adiado</option>
@@ -177,7 +249,7 @@ export default function AdminAgendaPage() {
 
             <div className="md:col-span-2">
               <label className="block text-sm font-medium text-stone-700 mb-2">Descrição / Pauta do Evento</label>
-              <textarea rows={4} className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all resize-none" placeholder="Detalhes sobre quem vai falar, cronograma, etc..."></textarea>
+              <textarea rows={4} value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all resize-none" placeholder="Detalhes sobre quem vai falar, cronograma, etc..."></textarea>
             </div>
           </div>
 

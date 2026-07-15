@@ -11,8 +11,18 @@ const initialArticles = [
 
 export default function AdminArtigosPage() {
   const [view, setView] = useState<'list' | 'editor'>('list');
-  const [articles, setArticles] = useState(initialArticles);
+  const [articles, setArticles] = useState<any[]>([]);
   
+  React.useEffect(() => {
+    const saved = localStorage.getItem('alba_artigos');
+    if (saved) {
+      setArticles(JSON.parse(saved));
+    } else {
+      setArticles(initialArticles);
+      localStorage.setItem('alba_artigos', JSON.stringify(initialArticles));
+    }
+  }, []);
+
   // Estados do Editor
   const [editingId, setEditingId] = useState<number | null>(null);
   const [titulo, setTitulo] = useState('');
@@ -26,7 +36,9 @@ export default function AdminArtigosPage() {
   // --- FUNÇÕES DA LISTA (CRUD) ---
   const handleDelete = (id: number) => {
     if (confirm('Tem certeza que deseja deletar este artigo? Essa ação não pode ser desfeita.')) {
-      setArticles(articles.filter(a => a.id !== id));
+      const newArticles = articles.filter(a => a.id !== id);
+      setArticles(newArticles);
+      localStorage.setItem('alba_artigos', JSON.stringify(newArticles));
     }
   };
 
@@ -56,17 +68,24 @@ export default function AdminArtigosPage() {
       title: titulo,
       author: 'Admin',
       status: statusDesejado,
-      date: 'Hoje',
-      conteudo: conteudo
+      date: new Date().toLocaleDateString('pt-BR'),
+      conteudo: conteudo,
+      resumo: conteudo ? conteudo.substring(0, 100) + '...' : '',
+      imagem: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop', // default image
+      tag: 'Geral'
     };
 
+    let newArticles;
     if (editingId) {
       // Atualiza o artigo existente
-      setArticles(articles.map(a => a.id === editingId ? novoArtigo : a));
+      newArticles = articles.map(a => a.id === editingId ? { ...a, ...novoArtigo } : a);
     } else {
       // Cria um novo no topo da lista
-      setArticles([novoArtigo, ...articles]);
+      newArticles = [novoArtigo, ...articles];
     }
+    
+    setArticles(newArticles);
+    localStorage.setItem('alba_artigos', JSON.stringify(newArticles));
 
     alert(`Artigo ${statusDesejado === 'Rascunho' ? 'salvo como rascunho' : 'publicado'} com sucesso!`);
     setView('list');

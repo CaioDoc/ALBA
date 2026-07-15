@@ -11,10 +11,41 @@ const initialAssociates = [
 ];
 
 export default function AdminAssociadosPage() {
-  const [associates, setAssociates] = useState(initialAssociates);
+  const [associates, setAssociates] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [view, setView] = useState<'list' | 'form'>('list');
   const [filterStatus, setFilterStatus] = useState('Todos');
+
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    role: 'Médico(a) Ayurvédico',
+    registry: '',
+    bio: '',
+    status: 'Ativo',
+    location: 'Online', // Default added since TherapistCard uses it
+    avatar: 'https://images.unsplash.com/photo-1594824406951-31823095b27b?q=80&w=200&auto=format&fit=crop',
+    skills: [] as any[]
+  });
+
+  React.useEffect(() => {
+    const saved = localStorage.getItem('alba_associados');
+    if (saved) {
+      setAssociates(JSON.parse(saved));
+    } else {
+      const formattedInitial = initialAssociates.map(a => ({
+        ...a,
+        id: 'prof-' + a.id,
+        location: 'Não informada',
+        avatar: 'https://images.unsplash.com/photo-1594824406951-31823095b27b?q=80&w=200&auto=format&fit=crop',
+        bio: '',
+        skills: [{ id: '1', name: a.role, slug: 'geral' }]
+      }));
+      setAssociates(formattedInitial);
+      localStorage.setItem('alba_associados', JSON.stringify(formattedInitial));
+    }
+  }, []);
 
   // Filtro de busca na tabela
   const filteredAssociates = associates.filter(assoc => {
@@ -24,14 +55,68 @@ export default function AdminAssociadosPage() {
     return matchesSearch && matchesStatus;
   });
 
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: string) => {
     if(confirm('Tem certeza que deseja suspender ou remover este associado?')) {
-      setAssociates(associates.filter(a => a.id !== id));
+      const newAssoc = associates.filter(a => a.id !== id);
+      setAssociates(newAssoc);
+      localStorage.setItem('alba_associados', JSON.stringify(newAssoc));
     }
+  };
+
+  const handleEdit = (assoc: any) => {
+    setEditingId(assoc.id);
+    setFormData({
+      name: assoc.name || '',
+      email: assoc.email || '',
+      role: assoc.role || 'Médico(a) Ayurvédico',
+      registry: assoc.registry || '',
+      bio: assoc.bio || '',
+      status: assoc.status || 'Ativo',
+      location: assoc.location || 'Online',
+      avatar: assoc.avatar || 'https://images.unsplash.com/photo-1594824406951-31823095b27b?q=80&w=200&auto=format&fit=crop',
+      skills: assoc.skills || []
+    });
+    setView('form');
+  };
+
+  const handleNovo = () => {
+    setEditingId(null);
+    setFormData({
+      name: '',
+      email: '',
+      role: 'Médico(a) Ayurvédico',
+      registry: '',
+      bio: '',
+      status: 'Ativo',
+      location: 'Online',
+      avatar: 'https://images.unsplash.com/photo-1594824406951-31823095b27b?q=80&w=200&auto=format&fit=crop',
+      skills: []
+    });
+    setView('form');
   };
 
   const handleSalvar = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Assegura que haja ao menos uma skill baseada na role
+    const skills = formData.skills.length > 0 ? formData.skills : [{ id: Date.now().toString(), name: formData.role, slug: formData.role.toLowerCase().replace(/ /g, '-') }];
+
+    const novoAssoc = {
+      id: editingId || 'prof-' + Date.now(),
+      ...formData,
+      skills
+    };
+
+    let newAssoc;
+    if (editingId) {
+      newAssoc = associates.map(a => a.id === editingId ? novoAssoc : a);
+    } else {
+      newAssoc = [novoAssoc, ...associates];
+    }
+
+    setAssociates(newAssoc);
+    localStorage.setItem('alba_associados', JSON.stringify(newAssoc));
+
     alert('Dados do associado salvos e atualizados no Diretório Público!');
     setView('list');
   };
@@ -50,7 +135,7 @@ export default function AdminAssociadosPage() {
         
         {view === 'list' ? (
           <button 
-            onClick={() => setView('form')}
+            onClick={handleNovo}
             className="cursor-pointer bg-emerald-700 text-white px-6 py-3 rounded-xl font-bold hover:bg-emerald-800 transition-all active:scale-95 shadow-md flex items-center gap-2"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
@@ -110,8 +195,8 @@ export default function AdminAssociadosPage() {
                   <tr key={assoc.id} className="hover:bg-stone-50/50 transition-colors">
                     <td className="p-6">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-stone-200 flex-shrink-0 flex items-center justify-center font-serif text-stone-600 font-bold">
-                          {assoc.name.charAt(0)}
+                        <div className="w-10 h-10 rounded-full bg-stone-200 flex-shrink-0 flex items-center justify-center font-serif text-stone-600 font-bold overflow-hidden">
+                          {assoc.avatar && assoc.avatar.startsWith('http') ? <img src={assoc.avatar} className="w-full h-full object-cover" /> : assoc.name.charAt(0)}
                         </div>
                         <div>
                           <p className="font-bold text-stone-900">{assoc.name}</p>
@@ -132,7 +217,7 @@ export default function AdminAssociadosPage() {
                       </span>
                     </td>
                     <td className="p-6 flex items-center justify-end gap-3">
-                      <button onClick={() => setView('form')} className="cursor-pointer text-stone-400 hover:text-blue-600 transition-colors" title="Editar Perfil">
+                      <button onClick={() => handleEdit(assoc)} className="cursor-pointer text-stone-400 hover:text-blue-600 transition-colors" title="Editar Perfil">
                         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
                       </button>
                       <button onClick={() => handleDelete(assoc.id)} className="cursor-pointer text-stone-400 hover:text-red-500 transition-colors" title="Suspender Registro">
@@ -159,35 +244,44 @@ export default function AdminAssociadosPage() {
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <div>
               <label className="block text-sm font-medium text-stone-700 mb-2">Nome Completo</label>
-              <input type="text" required className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" placeholder="Ex: Dra. Julia Santini" />
+              <input type="text" required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" placeholder="Ex: Dra. Julia Santini" />
             </div>
             <div>
               <label className="block text-sm font-medium text-stone-700 mb-2">E-mail Principal</label>
-              <input type="email" required className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" placeholder="email@exemplo.com" />
+              <input type="email" required value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" placeholder="email@exemplo.com" />
             </div>
             <div>
               <label className="block text-sm font-medium text-stone-700 mb-2">Categoria Profissional</label>
-              <select className="cursor-pointer w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all">
+              <select value={formData.role} onChange={e => setFormData({...formData, role: e.target.value})} className="cursor-pointer w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all">
                 <option>Médico(a) Ayurvédico</option>
                 <option>Terapeuta Corporal</option>
                 <option>Consultor(a) de Bem-estar</option>
                 <option>Estudante</option>
+                <option>Terapeuta e Doula</option>
               </select>
             </div>
             <div>
               <label className="block text-sm font-medium text-stone-700 mb-2">Número de Registro (ALBA)</label>
-              <input type="text" className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all font-mono uppercase" placeholder="ALBA-SP 0000" />
+              <input type="text" value={formData.registry} onChange={e => setFormData({...formData, registry: e.target.value})} className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all font-mono uppercase" placeholder="ALBA-SP 0000" />
             </div>
             <div className="md:col-span-2">
               <label className="block text-sm font-medium text-stone-700 mb-2">Biografia (Aparecerá no Diretório Público)</label>
-              <textarea rows={4} className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all resize-none" placeholder="Breve resumo sobre a formação e especialidades do terapeuta..."></textarea>
+              <textarea rows={4} value={formData.bio} onChange={e => setFormData({...formData, bio: e.target.value})} className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all resize-none" placeholder="Breve resumo sobre a formação e especialidades do terapeuta..."></textarea>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-stone-700 mb-2">Local de Atendimento</label>
+              <input type="text" value={formData.location} onChange={e => setFormData({...formData, location: e.target.value})} className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" placeholder="Ex: São Paulo, SP & Online" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-stone-700 mb-2">URL da Foto de Perfil</label>
+              <input type="url" value={formData.avatar} onChange={e => setFormData({...formData, avatar: e.target.value})} className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" placeholder="https://..." />
             </div>
             <div>
               <label className="block text-sm font-medium text-stone-700 mb-2">Status da Conta</label>
-              <select className="cursor-pointer w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all font-bold">
-                <option value="ativo">Ativo (Exibir no Site)</option>
-                <option value="pendente">Pendente de Aprovação</option>
-                <option value="inativo">Inativo / Suspenso</option>
+              <select value={formData.status} onChange={e => setFormData({...formData, status: e.target.value})} className="cursor-pointer w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all font-bold">
+                <option value="Ativo">Ativo (Exibir no Site)</option>
+                <option value="Pendente">Pendente de Aprovação</option>
+                <option value="Inativo">Inativo / Suspenso</option>
               </select>
             </div>
           </div>

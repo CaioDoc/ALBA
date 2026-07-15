@@ -8,6 +8,48 @@ export default function AdminCursosPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [view, setView] = useState<'list' | 'form'>('list');
 
+  const [formData, setFormData] = useState({
+    title: '',
+    category: 'Formação',
+    format: '100% Online',
+    workload: '',
+    date: '',
+    description: '',
+    image: '',
+    status: 'Inscrições Abertas',
+    price: '' // Repurposed from checkout link? Let's use as price or link
+  });
+
+  const handleEdit = (course: any) => {
+    setFormData({
+      title: course.title || '',
+      category: course.category || 'Formação',
+      format: course.format || '100% Online',
+      workload: course.workload || '',
+      date: course.date || '',
+      description: course.description || '',
+      image: course.image || '',
+      status: course.status || 'Inscrições Abertas',
+      price: course.price || ''
+    });
+    setView('form');
+  };
+
+  const handleNovo = () => {
+    setFormData({
+      title: '',
+      category: 'Formação',
+      format: '100% Online',
+      workload: '',
+      date: '',
+      description: '',
+      image: '',
+      status: 'Inscrições Abertas',
+      price: ''
+    });
+    setView('form');
+  };
+
   useEffect(() => {
     const savedCourses = localStorage.getItem('alba_cursos_v3');
     if (savedCourses) {
@@ -33,7 +75,30 @@ export default function AdminCursosPage() {
 
   const handleSalvar = (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Função de edição ainda em desenvolvimento. (Em breve!)');
+    
+    // Simplification: We don't have an editingId state, so we check if course exists by title
+    const existingIndex = courses.findIndex(c => c.title === formData.title);
+    
+    let newCourses;
+    if (existingIndex >= 0) {
+      // Update
+      const updatedCourses = [...courses];
+      updatedCourses[existingIndex] = { ...updatedCourses[existingIndex], ...formData };
+      newCourses = updatedCourses;
+    } else {
+      // Create
+      const novoCurso = {
+        id: Date.now(),
+        ...formData,
+        students: 0 // Default value
+      };
+      newCourses = [novoCurso, ...courses];
+    }
+    
+    setCourses(newCourses);
+    localStorage.setItem('alba_cursos_v3', JSON.stringify(newCourses));
+    
+    alert('Curso salvo e publicado com sucesso!');
     setView('list');
   };
 
@@ -51,7 +116,7 @@ export default function AdminCursosPage() {
         
         {view === 'list' ? (
           <button 
-            onClick={() => setView('form')}
+            onClick={handleNovo}
             className="cursor-pointer bg-emerald-700 text-white px-6 py-3 rounded-xl font-bold hover:bg-emerald-800 transition-all active:scale-95 shadow-md flex items-center gap-2"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
@@ -111,7 +176,7 @@ export default function AdminCursosPage() {
                       <span className="text-stone-400 text-sm">{course.format} • {course.workload}</span>
                     </td>
                     <td className="p-6 text-stone-500 font-medium">
-                      {course.students} <span className="text-xs font-normal">alunos</span>
+                      {course.students || 0} <span className="text-xs font-normal">alunos</span>
                     </td>
                     <td className="p-6">
                       <span className={`px-3 py-1 rounded-full text-xs font-bold inline-flex items-center gap-1.5 ${
@@ -123,7 +188,7 @@ export default function AdminCursosPage() {
                       </span>
                     </td>
                     <td className="p-6 flex items-center justify-end gap-3">
-                      <button onClick={() => setView('form')} className="cursor-pointer text-stone-400 hover:text-blue-600 transition-colors" title="Editar Curso">
+                      <button onClick={() => handleEdit(course)} className="cursor-pointer text-stone-400 hover:text-blue-600 transition-colors" title="Editar Curso">
                         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
                       </button>
                       <button onClick={() => handleDelete(course.id)} className="cursor-pointer text-stone-400 hover:text-red-500 transition-colors" title="Excluir Curso">
@@ -146,12 +211,12 @@ export default function AdminCursosPage() {
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <div className="md:col-span-2">
               <label className="block text-sm font-medium text-stone-700 mb-2">Título do Curso</label>
-              <input type="text" required className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" placeholder="Ex: Especialização em Fitoterapia" />
+              <input type="text" required value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" placeholder="Ex: Especialização em Fitoterapia" />
             </div>
             
             <div>
               <label className="block text-sm font-medium text-stone-700 mb-2">Categoria</label>
-              <select className="cursor-pointer w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all">
+              <select value={formData.category} onChange={e => setFormData({...formData, category: e.target.value})} className="cursor-pointer w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all">
                 <option>Formação</option>
                 <option>Workshops</option>
                 <option>Especialização</option>
@@ -161,7 +226,7 @@ export default function AdminCursosPage() {
 
             <div>
               <label className="block text-sm font-medium text-stone-700 mb-2">Formato das Aulas</label>
-              <select className="cursor-pointer w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all">
+              <select value={formData.format} onChange={e => setFormData({...formData, format: e.target.value})} className="cursor-pointer w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all">
                 <option>100% Online</option>
                 <option>Presencial</option>
                 <option>Híbrido</option>
@@ -170,27 +235,27 @@ export default function AdminCursosPage() {
 
             <div>
               <label className="block text-sm font-medium text-stone-700 mb-2">Carga Horária</label>
-              <input type="text" className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" placeholder="Ex: 60h" />
+              <input type="text" value={formData.workload} onChange={e => setFormData({...formData, workload: e.target.value})} className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" placeholder="Ex: 60h" />
             </div>
 
             <div>
               <label className="block text-sm font-medium text-stone-700 mb-2">Data de Início / Previsão</label>
-              <input type="text" className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" placeholder="Ex: 15 de Março de 2027" />
+              <input type="text" value={formData.date} onChange={e => setFormData({...formData, date: e.target.value})} className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" placeholder="Ex: 15 de Março de 2027" />
             </div>
 
             <div className="md:col-span-2">
               <label className="block text-sm font-medium text-stone-700 mb-2">Descrição Completa</label>
-              <textarea rows={5} className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all resize-none" placeholder="Escreva sobre o que os alunos aprenderão neste curso..."></textarea>
+              <textarea rows={5} value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all resize-none" placeholder="Escreva sobre o que os alunos aprenderão neste curso..."></textarea>
             </div>
 
             <div className="md:col-span-2">
               <label className="block text-sm font-medium text-stone-700 mb-2">URL da Imagem de Capa</label>
-              <input type="url" className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" placeholder="https://..." />
+              <input type="url" value={formData.image} onChange={e => setFormData({...formData, image: e.target.value})} className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" placeholder="https://..." />
             </div>
 
             <div>
               <label className="block text-sm font-medium text-stone-700 mb-2">Status de Venda (Aparece na TAG)</label>
-              <select className="cursor-pointer w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all font-bold text-emerald-800">
+              <select value={formData.status} onChange={e => setFormData({...formData, status: e.target.value})} className="cursor-pointer w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all font-bold text-emerald-800">
                 <option>Inscrições Abertas</option>
                 <option>Vagas Limitadas</option>
                 <option>Últimas Vagas</option>
@@ -200,8 +265,8 @@ export default function AdminCursosPage() {
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-stone-700 mb-2">Link do Checkout (Pagamento/Inscrição)</label>
-              <input type="url" className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" placeholder="https://..." />
+              <label className="block text-sm font-medium text-stone-700 mb-2">Preço (Opcional)</label>
+              <input type="text" value={formData.price} onChange={e => setFormData({...formData, price: e.target.value})} className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" placeholder="Ex: €200 ou Grátis" />
             </div>
           </div>
 

@@ -17,71 +17,6 @@ interface Therapist {
   skills: Array<{ id: string; name: string; slug: string }>;
 }
 
-const therapistsData: Therapist[] = [
-  {
-    id: 'prof-1',
-    name: 'Dra. Aline Carvalho',
-    role: 'Médica Ayurvédica',
-    registry: 'ALBA-SP 1024',
-    location: 'São Paulo, SP & Online',
-    avatar: 'https://images.unsplash.com/photo-1594824406951-31823095b27b?q=80&w=200&auto=format&fit=crop',
-    bio: 'Especialista em saúde da mulher e nutrição ayurvédica. Foco em tratamentos preventivos, gestão de estresse e desintoxicação profunda.',
-    skills: [
-      { id: 'skl-008', name: 'Nutrição Ayurvédica', slug: 'nutricao-ayurvedica' },
-      { id: 'skl-003', name: 'Panchakarma', slug: 'panchakarma' },
-      { id: 'skl-006', name: 'Análise de Doshas', slug: 'analise-de-doshas' }
-    ]
-  },
-  {
-    id: 'prof-2',
-    name: 'Thiago Mendes',
-    role: 'Terapeuta Corporal',
-    registry: 'ALBA-RJ 2155',
-    location: 'Rio de Janeiro, RJ',
-    avatar: 'https://images.unsplash.com/photo-1552058544-f2b08422138a?q=80&w=200&auto=format&fit=crop',
-    bio: 'Com mais de 10 anos de prática, Thiago é focado no alinhamento físico e energético, utilizando técnicas manuais tradicionais da Índia.',
-    skills: [
-      { id: 'skl-001', name: 'Abhyanga', slug: 'abhyanga' },
-      { id: 'skl-004', name: 'Udvartana', slug: 'udvartana' },
-      { id: 'skl-011', name: 'Yoga Terapêutico', slug: 'yoga-terapeutico' }
-    ]
-  },
-  {
-    id: 'prof-3',
-    name: 'Julia Santini',
-    role: 'Consultora de Bem-estar',
-    registry: 'ALBA-MG 3012',
-    location: 'Atendimento 100% Online',
-    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&auto=format&fit=crop',
-    bio: 'Ajudando você a construir uma rotina diária (Dinacharya) sustentável. Foco em fitoterapia e reequilíbrio emocional através dos temperos.',
-    skills: [
-      { id: 'skl-010', name: 'Rotina Diária (Dinacharya)', slug: 'dinacharya' },
-      { id: 'skl-009', name: 'Fitoterapia', slug: 'fitoterapia' },
-      { id: 'skl-013', name: 'Aromaterapia', slug: 'aromaterapia' }
-    ]
-  },
-  {
-    id: 'prof-4',
-    name: 'Dr. Roberto Almeida',
-    role: 'Médico Ayurvédico',
-    registry: 'ALBA-RS 4432',
-    location: 'Porto Alegre, RS',
-    avatar: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=200',
-    bio: 'Foco em distúrbios digestivos severos e desintoxicação crônica.',
-    skills: [{ id: '1', name: 'Clínica Geral', slug: 'geral' }]
-  },
-  {
-    id: 'prof-5',
-    name: 'Camila Fernandes',
-    role: 'Terapeuta e Doula',
-    registry: 'ALBA-BA 7761',
-    location: 'Salvador, BA',
-    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=200',
-    bio: 'Atuação exclusiva com gestantes, pós-parto e ginecologia natural.',
-    skills: [{ id: '1', name: 'Saúde da Mulher', slug: 'mulher' }]
-  }
-];
-
 // Filtros rápidos disponíveis
 const quickFilters = ['Todos', 'Clínica Geral', 'Panchakarma', 'Nutrição', 'Massagem', 'Saúde da Mulher'];
 
@@ -89,6 +24,48 @@ export const TherapistDirectory = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeFilter, setActiveFilter] = useState('Todos');
   const [selectedTherapist, setSelectedTherapist] = useState<Therapist | null>(null);
+  const [therapistsData, setTherapistsData] = useState<Therapist[]>([]);
+
+  React.useEffect(() => {
+    const saved = localStorage.getItem('alba_associados');
+    if (saved) {
+      // Filtrar apenas associados 'Ativos' para mostrar no diretório público
+      setTherapistsData(JSON.parse(saved).filter((a: any) => a.status === 'Ativo'));
+    } else {
+      const initial: Therapist[] = [
+        {
+          id: 'prof-1',
+          name: 'Dra. Aline Carvalho',
+          role: 'Médica Ayurvédica',
+          registry: 'ALBA-SP 1024',
+          location: 'São Paulo, SP & Online',
+          avatar: 'https://images.unsplash.com/photo-1594824406951-31823095b27b?q=80&w=200&auto=format&fit=crop',
+          bio: 'Especialista em saúde da mulher e nutrição ayurvédica. Foco em tratamentos preventivos, gestão de estresse e desintoxicação profunda.',
+          skills: [
+            { id: 'skl-008', name: 'Nutrição Ayurvédica', slug: 'nutricao-ayurvedica' },
+            { id: 'skl-003', name: 'Panchakarma', slug: 'panchakarma' },
+            { id: 'skl-006', name: 'Análise de Doshas', slug: 'analise-de-doshas' }
+          ]
+        },
+        {
+          id: 'prof-2',
+          name: 'Thiago Mendes',
+          role: 'Terapeuta Corporal',
+          registry: 'ALBA-RJ 2155',
+          location: 'Rio de Janeiro, RJ',
+          avatar: 'https://images.unsplash.com/photo-1552058544-f2b08422138a?q=80&w=200&auto=format&fit=crop',
+          bio: 'Com mais de 10 anos de prática, Thiago é focado no alinhamento físico e energético, utilizando técnicas manuais tradicionais da Índia.',
+          skills: [
+            { id: 'skl-001', name: 'Abhyanga', slug: 'abhyanga' },
+            { id: 'skl-004', name: 'Udvartana', slug: 'udvartana' },
+            { id: 'skl-011', name: 'Yoga Terapêutico', slug: 'yoga-terapeutico' }
+          ]
+        }
+      ];
+      setTherapistsData(initial);
+      localStorage.setItem('alba_associados', JSON.stringify(initial));
+    }
+  }, []);
 
   // Lógica de Filtragem
   const filteredTherapists = therapistsData.filter((therapist) => {
@@ -98,7 +75,8 @@ export const TherapistDirectory = () => {
     
     const matchesFilter = 
       activeFilter === 'Todos' || 
-      therapist.skills.some(skill => skill.name === activeFilter);
+      therapist.skills.some(skill => skill.name === activeFilter) ||
+      therapist.skills.some(skill => skill.slug === activeFilter.toLowerCase().replace(/ /g, '-'));
 
     return matchesSearch && matchesFilter;
   });
