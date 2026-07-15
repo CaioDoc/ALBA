@@ -91,7 +91,7 @@ export const ActivityDrawer: React.FC<ActivityDrawerProps> = ({ activity, isOpen
         {/* Botão de Ação no Rodapé */}
         <div className="p-6 bg-white border-t border-stone-100 flex-shrink-0">
           <Link 
-            href="/associe-se"
+            href={`/associe-se?interesse=${encodeURIComponent(activity.title)}`}
             className="w-full bg-emerald-800 text-white py-4 rounded-xl font-bold hover:bg-emerald-900 transition-all active:scale-[0.98] shadow-md flex justify-center items-center gap-2 cursor-pointer"
           >
             Agendar / Inscrever-se
