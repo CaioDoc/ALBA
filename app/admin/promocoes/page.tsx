@@ -10,6 +10,7 @@ export default function PromocoesWhatsAppPage() {
   );
   const [imagemAnexo, setImagemAnexo] = useState('');
   const [isImproving, setIsImproving] = useState(false);
+  const [notification, setNotification] = useState<{type: 'success'|'error', message: string} | null>(null);
 
   // Simula a IA reescrevendo o texto com gatilhos mentais e emojis
   const handleMelhorarComIA = () => {
@@ -45,15 +46,51 @@ export default function PromocoesWhatsAppPage() {
   };
 
   const handleSalvarRascunho = () => {
-    alert(`Rascunho "${nomeCampanha || 'Sem nome'}" salvo com sucesso no banco de dados!\n\nEle ficará armazenado para você continuar editando e disparar mais tarde.`);
+    setNotification({ type: 'success', message: `Rascunho "${nomeCampanha || 'Sem nome'}" salvo com sucesso no banco de dados!` });
+    setTimeout(() => setNotification(null), 4000);
   };
 
   const handleDisparar = () => {
     if (!destino) {
-      alert('Por favor, informe o número de celular ou link do grupo de destino.');
+      setNotification({ type: 'error', message: 'Por favor, informe pelo menos um número ou link de grupo.' });
+      setTimeout(() => setNotification(null), 4000);
       return;
     }
-    alert(`Disparo iniciado para: ${destino}\n\nAcompanhe o progresso na aba de relatórios.`);
+    
+    if (!mensagem) {
+      setNotification({ type: 'error', message: 'A mensagem não pode estar vazia.' });
+      setTimeout(() => setNotification(null), 4000);
+      return;
+    }
+
+    const destinos = destino.split(',').map(d => d.trim()).filter(d => d);
+    let successCount = 0;
+    let errorCount = 0;
+
+    destinos.forEach(dest => {
+      let url = '';
+      if (dest.startsWith('http')) {
+        url = dest;
+      } else {
+        const numeroLimpo = dest.replace(/\D/g, ''); 
+        url = `https://wa.me/${numeroLimpo}?text=${encodeURIComponent(mensagem)}`;
+      }
+
+      const newWindow = window.open(url, '_blank');
+      if (newWindow) {
+        successCount++;
+      } else {
+        errorCount++;
+      }
+    });
+
+    if (errorCount > 0) {
+      setNotification({ type: 'error', message: `O navegador bloqueou ${errorCount} janelas. Por favor, permita pop-ups para este site.` });
+    } else {
+      setNotification({ type: 'success', message: `Mensagens enviadas com sucesso para ${successCount} destino(s)!` });
+    }
+    
+    setTimeout(() => setNotification(null), 5000);
   };
 
   // Função simples para interpretar os asteriscos do WhatsApp como negrito no HTML
@@ -70,6 +107,19 @@ export default function PromocoesWhatsAppPage() {
   return (
     <div className="max-w-6xl mx-auto animate-fade-in-up">
       
+      {notification && (
+        <div className={`mb-6 p-4 rounded-xl font-bold flex items-center gap-3 animate-fade-in-up ${
+          notification.type === 'success' ? 'bg-emerald-100 text-emerald-800 border border-emerald-200' : 'bg-red-100 text-red-800 border border-red-200'
+        }`}>
+          {notification.type === 'success' ? (
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+          ) : (
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+          )}
+          {notification.message}
+        </div>
+      )}
+
       <div className="mb-8">
         <h2 className="text-3xl font-serif text-stone-900">WhatsApp</h2>
         <p className="text-stone-500 mt-1">
