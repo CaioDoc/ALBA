@@ -10,13 +10,13 @@ export default function ArtigosPage() {
   const [artigosDatabase, setArtigosDatabase] = useState<any[]>([]);
 
   React.useEffect(() => {
-    const saved = localStorage.getItem('alba_artigos_v2');
+    const saved = localStorage.getItem('alba_artigos_v3');
     if (saved) {
       let parsed = JSON.parse(saved);
       setArtigosDatabase(parsed.filter((a: any) => a.status === 'Publicado'));
     } else {
       setArtigosDatabase(initialArticles.filter((a: any) => a.status === 'Publicado'));
-      localStorage.setItem('alba_artigos_v2', JSON.stringify(initialArticles));
+      localStorage.setItem('alba_artigos_v3', JSON.stringify(initialArticles));
     }
   }, []);
 

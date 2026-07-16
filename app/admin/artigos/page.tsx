@@ -10,13 +10,13 @@ export default function AdminArtigosPage() {
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
   
   React.useEffect(() => {
-    const saved = localStorage.getItem('alba_artigos_v2');
+    const saved = localStorage.getItem('alba_artigos_v3');
     if (saved) {
       let parsed = JSON.parse(saved);
       setArticles(parsed);
     } else {
       setArticles(initialArticles);
-      localStorage.setItem('alba_artigos_v2', JSON.stringify(initialArticles));
+      localStorage.setItem('alba_artigos_v3', JSON.stringify(initialArticles));
     }
   }, []);
 

@@ -9,7 +9,7 @@ export default function ArtigoDetailClient({ id }: { id: string }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const saved = localStorage.getItem('alba_artigos_v2');
+    const saved = localStorage.getItem('alba_artigos_v3');
     if (saved) {
       const parsed = JSON.parse(saved);
       const found = parsed.find((a: any) => String(a.id) === id);
