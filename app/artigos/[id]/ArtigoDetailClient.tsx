@@ -12,12 +12,12 @@ export default function ArtigoDetailClient({ id }: { id: string }) {
 
   useEffect(() => {
     let source = [];
-    const saved = localStorage.getItem('alba_artigos_v3');
+    const saved = localStorage.getItem('alba_artigos_v4');
     if (saved) {
       source = JSON.parse(saved);
     } else {
       source = initialArticles;
-      localStorage.setItem('alba_artigos_v3', JSON.stringify(initialArticles));
+      localStorage.setItem('alba_artigos_v4', JSON.stringify(initialArticles));
     }
     
     const found = source.find((a: any) => String(a.id) === String(id));
