@@ -96,11 +96,11 @@ export const Footer = () => {
         
         {/* Coluna 1: Logo e Redes Sociais */}
         <div className="space-y-6">
-          <Link href="/" className="cursor-pointer inline-block bg-white p-3 rounded-2xl shadow-lg transition-transform hover:scale-105">
+          <Link href="/" className="cursor-pointer inline-block transition-transform hover:scale-105">
             <img 
               src="/logo_alba_magenta.svg" 
               alt="Logo ALBA" 
-              className="h-14 w-auto object-contain"
+              className="h-16 w-auto object-contain brightness-0 invert"
             />
           </Link>
           <p className="text-sm leading-relaxed text-stone-400">
