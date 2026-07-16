@@ -189,7 +189,7 @@ export const initialCourses = [
     "format": "Presencial / Online",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "https://images.unsplash.com/photo-1595859702812-706fcc3baad3?q=80&w=600&auto=format&fit=crop",
+    "image": "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?q=80&w=600&auto=format&fit=crop",
     "description": "Desvende o poder sutil dos cristais e saiba como utilizá-los nas sessões de meditação e reequilíbrio dos Chakras. Propriedades vibracionais, métodos de limpeza e energização das pedras mais conhecidas.",
     "originalUrl": "https://www.ayurvedica.org/cristais-e-meditacao/",
     "hotmartLink": "https://www.ayurvedica.org/cristais-e-meditacao/"
