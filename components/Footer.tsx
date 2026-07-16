@@ -36,7 +36,7 @@ export const Footer = () => {
         <div className="space-y-6">
           <Link href="/" className="cursor-pointer inline-block bg-white p-3 rounded-2xl shadow-lg transition-transform hover:scale-105">
             <img 
-              src="/ALBA/logo_alba_magenta.svg" 
+              src="/logo_alba_magenta.svg" 
               alt="Logo ALBA" 
               className="h-14 w-auto object-contain"
             />
