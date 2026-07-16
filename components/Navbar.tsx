@@ -2,9 +2,45 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const navItems = [
+    { path: '/', label: 'Home' },
+    { path: '/quem-somos', label: 'Quem Somos' },
+    { path: '/atividades', label: 'Atividades' },
+    { path: '/cursos', label: 'Cursos' },
+    { path: '/loja', label: 'Loja', isSpecial: true },
+    { path: '/artigos', label: 'Artigos' },
+    { path: '/profissionais', label: 'Profissionais' },
+  ];
+
+  const getDesktopClass = (path: string, isSpecial?: boolean) => {
+    const isActive = pathname === path;
+    if (isSpecial) {
+      return isActive 
+        ? 'cursor-pointer text-emerald-300 font-bold' 
+        : 'cursor-pointer hover:text-white transition-colors text-emerald-400 font-bold';
+    }
+    return isActive 
+      ? 'cursor-pointer text-white font-bold' 
+      : 'cursor-pointer text-stone-300 hover:text-white transition-colors font-medium';
+  };
+
+  const getMobileClass = (path: string, isSpecial?: boolean) => {
+    const isActive = pathname === path;
+    if (isSpecial) {
+      return isActive 
+        ? 'cursor-pointer text-emerald-300 font-bold text-lg py-2 border-b border-stone-800' 
+        : 'cursor-pointer text-emerald-400 hover:text-emerald-300 font-bold text-lg py-2 border-b border-stone-800';
+    }
+    return isActive 
+      ? 'cursor-pointer text-white font-bold text-lg py-2 border-b border-stone-800' 
+      : 'cursor-pointer text-stone-300 hover:text-white font-medium text-lg py-2 border-b border-stone-800';
+  };
 
   return (
     <>
@@ -21,14 +57,12 @@ export const Navbar = () => {
           </Link>
           
           {/* Links da Navegação Desktop */}
-          <div className="hidden md:flex gap-6 lg:gap-8 text-sm font-medium text-stone-300">
-            <Link href="/" className="cursor-pointer hover:text-white transition-colors">Home</Link>
-            <Link href="/quem-somos" className="cursor-pointer hover:text-white transition-colors">Quem Somos</Link>
-            <Link href="/atividades" className="cursor-pointer hover:text-white transition-colors">Atividades</Link>
-            <Link href="/cursos" className="cursor-pointer hover:text-white transition-colors">Cursos</Link>
-            <Link href="/loja" className="cursor-pointer hover:text-white transition-colors text-emerald-400 font-bold">Loja</Link>
-            <Link href="/artigos" className="cursor-pointer hover:text-white transition-colors">Artigos</Link>
-            <Link href="/profissionais" className="cursor-pointer hover:text-white transition-colors">Profissionais</Link>
+          <div className="hidden md:flex gap-6 lg:gap-8 text-sm">
+            {navItems.map((item) => (
+              <Link key={item.path} href={item.path} className={getDesktopClass(item.path, item.isSpecial)}>
+                {item.label}
+              </Link>
+            ))}
           </div>
           
           {/* Botão de Ação Desktop */}
@@ -63,27 +97,16 @@ export const Navbar = () => {
             className="absolute top-20 left-0 w-full bg-stone-900 border-b border-stone-800 shadow-2xl flex flex-col py-4 px-6 space-y-4 animate-fade-in-down"
             onClick={(e) => e.stopPropagation()}
           >
-            <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="cursor-pointer text-stone-300 hover:text-white font-medium text-lg py-2 border-b border-stone-800">
-              Home
-            </Link>
-            <Link href="/quem-somos" onClick={() => setIsMobileMenuOpen(false)} className="cursor-pointer text-stone-300 hover:text-white font-medium text-lg py-2 border-b border-stone-800">
-              Quem Somos
-            </Link>
-            <Link href="/atividades" onClick={() => setIsMobileMenuOpen(false)} className="cursor-pointer text-stone-300 hover:text-white font-medium text-lg py-2 border-b border-stone-800">
-              Atividades e Terapias
-            </Link>
-            <Link href="/cursos" onClick={() => setIsMobileMenuOpen(false)} className="cursor-pointer text-stone-300 hover:text-white font-medium text-lg py-2 border-b border-stone-800">
-              Cursos
-            </Link>
-            <Link href="/loja" onClick={() => setIsMobileMenuOpen(false)} className="cursor-pointer text-emerald-400 hover:text-emerald-300 font-bold text-lg py-2 border-b border-stone-800">
-              Loja
-            </Link>
-            <Link href="/artigos" onClick={() => setIsMobileMenuOpen(false)} className="cursor-pointer text-stone-300 hover:text-white font-medium text-lg py-2 border-b border-stone-800">
-              Artigos
-            </Link>
-            <Link href="/profissionais" onClick={() => setIsMobileMenuOpen(false)} className="cursor-pointer text-stone-300 hover:text-white font-medium text-lg py-2 border-b border-stone-800">
-              Profissionais
-            </Link>
+            {navItems.map((item) => (
+              <Link 
+                key={item.path} 
+                href={item.path} 
+                onClick={() => setIsMobileMenuOpen(false)} 
+                className={getMobileClass(item.path, item.isSpecial)}
+              >
+                {item.label}
+              </Link>
+            ))}
             <Link href="/associe-se" onClick={() => setIsMobileMenuOpen(false)} className="cursor-pointer w-full mt-4 bg-white text-emerald-900 px-6 py-4 rounded-xl text-base font-bold hover:bg-stone-100 transition-colors text-center block">
               Associe-se Agora
             </Link>

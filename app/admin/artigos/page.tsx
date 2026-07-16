@@ -12,6 +12,7 @@ const initialArticles = [
 export default function AdminArtigosPage() {
   const [view, setView] = useState<'list' | 'editor'>('list');
   const [articles, setArticles] = useState<any[]>([]);
+  const [selectedItems, setSelectedItems] = useState<number[]>([]);
   
   React.useEffect(() => {
     const saved = localStorage.getItem('alba_artigos');
@@ -39,6 +40,32 @@ export default function AdminArtigosPage() {
       const newArticles = articles.filter(a => a.id !== id);
       setArticles(newArticles);
       localStorage.setItem('alba_artigos', JSON.stringify(newArticles));
+    }
+  };
+
+  const toggleSelectAll = () => {
+    if (selectedItems.length === articles.length && articles.length > 0) {
+      setSelectedItems([]);
+    } else {
+      setSelectedItems(articles.map(a => a.id));
+    }
+  };
+
+  const toggleSelectItem = (id: number) => {
+    if (selectedItems.includes(id)) {
+      setSelectedItems(selectedItems.filter(itemId => itemId !== id));
+    } else {
+      setSelectedItems([...selectedItems, id]);
+    }
+  };
+
+  const handleBulkDelete = () => {
+    if (selectedItems.length === 0) return;
+    if (confirm(`Tem certeza que deseja deletar os ${selectedItems.length} artigos selecionados permanentemente?`)) {
+      const newArticles = articles.filter(a => !selectedItems.includes(a.id));
+      setArticles(newArticles);
+      localStorage.setItem('alba_artigos', JSON.stringify(newArticles));
+      setSelectedItems([]);
     }
   };
 
@@ -162,10 +189,29 @@ export default function AdminArtigosPage() {
       {/* VIEW: LISTA DE ARTIGOS (CRUD) */}
       {view === 'list' && (
         <div className="bg-white rounded-[2rem] border border-stone-200 overflow-hidden shadow-sm">
+          {selectedItems.length > 0 && (
+            <div className="p-4 border-b border-stone-100 bg-stone-50/50 flex items-center">
+              <button 
+                onClick={handleBulkDelete}
+                className="cursor-pointer bg-red-50 text-red-600 hover:bg-red-100 px-4 py-2 rounded-lg text-sm font-bold transition-colors flex items-center gap-2 border border-red-200"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                Deletar Selecionados ({selectedItems.length})
+              </button>
+            </div>
+          )}
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-sm">
               <thead>
                 <tr className="bg-stone-50 border-b border-stone-200 text-stone-500 text-sm">
+                  <th className="p-6 font-medium w-12">
+                    <input 
+                      type="checkbox" 
+                      className="w-4 h-4 rounded border-stone-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
+                      checked={selectedItems.length > 0 && selectedItems.length === articles.length}
+                      onChange={toggleSelectAll}
+                    />
+                  </th>
                   <th className="p-6 font-medium">Título do Artigo</th>
                   <th className="p-6 font-medium">Autor</th>
                   <th className="p-6 font-medium">Data</th>
@@ -175,7 +221,15 @@ export default function AdminArtigosPage() {
               </thead>
               <tbody className="divide-y divide-stone-100">
                 {articles.map((artigo) => (
-                  <tr key={artigo.id} className="hover:bg-stone-50/50 transition-colors">
+                  <tr key={artigo.id} className={`hover:bg-stone-50/50 transition-colors ${selectedItems.includes(artigo.id) ? 'bg-emerald-50/30' : ''}`}>
+                    <td className="p-6">
+                      <input 
+                        type="checkbox" 
+                        className="w-4 h-4 rounded border-stone-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
+                        checked={selectedItems.includes(artigo.id)}
+                        onChange={() => toggleSelectItem(artigo.id)}
+                      />
+                    </td>
                     <td className="p-6 font-bold text-stone-900">{artigo.title}</td>
                     <td className="p-6 text-stone-500 text-sm">{artigo.author}</td>
                     <td className="p-6 text-stone-500 text-sm">{artigo.date}</td>

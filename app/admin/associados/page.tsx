@@ -3,18 +3,14 @@
 import React, { useState } from 'react';
 
 // Dados simulados dos terapeutas/associados
-const initialAssociates = [
-  { id: 1, name: 'Dra. Aline Carvalho', role: 'Médica Ayurvédica', registry: 'ALBA-SP 1024', status: 'Ativo', email: 'aline@exemplo.com' },
-  { id: 2, name: 'Thiago Mendes', role: 'Terapeuta Corporal', registry: 'ALBA-RJ 2155', status: 'Ativo', email: 'thiago@exemplo.com' },
-  { id: 3, name: 'Julia Santini', role: 'Consultora de Bem-estar', registry: 'ALBA-MG 3012', status: 'Pendente', email: 'julia@exemplo.com' },
-  { id: 4, name: 'Carlos Eduardo', role: 'Estudante', registry: '-', status: 'Inativo', email: 'carlos@exemplo.com' },
-];
+const initialAssociates: any[] = [];
 
 export default function AdminAssociadosPage() {
   const [associates, setAssociates] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [view, setView] = useState<'list' | 'form'>('list');
   const [filterStatus, setFilterStatus] = useState('Todos');
+  const [selectedItems, setSelectedItems] = useState<string[]>([]);
 
   const [editingId, setEditingId] = useState<string | null>(null);
   const [formData, setFormData] = useState({
@@ -60,6 +56,32 @@ export default function AdminAssociadosPage() {
       const newAssoc = associates.filter(a => a.id !== id);
       setAssociates(newAssoc);
       localStorage.setItem('alba_associados', JSON.stringify(newAssoc));
+    }
+  };
+
+  const toggleSelectAll = () => {
+    if (selectedItems.length === filteredAssociates.length && filteredAssociates.length > 0) {
+      setSelectedItems([]);
+    } else {
+      setSelectedItems(filteredAssociates.map(a => a.id));
+    }
+  };
+
+  const toggleSelectItem = (id: string) => {
+    if (selectedItems.includes(id)) {
+      setSelectedItems(selectedItems.filter(itemId => itemId !== id));
+    } else {
+      setSelectedItems([...selectedItems, id]);
+    }
+  };
+
+  const handleBulkDelete = () => {
+    if (selectedItems.length === 0) return;
+    if (confirm(`Tem certeza que deseja suspender ou remover os ${selectedItems.length} associados selecionados permanentemente?`)) {
+      const newAssoc = associates.filter(a => !selectedItems.includes(a.id));
+      setAssociates(newAssoc);
+      localStorage.setItem('alba_associados', JSON.stringify(newAssoc));
+      setSelectedItems([]);
     }
   };
 
@@ -156,26 +178,40 @@ export default function AdminAssociadosPage() {
         <div className="bg-white rounded-[2rem] border border-stone-200 overflow-hidden shadow-sm flex flex-col">
           
           {/* Barra de Busca e Filtros */}
-          <div className="p-6 border-b border-stone-100 flex flex-col sm:flex-row gap-4 items-center justify-between bg-stone-50/50">
-            <div className="relative w-full sm:max-w-md">
-              <input 
-                type="text" 
-                placeholder="Buscar por nome ou número de registro..." 
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-11 pr-4 py-2.5 bg-white border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
-              />
-              <svg className="w-5 h-5 text-stone-400 absolute left-4 top-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
+          <div className="p-6 border-b border-stone-100 flex flex-col gap-4 bg-stone-50/50">
+            <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
+              <div className="relative w-full sm:max-w-md">
+                <input 
+                  type="text" 
+                  placeholder="Buscar por nome ou número de registro..." 
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-11 pr-4 py-2.5 bg-white border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
+                />
+                <svg className="w-5 h-5 text-stone-400 absolute left-4 top-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+              
+              <div className="flex gap-2 w-full sm:w-auto overflow-x-auto hide-scrollbar">
+                <button onClick={() => setFilterStatus('Todos')} className={`cursor-pointer px-4 py-2 rounded-lg text-sm font-bold whitespace-nowrap transition-colors ${filterStatus === 'Todos' ? 'bg-emerald-50 text-emerald-700' : 'bg-white border border-stone-200 text-stone-600 hover:bg-stone-50'}`}>Todos</button>
+                <button onClick={() => setFilterStatus('Ativo')} className={`cursor-pointer px-4 py-2 rounded-lg text-sm font-bold whitespace-nowrap transition-colors ${filterStatus === 'Ativo' ? 'bg-emerald-50 text-emerald-700' : 'bg-white border border-stone-200 text-stone-600 hover:bg-stone-50'}`}>Ativos</button>
+                <button onClick={() => setFilterStatus('Pendente')} className={`cursor-pointer px-4 py-2 rounded-lg text-sm font-bold whitespace-nowrap transition-colors ${filterStatus === 'Pendente' ? 'bg-orange-50 text-orange-700' : 'bg-white border border-stone-200 text-stone-600 hover:bg-stone-50'}`}>Pendentes</button>
+                <button onClick={() => setFilterStatus('Inativo')} className={`cursor-pointer px-4 py-2 rounded-lg text-sm font-bold whitespace-nowrap transition-colors ${filterStatus === 'Inativo' ? 'bg-red-50 text-red-700' : 'bg-white border border-stone-200 text-stone-600 hover:bg-stone-50'}`}>Inativos</button>
+              </div>
             </div>
-            
-            <div className="flex gap-2 w-full sm:w-auto overflow-x-auto hide-scrollbar">
-              <button onClick={() => setFilterStatus('Todos')} className={`cursor-pointer px-4 py-2 rounded-lg text-sm font-bold whitespace-nowrap transition-colors ${filterStatus === 'Todos' ? 'bg-emerald-50 text-emerald-700' : 'bg-white border border-stone-200 text-stone-600 hover:bg-stone-50'}`}>Todos</button>
-              <button onClick={() => setFilterStatus('Ativo')} className={`cursor-pointer px-4 py-2 rounded-lg text-sm font-bold whitespace-nowrap transition-colors ${filterStatus === 'Ativo' ? 'bg-emerald-50 text-emerald-700' : 'bg-white border border-stone-200 text-stone-600 hover:bg-stone-50'}`}>Ativos</button>
-              <button onClick={() => setFilterStatus('Pendente')} className={`cursor-pointer px-4 py-2 rounded-lg text-sm font-bold whitespace-nowrap transition-colors ${filterStatus === 'Pendente' ? 'bg-orange-50 text-orange-700' : 'bg-white border border-stone-200 text-stone-600 hover:bg-stone-50'}`}>Pendentes</button>
-              <button onClick={() => setFilterStatus('Inativo')} className={`cursor-pointer px-4 py-2 rounded-lg text-sm font-bold whitespace-nowrap transition-colors ${filterStatus === 'Inativo' ? 'bg-red-50 text-red-700' : 'bg-white border border-stone-200 text-stone-600 hover:bg-stone-50'}`}>Inativos</button>
-            </div>
+
+            {selectedItems.length > 0 && (
+              <div className="flex items-center">
+                <button 
+                  onClick={handleBulkDelete}
+                  className="cursor-pointer bg-red-50 text-red-600 hover:bg-red-100 px-4 py-2 rounded-lg text-sm font-bold transition-colors flex items-center gap-2 border border-red-200"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                  Deletar Selecionados ({selectedItems.length})
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Tabela de Associados */}
@@ -183,6 +219,14 @@ export default function AdminAssociadosPage() {
             <table className="w-full text-left border-collapse text-sm">
               <thead>
                 <tr className="bg-white border-b border-stone-200 text-stone-500 text-sm">
+                  <th className="p-6 font-medium w-12">
+                    <input 
+                      type="checkbox" 
+                      className="w-4 h-4 rounded border-stone-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
+                      checked={selectedItems.length > 0 && selectedItems.length === filteredAssociates.length}
+                      onChange={toggleSelectAll}
+                    />
+                  </th>
                   <th className="p-6 font-medium">Profissional</th>
                   <th className="p-6 font-medium">Categoria / Papel</th>
                   <th className="p-6 font-medium">Registro (ALBA)</th>
@@ -192,7 +236,15 @@ export default function AdminAssociadosPage() {
               </thead>
               <tbody className="divide-y divide-stone-100">
                 {filteredAssociates.map((assoc) => (
-                  <tr key={assoc.id} className="hover:bg-stone-50/50 transition-colors">
+                  <tr key={assoc.id} className={`hover:bg-stone-50/50 transition-colors ${selectedItems.includes(assoc.id) ? 'bg-emerald-50/30' : ''}`}>
+                    <td className="p-6">
+                      <input 
+                        type="checkbox" 
+                        className="w-4 h-4 rounded border-stone-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
+                        checked={selectedItems.includes(assoc.id)}
+                        onChange={() => toggleSelectItem(assoc.id)}
+                      />
+                    </td>
                     <td className="p-6">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-full bg-stone-200 flex-shrink-0 flex items-center justify-center font-serif text-stone-600 font-bold overflow-hidden">

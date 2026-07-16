@@ -14,6 +14,7 @@ export default function AdminAgendaPage() {
   const [events, setEvents] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [view, setView] = useState<'list' | 'form'>('list');
+  const [selectedItems, setSelectedItems] = useState<number[]>([]);
 
   const [formData, setFormData] = useState({
     title: '',
@@ -45,6 +46,32 @@ export default function AdminAgendaPage() {
       const newEvents = events.filter(e => e.id !== id);
       setEvents(newEvents);
       localStorage.setItem('alba_agenda', JSON.stringify(newEvents));
+    }
+  };
+
+  const toggleSelectAll = () => {
+    if (selectedItems.length === filteredEvents.length && filteredEvents.length > 0) {
+      setSelectedItems([]);
+    } else {
+      setSelectedItems(filteredEvents.map(e => e.id));
+    }
+  };
+
+  const toggleSelectItem = (id: number) => {
+    if (selectedItems.includes(id)) {
+      setSelectedItems(selectedItems.filter(itemId => itemId !== id));
+    } else {
+      setSelectedItems([...selectedItems, id]);
+    }
+  };
+
+  const handleBulkDelete = () => {
+    if (selectedItems.length === 0) return;
+    if (confirm(`Tem certeza que deseja cancelar e remover os ${selectedItems.length} eventos selecionados permanentemente?`)) {
+      const newEvents = events.filter(e => !selectedItems.includes(e.id));
+      setEvents(newEvents);
+      localStorage.setItem('alba_agenda', JSON.stringify(newEvents));
+      setSelectedItems([]);
     }
   };
 
@@ -139,7 +166,7 @@ export default function AdminAgendaPage() {
       {view === 'list' && (
         <div className="bg-white rounded-[2rem] border border-stone-200 overflow-hidden shadow-sm flex flex-col">
           
-          <div className="p-6 border-b border-stone-100 bg-stone-50/50">
+          <div className="p-6 border-b border-stone-100 bg-stone-50/50 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div className="relative w-full max-w-md">
               <input 
                 type="text" 
@@ -152,12 +179,30 @@ export default function AdminAgendaPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </div>
+
+            {selectedItems.length > 0 && (
+              <button 
+                onClick={handleBulkDelete}
+                className="cursor-pointer bg-red-50 text-red-600 hover:bg-red-100 px-4 py-2 rounded-lg text-sm font-bold transition-colors flex items-center gap-2 border border-red-200"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                Deletar Selecionados ({selectedItems.length})
+              </button>
+            )}
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-sm">
               <thead>
                 <tr className="bg-white border-b border-stone-200 text-stone-500 text-sm">
+                  <th className="p-6 font-medium w-12">
+                    <input 
+                      type="checkbox" 
+                      className="w-4 h-4 rounded border-stone-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
+                      checked={selectedItems.length > 0 && selectedItems.length === filteredEvents.length}
+                      onChange={toggleSelectAll}
+                    />
+                  </th>
                   <th className="p-6 font-medium">Data e Hora</th>
                   <th className="p-6 font-medium">Nome do Evento</th>
                   <th className="p-6 font-medium">Local / Plataforma</th>
@@ -167,7 +212,15 @@ export default function AdminAgendaPage() {
               </thead>
               <tbody className="divide-y divide-stone-100">
                 {filteredEvents.map((event) => (
-                  <tr key={event.id} className="hover:bg-stone-50/50 transition-colors">
+                  <tr key={event.id} className={`hover:bg-stone-50/50 transition-colors ${selectedItems.includes(event.id) ? 'bg-emerald-50/30' : ''}`}>
+                    <td className="p-6">
+                      <input 
+                        type="checkbox" 
+                        className="w-4 h-4 rounded border-stone-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
+                        checked={selectedItems.includes(event.id)}
+                        onChange={() => toggleSelectItem(event.id)}
+                      />
+                    </td>
                     <td className="p-6">
                       <span className="inline-block px-3 py-1 bg-stone-100 text-stone-700 rounded-lg text-sm font-bold border border-stone-200 whitespace-nowrap">
                         {event.date}

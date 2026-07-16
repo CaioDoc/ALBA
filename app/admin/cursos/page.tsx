@@ -7,6 +7,7 @@ export default function AdminCursosPage() {
   const [courses, setCourses] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [view, setView] = useState<'list' | 'form'>('list');
+  const [selectedItems, setSelectedItems] = useState<number[]>([]);
 
   const [formData, setFormData] = useState({
     title: '',
@@ -17,7 +18,8 @@ export default function AdminCursosPage() {
     description: '',
     image: '',
     status: 'Inscrições Abertas',
-    price: '' // Repurposed from checkout link? Let's use as price or link
+    price: '',
+    featured: false
   });
 
   const handleEdit = (course: any) => {
@@ -30,7 +32,8 @@ export default function AdminCursosPage() {
       description: course.description || '',
       image: course.image || '',
       status: course.status || 'Inscrições Abertas',
-      price: course.price || ''
+      price: course.price || '',
+      featured: course.featured || false
     });
     setView('form');
   };
@@ -45,7 +48,8 @@ export default function AdminCursosPage() {
       description: '',
       image: '',
       status: 'Inscrições Abertas',
-      price: ''
+      price: '',
+      featured: false
     });
     setView('form');
   };
@@ -70,6 +74,38 @@ export default function AdminCursosPage() {
       const newCourses = courses.filter(c => c.id !== id);
       setCourses(newCourses);
       localStorage.setItem('alba_cursos_v3', JSON.stringify(newCourses));
+    }
+  };
+
+  const toggleFeatured = (id: number) => {
+    const newCourses = courses.map(c => c.id === id ? { ...c, featured: !c.featured } : c);
+    setCourses(newCourses);
+    localStorage.setItem('alba_cursos_v3', JSON.stringify(newCourses));
+  };
+
+  const toggleSelectAll = () => {
+    if (selectedItems.length === filteredCourses.length && filteredCourses.length > 0) {
+      setSelectedItems([]);
+    } else {
+      setSelectedItems(filteredCourses.map(c => c.id));
+    }
+  };
+
+  const toggleSelectItem = (id: number) => {
+    if (selectedItems.includes(id)) {
+      setSelectedItems(selectedItems.filter(itemId => itemId !== id));
+    } else {
+      setSelectedItems([...selectedItems, id]);
+    }
+  };
+
+  const handleBulkDelete = () => {
+    if (selectedItems.length === 0) return;
+    if (confirm(`Tem certeza que deseja deletar os ${selectedItems.length} cursos selecionados permanentemente?`)) {
+      const newCourses = courses.filter(c => !selectedItems.includes(c.id));
+      setCourses(newCourses);
+      localStorage.setItem('alba_cursos_v3', JSON.stringify(newCourses));
+      setSelectedItems([]);
     }
   };
 
@@ -137,8 +173,8 @@ export default function AdminCursosPage() {
       {view === 'list' && (
         <div className="bg-white rounded-[2rem] border border-stone-200 overflow-hidden shadow-sm flex flex-col">
           
-          {/* Barra de Busca */}
-          <div className="p-6 border-b border-stone-100 bg-stone-50/50">
+          {/* Barra de Busca e Ações em Massa */}
+          <div className="p-6 border-b border-stone-100 bg-stone-50/50 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div className="relative w-full max-w-md">
               <input 
                 type="text" 
@@ -151,6 +187,16 @@ export default function AdminCursosPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </div>
+            
+            {selectedItems.length > 0 && (
+              <button 
+                onClick={handleBulkDelete}
+                className="cursor-pointer bg-red-50 text-red-600 hover:bg-red-100 px-4 py-2 rounded-lg text-sm font-bold transition-colors flex items-center gap-2 border border-red-200"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                Deletar Selecionados ({selectedItems.length})
+              </button>
+            )}
           </div>
 
           {/* Tabela */}
@@ -158,7 +204,16 @@ export default function AdminCursosPage() {
             <table className="w-full text-left border-collapse text-sm">
               <thead>
                 <tr className="bg-white border-b border-stone-200 text-stone-500 text-sm">
+                  <th className="p-6 font-medium w-12">
+                    <input 
+                      type="checkbox" 
+                      className="w-4 h-4 rounded border-stone-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
+                      checked={selectedItems.length > 0 && selectedItems.length === filteredCourses.length}
+                      onChange={toggleSelectAll}
+                    />
+                  </th>
                   <th className="p-6 font-medium">Nome do Curso</th>
+                  <th className="p-6 font-medium text-center">Destaque</th>
                   <th className="p-6 font-medium">Categoria / Formato</th>
                   <th className="p-6 font-medium">Inscritos</th>
                   <th className="p-6 font-medium">Status de Vendas</th>
@@ -167,9 +222,22 @@ export default function AdminCursosPage() {
               </thead>
               <tbody className="divide-y divide-stone-100">
                 {filteredCourses.map((course) => (
-                  <tr key={course.id} className="hover:bg-stone-50/50 transition-colors">
+                  <tr key={course.id} className={`hover:bg-stone-50/50 transition-colors ${selectedItems.includes(course.id) ? 'bg-emerald-50/30' : ''}`}>
+                    <td className="p-6">
+                      <input 
+                        type="checkbox" 
+                        className="w-4 h-4 rounded border-stone-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
+                        checked={selectedItems.includes(course.id)}
+                        onChange={() => toggleSelectItem(course.id)}
+                      />
+                    </td>
                     <td className="p-6 font-bold text-stone-900 max-w-xs truncate" title={course.title}>
                       {course.title}
+                    </td>
+                    <td className="p-6 text-center">
+                      <button onClick={() => toggleFeatured(course.id)} className={`cursor-pointer transition-colors ${course.featured ? 'text-amber-400 hover:text-amber-500' : 'text-stone-300 hover:text-stone-400'}`} title={course.featured ? 'Remover Destaque' : 'Marcar como Destaque'}>
+                        <svg className="w-6 h-6 inline-block" fill={course.featured ? 'currentColor' : 'none'} viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>
+                      </button>
                     </td>
                     <td className="p-6 text-stone-600 text-sm">
                       <span className="block font-medium">{course.category}</span>
@@ -267,6 +335,11 @@ export default function AdminCursosPage() {
             <div>
               <label className="block text-sm font-medium text-stone-700 mb-2">Preço (Opcional)</label>
               <input type="text" value={formData.price} onChange={e => setFormData({...formData, price: e.target.value})} className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" placeholder="Ex: €200 ou Grátis" />
+            </div>
+
+            <div className="md:col-span-2 flex items-center gap-3 p-4 bg-amber-50 border border-amber-100 rounded-xl mt-4">
+              <input type="checkbox" id="featured" checked={formData.featured} onChange={e => setFormData({...formData, featured: e.target.checked})} className="w-5 h-5 text-emerald-600 rounded border-stone-300 focus:ring-emerald-500 cursor-pointer" />
+              <label htmlFor="featured" className="text-sm font-bold text-amber-900 cursor-pointer">Destacar Curso Especialmente</label>
             </div>
           </div>
 

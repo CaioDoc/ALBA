@@ -43,6 +43,7 @@ export default function AdminLeadsPage() {
   const [leads, setLeads] = useState<any[]>([]);
   const [selectedLead, setSelectedLead] = useState<any>(null);
   const [filter, setFilter] = useState('Todos');
+  const [selectedItems, setSelectedItems] = useState<number[]>([]);
 
   React.useEffect(() => {
     const savedLeads = localStorage.getItem('alba_leads');
@@ -78,6 +79,29 @@ export default function AdminLeadsPage() {
     alert('Status atualizado para Respondido!');
   };
 
+  const handleBulkDelete = () => {
+    if (selectedItems.length === 0) return;
+    if (confirm(`Tem certeza que deseja deletar os ${selectedItems.length} leads selecionados permanentemente?`)) {
+      const newLeads = leads.filter(l => !selectedItems.includes(l.id));
+      setLeads(newLeads);
+      localStorage.setItem('alba_leads', JSON.stringify(newLeads));
+      setSelectedItems([]);
+      // Se o selecionado estava entre os deletados, remove do painel direito
+      if (selectedLead && selectedItems.includes(selectedLead.id)) {
+        setSelectedLead(null);
+      }
+    }
+  };
+
+  const toggleSelectItem = (e: React.MouseEvent, id: number) => {
+    e.stopPropagation(); // Previne abrir o lead quando clica no checkbox
+    if (selectedItems.includes(id)) {
+      setSelectedItems(selectedItems.filter(itemId => itemId !== id));
+    } else {
+      setSelectedItems([...selectedItems, id]);
+    }
+  };
+
   return (
     <div className="max-w-6xl mx-auto animate-fade-in-up h-[calc(100vh-8rem)] flex flex-col">
       
@@ -102,6 +126,19 @@ export default function AdminLeadsPage() {
         
         {/* Coluna da Esquerda: Lista de Mensagens */}
         <div className="w-full md:w-1/3 lg:w-[350px] border-r border-stone-100 flex flex-col bg-stone-50/30">
+          
+          {selectedItems.length > 0 && (
+            <div className="p-3 border-b border-stone-100 bg-red-50 flex items-center justify-between">
+              <span className="text-sm font-bold text-red-800">{selectedItems.length} selecionados</span>
+              <button 
+                onClick={handleBulkDelete}
+                className="cursor-pointer bg-white text-red-600 hover:bg-red-100 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors border border-red-200"
+              >
+                Deletar
+              </button>
+            </div>
+          )}
+
           <div className="overflow-y-auto hide-scrollbar flex-1 p-4 space-y-3">
             {filteredLeads.map((lead) => (
               <div 
@@ -113,10 +150,19 @@ export default function AdminLeadsPage() {
                     : 'bg-white border-stone-100 shadow-sm hover:border-emerald-200'
                 }`}
               >
-                <div className="flex items-start justify-between mb-2">
-                  <p className={`text-sm truncate pr-2 ${lead.status === 'Novo' ? 'font-bold text-stone-900' : 'font-medium text-stone-700'}`}>
-                    {lead.name}
-                  </p>
+                <div className="flex items-start justify-between mb-2 gap-2">
+                  <div className="flex items-center gap-2 overflow-hidden">
+                    <input 
+                      type="checkbox" 
+                      className="w-4 h-4 rounded border-stone-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer flex-shrink-0"
+                      checked={selectedItems.includes(lead.id)}
+                      onClick={(e) => toggleSelectItem(e, lead.id)}
+                      readOnly
+                    />
+                    <p className={`text-sm truncate pr-2 ${lead.status === 'Novo' ? 'font-bold text-stone-900' : 'font-medium text-stone-700'}`}>
+                      {lead.name}
+                    </p>
+                  </div>
                   <p className="text-xs text-stone-400 whitespace-nowrap">{lead.date}</p>
                 </div>
                 

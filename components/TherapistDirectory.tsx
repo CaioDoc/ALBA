@@ -32,36 +32,7 @@ export const TherapistDirectory = () => {
       // Filtrar apenas associados 'Ativos' para mostrar no diretório público
       setTherapistsData(JSON.parse(saved).filter((a: any) => a.status === 'Ativo'));
     } else {
-      const initial: Therapist[] = [
-        {
-          id: 'prof-1',
-          name: 'Dra. Aline Carvalho',
-          role: 'Médica Ayurvédica',
-          registry: 'ALBA-SP 1024',
-          location: 'São Paulo, SP & Online',
-          avatar: 'https://images.unsplash.com/photo-1594824406951-31823095b27b?q=80&w=200&auto=format&fit=crop',
-          bio: 'Especialista em saúde da mulher e nutrição ayurvédica. Foco em tratamentos preventivos, gestão de estresse e desintoxicação profunda.',
-          skills: [
-            { id: 'skl-008', name: 'Nutrição Ayurvédica', slug: 'nutricao-ayurvedica' },
-            { id: 'skl-003', name: 'Panchakarma', slug: 'panchakarma' },
-            { id: 'skl-006', name: 'Análise de Doshas', slug: 'analise-de-doshas' }
-          ]
-        },
-        {
-          id: 'prof-2',
-          name: 'Thiago Mendes',
-          role: 'Terapeuta Corporal',
-          registry: 'ALBA-RJ 2155',
-          location: 'Rio de Janeiro, RJ',
-          avatar: 'https://images.unsplash.com/photo-1552058544-f2b08422138a?q=80&w=200&auto=format&fit=crop',
-          bio: 'Com mais de 10 anos de prática, Thiago é focado no alinhamento físico e energético, utilizando técnicas manuais tradicionais da Índia.',
-          skills: [
-            { id: 'skl-001', name: 'Abhyanga', slug: 'abhyanga' },
-            { id: 'skl-004', name: 'Udvartana', slug: 'udvartana' },
-            { id: 'skl-011', name: 'Yoga Terapêutico', slug: 'yoga-terapeutico' }
-          ]
-        }
-      ];
+      const initial: Therapist[] = [];
       setTherapistsData(initial);
       localStorage.setItem('alba_associados', JSON.stringify(initial));
     }
@@ -142,14 +113,14 @@ export const TherapistDirectory = () => {
             ))}
           </div>
         ) : (
-          <div className="text-center py-20 bg-white rounded-[2rem] border border-stone-100 border-dashed">
-            <p className="text-stone-500">Nenhum profissional encontrado com esses filtros.</p>
-            <button 
-              onClick={() => { setSearchTerm(''); setActiveFilter('Todos'); }}
-              className="mt-4 text-emerald-700 font-medium hover:text-emerald-800 underline"
-            >
-              Limpar filtros
-            </button>
+          <div className="text-center py-24 bg-white rounded-[2rem] border border-stone-100 shadow-sm">
+            <div className="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg className="w-10 h-10 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <h3 className="text-2xl font-bold text-stone-900 mb-3">Temos profissionais totalmente qualificados</h3>
+            <p className="text-stone-500 max-w-md mx-auto">Nossa rede está sendo atualizada. Em breve, a lista completa de terapeutas credenciados e qualificados pela ALBA estará disponível aqui para você.</p>
           </div>
         )}
 

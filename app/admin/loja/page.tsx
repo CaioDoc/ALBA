@@ -18,6 +18,7 @@ export default function AdminLojaPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [view, setView] = useState<'list' | 'form'>('list');
+  const [selectedItems, setSelectedItems] = useState<string[]>([]);
   
   // Estado do formulário
   const [formData, setFormData] = useState<Product>({
@@ -69,6 +70,32 @@ export default function AdminLojaPage() {
       const updatedProducts = products.filter(p => p.id !== id);
       setProducts(updatedProducts);
       localStorage.setItem('@alba:loja:produtos', JSON.stringify(updatedProducts));
+    }
+  };
+
+  const toggleSelectAll = () => {
+    if (selectedItems.length === filteredProducts.length && filteredProducts.length > 0) {
+      setSelectedItems([]);
+    } else {
+      setSelectedItems(filteredProducts.map(p => p.id));
+    }
+  };
+
+  const toggleSelectItem = (id: string) => {
+    if (selectedItems.includes(id)) {
+      setSelectedItems(selectedItems.filter(itemId => itemId !== id));
+    } else {
+      setSelectedItems([...selectedItems, id]);
+    }
+  };
+
+  const handleBulkDelete = () => {
+    if (selectedItems.length === 0) return;
+    if (confirm(`Tem certeza que deseja deletar os ${selectedItems.length} produtos selecionados permanentemente?`)) {
+      const newProducts = products.filter(p => !selectedItems.includes(p.id));
+      setProducts(newProducts);
+      localStorage.setItem('@alba:loja:produtos', JSON.stringify(newProducts));
+      setSelectedItems([]);
     }
   };
 
@@ -147,8 +174,8 @@ export default function AdminLojaPage() {
       {view === 'list' && (
         <div className="bg-white rounded-[2rem] border border-stone-200 overflow-hidden shadow-sm flex flex-col">
           
-          {/* Barra de Busca */}
-          <div className="p-6 border-b border-stone-100 bg-stone-50/50">
+          {/* Barra de Busca e Ações em Massa */}
+          <div className="p-6 border-b border-stone-100 bg-stone-50/50 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div className="relative w-full max-w-md">
               <input 
                 type="text" 
@@ -161,6 +188,16 @@ export default function AdminLojaPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </div>
+
+            {selectedItems.length > 0 && (
+              <button 
+                onClick={handleBulkDelete}
+                className="cursor-pointer bg-red-50 text-red-600 hover:bg-red-100 px-4 py-2 rounded-lg text-sm font-bold transition-colors flex items-center gap-2 border border-red-200"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                Deletar Selecionados ({selectedItems.length})
+              </button>
+            )}
           </div>
 
           {/* Tabela */}
@@ -168,6 +205,14 @@ export default function AdminLojaPage() {
             <table className="w-full text-left border-collapse text-sm">
               <thead>
                 <tr className="bg-white border-b border-stone-200 text-stone-500 text-sm">
+                  <th className="p-6 font-medium w-12">
+                    <input 
+                      type="checkbox" 
+                      className="w-4 h-4 rounded border-stone-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
+                      checked={selectedItems.length > 0 && selectedItems.length === filteredProducts.length}
+                      onChange={toggleSelectAll}
+                    />
+                  </th>
                   <th className="p-6 font-medium">Produto</th>
                   <th className="p-6 font-medium">Preço</th>
                   <th className="p-6 font-medium">Hotmart Link</th>
@@ -178,10 +223,18 @@ export default function AdminLojaPage() {
               <tbody className="divide-y divide-stone-100">
                 {filteredProducts.length === 0 ? (
                   <tr>
-                    <td colSpan={5} className="p-12 text-center text-stone-500">Nenhum produto encontrado.</td>
+                    <td colSpan={6} className="p-12 text-center text-stone-500">Nenhum produto encontrado.</td>
                   </tr>
                 ) : filteredProducts.map((product) => (
-                  <tr key={product.id} className="hover:bg-stone-50/50 transition-colors">
+                  <tr key={product.id} className={`hover:bg-stone-50/50 transition-colors ${selectedItems.includes(product.id) ? 'bg-emerald-50/30' : ''}`}>
+                    <td className="p-6">
+                      <input 
+                        type="checkbox" 
+                        className="w-4 h-4 rounded border-stone-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
+                        checked={selectedItems.includes(product.id)}
+                        onChange={() => toggleSelectItem(product.id)}
+                      />
+                    </td>
                     <td className="p-6 flex items-center gap-4">
                       <div className="w-12 h-12 rounded-lg bg-stone-200 overflow-hidden flex-shrink-0">
                         {product.image ? (
