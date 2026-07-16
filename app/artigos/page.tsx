@@ -10,7 +10,16 @@ export default function ArtigosPage() {
   React.useEffect(() => {
     const saved = localStorage.getItem('alba_artigos');
     if (saved) {
-      setArtigosDatabase(JSON.parse(saved).filter((a: any) => a.status === 'Publicado'));
+      let parsed = JSON.parse(saved);
+      // Auto-patch imagens quebradas antigas que ficaram cacheadas no localStorage do Admin
+      parsed = parsed.map((a: any) => {
+        if (a.imagem.includes('1594824406951-31823095b27b') || a.imagem.includes('1563241527-3004b7be0ffd')) {
+          return { ...a, imagem: 'https://images.unsplash.com/photo-1514733670139-4d87a1941d55?q=80&w=600&auto=format&fit=crop' };
+        }
+        return a;
+      });
+      localStorage.setItem('alba_artigos', JSON.stringify(parsed));
+      setArtigosDatabase(parsed.filter((a: any) => a.status === 'Publicado'));
     } else {
       const initial = [
         { id: 1, tag: 'Fundamentos', title: 'O que é a Medicina Tradicional Indiana?', resumo: 'Uma visão abrangente sobre como o Ayurveda enxerga o corpo humano...', imagem: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop', status: 'Publicado' },

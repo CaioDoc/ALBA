@@ -45,6 +45,10 @@ export const metadata: Metadata = {
 };
 
 import Script from 'next/script';
+import { Inter, Merriweather } from 'next/font/google';
+
+const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
+const merriweather = Merriweather({ weight: ['300', '400', '700', '900'], subsets: ['latin'], variable: '--font-serif' });
 
 export default function RootLayout({
   children,
@@ -52,8 +56,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR">
-      <body>
+    <html lang="pt-BR" className={`${inter.variable} ${merriweather.variable}`}>
+      <body className="font-sans antialiased text-stone-800 bg-stone-50">
         {/* Elemento oculto do Google Translate */}
         <div id="google_translate_element" style={{ display: 'none' }}></div>
         <Script

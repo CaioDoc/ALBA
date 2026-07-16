@@ -38,7 +38,7 @@ const activitiesData = [
     id: 'medicina-ayurvedica',
     title: 'Consulta de Medicina Ayurvédica',
     category: 'Consultas Terapêuticas',
-    image: 'https://images.unsplash.com/photo-1594824406951-31823095b27b?q=80&w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop',
     description: 'Avaliação clínica minuciosa que inclui a anamnese profunda, exame físico e a leitura tradicional do pulso (Nadi Pariksha). Identifica sua constituição de nascimento e prescreve planos de desintoxicação, fitoterapia e rotinas alimentares.',
     duration: '90 minutos (Primeira consulta)',
     indicatedFor: 'Identificação do Dosha, tratamento de doenças crônicas e transição de estilo de vida.'
