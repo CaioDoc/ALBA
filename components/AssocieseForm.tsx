@@ -29,6 +29,8 @@ function FormContent() {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
   useEffect(() => {
     const interesseParam = searchParams.get('interesse');
@@ -37,13 +39,15 @@ function FormContent() {
     }
   }, [searchParams]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError(false);
     
-    // Ler leads existentes
+    const messageContent = selectedInteresse ? `Interesse selecionado: ${selectedInteresse}\n\n${formData.mensagem}` : formData.mensagem;
+
+    // 1. Salvar no Admin (localStorage)
     const existingLeads = JSON.parse(localStorage.getItem('alba_leads') || '[]');
-    
-    // Criar novo lead
     const newLead = {
       id: Date.now(),
       name: formData.nome,
@@ -53,12 +57,49 @@ function FormContent() {
       category: formData.tipo,
       date: new Date().toLocaleDateString('pt-BR') + ', ' + new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
       status: 'Novo',
-      message: selectedInteresse ? `Interesse selecionado: ${selectedInteresse}\n\n${formData.mensagem}` : formData.mensagem
+      message: messageContent
     };
     
-    // Salvar e atualizar view
     localStorage.setItem('alba_leads', JSON.stringify([newLead, ...existingLeads]));
-    setIsSubmitted(true);
+
+    // 2. Enviar via Web3Forms
+    try {
+      const apiKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+      if (!apiKey || apiKey === 'YOUR_ACCESS_KEY_HERE') {
+        console.warn('Web3Forms API key is missing. Email not sent, mas salvo no painel admin.');
+        setIsSubmitted(true);
+        setIsSubmitting(false);
+        return;
+      }
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: apiKey,
+          subject: `Nova Solicitação de Associação: ${formData.nome}`,
+          from_name: formData.nome,
+          email: formData.email,
+          phone: formData.telefone,
+          category: formData.tipo,
+          message: messageContent
+        })
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        setSubmitError(true);
+      }
+    } catch (error) {
+      console.error(error);
+      setSubmitError(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -179,14 +220,20 @@ function FormContent() {
       </div>
 
       {/* Botão de Envio */}
+      {submitError && (
+        <p className="text-red-500 text-sm font-medium">Ocorreu um erro ao enviar seu e-mail. Mas sua solicitação foi salva em nosso sistema.</p>
+      )}
       <button 
         type="submit" 
-        className="cursor-pointer w-full bg-emerald-800 text-white py-4 rounded-xl font-bold hover:bg-emerald-900 transition-all active:scale-[0.98] shadow-md flex justify-center items-center gap-2"
+        disabled={isSubmitting}
+        className="cursor-pointer w-full bg-emerald-800 disabled:opacity-50 text-white py-4 rounded-xl font-bold hover:bg-emerald-900 transition-all active:scale-[0.98] shadow-md flex justify-center items-center gap-2"
       >
-        Enviar Solicitação
-        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-        </svg>
+        {isSubmitting ? 'Enviando...' : 'Enviar Solicitação'}
+        {!isSubmitting && (
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        )}
       </button>
     </form>
   );

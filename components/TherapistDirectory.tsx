@@ -67,40 +67,6 @@ export const TherapistDirectory = () => {
           </div>
         </div>
 
-        {/* Barra de Busca e Filtros */}
-        <div className="flex flex-col md:flex-row gap-4 mb-12">
-          {/* Input de Busca */}
-          <div className="relative w-full md:max-w-xs">
-            <input 
-              type="text" 
-              placeholder="Buscar por nome ou cidade..." 
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-11 pr-4 py-3 bg-white border border-stone-200 rounded-2xl text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all shadow-sm"
-            />
-            <svg className="w-5 h-5 text-stone-400 absolute left-4 top-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-          </div>
-
-          {/* Chips de Filtro */}
-          <div className="flex overflow-x-auto pb-2 md:pb-0 gap-2 hide-scrollbar items-center">
-            {quickFilters.map((filter) => (
-              <button
-                key={filter}
-                onClick={() => setActiveFilter(filter)}
-                className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  activeFilter === filter 
-                    ? 'bg-emerald-800 text-white shadow-md shadow-emerald-900/10' 
-                    : 'bg-white text-stone-600 border border-stone-200 hover:bg-stone-50'
-                }`}
-              >
-                {filter}
-              </button>
-            ))}
-          </div>
-        </div>
-
         {/* Grid de Resultados */}
         {filteredTherapists.length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -120,7 +86,11 @@ export const TherapistDirectory = () => {
               </svg>
             </div>
             <h3 className="text-2xl font-bold text-stone-900 mb-3">Temos profissionais totalmente qualificados</h3>
-            <p className="text-stone-500 max-w-md mx-auto">Nossa rede está sendo atualizada. Em breve, a lista completa de terapeutas credenciados e qualificados pela ALBA estará disponível aqui para você.</p>
+            <p className="text-stone-500 max-w-md mx-auto mb-8">Nossa rede está sendo atualizada. Em breve, a lista completa de terapeutas credenciados e qualificados pela ALBA estará disponível aqui para você.</p>
+            <a href="mailto:info@ayurvedica.org" className="cursor-pointer inline-flex items-center gap-2 bg-emerald-700 text-white px-8 py-4 rounded-xl font-bold hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-900/20 active:scale-95">
+              Entre em contato conosco
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            </a>
           </div>
         )}
 

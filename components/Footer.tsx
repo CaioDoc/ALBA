@@ -5,6 +5,9 @@ import Link from 'next/link';
 
 export const Footer = () => {
   const [currentLang, setCurrentLang] = useState('pt');
+  const [formData, setFormData] = useState({ nome: '', mensagem: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   useEffect(() => {
     const match = document.cookie.match(/googtrans=\/pt\/([a-z]{2})/);
@@ -26,6 +29,65 @@ export const Footer = () => {
     }
     
     window.location.reload();
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    // 1. Salvar no Admin (localStorage)
+    const existingLeads = JSON.parse(localStorage.getItem('alba_leads') || '[]');
+    const newLead = {
+      id: Date.now(),
+      name: formData.nome,
+      email: 'N/A (Via Footer)',
+      phone: 'N/A',
+      type: 'Contato / Dúvida',
+      category: '-',
+      date: new Date().toLocaleDateString('pt-BR') + ', ' + new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
+      status: 'Novo',
+      message: formData.mensagem
+    };
+    localStorage.setItem('alba_leads', JSON.stringify([newLead, ...existingLeads]));
+
+    // 2. Enviar Email via Web3Forms
+    try {
+      const apiKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+      if (!apiKey || apiKey === 'YOUR_ACCESS_KEY_HERE') {
+        console.warn('Web3Forms API key is missing. Email not sent, mas salvo no painel admin.');
+        setSubmitStatus('success');
+        setFormData({ nome: '', mensagem: '' });
+        setIsSubmitting(false);
+        return;
+      }
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: apiKey,
+          subject: `Nova mensagem no site de: ${formData.nome}`,
+          from_name: formData.nome,
+          message: formData.mensagem
+        })
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ nome: '', mensagem: '' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error(error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -97,37 +159,52 @@ export const Footer = () => {
         {/* Coluna 4: Formulário de Contato Direto */}
         <div>
           <h4 className="text-white font-bold mb-6 text-lg">Envie uma Mensagem</h4>
-          {/* Action "mailto" abre o cliente de email do usuário preenchendo os dados automaticamente */}
-          <form 
-            action="mailto:info@ayurvedica.org" 
-            method="POST" 
-            encType="text/plain" 
-            className="flex flex-col gap-3"
-          >
-            <input 
-              type="text" 
-              name="Nome"
-              placeholder="Seu nome" 
-              required
-              className="w-full px-4 py-2.5 bg-stone-800 border border-stone-700 rounded-xl text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 text-white placeholder:text-stone-500 transition-all"
-            />
-            <textarea 
-              name="Mensagem"
-              placeholder="Como podemos ajudar?" 
-              rows={2}
-              required
-              className="w-full px-4 py-2.5 bg-stone-800 border border-stone-700 rounded-xl text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 text-white placeholder:text-stone-500 transition-all resize-none"
-            ></textarea>
-            <button 
-              type="submit"
-              className="cursor-pointer w-full bg-emerald-700 hover:bg-emerald-600 px-5 py-3 rounded-xl text-white font-bold transition-all active:scale-[0.98] shadow-md flex items-center justify-center gap-2 text-sm"
+          {submitStatus === 'success' ? (
+            <div className="bg-emerald-900/30 border border-emerald-800 text-emerald-400 p-4 rounded-xl text-sm">
+              <p className="font-bold mb-1">Mensagem enviada com sucesso!</p>
+              <p>Obrigado pelo contato. Retornaremos em breve.</p>
+              <button onClick={() => setSubmitStatus('idle')} className="mt-3 text-xs underline cursor-pointer hover:text-emerald-300">Enviar nova mensagem</button>
+            </div>
+          ) : (
+            <form 
+              onSubmit={handleSubmit}
+              className="flex flex-col gap-3"
             >
-              Enviar Mensagem
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </button>
-          </form>
+              <input 
+                type="text" 
+                name="Nome"
+                placeholder="Seu nome" 
+                required
+                value={formData.nome}
+                onChange={(e) => setFormData({...formData, nome: e.target.value})}
+                className="w-full px-4 py-2.5 bg-stone-800 border border-stone-700 rounded-xl text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 text-white placeholder:text-stone-500 transition-all"
+              />
+              <textarea 
+                name="Mensagem"
+                placeholder="Como podemos ajudar?" 
+                rows={2}
+                required
+                value={formData.mensagem}
+                onChange={(e) => setFormData({...formData, mensagem: e.target.value})}
+                className="w-full px-4 py-2.5 bg-stone-800 border border-stone-700 rounded-xl text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 text-white placeholder:text-stone-500 transition-all resize-none"
+              ></textarea>
+              {submitStatus === 'error' && (
+                <p className="text-red-400 text-xs">Ocorreu um erro ao enviar. Tente novamente.</p>
+              )}
+              <button 
+                type="submit"
+                disabled={isSubmitting}
+                className="cursor-pointer w-full bg-emerald-700 hover:bg-emerald-600 disabled:opacity-50 px-5 py-3 rounded-xl text-white font-bold transition-all active:scale-[0.98] shadow-md flex items-center justify-center gap-2 text-sm"
+              >
+                {isSubmitting ? 'Enviando...' : 'Enviar Mensagem'}
+                {!isSubmitting && (
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                )}
+              </button>
+            </form>
+          )}
         </div>
 
       </div>
