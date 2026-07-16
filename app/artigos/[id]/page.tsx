@@ -2,8 +2,9 @@ import React from 'react';
 import ArtigoDetailClient from './ArtigoDetailClient';
 import { initialArticles } from '../../../data/artigos';
 
-export default function ArtigoDetalhePage({ params }: { params: { id: string } }) {
-  return <ArtigoDetailClient id={params.id} />;
+export default async function ArtigoDetalhePage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = await params;
+  return <ArtigoDetailClient id={resolvedParams.id} />;
 }
 
 export async function generateStaticParams() {

@@ -4,18 +4,25 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Navbar } from '../../../components/Navbar';
 
+import { initialArticles } from '../../../data/artigos';
+
 export default function ArtigoDetailClient({ id }: { id: string }) {
   const [artigo, setArtigo] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let source = [];
     const saved = localStorage.getItem('alba_artigos_v3');
     if (saved) {
-      const parsed = JSON.parse(saved);
-      const found = parsed.find((a: any) => String(a.id) === id);
-      if (found) {
-        setArtigo(found);
-      }
+      source = JSON.parse(saved);
+    } else {
+      source = initialArticles;
+      localStorage.setItem('alba_artigos_v3', JSON.stringify(initialArticles));
+    }
+    
+    const found = source.find((a: any) => String(a.id) === String(id));
+    if (found) {
+      setArtigo(found);
     }
     setLoading(false);
   }, [id]);
