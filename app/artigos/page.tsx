@@ -4,39 +4,19 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Navbar } from '../../components/Navbar';
 
+import { initialArticles } from '../../data/artigos';
+
 export default function ArtigosPage() {
   const [artigosDatabase, setArtigosDatabase] = useState<any[]>([]);
 
   React.useEffect(() => {
-    const saved = localStorage.getItem('alba_artigos');
+    const saved = localStorage.getItem('alba_artigos_v2');
     if (saved) {
       let parsed = JSON.parse(saved);
-      // Auto-patch imagens quebradas antigas que ficaram cacheadas no localStorage do Admin
-      parsed = parsed.map((a: any) => {
-        if (a.imagem.includes('1594824406951-31823095b27b') || a.imagem.includes('1563241527-3004b7be0ffd')) {
-          return { ...a, imagem: 'https://images.unsplash.com/photo-1514733670139-4d87a1941d55?q=80&w=600&auto=format&fit=crop' };
-        }
-        return a;
-      });
-      localStorage.setItem('alba_artigos', JSON.stringify(parsed));
       setArtigosDatabase(parsed.filter((a: any) => a.status === 'Publicado'));
     } else {
-      const initial = [
-        { id: 1, tag: 'Fundamentos', title: 'O que é a Medicina Tradicional Indiana?', resumo: 'Uma visão abrangente sobre como o Ayurveda enxerga o corpo humano...', imagem: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop', status: 'Publicado' },
-        { id: 2, tag: 'Biotipos', title: 'Os Doshas: Vata, Pitta e Kapha', resumo: 'Compreenda os três humores biológicos que regem nossa fisiologia.', imagem: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=600&auto=format&fit=crop', status: 'Publicado' },
-        { id: 3, tag: 'Nutrição', title: 'Alimentação Ayurvédica no Cotidiano', resumo: 'Como o uso de temperos e a escolha consciente podem prevenir doenças.', imagem: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=600&auto=format&fit=crop', status: 'Publicado' },
-        { id: 4, tag: 'Bem-estar', title: 'O poder do Dinacharya (Rotina Diária)', resumo: 'Descubra como pequenos hábitos diários podem resetar sua saúde.', imagem: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=600&auto=format&fit=crop', status: 'Publicado' },
-        { id: 5, tag: 'Terapias', title: 'Massagem Abhyanga e a Nutrição Celular', resumo: 'Os benefícios do óleo morno aplicado no corpo e mente.', imagem: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=600&auto=format&fit=crop', status: 'Publicado' },
-        { id: 6, tag: 'Mente', title: 'Ansiedade sob a ótica de Vata', resumo: 'Estratégias de aterramento para controlar o estresse moderno.', imagem: 'https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?q=80&w=600&auto=format&fit=crop', status: 'Publicado' },
-        { id: 7, tag: 'Fitoterapia', title: 'Ashwagandha: O Ginseng Indiano', resumo: 'A erva adaptógena mais famosa e seus reais benefícios clínicos.', imagem: 'https://images.unsplash.com/photo-1514733670139-4d87a1941d55?q=80&w=600&auto=format&fit=crop', status: 'Publicado' },
-        { id: 8, tag: 'Digestão', title: 'Agni: O Fogo Digestivo', resumo: 'A base da saúde no Ayurveda começa pela sua capacidade de digerir a vida.', imagem: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=600&auto=format&fit=crop', status: 'Publicado' },
-        { id: 9, tag: 'Estações', title: 'Ayurveda no Inverno', resumo: 'Dicas de autocuidado para se proteger do frio e manter a imunidade.', imagem: 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?q=80&w=600&auto=format&fit=crop', status: 'Publicado' },
-        { id: 10, tag: 'Saúde da Mulher', title: 'Ciclos Femininos Naturais', resumo: 'Compreendendo as fases da lua e o equilíbrio hormonal através do Ayurveda.', imagem: 'https://images.unsplash.com/photo-1599447421416-3414500d18a5?q=80&w=600&auto=format&fit=crop', status: 'Publicado' },
-        { id: 11, tag: 'Fundamentos', title: 'Entendendo Ama (Toxinas)', resumo: 'Como o acúmulo de alimentos não digeridos causa doenças.', imagem: 'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=600&auto=format&fit=crop', status: 'Publicado' },
-        { id: 12, tag: 'Terapias', title: 'Os 5 Procedimentos do Panchakarma', resumo: 'A desintoxicação profunda e guiada milenar.', imagem: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=600&auto=format&fit=crop', status: 'Publicado' },
-      ];
-      setArtigosDatabase(initial);
-      localStorage.setItem('alba_artigos', JSON.stringify(initial));
+      setArtigosDatabase(initialArticles.filter((a: any) => a.status === 'Publicado'));
+      localStorage.setItem('alba_artigos_v2', JSON.stringify(initialArticles));
     }
   }, []);
 

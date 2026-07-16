@@ -2,12 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 
-// Dados simulados do banco de dados (agora com um campo "conteudo" para a edição funcionar)
-const initialArticles = [
-  { id: 1, title: 'O poder das especiarias: Agni e a digestão', author: 'Dra. Aline Carvalho', status: 'Publicado', date: '12 Jun 2026', conteudo: 'O Agni é o fogo digestivo...' },
-  { id: 2, title: 'Como a rotina matinal pode transformar seu dia', author: 'Julia Santini', status: 'Publicado', date: '05 Jun 2026', conteudo: 'Acordar cedo e raspar a língua...' },
-  { id: 3, title: 'Benefícios do Óleo de Gergelim no Inverno', author: 'Admin', status: 'Rascunho', date: '22 Jun 2026', conteudo: 'O óleo de gergelim é excelente para Vata...' },
-];
+import { initialArticles } from '../../../data/artigos';
 
 export default function AdminArtigosPage() {
   const [view, setView] = useState<'list' | 'editor'>('list');
@@ -15,21 +10,13 @@ export default function AdminArtigosPage() {
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
   
   React.useEffect(() => {
-    const saved = localStorage.getItem('alba_artigos');
+    const saved = localStorage.getItem('alba_artigos_v2');
     if (saved) {
       let parsed = JSON.parse(saved);
-      // Auto-patch imagens quebradas antigas que ficaram cacheadas no localStorage
-      parsed = parsed.map((a: any) => {
-        if (a.imagem && (a.imagem.includes('1594824406951-31823095b27b') || a.imagem.includes('1563241527-3004b7be0ffd'))) {
-          return { ...a, imagem: 'https://images.unsplash.com/photo-1514733670139-4d87a1941d55?q=80&w=600&auto=format&fit=crop' };
-        }
-        return a;
-      });
-      localStorage.setItem('alba_artigos', JSON.stringify(parsed));
       setArticles(parsed);
     } else {
       setArticles(initialArticles);
-      localStorage.setItem('alba_artigos', JSON.stringify(initialArticles));
+      localStorage.setItem('alba_artigos_v2', JSON.stringify(initialArticles));
     }
   }, []);
 
@@ -99,8 +86,9 @@ export default function AdminArtigosPage() {
       return;
     }
 
+    const nextId = articles.length > 0 ? Math.max(...articles.map(a => a.id)) + 1 : 1;
     const novoArtigo = {
-      id: editingId || Date.now(), // Se não tiver ID, cria um novo
+      id: editingId || nextId, // Usa ID sequencial para funcionar com páginas estáticas
       title: titulo,
       author: 'Admin',
       status: statusDesejado,
