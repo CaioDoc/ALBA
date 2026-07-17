@@ -116,10 +116,9 @@ export const Footer = () => {
         <div className="space-y-6">
           <Link href="/" className="cursor-pointer inline-block transition-transform hover:scale-105">
             <img 
-              src="/logo_alba_magenta.svg" 
+              src="/logo_mini.png" 
               alt="Logo ALBA" 
               className="h-16 w-auto object-contain"
-              style={{ filter: 'brightness(0) invert(1)' }}
             />
           </Link>
           <p className="text-sm leading-relaxed text-stone-400">
