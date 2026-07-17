@@ -50,9 +50,10 @@ export const Navbar = () => {
           {/* Logo Oficial com Link para a Home */}
           <Link href="/" className="flex-shrink-0 flex items-center cursor-pointer transition-transform hover:scale-105">
             <img 
-              src="https://www.ayurvedica.org/wp-content/uploads/2019/05/miniLogo.png" 
+              src="/logo_alba_magenta.svg" 
               alt="Logo Associação Luso-Brasileira de Ayurveda"
               className="h-14 w-auto object-contain"
+              style={{ filter: 'brightness(0) invert(1)' }}
             />
           </Link>
           
