@@ -69,9 +69,10 @@ export default function ArtigoDetailClient({ id }: { id: string }) {
             <img src={artigo.imagem} alt={artigo.title} className="rounded-3xl w-full object-cover h-80 mb-10 shadow-md" />
           )}
           
-          <div className="text-stone-600 leading-relaxed whitespace-pre-wrap">
-            {artigo.conteudo || artigo.resumo || 'Conteúdo do artigo não disponível.'}
-          </div>
+          <div 
+            className="text-stone-600 leading-relaxed custom-html-content"
+            dangerouslySetInnerHTML={{ __html: artigo.conteudo || artigo.resumo || 'Conteúdo do artigo não disponível.' }}
+          />
         </div>
       </section>
     </div>

@@ -136,7 +136,7 @@ export default function AdminArtigosPage() {
   const handleInserirImagem = () => {
     const url = prompt("Cole a URL da imagem:");
     if (url) {
-      formatarTexto(`![Descrição da Imagem](${url})`);
+      formatarTexto(`<img src="${url}" alt="Descrição da Imagem" style="max-width: 100%; border-radius: 8px;" />`);
     }
   };
 
@@ -274,12 +274,12 @@ export default function AdminArtigosPage() {
               
               {/* Barra de Ferramentas Funcional */}
               <div className="flex gap-2 border-y border-stone-100 py-3 mb-6 overflow-x-auto hide-scrollbar">
-                <button onClick={() => formatarTexto('**', '**')} className="cursor-pointer px-3 py-1.5 text-stone-600 hover:text-stone-900 hover:bg-stone-100 rounded-lg font-serif font-bold transition-colors" title="Negrito">B</button>
-                <button onClick={() => formatarTexto('_', '_')} className="cursor-pointer px-3 py-1.5 text-stone-600 hover:text-stone-900 hover:bg-stone-100 rounded-lg font-serif italic transition-colors" title="Itálico">I</button>
-                <button onClick={() => formatarTexto('> ')} className="cursor-pointer px-3 py-1.5 text-stone-600 hover:text-stone-900 hover:bg-stone-100 rounded-lg transition-colors flex items-center" title="Citação">
+                <button onClick={() => formatarTexto('<strong>', '</strong>')} className="cursor-pointer px-3 py-1.5 text-stone-600 hover:text-stone-900 hover:bg-stone-100 rounded-lg font-serif font-bold transition-colors" title="Negrito">B</button>
+                <button onClick={() => formatarTexto('<em>', '</em>')} className="cursor-pointer px-3 py-1.5 text-stone-600 hover:text-stone-900 hover:bg-stone-100 rounded-lg font-serif italic transition-colors" title="Itálico">I</button>
+                <button onClick={() => formatarTexto('<blockquote>', '</blockquote>')} className="cursor-pointer px-3 py-1.5 text-stone-600 hover:text-stone-900 hover:bg-stone-100 rounded-lg transition-colors flex items-center" title="Citação">
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
                 </button>
-                <button onClick={() => formatarTexto('- ')} className="cursor-pointer px-3 py-1.5 text-stone-600 hover:text-stone-900 hover:bg-stone-100 rounded-lg transition-colors flex items-center" title="Lista">
+                <button onClick={() => formatarTexto('<ul><li>', '</li></ul>')} className="cursor-pointer px-3 py-1.5 text-stone-600 hover:text-stone-900 hover:bg-stone-100 rounded-lg transition-colors flex items-center" title="Lista">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
                 </button>
                 <div className="w-px h-6 bg-stone-200 my-auto mx-2"></div>
