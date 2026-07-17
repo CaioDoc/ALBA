@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import { Navbar } from '../../components/Navbar';
+import { HistoricoModal } from './HistoricoModal';
 
 export const metadata: Metadata = {
   title: 'Quem Somos',
@@ -32,11 +33,13 @@ export default function QuemSomosPage() {
           <div className="prose prose-stone md:prose-lg mx-auto">
             <h2 className="text-3xl font-serif text-stone-900 mb-6">Nossas Raízes</h2>
             <p className="text-stone-600 leading-relaxed mb-6">
-              A ALBA nasceu da união de terapeutas e médicos especialistas apaixonados pela medicina tradicional indiana. O nosso objetivo sempre foi preservar a pureza e a essência do Ayurveda, adaptando seus ensinamentos valiosos para a realidade e clima tanto do Brasil quanto de Portugal.
+              A ALBA nasceu da união de estudiosos das tradições da Índia antiga apaixonados pela medicina tradicional indiana. A ALBA tem como objetivo preservar a pureza e a essência do Ayurveda, adaptando os seus ensinamentos valiosos para a realidade e clima tanto do Brasil quanto de Portugal.
             </p>
             <p className="text-stone-600 leading-relaxed">
               Através da formação de novos profissionais, organização de seminários, publicações e desenvolvimento de projetos de responsabilidade social, buscamos não apenas tratar o indivíduo, mas educar a sociedade para um estilo de vida preventivo e equilibrado.
             </p>
+            
+            <HistoricoModal />
           </div>
 
           {/* Destaque Acreditação Europeia */}
