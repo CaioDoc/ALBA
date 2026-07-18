@@ -152,9 +152,10 @@ export default function AdminLeadsPage() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto animate-fade-in-up h-[calc(100vh-8rem)] flex flex-col">
-      
-      {/* Cabeçalho */}
+    <>
+      <div className="max-w-6xl mx-auto animate-fade-in-up h-[calc(100vh-8rem)] flex flex-col">
+        
+        {/* Cabeçalho */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4 flex-shrink-0">
         <div>
           <h2 className="text-3xl font-serif text-stone-900">Caixa de Entrada</h2>
@@ -170,51 +171,6 @@ export default function AdminLeadsPage() {
           <button onClick={() => setIsImportModalOpen(true)} className="cursor-pointer px-4 py-2 rounded-lg text-sm font-bold transition-colors bg-stone-800 text-white hover:bg-stone-700">Importar E-mails</button>
         </div>
       </div>
-
-      {/* Modal de Importação */}
-      {isImportModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/50 backdrop-blur-sm">
-          <div className="bg-white rounded-[2rem] p-8 max-w-2xl w-full shadow-2xl animate-fade-in-up">
-            <h3 className="text-2xl font-serif text-stone-900 mb-2">Importar Banco de E-mails Antigo</h3>
-            <p className="text-sm text-stone-500 mb-6">Cole abaixo todo o texto ou lista que contém os e-mails antigos. O sistema vai rastrear e extrair automaticamente todos os e-mails válidos encontrados no meio do texto e adicioná-los aos seus Leads.</p>
-            
-            <div className="mb-4 flex items-center justify-between bg-stone-50 p-3 rounded-xl border border-stone-200">
-              <span className="text-sm font-bold text-stone-700">Ou envie uma planilha/arquivo:</span>
-              <label className="cursor-pointer bg-stone-800 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-stone-700 transition-colors">
-                Escolher Arquivo (CSV, TXT)
-                <input 
-                  type="file" 
-                  accept=".csv, .txt" 
-                  onChange={handleFileUpload} 
-                  className="hidden" 
-                />
-              </label>
-            </div>
-
-            <textarea
-              value={importText}
-              onChange={(e) => setImportText(e.target.value)}
-              className="w-full h-48 p-4 bg-stone-50 border border-stone-200 rounded-xl mb-6 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
-              placeholder="Cole os e-mails aqui ou escolha um arquivo acima..."
-            ></textarea>
-            
-            <div className="flex justify-end gap-3">
-              <button 
-                onClick={() => setIsImportModalOpen(false)}
-                className="px-6 py-2 rounded-xl text-sm font-bold text-stone-500 hover:bg-stone-100 transition-colors"
-              >
-                Cancelar
-              </button>
-              <button 
-                onClick={handleImportEmails}
-                className="px-6 py-2 rounded-xl text-sm font-bold bg-emerald-700 text-white hover:bg-emerald-800 transition-colors shadow-md"
-              >
-                Extrair e Importar
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Interface Dividida (Lista vs Leitura) */}
       <div className="flex-1 bg-white rounded-[2rem] border border-stone-200 overflow-hidden shadow-sm flex min-h-0">
@@ -369,5 +325,51 @@ export default function AdminLeadsPage() {
 
       </div>
     </div>
+
+    {/* Modal de Importação */}
+    {isImportModalOpen && (
+      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-sm">
+        <div className="bg-white rounded-[2rem] p-8 max-w-2xl w-full shadow-2xl animate-fade-in-up">
+          <h3 className="text-2xl font-serif text-stone-900 mb-2">Importar Banco de E-mails Antigo</h3>
+          <p className="text-sm text-stone-500 mb-6">Cole abaixo todo o texto ou lista que contém os e-mails antigos. O sistema vai rastrear e extrair automaticamente todos os e-mails válidos encontrados no meio do texto e adicioná-los aos seus Leads.</p>
+          
+          <div className="mb-4 flex items-center justify-between bg-stone-50 p-3 rounded-xl border border-stone-200">
+            <span className="text-sm font-bold text-stone-700">Ou envie uma planilha/arquivo:</span>
+            <label className="cursor-pointer bg-stone-800 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-stone-700 transition-colors">
+              Escolher Arquivo (CSV, TXT)
+              <input 
+                type="file" 
+                accept=".csv, .txt" 
+                onChange={handleFileUpload} 
+                className="hidden" 
+              />
+            </label>
+          </div>
+
+          <textarea
+            value={importText}
+            onChange={(e) => setImportText(e.target.value)}
+            className="w-full h-48 p-4 bg-stone-50 border border-stone-200 rounded-xl mb-6 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            placeholder="Cole os e-mails aqui ou escolha um arquivo acima..."
+          ></textarea>
+          
+          <div className="flex justify-end gap-3">
+            <button 
+              onClick={() => setIsImportModalOpen(false)}
+              className="px-6 py-2 rounded-xl text-sm font-bold text-stone-500 hover:bg-stone-100 transition-colors"
+            >
+              Cancelar
+            </button>
+            <button 
+              onClick={handleImportEmails}
+              className="px-6 py-2 rounded-xl text-sm font-bold bg-emerald-700 text-white hover:bg-emerald-800 transition-colors shadow-md"
+            >
+              Extrair e Importar
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
+    </>
   );
 }
