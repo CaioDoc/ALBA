@@ -67,23 +67,14 @@ export const Footer = () => {
 
     // 2. Enviar Email via Web3Forms
     try {
-      const apiKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
-      if (!apiKey || apiKey === 'YOUR_ACCESS_KEY_HERE') {
-        console.warn('Web3Forms API key is missing. Email not sent, mas salvo no painel admin.');
-        setSubmitStatus('success');
-        setFormData({ nome: '', mensagem: '' });
-        setIsSubmitting(false);
-        return;
-      }
 
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('/mailer.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json'
         },
         body: JSON.stringify({
-          access_key: apiKey,
           subject: `Nova mensagem no site de: ${formData.nome}`,
           from_name: formData.nome,
           message: formData.mensagem

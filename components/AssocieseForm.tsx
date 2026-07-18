@@ -62,24 +62,15 @@ function FormContent() {
     
     localStorage.setItem('alba_leads', JSON.stringify([newLead, ...existingLeads]));
 
-    // 2. Enviar via Web3Forms
     try {
-      const apiKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
-      if (!apiKey || apiKey === 'YOUR_ACCESS_KEY_HERE') {
-        console.warn('Web3Forms API key is missing. Email not sent, mas salvo no painel admin.');
-        setIsSubmitted(true);
-        setIsSubmitting(false);
-        return;
-      }
 
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('/mailer.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json'
         },
         body: JSON.stringify({
-          access_key: apiKey,
           subject: `Nova Solicitação de Associação: ${formData.nome}`,
           from_name: formData.nome,
           email: formData.email,

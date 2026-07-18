@@ -58,6 +58,43 @@ export default function AdminLeadsPage() {
     }
   }, []);
 
+  const [isImportModalOpen, setIsImportModalOpen] = useState(false);
+  const [importText, setImportText] = useState('');
+
+  const handleImportEmails = () => {
+    // Extract emails using regex
+    const emailRegex = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi;
+    const foundEmails = importText.match(emailRegex) || [];
+    
+    // Remove duplicates
+    const uniqueEmails = [...new Set(foundEmails)];
+    
+    if (uniqueEmails.length === 0) {
+      alert('Nenhum e-mail válido foi encontrado no texto.');
+      return;
+    }
+
+    const newLeads = uniqueEmails.map((email, index) => ({
+      id: Date.now() + index,
+      name: 'Contato Importado',
+      email: email,
+      phone: '-',
+      type: 'Importação Antiga',
+      category: '-',
+      date: new Date().toLocaleDateString('pt-BR'),
+      status: 'Lido',
+      message: 'Este e-mail foi importado do banco de dados antigo.'
+    }));
+
+    const updatedLeads = [...newLeads, ...leads];
+    setLeads(updatedLeads);
+    localStorage.setItem('alba_leads', JSON.stringify(updatedLeads));
+    
+    alert(`${uniqueEmails.length} e-mails foram importados com sucesso!`);
+    setIsImportModalOpen(false);
+    setImportText('');
+  };
+
   const filteredLeads = leads.filter(lead => {
     if (filter === 'Novos') return lead.status === 'Novo';
     if (filter === 'Associe-se') return lead.type === 'Associe-se';
@@ -117,9 +154,42 @@ export default function AdminLeadsPage() {
         <div className="flex gap-2 bg-white p-1.5 rounded-xl border border-stone-200 shadow-sm">
           <button onClick={() => setFilter('Todos')} className={`cursor-pointer px-4 py-2 rounded-lg text-sm font-bold transition-colors ${filter === 'Todos' ? 'bg-stone-100 text-stone-800' : 'text-stone-500 hover:bg-stone-50'}`}>Todos</button>
           <button onClick={() => setFilter('Novos')} className={`cursor-pointer px-4 py-2 rounded-lg text-sm font-bold transition-colors ${filter === 'Novos' ? 'bg-emerald-50 text-emerald-800' : 'text-stone-500 hover:bg-stone-50'}`}>Não Lidos</button>
-          <button onClick={() => setFilter('Associe-se')} className={`cursor-pointer px-4 py-2 rounded-lg text-sm font-bold transition-colors ${filter === 'Associe-se' ? 'bg-blue-50 text-blue-800' : 'text-stone-500 hover:bg-stone-50'}`}>Pedidos de Associação</button>
+          <button onClick={() => setFilter('Associe-se')} className={`cursor-pointer px-4 py-2 rounded-lg text-sm font-bold transition-colors ${filter === 'Associe-se' ? 'bg-blue-50 text-blue-800' : 'text-stone-500 hover:bg-stone-50'}`}>Pedidos</button>
+          <button onClick={() => setIsImportModalOpen(true)} className="cursor-pointer px-4 py-2 rounded-lg text-sm font-bold transition-colors bg-stone-800 text-white hover:bg-stone-700">Importar E-mails</button>
         </div>
       </div>
+
+      {/* Modal de Importação */}
+      {isImportModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/50 backdrop-blur-sm">
+          <div className="bg-white rounded-[2rem] p-8 max-w-2xl w-full shadow-2xl animate-fade-in-up">
+            <h3 className="text-2xl font-serif text-stone-900 mb-2">Importar Banco de E-mails Antigo</h3>
+            <p className="text-sm text-stone-500 mb-6">Cole abaixo todo o texto ou lista que contém os e-mails antigos. O sistema vai rastrear e extrair automaticamente todos os e-mails válidos encontrados no meio do texto e adicioná-los aos seus Leads.</p>
+            
+            <textarea
+              value={importText}
+              onChange={(e) => setImportText(e.target.value)}
+              className="w-full h-48 p-4 bg-stone-50 border border-stone-200 rounded-xl mb-6 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              placeholder="Cole os e-mails aqui..."
+            ></textarea>
+            
+            <div className="flex justify-end gap-3">
+              <button 
+                onClick={() => setIsImportModalOpen(false)}
+                className="px-6 py-2 rounded-xl text-sm font-bold text-stone-500 hover:bg-stone-100 transition-colors"
+              >
+                Cancelar
+              </button>
+              <button 
+                onClick={handleImportEmails}
+                className="px-6 py-2 rounded-xl text-sm font-bold bg-emerald-700 text-white hover:bg-emerald-800 transition-colors shadow-md"
+              >
+                Extrair e Importar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Interface Dividida (Lista vs Leitura) */}
       <div className="flex-1 bg-white rounded-[2rem] border border-stone-200 overflow-hidden shadow-sm flex min-h-0">
