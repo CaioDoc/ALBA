@@ -61,6 +61,18 @@ export default function AdminLeadsPage() {
   const [isImportModalOpen, setIsImportModalOpen] = useState(false);
   const [importText, setImportText] = useState('');
 
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const text = event.target?.result as string;
+      setImportText(prev => prev ? prev + '\n' + text : text);
+    };
+    reader.readAsText(file);
+  };
+
   const handleImportEmails = () => {
     // Extract emails using regex
     const emailRegex = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi;
@@ -166,11 +178,24 @@ export default function AdminLeadsPage() {
             <h3 className="text-2xl font-serif text-stone-900 mb-2">Importar Banco de E-mails Antigo</h3>
             <p className="text-sm text-stone-500 mb-6">Cole abaixo todo o texto ou lista que contém os e-mails antigos. O sistema vai rastrear e extrair automaticamente todos os e-mails válidos encontrados no meio do texto e adicioná-los aos seus Leads.</p>
             
+            <div className="mb-4 flex items-center justify-between bg-stone-50 p-3 rounded-xl border border-stone-200">
+              <span className="text-sm font-bold text-stone-700">Ou envie uma planilha/arquivo:</span>
+              <label className="cursor-pointer bg-stone-800 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-stone-700 transition-colors">
+                Escolher Arquivo (CSV, TXT)
+                <input 
+                  type="file" 
+                  accept=".csv, .txt" 
+                  onChange={handleFileUpload} 
+                  className="hidden" 
+                />
+              </label>
+            </div>
+
             <textarea
               value={importText}
               onChange={(e) => setImportText(e.target.value)}
               className="w-full h-48 p-4 bg-stone-50 border border-stone-200 rounded-xl mb-6 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
-              placeholder="Cole os e-mails aqui..."
+              placeholder="Cole os e-mails aqui ou escolha um arquivo acima..."
             ></textarea>
             
             <div className="flex justify-end gap-3">
