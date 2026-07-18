@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 
 export const Footer = () => {
   const [currentLang, setCurrentLang] = useState('pt');
-  const [formData, setFormData] = useState({ nome: '', mensagem: '' });
+  const [formData, setFormData] = useState({ nome: '', email: '', mensagem: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const pathname = usePathname();
@@ -55,7 +55,7 @@ export const Footer = () => {
     const newLead = {
       id: Date.now(),
       name: formData.nome,
-      email: 'N/A (Via Footer)',
+      email: formData.email,
       phone: 'N/A',
       type: 'Contato / Dúvida',
       category: '-',
@@ -77,13 +77,14 @@ export const Footer = () => {
         body: JSON.stringify({
           subject: `Nova mensagem no site de: ${formData.nome}`,
           from_name: formData.nome,
+          email: formData.email,
           message: formData.mensagem
         })
       });
 
       if (response.ok) {
         setSubmitStatus('success');
-        setFormData({ nome: '', mensagem: '' });
+        setFormData({ nome: '', email: '', mensagem: '' });
       } else {
         setSubmitStatus('error');
       }
@@ -194,6 +195,15 @@ export const Footer = () => {
                 required
                 value={formData.nome}
                 onChange={(e) => setFormData({...formData, nome: e.target.value})}
+                className="w-full px-4 py-2.5 bg-stone-800 border border-stone-700 rounded-xl text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 text-white placeholder:text-stone-500 transition-all"
+              />
+              <input 
+                type="email" 
+                name="Email"
+                placeholder="Seu e-mail de contato" 
+                required
+                value={formData.email}
+                onChange={(e) => setFormData({...formData, email: e.target.value})}
                 className="w-full px-4 py-2.5 bg-stone-800 border border-stone-700 rounded-xl text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 text-white placeholder:text-stone-500 transition-all"
               />
               <textarea 
