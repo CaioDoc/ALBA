@@ -27,12 +27,12 @@ export default function CursosPage() {
   const [courses, setCourses] = useState<any[]>([]);
 
   useEffect(() => {
-    const savedCourses = localStorage.getItem('alba_cursos_v7');
+    const savedCourses = localStorage.getItem('alba_cursos_v9');
     if (savedCourses) {
       setCourses(JSON.parse(savedCourses));
     } else {
       setCourses(scrapedCourses);
-      localStorage.setItem('alba_cursos_v7', JSON.stringify(scrapedCourses));
+      localStorage.setItem('alba_cursos_v9', JSON.stringify(scrapedCourses));
     }
   }, []);
 

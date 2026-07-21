@@ -3,105 +3,305 @@ export const initialCourses = [
     "id": 1,
     "title": "Aprofundamento em Yoga - Yogaterapia",
     "category": "Yoga",
-    "workload": "300h",
+    "workload": "15h",
     "format": "Presencial / Online",
     "status": "Inscrições Abertas",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
-    "description": "Aprofunde seus conhecimentos práticos e teóricos na terapia através do Yoga. Aprenda como utilizar as posturas, respirações e meditação para prevenir e tratar desequilíbrios físicos e emocionais, guiando seus alunos para uma vida mais saudável.",
+    "description": "Curso teórico e prático de técnicas milenares do Yoga com fins terapêuticos. Ensina a prevenção e auxílio no tratamento de desequilíbrios psicofísicos através de asanas, pranayamas, mudras e meditação direcionada.",
     "originalUrl": "https://www.ayurvedica.org/aprofundamento-em-yoga-yogaterapia/",
-    "hotmartLink": "https://www.ayurvedica.org/aprofundamento-em-yoga-yogaterapia/"
+    "hotmartLink": "https://www.ayurvedica.org/aprofundamento-em-yoga-yogaterapia/",
+    "targetAudience": "Instrutores de Yoga, profissionais da área da saúde, terapeutas corporais, massoterapeutas, reikianos e público em geral.",
+    "price": "",
+    "certification": "Certificado de Formação Profissional em Yogaterapia emitido pela Associação Luso-Brasileira de Ayurveda (ALBA).",
+    "objectives": [
+      "Compreender a Fisiologia Sutil (Kundalini, Nadis e Chakras).",
+      "Identificar a origem psicossomática e energética das doenças.",
+      "Aplicar Asanas e Pranayamas como ferramentas terapêuticas.",
+      "Dominar Mudras terapêuticos e técnicas direcionadas de relaxamento e meditação."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Programático (Teórico e Prático)",
+        "theoretical": [
+          "Fisiologia Sutil (Kundalini, Nadis, Chakras)",
+          "A Origem das doenças sob a perspectiva Védica",
+          "Asanas e Pranayamas aplicados à terapia psicofísica",
+          "Mudras terapêuticos e suas ações energéticas",
+          "Técnicas de relaxamento e meditação direcionados"
+        ]
+      }
+    ]
   },
   {
     "id": 2,
     "title": "Iniciação Prática às Asanas",
     "category": "Yoga",
-    "workload": "40h",
+    "workload": "20h (10 aulas de 2h)",
     "format": "Presencial / Online",
     "status": "Inscrições Abertas",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?q=80&w=600&auto=format&fit=crop",
-    "description": "Um curso voltado para quem deseja iniciar ou aperfeiçoar sua prática de posturas físicas (Asanas). Focado no alinhamento correto, respiração e consciência corporal para evitar lesões e maximizar os benefícios do Yoga.",
+    "description": "Desenvolva seu potencial físico e mental aprendendo de forma progressiva a executar as principais posturas (Asanas), a reeducar a respiração e a obter autonomia para a prática diária de Yoga.",
     "originalUrl": "https://www.ayurvedica.org/iniciacao-pratica-asanas/",
-    "hotmartLink": "https://www.ayurvedica.org/iniciacao-pratica-asanas/"
+    "hotmartLink": "https://www.ayurvedica.org/iniciacao-pratica-asanas/",
+    "targetAudience": "Instrutores de Yoga, profissionais de saúde, terapeutas corporais, massoterapeutas, reikianos e público em geral.",
+    "price": "",
+    "certification": "Certificado de Formação Profissional em Iniciação às Asanas emitido pela ALBA.",
+    "objectives": [
+      "Introdução completa à prática do Yoga e desenvolvimento físico/mental.",
+      "Consciência corporal, reeducação respiratória e eliminação de toxinas.",
+      "Controle das emoções através da regulação hormonal.",
+      "Ganhar autonomia para criar e conduzir suas próprias práticas de Asanas."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Módulos Práticos e Respiratórios",
+        "theoretical": [
+          "Alinhamento anatômico e biomecânica das posturas de Yoga",
+          "Fisiologia da respiração e reeducação respiratória"
+        ],
+        "practical": [
+          "Exercícios respiratórios (Pranayamas)",
+          "Execução progressiva de posturas físicas (Asanas)",
+          "Exercícios mentais e técnicas de relaxamento profundo"
+        ]
+      }
+    ],
+    "providedMaterials": "Caderno ilustrado com a sequência e alinhamento das posturas de Yoga.",
+    "neededMaterials": "Roupa confortável apropriada para prática."
   },
   {
     "id": 3,
     "title": "Instrutor de Yoga - Nível Técnico",
     "category": "Yoga",
-    "workload": "250h",
+    "workload": "217h",
     "format": "Presencial / Online",
     "status": "Vagas Limitadas",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?q=80&w=600&auto=format&fit=crop",
-    "description": "Formação completa para se tornar um instrutor profissional de Yoga. Desde a filosofia clássica até a didática de aulas, anatomia e estruturação de sequências seguras para diferentes níveis de alunos.",
+    "description": "Formação internacional profissionalizante de Instrutor de Yoga credenciada pela Federação Europeia de Yoga, Yogaterapia e Ayurveda e pela IYTA do Brasil. Conta com corpo docente multidisciplinar especialista.",
     "originalUrl": "https://www.ayurvedica.org/instrutor-de-yoga-nivel-tecnico/",
-    "hotmartLink": "https://www.ayurvedica.org/instrutor-de-yoga-nivel-tecnico/"
+    "hotmartLink": "https://www.ayurvedica.org/instrutor-de-yoga-nivel-tecnico/",
+    "targetAudience": "Profissionais da área da saúde, terapeutas, massoterapeutas, psicólogos, naturopatas e público em geral.",
+    "price": "",
+    "certification": "Certificado de Formação Profissional como 'Instrutor de Yoga - Nível Técnico' credenciado pela European Federation of Yoga, Yogatherapy and Ayurveda.",
+    "objectives": [
+      "Capacitar o aluno com sólida base teórica e prática em Hatha Yoga, Pranayama, Cinesiologia e Kriyas.",
+      "Estudo aprofundado de Sânscrito, Cultura Védica, Bhagavad Gita, Upanishades e Filosofia (Vedanta, Tantra, Sanquia).",
+      "Compreensão neurofisiológica da meditação, anatomia, fisiologia e endocrinologia aplicadas.",
+      "Ensino prático de Surya Namaskar, Bala Yoga (Infantil), Vardhakas (Terceira Idade) e Yoga para Gestantes."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Módulo 1 - Hatha Yoga, Pranayama & Cinesiologia",
+        "theoretical": [
+          "Hatha Yoga clássico, Ética e Sadhanas de Yoga",
+          "Anatomia, Fisiologia Humana, Cinesiologia e Suportes de Yoga",
+          "Técnicas de correção de Asanas e Avaliação assistida de prática"
+        ],
+        "practical": [
+          "Prática de Kriyas, Pranayamas e ajuste manual de posturas"
+        ]
+      },
+      {
+        "moduleTitle": "Módulo 2 - Filosofia Védica, Sânscrito e Tradição",
+        "theoretical": [
+          "Cultura Védica, Estudo da Bhagavad Gita e Língua Sânscrita",
+          "Vedanta (Advaita, Visistadvaita, Dvaita), Tantra avançado e Sanquia",
+          "Bases Neurofisiológicas da Meditação, Concentração e Neurologia/Endocrinologia"
+        ]
+      },
+      {
+        "moduleTitle": "Módulo 3 - Didática Especializada e Aplicações",
+        "theoretical": [
+          "Bala Yoga (Yoga Infantil), Vardhakas (Yoga na maturidade) e Yoga para Gestantes",
+          "Ligações astrológicas à prática e metodologias de ensino"
+        ],
+        "practical": [
+          "Variações de Surya Namaskar, técnicas de relaxamento e estágio supervisionado"
+        ]
+      }
+    ]
   },
   {
     "id": 5,
     "title": "Yoga para Idosos",
     "category": "Yoga",
-    "workload": "60h",
+    "workload": "8h",
     "format": "Presencial / Online",
     "status": "Inscrições Abertas",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1573497491208-6b1acb260507?q=80&w=600&auto=format&fit=crop",
-    "description": "Especialize-se na adaptação das práticas de Yoga para a terceira idade. Aprenda a lidar com limitações articulares, técnicas de Yoga na cadeira e como promover qualidade de vida e longevidade de forma segura.",
+    "description": "Capacitação focada no rejuvenescimento natural e na adaptação das práticas de Yoga para a terceira idade, ensinando a envelhecer com arte, serenidade e utilidade à coletividade.",
     "originalUrl": "https://www.ayurvedica.org/yoga-para-idosos/",
-    "hotmartLink": "https://www.ayurvedica.org/yoga-para-idosos/"
+    "hotmartLink": "https://www.ayurvedica.org/yoga-para-idosos/",
+    "targetAudience": "Professores de Yoga, praticantes de Yoga, estudantes de Naturopatia Ayurvédica e terapeutas corporais.",
+    "price": "",
+    "certification": "Certificado de Formação Profissional em Yoga para Idosos emitido pela ALBA.",
+    "objectives": [
+      "Compreender a filosofia do envelhecimento ativo segundo o Yoga.",
+      "Aprender a adaptar Asanas e mobilidade articular para limitações físicas.",
+      "Utilizar meditações para despertar a beleza interior e superar inconveniências da velhice."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Programático",
+        "theoretical": [
+          "Os métodos yogis de rejuvenescimento e aceitação positiva",
+          "Filosofia do Yoga aplicada à maturidade e superação de limites"
+        ],
+        "practical": [
+          "Adaptabilidade de posturas (Asanas na cadeira e apoios)",
+          "Respirações e meditações para serenidade e concentração"
+        ]
+      }
+    ]
   },
   {
     "id": 6,
     "title": "As Plantas do Yoga - Workshop",
     "category": "Yoga",
-    "workload": "12h",
+    "workload": "14h",
     "format": "Presencial",
     "status": "Últimas Vagas",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=600&auto=format&fit=crop",
-    "description": "Descubra a relação sagrada entre o Ayurveda e as plantas medicinais. Neste workshop prático, você aprenderá a identificar ervas e óleos que potencializam a prática do Yoga e ajudam no equilíbrio dos Doshas.",
+    "description": "Mergulhe no estudo sagrado das plantas nos sadhanas de Yoga e textos clássicos hindus, budistas e jaínistas. Descubra a botânica do Soma, ervas do Atharva Veda e o poder dos incensos e beejas.",
     "originalUrl": "https://www.ayurvedica.org/plantas-yoga-workshop/",
-    "hotmartLink": "https://www.ayurvedica.org/plantas-yoga-workshop/"
+    "hotmartLink": "https://www.ayurvedica.org/plantas-yoga-workshop/",
+    "targetAudience": "Instrutores de Yoga, profissionais da área da saúde, terapeutas corporais, massoterapeutas, reikianos e público em geral.",
+    "price": "",
+    "certification": "Certificado de Formação Profissional em As Plantas do Yoga emitido pela ALBA.",
+    "objectives": [
+      "Estudar a sacralidade das plantas no Yoga de acordo com os Aforismos de Patanjali.",
+      "Identificar o Soma nos Vedas, as plantas do Shaktismo, de Vishnu e de Shiva.",
+      "Compreender os Beejas (semente do som) e o uso terapêutico de incensos e ervas do Ayurveda."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Programa Geral",
+        "theoretical": [
+          "Associação entre plantas e o Yoga",
+          "O Soma: a planta dos Vedas e sua identidade botânica",
+          "Guardiões míticos do Soma: Asuras, Nagas, Yakshas, Yoginis e Deusas",
+          "Beejas: o poder da semente do som e eficácia da palavra",
+          "As plantas do Shaktismo e as 5 plantas do Atharva Veda",
+          "Plantas de Vishnu, Shiva e plantas de transcendência do Ayurveda",
+          "O uso tradicional dos incensos no Yoga"
+        ]
+      }
+    ]
   },
   {
     "id": 7,
     "title": "Meditação Infantil - Workshop",
     "category": "Yoga",
-    "workload": "16h",
+    "workload": "4h",
     "format": "Presencial",
     "status": "Inscrições Abertas",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=600&auto=format&fit=crop",
-    "description": "Aprenda técnicas lúdicas e eficientes para ensinar meditação para crianças. Como prender a atenção, controlar a ansiedade infantil e introduzir a atenção plena através de histórias e jogos focados na respiração.",
+    "description": "Capacitação projetada para o ensino de meditação a crianças dos 5 anos à adolescência, ensinando a canalizar energia, elevar autoestima e desenvolver autoconhecimento de forma lúdica.",
     "originalUrl": "https://www.ayurvedica.org/meditacao-infantil-workshop/",
-    "hotmartLink": "https://www.ayurvedica.org/meditacao-infantil-workshop/"
+    "hotmartLink": "https://www.ayurvedica.org/meditacao-infantil-workshop/",
+    "targetAudience": "Instrutores de Yoga, profissionais de saúde, terapeutas corporais, reikianos, educadores e público em geral.",
+    "price": "",
+    "certification": "Certificado de Formação Profissional em Meditação Infantil emitido pela ALBA.",
+    "objectives": [
+      "Desenvolver técnicas de relaxamento e atenção plena para crianças e jovens.",
+      "Auxiliar no combate à ansiedade infantil e melhoria da concentração escolar.",
+      "Promover a percepção corporal interna e externa de forma saudável."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Metodologia Prática",
+        "theoretical": [
+          "Psicopedagogia da meditação na infância e juventude",
+          "Canalização energética e domínio sobre emoções"
+        ],
+        "practical": [
+          "Técnicas de relaxamento infantil e jogos de atenção plena",
+          "Dinâmicas de conexão e concentração"
+        ]
+      }
+    ]
   },
   {
     "id": 8,
     "title": "Tantrismo, Vedanta e Sanquia",
     "category": "Yoga",
-    "workload": "80h",
-    "format": "Online",
+    "workload": "45h",
+    "format": "Online / Presencial",
     "status": "Inscrições Abertas",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1518398046578-8cca57782e17?q=80&w=600&auto=format&fit=crop",
-    "description": "Um mergulho profundo nas três principais bases filosóficas da Índia. Entenda os conceitos metafísicos da criação, da não-dualidade e das raízes espirituais que fundamentam as práticas meditativas do Oriente.",
+    "description": "Formação teórica e prática aprofundada nas três principais escolas filosóficas da Índia. Estudo das escolas tântricas, correntes do Vedanta e a metafísica do Sanquia clássico.",
     "originalUrl": "https://www.ayurvedica.org/tantrismo-vedanta-e-sanquia/",
-    "hotmartLink": "https://www.ayurvedica.org/tantrismo-vedanta-e-sanquia/"
+    "hotmartLink": "https://www.ayurvedica.org/tantrismo-vedanta-e-sanquia/",
+    "targetAudience": "Instrutores de Yoga, profissionais da área da saúde, terapeutas corporais e público interessado em filosofia oriental.",
+    "price": "",
+    "certification": "Certificado de Formação Profissional em Filosofia Védica emitido pela ALBA.",
+    "objectives": [
+      "Compreender o síntese do Tantra entre Advaita e Sanquia.",
+      "Dominar meditações tântricas avançadas (Mantra, Laya, Hatha Yoga, Trataka, Antar Mauna).",
+      "Analisar o dualismo de Sanquia (Purusha e Prakriti) e as escolas de Vedanta."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Módulo 1 - Tantrismo Introdução & Avançado",
+        "theoretical": [
+          "Conceito de Tantra (expansão e liberação) e síntese filosófica",
+          "Tantrismo Avançado: meditações tântricas (Mantra, Laya, Hatha Yoga)",
+          "Passagens dos textos Kulanarva, Mahanirvana e Gheranda Samhita"
+        ],
+        "practical": [
+          "Práticas de Drishtis (Trataka e Chaya Upasana), Cidakasha e Nadanusandhana"
+        ]
+      },
+      {
+        "moduleTitle": "Módulo 2 - Vedanta, Sanquia e Ciência do Yoga",
+        "theoretical": [
+          "Vedanta: Advaita (Sankara), Visistadvaita (Ramanuja) e Dvaita (Madhva)",
+          "Sanquia: Purusha, Prakriti, os 25 Tattvas e influência nos Yogasutras",
+          "Bases científicas e neurofisiológicas da concentração e meditação"
+        ]
+      }
+    ]
   },
   {
     "id": 9,
     "title": "Yoga Infantil - Workshop",
     "category": "Yoga",
-    "workload": "20h",
+    "workload": "8h",
     "format": "Presencial / Online",
     "status": "Inscrições Abertas",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1540479859555-17af45c78602?q=80&w=600&auto=format&fit=crop",
-    "description": "Capacitação para professores e pais que desejam introduzir posturas de Yoga de forma divertida para crianças. Técnicas de relaxamento e desenvolvimento motor associados à ludicidade.",
+    "description": "Capacitação lúdica desenvolvida para ensinar Yoga a crianças através de histórias, jogos e brincadeiras motoras, promovendo equilíbrio, respiração, disciplina e serenidade.",
     "originalUrl": "https://www.ayurvedica.org/yoga-infantil-workshop/",
-    "hotmartLink": "https://www.ayurvedica.org/yoga-infantil-workshop/"
+    "hotmartLink": "https://www.ayurvedica.org/yoga-infantil-workshop/",
+    "targetAudience": "Instrutores de Yoga, profissionais de saúde, terapeutas corporais, educadores, pais e público em geral.",
+    "price": "",
+    "certification": "Certificado de Formação Profissional em Yoga Infantil emitido pela ALBA.",
+    "objectives": [
+      "Ensinar posturas de Yoga de forma divertida através de jogos e contação de histórias.",
+      "Desenvolver coordenação motora, postura, trabalho em equipe e tranquilidade em provas.",
+      "Introduzir respirações e relaxamento respeitando a realidade sensorial da criança."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Metodologia Lúdica",
+        "theoretical": [
+          "Desenvolvimento motor e sensorial da criança no Yoga",
+          "Ética infantil e fortalecimento da autoestima"
+        ],
+        "practical": [
+          "Jogos pedagógicos e contação de histórias com posturas físicas",
+          "Exercícios respiratórios lúdicos e técnicas de calma"
+        ]
+      }
+    ]
   },
   {
     "id": 10,
@@ -385,9 +585,31 @@ export const initialCourses = [
     "status": "Inscrições Abertas",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?q=80&w=600&auto=format&fit=crop",
-    "description": "Desvende o poder sutil dos cristais e saiba como utilizá-los nas sessões de meditação e reequilíbrio dos Chakras. Propriedades vibracionais, métodos de limpeza e energização das pedras mais conhecidas.",
+    "description": "Estudo profundo do uso físico, metafísico, espiritual e curativo dos cristais e pedras semipreciosas. Aprenda métodos de limpeza, energização e aplicação na meditação, purificação de ambientes e medicina Ayurvédica.",
     "originalUrl": "https://www.ayurvedica.org/cristais-e-meditacao/",
-    "hotmartLink": "https://www.ayurvedica.org/cristais-e-meditacao/"
+    "hotmartLink": "https://www.ayurvedica.org/cristais-e-meditacao/",
+    "targetAudience": "Público em geral e interessados em Cristais e Meditação.",
+    "price": "",
+    "certification": "Certificado de Formação Profissional em Cristais e Meditação emitido pela ALBA.",
+    "objectives": [
+      "Conhecer as propriedades físicas, metafísicas e curativas dos cristais de quartzo.",
+      "Aprender a limpar, purificar e energizar pedras e cristais para benefício próprio e de ambientes.",
+      "Estudar a aplicação de gemas no Ayurveda e as 7 chaves da cura pela cor.",
+      "Utilizar cristais no corpo humano e para energização ambiental durante meditações."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Programático",
+        "theoretical": [
+          "História dos cristais de quartzo naturais e suas propriedades físicas e metafísicas",
+          "Como limpar e exercitar a neutralização de energia em cristais",
+          "Vozes dévicas do reino dos cristais e o uso no Ayurveda",
+          "Terapias alternativas utilizando cristais de quartzo",
+          "Relação cor-pedra, efeitos curativos e as 7 chaves da cura pela cor",
+          "Aplicação prática dos cristais no corpo humano e energização ambiental para meditação"
+        ]
+      }
+    ]
   },
   {
     "id": 17,
@@ -429,5 +651,40 @@ export const initialCourses = [
     ],
     "providedMaterials": "Caderno de apontamentos e certificado de formação profissional.",
     "neededMaterials": "1 toalha grande, 1 lençol, óleo de massagem natural e roupa apropriada para receber e fazer massagem."
+  },
+  {
+    "id": 18,
+    "title": "Anatomia do Yoga - Workshop",
+    "category": "Yoga",
+    "workload": "5h",
+    "format": "Presencial / Pós-laboral",
+    "status": "Inscrições Abertas",
+    "students": 0,
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
+    "description": "Workshop direcionado para professores e praticantes de Yoga que pretendam aprender como os asanas trabalham os diferentes grupos musculares, ligamentos e articulações de modo a corrigir desequilíbrios e evitar lesões.",
+    "originalUrl": "https://www.ayurvedica.org/anatomia-do-yoga-workshop/",
+    "hotmartLink": "https://www.ayurvedica.org/anatomia-do-yoga-workshop/",
+    "targetAudience": "Instrutores de Yoga, profissionais da área da saúde, terapeutas corporais, massoterapeutas, reikianos e público em geral.",
+    "price": "",
+    "certification": "Certificado de Formação Profissional em Anatomia do Yoga emitido pela Associação Luso-Brasileira de Ayurveda (ALBA).",
+    "objectives": [
+      "Compreender a atuação dos Asanas em grupos musculares superficiais e profundos.",
+      "Identificar fraquezas e desequilíbrios musculares e posturais mais comuns.",
+      "Desenvolver equilíbrio adequado entre força e flexibilidade para prevenir problemas e lesões a longo prazo."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Diagnóstico e Prevenção de Lesões",
+        "theoretical": [
+          "Diagnóstico dos desequilíbrios musculares e posturais mais comuns",
+          "Anatomia funcional dos grupos musculares, ligamentos e articulações no Yoga",
+          "Prevenção de lesões a nível da coluna, cinturas escapular/pélvica, membros e fáscia"
+        ],
+        "practical": [
+          "Asanas específicos para reduzir desequilíbrios musculares",
+          "Alinhamento postural preventivo para coluna e articulações"
+        ]
+      }
+    ]
   }
 ];
