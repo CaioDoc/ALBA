@@ -129,7 +129,7 @@ export const initialCourses = [
     "originalUrl": "https://www.ayurvedica.org/massagem-ayurvedica-tradicional/",
     "hotmartLink": "https://www.ayurvedica.org/massagem-ayurvedica-tradicional/",
     "targetAudience": "Fisioterapeutas, terapeutas corporais, reflexologistas, psicólogos, osteopatas, massagistas, esteticistas e interessados em geral.",
-    "price": "Módulo I (40h): €50 Inscrição + €300 Curso\nMódulo II (56h): €300\n(Total: €650, Sócios 10% desc.)",
+    "price": "",
     "certification": "Certificado de Formação Profissional em Massagem Ayurvédica Tradicional emitido pela Associação Luso-Brasileira de Ayurveda (ALBA).",
     "objectives": [
       "Aprender a executar uma massagem completa, dos pés à cabeça, com as mãos e os pés.",
@@ -196,7 +196,7 @@ export const initialCourses = [
     "originalUrl": "https://www.ayurvedica.org/massagem-ayurvedica-para-spa-terapias/",
     "hotmartLink": "https://www.ayurvedica.org/massagem-ayurvedica-para-spa-terapias/",
     "targetAudience": "Profissionais de massagem em SPAs, fisioterapeutas, terapeutas corporais, reflexologistas, psicólogos, osteopatas, esteticistas e profissionais de saúde.",
-    "price": "Módulo I (40h): €50 Inscrição + €300 Curso (Total: €350, Sócios 10% desc.)",
+    "price": "",
     "certification": "Certificado de Formação Profissional em Massagem Ayurvédica para Spa Terapias emitido pela ALBA.",
     "objectives": [
       "Aprender a executar uma massagem completa de relaxamento, dos pés à cabeça, com foco em spas.",
