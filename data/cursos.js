@@ -459,40 +459,41 @@ export const initialCourses = [
     "category": "Massagens Ayurvédicas",
     "workload": "16h",
     "format": "Presencial",
-    "status": "Vagas Limitadas",
+    "status": "Inscrições Abertas",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=600&auto=format&fit=crop",
-    "description": "Massagem indiana tradicional focada no pescoço, nuca, ombros, orelhas, face e couro cabeludo (Champi). Atua em 37 pontos energéticos, combatendo estresse, insónia, ansiedade e rigidez muscular, além de promover nutrição capilar.",
+    "description": "Massagem indiana tradicional focada no pescoço, nuca, ombros, orelhas, face e couro cabeludo (Champi). Atua em 37 pontos energéticos, combatendo estresse, insónia, ansiedade e rigidez muscular, além de promover nutrição e crescimento capilar.",
     "originalUrl": "https://www.ayurvedica.org/indian-head-massage-champi/",
     "hotmartLink": "https://www.ayurvedica.org/indian-head-massage-champi/",
-    "targetAudience": "Profissionais da área da saúde, terapeutas, massoterapeutas, psicólogos, naturopatas e público em geral.",
+    "targetAudience": "Profissionais da área da saúde, Terapeutas, Massoterapeutas, Psicólogos, Naturopatas e público em geral.",
     "price": "",
-    "certification": "Certificado de Formação Profissional em Indian Head Massage emitido pela Associação Luso-Brasileira de Ayurveda (ALBA).",
+    "certification": "Certificado de Formação Profissional em Indian Head Massage - Champi emitido pela Associação Luso-Brasileira de Ayurveda (ALBA).",
     "objectives": [
-      "Aprender a técnica tradicional indiana Champi atuando em 37 pontos energéticos na cabeça e pescoço.",
-      "Entender a aplicação terapêutica para o combate ao estresse, enxaquecas, ansiedade e insónia.",
-      "Dominar o uso de óleos vegetais e aromas para fortalecimento e crescimento capilar.",
-      "Executar manobras práticas em Ombros, Pescoço, Nuca, Escalpe e Face."
+      "Atuar nos 37 pontos energéticos situados no pescoço e na cabeça.",
+      "Executar a massagem tradicional indiana Champi (ombros, nuca, pescoço, orelhas, face e escalpe).",
+      "Promover a melhoria da circulação, oxigenação do cérebro, combate ao stress, insónias, ansiedade e rigidez muscular.",
+      "Aplicar óleos vegetais específicos para saúde, fortalecimento e crescimento capilar."
     ],
     "syllabus": [
       {
-        "moduleTitle": "Conteúdo Programático (Teórico e Prático)",
+        "moduleTitle": "Módulo Teórico e Sequência Prática",
         "theoretical": [
-          "Introdução Geral à Ayurveda e a Massagem na Cabeça",
+          "Introdução Geral à Ayurveda e à Massagem na Cabeça",
           "A IHM como é praticada na Índia e no Ocidente",
-          "A necessidade e indicações da IHM",
+          "A necessidade e aplicações terapêuticas comprovadas da IHM",
           "Anatomia aplicada à IHM (ossos, músculos, sistemas linfático e circulatório)",
-          "Energias subtis e relação terapeuta/receptor",
-          "Tipos de óleos, aromas e materiais adequados",
-          "Chakras superiores (Sahasrara, Ajna e Vishuddha)",
-          "Os principais pontos de pressão marma na cabeça e pescoço",
-          "Higiene e Segurança no atendimento"
+          "Indicações, contra-indicações e efeitos sobre o organismo",
+          "As energias subtis e a relação terapeuta/receptor",
+          "Tipos de óleos, aromas e escolha dos materiais",
+          "Os chakras superiores (Sahasrara, Ajna e Vishuddha)",
+          "Os 37 pontos de pressão Marma na cabeça e pescoço",
+          "Higiene, ergonomia e segurança no atendimento"
         ],
         "practical": [
-          "Preparação do paciente e postura do terapeuta (posição sentado)",
-          "Técnicas de massagem com e sem óleo",
-          "Sequência completa de Massagem à Cabeça: Ombros, Pescoço, Escalpe e Face",
-          "Prática orientada das sequências"
+          "Preparação do paciente e do terapeuta (importância da posição sentado)",
+          "Técnicas de massagem com óleo e a seco",
+          "Sequência completa de Massagem à Cabeça: Ombros, Pescoço, Nuca, Escalpe e Face",
+          "Treino prático supervisionado das sequências"
         ]
       }
     ],
