@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 export const Footer = () => {
-  const [currentLang, setCurrentLang] = useState('pt');
   const [formData, setFormData] = useState({ nome: '', email: '', mensagem: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -18,32 +17,12 @@ export const Footer = () => {
   });
 
   useEffect(() => {
-    const match = document.cookie.match(/googtrans=\/pt\/([a-z]{2})/);
-    if (match && match[1]) {
-      setCurrentLang(match[1]);
-    }
-    
     // Load social links
     const savedLinks = localStorage.getItem('alba_social_links');
     if (savedLinks) {
       setSocialLinks(JSON.parse(savedLinks));
     }
   }, []);
-
-  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newLang = e.target.value;
-    setCurrentLang(newLang);
-    
-    if (newLang === 'pt') {
-      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=" + location.hostname + "; path=/;";
-    } else {
-      document.cookie = `googtrans=/pt/${newLang}; path=/`;
-      document.cookie = `googtrans=/pt/${newLang}; domain=${location.hostname}; path=/`;
-    }
-    
-    window.location.reload();
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -241,20 +220,7 @@ export const Footer = () => {
         <p>© 2026 Associação Luso-Brasileira de Ayurveda. Todos os direitos reservados.</p>
         
         <div className="flex items-center gap-6 flex-wrap justify-center">
-          <div className="flex items-center gap-2">
-            <label htmlFor="lang-select" className="text-stone-500">Idioma:</label>
-            <select 
-              id="lang-select"
-              value={currentLang}
-              onChange={handleLanguageChange}
-              className="bg-stone-800 text-stone-300 border border-stone-700 rounded-md px-2 py-1 text-xs focus:outline-none focus:border-emerald-500 cursor-pointer"
-            >
-              <option value="pt">Português</option>
-              <option value="en">English</option>
-              <option value="es">Español</option>
-              <option value="fr">Français</option>
-            </select>
-          </div>
+
 
           <a href="https://www.ayurvedica.eu/" target="_blank" rel="noreferrer" className="cursor-pointer hover:text-white transition-colors">ALBA Europeia</a>
           <Link href="/associe-se" className="cursor-pointer hover:text-white transition-colors">Seja um Associado</Link>

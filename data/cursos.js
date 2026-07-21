@@ -120,27 +120,115 @@ export const initialCourses = [
     "id": 11,
     "title": "Massagem Ayurvédica Tradicional",
     "category": "Massagens Ayurvédicas",
-    "workload": "120h",
-    "format": "Presencial",
+    "workload": "80h",
+    "format": "Presencial (Módulo I + II)",
     "status": "Inscrições Abertas",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=600&auto=format&fit=crop",
-    "description": "Formação prática e intensa na técnica clássica da Abhyanga. Aprenda a trabalhar os marmas, o uso correto de óleos medicinais para cada Dosha, promovendo o relaxamento profundo e a desintoxicação do corpo.",
+    "description": "Formação prática e intensa na técnica clássica da terapia corporal Ayurvédica. Dividido em 2 módulos específicos com certificação de formação profissional, ensinando manobras precisas com mãos e pés, estiramentos, realinhamento dos chakras e diagnóstico corporal.",
     "originalUrl": "https://www.ayurvedica.org/massagem-ayurvedica-tradicional/",
-    "hotmartLink": "https://www.ayurvedica.org/massagem-ayurvedica-tradicional/"
+    "hotmartLink": "https://www.ayurvedica.org/massagem-ayurvedica-tradicional/",
+    "targetAudience": "Fisioterapeutas, terapeutas corporais, reflexologistas, psicólogos, osteopatas, massagistas, esteticistas e interessados em geral.",
+    "price": "Módulo I (40h): €50 Inscrição + €300 Curso\nMódulo II (56h): €300\n(Total: €650, Sócios 10% desc.)",
+    "certification": "Certificado de Formação Profissional em Massagem Ayurvédica Tradicional emitido pela Associação Luso-Brasileira de Ayurveda (ALBA).",
+    "objectives": [
+      "Aprender a executar uma massagem completa, dos pés à cabeça, com as mãos e os pés.",
+      "Compreender o campo energético, sistema muscular e anatómico subtil do corpo físico.",
+      "Iniciação teórica na tradição Védica, 5 elementos, 3 Doshas, Chakras, Marmas e óleos medicinais.",
+      "Desenvolver atuação ética em gabinete e atendimento profissional personalizado."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Módulo I - Fundamentos Teóricos & Prática de Mãos",
+        "theoretical": [
+          "Ayurvédica: Conceito, Características, Acções e Funções",
+          "História da Ayurvédica e Conceitos Gerais da Medicina Ayurvédica",
+          "As diversas massagens na Índia e os pilares do Ayurveda",
+          "Fundamentos básicos: os 5 elementos e os 3 Doshas",
+          "Noções de Anatomia e Fisiologia Humana e Subtil (músculos, sistema nervoso e circulatório)",
+          "Principais Centros Energéticos do sistema subtil e Introdução aos Chakras",
+          "Os óleos e suas principais aplicações na massagem",
+          "Indicações e contra-indicações da massagem Ayurvédica",
+          "Massagem Ayurvédica e realinhamento dos chakras"
+        ],
+        "practical": [
+          "COLUNA: Lombar, dorsal, cervical e estimulação de pontos vitais",
+          "MEMBROS INFERIORES: Região posterior e planta dos pés (estimulação de pontos vitais)",
+          "MEMBROS INFERIORES: Região anterior e estimulação de pontos vitais",
+          "ABDÓMEN e TÓRAX: Massagem e estimulação vital",
+          "MEMBROS SUPERIORES: Região anterior e posterior",
+          "PESCOÇO, FACE e CABEÇA: Cordas vocais, mandíbula, sínus, orelhas, testa e couro cabeludo"
+        ]
+      },
+      {
+        "moduleTitle": "Módulo II - Massagem com os Pés, Estiramentos & Anatomia Oculta",
+        "theoretical": [
+          "Aprofundamento na teoria dos 5 elementos, sentidos, 3 doshas e 3 gunas",
+          "Anatomia complementar para a massagem com os pés e novas manobras",
+          "Os sete tecidos corporais (Sapta Dhatus) e sete corpos subtis",
+          "Factores que alteram o equilíbrio doshico (naturais e não naturais)",
+          "Os 21 chakras menores, chakras auxiliares e pontos de reflexo",
+          "Dissolução de bloqueios energéticos no campo físico e etérico",
+          "Os pontos Marmas e Nadis: classificação e importância",
+          "Sistema linfático e uso avançado de óleos essenciais aromáticos",
+          "Coluna vertebral e correcção de postura via massagem realizada com os pés",
+          "Indicações e contra-indicações dos estiramentos e conselho terapêutico"
+        ],
+        "practical": [
+          "Fase 1: Execução de massagem completa com as mãos, massagem com os pés nas costas, pernas e pés, com alongamentos básicos na posição sentado e deitado.",
+          "Fase 2: Aprendizado de alongamentos e estiramentos adicionais (costas em decúbito ventral, pernas, pés, barriga, caixa torácica, braços e cervicais)."
+        ]
+      }
+    ],
+    "providedMaterials": "Caderno de apontamentos teórico e prático fornecido pela ALBA.",
+    "neededMaterials": "Roupa apropriada para fazer e receber massagem, óleo de massagem natural (amêndoas doce, sésamo, grainha de uva), lençol e toalha grande."
   },
   {
     "id": 12,
     "title": "Massagem Ayurvédica Para Spa Terapias",
     "category": "Massagens Ayurvédicas",
-    "workload": "80h",
+    "workload": "40h",
     "format": "Presencial",
     "status": "Inscrições Abertas",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=600&auto=format&fit=crop",
-    "description": "Aprenda a adaptar e aplicar os princípios das terapias corporais ayurvédicas no ambiente luxuoso e relaxante de um SPA moderno, oferecendo um atendimento premium que une saúde milenar e estética.",
+    "description": "Capacitação focada para profissionais de massagem em SPAs, gabinetes e centros de bem-estar. Prepara os alunos para executar as principais manobras do sistema tradicional ayurvédico na vertente de relaxamento e estética holística.",
     "originalUrl": "https://www.ayurvedica.org/massagem-ayurvedica-para-spa-terapias/",
-    "hotmartLink": "https://www.ayurvedica.org/massagem-ayurvedica-para-spa-terapias/"
+    "hotmartLink": "https://www.ayurvedica.org/massagem-ayurvedica-para-spa-terapias/",
+    "targetAudience": "Profissionais de massagem em SPAs, fisioterapeutas, terapeutas corporais, reflexologistas, psicólogos, osteopatas, esteticistas e profissionais de saúde.",
+    "price": "Módulo I (40h): €50 Inscrição + €300 Curso (Total: €350, Sócios 10% desc.)",
+    "certification": "Certificado de Formação Profissional em Massagem Ayurvédica para Spa Terapias emitido pela ALBA.",
+    "objectives": [
+      "Aprender a executar uma massagem completa de relaxamento, dos pés à cabeça, com foco em spas.",
+      "Perceber o campo energético corporal, anatomia muscular de sustentação e sistema nervoso.",
+      "Conhecer a tradição Védica, os 5 elementos, 3 Doshas e aplicações de óleos vegetais.",
+      "Aprender atendimento profissional ético e organização de gabinete de tratamento em spas."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Programa Geral do Curso (Teórico e Prático)",
+        "theoretical": [
+          "Ayurvédica: Conceito, Características, Acções e Funções",
+          "História da Ayurvédica e Conceitos Gerais da Medicina Ayurvédica",
+          "As diversas massagens na Índia e os pilares do Ayurveda",
+          "Os preceitos básicos: 5 elementos e 3 Doshas",
+          "Noções de Anatomia e Fisiologia Humana (músculos de sustentação, sistema nervoso e circulatório)",
+          "Principais Centros Energéticos e Introdução aos Chakras",
+          "Os óleos vegetais e suas principais aplicações",
+          "Indicações e contra-indicações da massagem em ambientes de SPA",
+          "Realinhamento dos chakras e movimentos tradicionais"
+        ],
+        "practical": [
+          "COLUNA: Lombar, dorsal, cervical e estimulação de pontos vitais",
+          "MEMBROS INFERIORES: Região posterior, planta dos pés e região anterior",
+          "ABDÓMEN e TÓRAX: Massagem e estimulação de pontos vitais",
+          "MEMBROS SUPERIORES: Região anterior e posterior",
+          "PESCOÇO, FACE e CABEÇA: Cordas vocais, mandíbula, sínus, orelhas, testa e couro cabeludo"
+        ]
+      }
+    ],
+    "providedMaterials": "Caderno de apontamentos teórico e prático fornecido pela ALBA.",
+    "neededMaterials": "Roupa apropriada para fazer e receber massagem, óleo de massagem natural (amêndoas doce, sésamo, etc.), lençol e toalha grande."
   },
   {
     "id": 13,

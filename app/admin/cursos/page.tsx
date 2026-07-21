@@ -55,12 +55,12 @@ export default function AdminCursosPage() {
   };
 
   useEffect(() => {
-    const savedCourses = localStorage.getItem('alba_cursos_v3');
+    const savedCourses = localStorage.getItem('alba_cursos_v5');
     if (savedCourses) {
       setCourses(JSON.parse(savedCourses));
     } else {
       setCourses(scrapedCourses);
-      localStorage.setItem('alba_cursos_v3', JSON.stringify(scrapedCourses));
+      localStorage.setItem('alba_cursos_v5', JSON.stringify(scrapedCourses));
     }
   }, []);
 
@@ -73,14 +73,14 @@ export default function AdminCursosPage() {
     if(confirm('Tem certeza que deseja deletar ou suspender este curso permanentemente?')) {
       const newCourses = courses.filter(c => c.id !== id);
       setCourses(newCourses);
-      localStorage.setItem('alba_cursos_v3', JSON.stringify(newCourses));
+      localStorage.setItem('alba_cursos_v5', JSON.stringify(newCourses));
     }
   };
 
   const toggleFeatured = (id: number) => {
     const newCourses = courses.map(c => c.id === id ? { ...c, featured: !c.featured } : c);
     setCourses(newCourses);
-    localStorage.setItem('alba_cursos_v3', JSON.stringify(newCourses));
+    localStorage.setItem('alba_cursos_v5', JSON.stringify(newCourses));
   };
 
   const toggleSelectAll = () => {
@@ -104,7 +104,7 @@ export default function AdminCursosPage() {
     if (confirm(`Tem certeza que deseja deletar os ${selectedItems.length} cursos selecionados permanentemente?`)) {
       const newCourses = courses.filter(c => !selectedItems.includes(c.id));
       setCourses(newCourses);
-      localStorage.setItem('alba_cursos_v3', JSON.stringify(newCourses));
+      localStorage.setItem('alba_cursos_v5', JSON.stringify(newCourses));
       setSelectedItems([]);
     }
   };
@@ -132,7 +132,7 @@ export default function AdminCursosPage() {
     }
     
     setCourses(newCourses);
-    localStorage.setItem('alba_cursos_v3', JSON.stringify(newCourses));
+    localStorage.setItem('alba_cursos_v5', JSON.stringify(newCourses));
     
     alert('Curso salvo e publicado com sucesso!');
     setView('list');
