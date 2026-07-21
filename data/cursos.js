@@ -307,14 +307,37 @@ export const initialCourses = [
     "id": 10,
     "title": "Yoga Hormonal",
     "category": "Yoga",
-    "workload": "40h",
-    "format": "Híbrido",
+    "workload": "16h",
+    "format": "Presencial / Híbrido",
     "status": "Vagas Limitadas",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?q=80&w=600&auto=format&fit=crop",
-    "description": "Método terapêutico natural para auxiliar no reequilíbrio hormonal feminino. Especialmente desenvolvido para amenizar sintomas de TPM, menopausa e questões relacionadas à tireoide através de respirações dinâmicas.",
+    "description": "Técnica dinâmica e holística de Yoga Terapia Hormonal que atua intensamente no corpo energético para reativar a produção de hormônios. Ameniza sintomas da menopausa em mulheres e andropausa em homens.",
     "originalUrl": "https://www.ayurvedica.org/yoga-hormonal/",
-    "hotmartLink": "https://www.ayurvedica.org/yoga-hormonal/"
+    "hotmartLink": "https://www.ayurvedica.org/yoga-hormonal/",
+    "targetAudience": "Instrutores de Yoga, profissionais da área da saúde, terapeutas corporais, massoterapeutas, reikianos e público em geral.",
+    "price": "",
+    "certification": "Certificado de Workshop em Yoga Hormonal emitido pela Associação Luso-Brasileira de Ayurveda (ALBA).",
+    "objectives": [
+      "Nível Físico: Fortalecer musculatura/ossos, corrigir postura e aumentar flexibilidade.",
+      "Nível Fisiológico: Ativar a produção natural de hormônios nas glândulas tireoides, hipófise e suprarenais.",
+      "Nível Psíquico: Combater o estresse, a depressão e a insônia.",
+      "Nível Energético: Ativar os chakras e melhorar a absorção e distribuição de prana no corpo."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Práticas e Técnicas Revitalizantes",
+        "theoretical": [
+          "Diferenças entre Hatha Yoga clássico e Yoga Terapia Hormonal",
+          "Atuação fisiológica e glandular na menopausa, andropausa e distúrbios hormonais"
+        ],
+        "practical": [
+          "Exercícios respiratórios específicos (Pranayamas)",
+          "Mudras revitalizantes e circulação contínua de energia",
+          "Visualizações direcionadas para o sistema endócrino e relaxamento"
+        ]
+      }
+    ]
   },
   {
     "id": 11,
@@ -683,6 +706,41 @@ export const initialCourses = [
         "practical": [
           "Asanas específicos para reduzir desequilíbrios musculares",
           "Alinhamento postural preventivo para coluna e articulações"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "title": "O Yoga da Energia",
+    "category": "Yoga",
+    "workload": "8h",
+    "format": "Presencial / Workshop",
+    "status": "Inscrições Abertas",
+    "students": 0,
+    "image": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=600&auto=format&fit=crop",
+    "description": "Técnica de Yoga desenvolvida por Roger Clerc que conjuga Pranayama com Asanas e coordenação motora para o domínio da mente e circulação de energia pelos Nadis (linhas de energia do corpo).",
+    "originalUrl": "https://www.ayurvedica.org/yoga-da-energia/",
+    "hotmartLink": "https://www.ayurvedica.org/yoga-da-energia/",
+    "targetAudience": "Instrutores de Yoga, profissionais da área da saúde, terapeutas corporais, massoterapeutas, reikianos e público em geral.",
+    "price": "",
+    "certification": "Certificado de Formação Profissional em O Yoga da Energia emitido pela ALBA.",
+    "objectives": [
+      "Praticar a integração de Pranayama ritmado com Asanas e coordenação motora.",
+      "Fazer a energia circular pelos Nadis (canais energéticos) para desenvolvimento pessoal.",
+      "Desenvolver domínio da mente e autoconhecimento."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Módulos Práticos (4 Aulas de 2h)",
+        "theoretical": [
+          "Princípios do Yoga da Energia de Roger Clerc",
+          "Estrutura básica de uma prática focada na mobilidade e nos Nadis"
+        ],
+        "practical": [
+          "Exercícios para aumentar flexibilidade e prevenir lesões",
+          "Exercícios respiratórios (Pranayamas ritmados com movimento)",
+          "Exercícios para pós-treino e técnicas de concentração e relaxamento"
         ]
       }
     ]
