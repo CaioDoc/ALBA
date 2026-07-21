@@ -109,7 +109,7 @@ export default function CursosPage() {
                   </div>
                   <div className="px-8 pb-8">
                     <div className="flex items-center justify-between pt-4 border-t border-stone-100">
-                      <span className="text-xs font-bold uppercase text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-lg">{course.price}</span>
+                      <span className="text-xs font-bold uppercase text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-lg">{course.status || 'Inscrições Abertas'}</span>
                       {/* Botão que chama a Drawer */}
                       <button 
                         onClick={() => handleOpenDrawer(course)}
