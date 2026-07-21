@@ -239,35 +239,142 @@ export const initialCourses = [
     "status": "Vagas Limitadas",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=600&auto=format&fit=crop",
-    "description": "Domine a tradicional técnica Champi, a massagem capilar craniana originária da Índia. Ideal para aliviar tensões nos ombros, pescoço e cabeça, ajudando na circulação, combate ao estresse e queda de cabelo.",
+    "description": "Massagem indiana tradicional focada no pescoço, nuca, ombros, orelhas, face e couro cabeludo (Champi). Atua em 37 pontos energéticos, combatendo estresse, insónia, ansiedade e rigidez muscular, além de promover nutrição capilar.",
     "originalUrl": "https://www.ayurvedica.org/indian-head-massage-champi/",
-    "hotmartLink": "https://www.ayurvedica.org/indian-head-massage-champi/"
+    "hotmartLink": "https://www.ayurvedica.org/indian-head-massage-champi/",
+    "targetAudience": "Profissionais da área da saúde, terapeutas, massoterapeutas, psicólogos, naturopatas e público em geral.",
+    "price": "",
+    "certification": "Certificado de Formação Profissional em Indian Head Massage emitido pela Associação Luso-Brasileira de Ayurveda (ALBA).",
+    "objectives": [
+      "Aprender a técnica tradicional indiana Champi atuando em 37 pontos energéticos na cabeça e pescoço.",
+      "Entender a aplicação terapêutica para o combate ao estresse, enxaquecas, ansiedade e insónia.",
+      "Dominar o uso de óleos vegetais e aromas para fortalecimento e crescimento capilar.",
+      "Executar manobras práticas em Ombros, Pescoço, Nuca, Escalpe e Face."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Programático (Teórico e Prático)",
+        "theoretical": [
+          "Introdução Geral à Ayurveda e a Massagem na Cabeça",
+          "A IHM como é praticada na Índia e no Ocidente",
+          "A necessidade e indicações da IHM",
+          "Anatomia aplicada à IHM (ossos, músculos, sistemas linfático e circulatório)",
+          "Energias subtis e relação terapeuta/receptor",
+          "Tipos de óleos, aromas e materiais adequados",
+          "Chakras superiores (Sahasrara, Ajna e Vishuddha)",
+          "Os principais pontos de pressão marma na cabeça e pescoço",
+          "Higiene e Segurança no atendimento"
+        ],
+        "practical": [
+          "Preparação do paciente e postura do terapeuta (posição sentado)",
+          "Técnicas de massagem com e sem óleo",
+          "Sequência completa de Massagem à Cabeça: Ombros, Pescoço, Escalpe e Face",
+          "Prática orientada das sequências"
+        ]
+      }
+    ],
+    "providedMaterials": "Caderno de apontamentos e certificado de formação.",
+    "neededMaterials": "Roupa apropriada (fato de treino ou calções), toalha de rosto, escova ou pente e óleo vegetal natural (amêndoas doces, sésamo, grainha de uva ou coco)."
   },
   {
     "id": 14,
     "title": "Nutrição Ayurvédica & Estilo de Vida",
     "category": "Medicina Ayurvédica",
-    "workload": "150h",
-    "format": "Híbrido",
+    "workload": "24h Presenciais",
+    "format": "Presencial / Híbrido",
     "status": "Inscrições Abertas",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=600&auto=format&fit=crop",
-    "description": "Entenda a nutrição pela visão do Ayurveda, onde a digestão (Agni) e a metabolização vêm em primeiro lugar. Aprenda combinações de alimentos incompatíveis (Viruddha Ahara) e o uso das seis qualidades de sabores.",
+    "description": "Formação prática sobre a alimentação e estilo de vida de acordo com cada biótipo constitutional (Prakrati). Aprenda a utilizar a energia dos alimentos, especiarias e práticas diárias (Dinacharya) para reequilíbrio da saúde, digestão e vitalidade.",
     "originalUrl": "https://www.ayurvedica.org/nutricao-ayurvedica-estilo-de-vida/",
-    "hotmartLink": "https://www.ayurvedica.org/nutricao-ayurvedica-estilo-de-vida/"
+    "hotmartLink": "https://www.ayurvedica.org/nutricao-ayurvedica-estilo-de-vida/",
+    "targetAudience": "Profissionais da área da saúde, terapeutas, massoterapeutas, psicólogos, naturopatas e público em geral.",
+    "price": "",
+    "certification": "Certificado de Formação Profissional em Nutrição Ayurvédica & Estilo de Vida emitido pela ALBA.",
+    "objectives": [
+      "Compreender a constituição individual Corpo-Mente (Prakrati) e como equilibrar cada biótipo.",
+      "Entender os 3 Pilares da Vida (Alimentos, Sono e Sexo) sob a ótica védica.",
+      "Aplicar propriedades curativas das especiarias e princípios da culinária vegetariana saudável.",
+      "Praticar Shri Shakti Pranayama e exercícios respiratórios Yogis para aumento de vitalidade e concentração."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Fundamentos e Culinária Terapêutica",
+        "theoretical": [
+          "Os Fundamentos da Ayurveda: Princípio Ayurvédico Mente-Corpo",
+          "O Ser Humano como microcosmo do cosmos",
+          "Como determinar e equilibrar a constituição individual (Prakrati)",
+          "Os 3 Pilares da Vida e obtenção de saúde ótima",
+          "Regime Ayurvédico Saudável para equilibrar os biorritmos",
+          "Nutrição Ayurvédica: Alimentação saudável para Corpo-Mente",
+          "Propriedades curativas das especiarias e alimentação consciente",
+          "Shri Shakti Pranayama, meditação e exercícios respiratórios"
+        ],
+        "practical": [
+          "Análise prática de biotipos constitucionais (Prakrati)",
+          "Elaboração de dietas e regimes alimentares para cada dosha",
+          "Exercícios respiratórios (Pranayama) para equilíbrio energético"
+        ]
+      }
+    ],
+    "providedMaterials": "Dois cadernos de apontamentos e um caderno exclusivo com receitas saborosas para cada dosha.",
+    "neededMaterials": "Material de anotações e disposição para práticas respiratórias."
   },
   {
     "id": 15,
     "title": "Naturopatia Ayurvédica",
     "category": "Medicina Ayurvédica",
-    "workload": "200h",
-    "format": "Presencial / Online",
+    "workload": "108h (48h Orientação + 60h Pesquisa)",
+    "format": "Semi-Presencial (Fase I & II)",
     "status": "Inscrições Abertas",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1505816014357-96b5ff457e9a?q=80&w=600&auto=format&fit=crop",
-    "description": "Curso completo que integra a medicina natural ocidental aos preceitos da milenar medicina oriental indiana. Preparação de elixires, chás, rotinas de sono e abordagens purificadoras sem químicos.",
+    "description": "Formação profunda e abrangente baseada na tradição de Kerala (Sul da Índia). Capacita o aluno no uso do arsenal terapêutico profilático e curativo da Medicina Ayurvédica, abrangendo estudo de ervas, tratamentos específicos (Shirodhara, Navarakizhi, Elakizhi) e rotinas de equilíbrio.",
     "originalUrl": "https://www.ayurvedica.org/naturopatia-ayurvedica/",
-    "hotmartLink": "https://www.ayurvedica.org/naturopatia-ayurvedica/"
+    "hotmartLink": "https://www.ayurvedica.org/naturopatia-ayurvedica/",
+    "targetAudience": "Profissionais de saúde, terapeutas, massoterapeutas, psicólogos, esteticistas, praticantes de Yoga e interessados na abordagem holística natural.",
+    "price": "",
+    "certification": "Certificado de Formação Profissional em Naturopatia Ayurvédica emitido pela ALBA.",
+    "objectives": [
+      "Dominar as bases da Medicina Ayurvédica (teoria Tridosha, biótipos e fisiologia dos tecidos).",
+      "Conhecer tratamentos clássicos de Kerala: Shirodhara, Navarakizhi, Swedhana, Elakizhi e Lepas.",
+      "Aprender condutas de equilíbrio e prescrição de ervas medicinais segundo o Charaka Samhita para Vata, Pitta e Kapha.",
+      "Praticar circuitos de massagem Anuloma, Pratiloma e Abhyanga."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Fase I - Procedimentos Teóricos & Fundamentos",
+        "theoretical": [
+          "História da Medicina Ayurvédica desde as planícies do Ganges",
+          "Teoria Tridosha e identificação de biótipos constitucionais",
+          "Relação Saúde/Doença, agravamento de doshas e fenômeno 'adoecer'",
+          "Dinacharya: rotina diária para manutenção da saúde",
+          "Fisiologia Ayurvédica: Tecidos (Dhatus) e Sistemas (Srotas)",
+          "Nutrição Ayurvédica (Conceito de Rasa e uso do Ghee)",
+          "Ervas, especiarias e técnica da decocção",
+          "Estudo aprofundado dos indivíduos Vata, Pitta e Kapha",
+          "Doenças e ervas específicas segundo o Charaka Samhita"
+        ],
+        "practical": [
+          "Demonstração dos Circuitos de Massagem Anuloma, Pratiloma e Abhyanga de Kerala",
+          "Preparo de óleos medicinais, decocções e compostos ayurvédicos",
+          "Demonstração de Shirodhara, Navarakizhi, Swedhana e Elakizhi"
+        ]
+      },
+      {
+        "moduleTitle": "Fase II - Especialização Prática & Tratamentos Específicos",
+        "theoretical": [
+          "Aprofundamento em terapias de Purificação (Panchakarma)",
+          "Condutas terapêuticas para quadros crônicos de agravamento doshico",
+          "Orientação tutorial individualizada e pesquisa de casos clínicos"
+        ],
+        "practical": [
+          "Treinamento prático direto em técnicas de Shirodhara, Abhyanga e Indian Head Massage"
+        ]
+      }
+    ],
+    "providedMaterials": "Caderno de Apontamentos exclusivo em Português e tutoria com formadores da ALBA.",
+    "neededMaterials": "Documentação necessária para inscrição e material para apontamentos."
   },
   {
     "id": 16,
@@ -281,5 +388,46 @@ export const initialCourses = [
     "description": "Desvende o poder sutil dos cristais e saiba como utilizá-los nas sessões de meditação e reequilíbrio dos Chakras. Propriedades vibracionais, métodos de limpeza e energização das pedras mais conhecidas.",
     "originalUrl": "https://www.ayurvedica.org/cristais-e-meditacao/",
     "hotmartLink": "https://www.ayurvedica.org/cristais-e-meditacao/"
+  },
+  {
+    "id": 17,
+    "title": "Massagem nas Costas - Coluna Vertebral",
+    "category": "Massagens Ayurvédicas",
+    "workload": "16h",
+    "format": "Presencial",
+    "status": "Inscrições Abertas",
+    "students": 0,
+    "image": "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=600&auto=format&fit=crop",
+    "description": "Curso focado na saúde e alinhamento da coluna vertebral. Combina manobras clássicas do oriente e ocidente para ativar a circulação sanguínea e linfática profunda, aliviar dores dorsais, lombares e cervicais e desbloquear a musculatura das costas.",
+    "originalUrl": "https://www.ayurvedica.org/massagem-nas-costas-coluna-vertebral/",
+    "hotmartLink": "https://www.ayurvedica.org/massagem-nas-costas-coluna-vertebral/",
+    "targetAudience": "Profissionais da área da saúde, terapeutas corporais, massoterapeutas, reikianos e público em geral.",
+    "price": "",
+    "certification": "Certificado de Formação Profissional em Massagem nas Costas emitido pela Associação Luso-Brasileira de Ayurveda (ALBA).",
+    "objectives": [
+      "Ativar a circulação sanguínea periférica e linfática profunda na musculatura das costas.",
+      "Combater dores lombares, dorsais, ciáticas, cervicalgias e contraturas musculares decorrentes do estresse.",
+      "Entender a anatomia oculta e os reflexos neurológicos de bloqueios nas vértebras cervicais, dorsais e lombares.",
+      "Executar manobras de aquecimento e sequências práticas específicas na coluna."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Teórico e Sequência Prática",
+        "theoretical": [
+          "Importância da utilização de óleos vegetais nas costas",
+          "Anatomia da coluna vertebral e desvios de postura",
+          "Relação entre vértebras, desvios e problemas de saúde (Cervical, Dorsal e Lombar)",
+          "Análise dos sintomas causados por bloqueios nas vértebras (cefaleias, ciatalgias, má digestão, torcicolo)",
+          "Vantagens para o sistema nervoso, circulatório, imunológico e esquelético"
+        ],
+        "practical": [
+          "Manobras e movimentos de aquecimento",
+          "Massagem passo a passo na coluna vertebral e área dorsal",
+          "Manobras específicas de alívio e soltura muscular"
+        ]
+      }
+    ],
+    "providedMaterials": "Caderno de apontamentos e certificado de formação profissional.",
+    "neededMaterials": "1 toalha grande, 1 lençol, óleo de massagem natural e roupa apropriada para receber e fazer massagem."
   }
 ];
