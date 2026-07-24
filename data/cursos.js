@@ -7,11 +7,11 @@ export const initialCourses = [
     "format": "Presencial / Online",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
+    "image": "/images/cursos/aprofundamento-em-yoga-yogaterapia/cover.jpg",
     "description": "Curso teórico e prático de técnicas milenares do Yoga com fins terapêuticos. Ensina a prevenção e auxílio no tratamento de desequilíbrios psicofísicos através de asanas, pranayamas, mudras e meditação direcionada.",
     "originalUrl": "https://www.ayurvedica.org/aprofundamento-em-yoga-yogaterapia/",
     "hotmartLink": "https://www.ayurvedica.org/aprofundamento-em-yoga-yogaterapia/",
-    "targetAudience": "Instrutores de Yoga, profissionais da área da saúde, terapeutas corporais, massoterapeutas, reikianos e público em geral.",
+    "targetAudience": "Instrutores de Yoga, Profissionais da área da saúde; Terapeutas corporais, Massoterapeutas, Praticantes de Yoga, Público em geral.",
     "price": "",
     "certification": "Certificado de Formação Profissional em Yogaterapia emitido pela Associação Luso-Brasileira de Ayurveda (ALBA).",
     "objectives": [
@@ -45,9 +45,9 @@ export const initialCourses = [
     "description": "Desenvolva seu potencial físico e mental aprendendo de forma progressiva a executar as principais posturas (Asanas), a reeducar a respiração e a obter autonomia para a prática diária de Yoga.",
     "originalUrl": "https://www.ayurvedica.org/iniciacao-pratica-asanas/",
     "hotmartLink": "https://www.ayurvedica.org/iniciacao-pratica-asanas/",
-    "targetAudience": "Instrutores de Yoga, profissionais de saúde, terapeutas corporais, massoterapeutas, reikianos e público em geral.",
+    "targetAudience": "Interessados em ser instrutor de Yoga, Profissionais da área da saúde; Terapeutas corporais, Massoterapeutas, Reikianos, Público em geral.",
     "price": "",
-    "certification": "Certificado de Formação Profissional em Iniciação às Asanas emitido pela ALBA.",
+    "certification": "Certificado de Workshop em Iniciação Prática às Asanas emitido pela ALBA.",
     "objectives": [
       "Introdução completa à prática do Yoga e desenvolvimento físico/mental.",
       "Consciência corporal, reeducação respiratória e eliminação de toxinas.",
@@ -79,7 +79,7 @@ export const initialCourses = [
     "format": "Presencial / Online",
     "status": "Vagas Limitadas",
     "students": 0,
-    "image": "https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?q=80&w=600&auto=format&fit=crop",
+    "image": "/images/cursos/instrutor-de-yoga/page_4_img_2.jpg",
     "description": "Formação internacional profissionalizante de Instrutor de Yoga credenciada pela Federação Europeia de Yoga, Yogaterapia e Ayurveda e pela IYTA do Brasil. Conta com corpo docente multidisciplinar especialista.",
     "originalUrl": "https://www.ayurvedica.org/instrutor-de-yoga-nivel-tecnico/",
     "hotmartLink": "https://www.ayurvedica.org/instrutor-de-yoga-nivel-tecnico/",
@@ -132,13 +132,13 @@ export const initialCourses = [
     "format": "Presencial / Online",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "https://images.unsplash.com/photo-1573497491208-6b1acb260507?q=80&w=600&auto=format&fit=crop",
+    "image": "/images/cursos/yoga-para-idosos/page_5_img_4.jpg",
     "description": "Capacitação focada no rejuvenescimento natural e na adaptação das práticas de Yoga para a terceira idade, ensinando a envelhecer com arte, serenidade e utilidade à coletividade.",
     "originalUrl": "https://www.ayurvedica.org/yoga-para-idosos/",
     "hotmartLink": "https://www.ayurvedica.org/yoga-para-idosos/",
-    "targetAudience": "Professores de Yoga, praticantes de Yoga, estudantes de Naturopatia Ayurvédica e terapeutas corporais.",
+    "targetAudience": "Instrutores de Yoga, Profissionais da área da saúde; Terapeutas corporais, Massoterapeutas, Reikianos, Cuidadores de idosos, Público em geral.",
     "price": "",
-    "certification": "Certificado de Formação Profissional em Yoga para Idosos emitido pela ALBA.",
+    "certification": "Certificado de Workshop em Yoga para Idosos emitido pela ALBA.",
     "objectives": [
       "Compreender a filosofia do envelhecimento ativo segundo o Yoga.",
       "Aprender a adaptar Asanas e mobilidade articular para limitações físicas.",
@@ -172,7 +172,7 @@ export const initialCourses = [
     "hotmartLink": "https://www.ayurvedica.org/plantas-yoga-workshop/",
     "targetAudience": "Instrutores de Yoga, profissionais da área da saúde, terapeutas corporais, massoterapeutas, reikianos e público em geral.",
     "price": "",
-    "certification": "Certificado de Formação Profissional em As Plantas do Yoga emitido pela ALBA.",
+    "certification": "Certificado de Workshop em As Plantas do Yoga emitido pela ALBA.",
     "objectives": [
       "Estudar a sacralidade das plantas no Yoga de acordo com os Aforismos de Patanjali.",
       "Identificar o Soma nos Vedas, as plantas do Shaktismo, de Vishnu e de Shiva.",
@@ -201,13 +201,13 @@ export const initialCourses = [
     "format": "Presencial",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=600&auto=format&fit=crop",
+    "image": "/images/cursos/meditacao-infantil/page_6_img_1.jpg",
     "description": "Capacitação projetada para o ensino de meditação a crianças dos 5 anos à adolescência, ensinando a canalizar energia, elevar autoestima e desenvolver autoconhecimento de forma lúdica.",
     "originalUrl": "https://www.ayurvedica.org/meditacao-infantil-workshop/",
     "hotmartLink": "https://www.ayurvedica.org/meditacao-infantil-workshop/",
-    "targetAudience": "Instrutores de Yoga, profissionais de saúde, terapeutas corporais, reikianos, educadores e público em geral.",
+    "targetAudience": "Instrutores de Yoga, Profissionais da área da saúde; Terapeutas corporais, Massoterapeutas, Reikianos, Professores de escolas infantis, Público em geral.",
     "price": "",
-    "certification": "Certificado de Formação Profissional em Meditação Infantil emitido pela ALBA.",
+    "certification": "Certificado de Workshop em Meditação Infantil emitido pela ALBA.",
     "objectives": [
       "Desenvolver técnicas de relaxamento e atenção plena para crianças e jovens.",
       "Auxiliar no combate à ansiedade infantil e melhoria da concentração escolar.",
@@ -235,13 +235,13 @@ export const initialCourses = [
     "format": "Online / Presencial",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "https://images.unsplash.com/photo-1518398046578-8cca57782e17?q=80&w=600&auto=format&fit=crop",
+    "image": "/images/cursos/tantrismo-vedanta-e-sanquia/page_8_img_4.jpg",
     "description": "Formação teórica e prática aprofundada nas três principais escolas filosóficas da Índia. Estudo das escolas tântricas, correntes do Vedanta e a metafísica do Sanquia clássico.",
     "originalUrl": "https://www.ayurvedica.org/tantrismo-vedanta-e-sanquia/",
     "hotmartLink": "https://www.ayurvedica.org/tantrismo-vedanta-e-sanquia/",
     "targetAudience": "Instrutores de Yoga, profissionais da área da saúde, terapeutas corporais e público interessado em filosofia oriental.",
     "price": "",
-    "certification": "Certificado de Formação Profissional em Filosofia Védica emitido pela ALBA.",
+    "certification": "Certificado de Workshop em Tantrismo, Vedanta e Sanquia emitido pela ALBA.",
     "objectives": [
       "Compreender o síntese do Tantra entre Advaita e Sanquia.",
       "Dominar meditações tântricas avançadas (Mantra, Laya, Hatha Yoga, Trataka, Antar Mauna).",
@@ -277,13 +277,13 @@ export const initialCourses = [
     "format": "Presencial / Online",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "https://images.unsplash.com/photo-1540479859555-17af45c78602?q=80&w=600&auto=format&fit=crop",
+    "image": "/images/cursos/yoga-infantil/page_7_img_6.jpg",
     "description": "Capacitação lúdica desenvolvida para ensinar Yoga a crianças através de histórias, jogos e brincadeiras motoras, promovendo equilíbrio, respiração, disciplina e serenidade.",
     "originalUrl": "https://www.ayurvedica.org/yoga-infantil-workshop/",
     "hotmartLink": "https://www.ayurvedica.org/yoga-infantil-workshop/",
     "targetAudience": "Instrutores de Yoga, profissionais de saúde, terapeutas corporais, educadores, pais e público em geral.",
     "price": "",
-    "certification": "Certificado de Formação Profissional em Yoga Infantil emitido pela ALBA.",
+    "certification": "Certificado de Workshop em Yoga Infantil emitido pela ALBA.",
     "objectives": [
       "Ensinar posturas de Yoga de forma divertida através de jogos e contação de histórias.",
       "Desenvolver coordenação motora, postura, trabalho em equipe e tranquilidade em provas.",
@@ -311,7 +311,7 @@ export const initialCourses = [
     "format": "Presencial / Híbrido",
     "status": "Vagas Limitadas",
     "students": 0,
-    "image": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?q=80&w=600&auto=format&fit=crop",
+    "image": "/images/cursos/yoga-hormonal/page_9_img_3.jpg",
     "description": "Técnica dinâmica e holística de Yoga Terapia Hormonal que atua intensamente no corpo energético para reativar a produção de hormônios. Ameniza sintomas da menopausa em mulheres e andropausa em homens.",
     "originalUrl": "https://www.ayurvedica.org/yoga-hormonal/",
     "hotmartLink": "https://www.ayurvedica.org/yoga-hormonal/",
@@ -347,7 +347,7 @@ export const initialCourses = [
     "format": "Presencial (Módulo I + II)",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=600&auto=format&fit=crop",
+    "image": "/images/cursos/massagem-ayurvedica-tradicional/page_1_img_2.jpg",
     "description": "Formação prática e intensa na técnica clássica da terapia corporal Ayurvédica. Dividido em 2 módulos específicos com certificação de formação profissional, ensinando manobras precisas com mãos e pés, estiramentos, realinhamento dos chakras e diagnóstico corporal.",
     "originalUrl": "https://www.ayurvedica.org/massagem-ayurvedica-tradicional/",
     "hotmartLink": "https://www.ayurvedica.org/massagem-ayurvedica-tradicional/",
@@ -414,7 +414,7 @@ export const initialCourses = [
     "format": "Presencial",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=600&auto=format&fit=crop",
+    "image": "/images/cursos/massagem-ayurvedica-spa-terapias/page_10_img_4.jpg",
     "description": "Capacitação focada para profissionais de massagem em SPAs, gabinetes e centros de bem-estar. Prepara os alunos para executar as principais manobras do sistema tradicional ayurvédico na vertente de relaxamento e estética holística.",
     "originalUrl": "https://www.ayurvedica.org/massagem-ayurvedica-para-spa-terapias/",
     "hotmartLink": "https://www.ayurvedica.org/massagem-ayurvedica-para-spa-terapias/",
@@ -461,7 +461,7 @@ export const initialCourses = [
     "format": "Presencial",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=600&auto=format&fit=crop",
+    "image": "/images/cursos/indian-head-massage-champi/page_11_img_6.jpg",
     "description": "Massagem indiana tradicional focada no pescoço, nuca, ombros, orelhas, face e couro cabeludo (Champi). Atua em 37 pontos energéticos, combatendo estresse, insónia, ansiedade e rigidez muscular, além de promover nutrição e crescimento capilar.",
     "originalUrl": "https://www.ayurvedica.org/indian-head-massage-champi/",
     "hotmartLink": "https://www.ayurvedica.org/indian-head-massage-champi/",
@@ -508,11 +508,11 @@ export const initialCourses = [
     "format": "Presencial / Híbrido",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=600&auto=format&fit=crop",
+    "image": "/images/cursos/nutricao-ayurvedica/page_12_img_5.jpg",
     "description": "Formação prática sobre a alimentação e estilo de vida de acordo com cada biótipo constitutional (Prakrati). Aprenda a utilizar a energia dos alimentos, especiarias e práticas diárias (Dinacharya) para reequilíbrio da saúde, digestão e vitalidade.",
     "originalUrl": "https://www.ayurvedica.org/nutricao-ayurvedica-estilo-de-vida/",
     "hotmartLink": "https://www.ayurvedica.org/nutricao-ayurvedica-estilo-de-vida/",
-    "targetAudience": "Profissionais da área da saúde, terapeutas, massoterapeutas, psicólogos, naturopatas e público em geral.",
+    "targetAudience": "Profissionais da área da saúde; Terapeutas, Massoterapeutas, Psicólogos, Naturopatas, Nutricionistas, Público em geral.",
     "price": "",
     "certification": "Certificado de Formação Profissional em Nutrição Ayurvédica & Estilo de Vida emitido pela ALBA.",
     "objectives": [
@@ -552,7 +552,7 @@ export const initialCourses = [
     "format": "Semi-Presencial (Fase I & II)",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "https://images.unsplash.com/photo-1505816014357-96b5ff457e9a?q=80&w=600&auto=format&fit=crop",
+    "image": "/images/cursos/naturopatia-ayurvedica/page_13_img_3.jpg",
     "description": "Formação profunda e abrangente baseada na tradição de Kerala (Sul da Índia). Capacita o aluno no uso do arsenal terapêutico profilático e curativo da Medicina Ayurvédica, abrangendo estudo de ervas, tratamentos específicos (Shirodhara, Navarakizhi, Elakizhi) e rotinas de equilíbrio.",
     "originalUrl": "https://www.ayurvedica.org/naturopatia-ayurvedica/",
     "hotmartLink": "https://www.ayurvedica.org/naturopatia-ayurvedica/",
@@ -608,13 +608,13 @@ export const initialCourses = [
     "format": "Presencial / Online",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?q=80&w=600&auto=format&fit=crop",
+    "image": "/images/cursos/cristais-e-meditacao/page_14_img_5.jpg",
     "description": "Estudo profundo do uso físico, metafísico, espiritual e curativo dos cristais e pedras semipreciosas. Aprenda métodos de limpeza, energização e aplicação na meditação, purificação de ambientes e medicina Ayurvédica.",
     "originalUrl": "https://www.ayurvedica.org/cristais-e-meditacao/",
     "hotmartLink": "https://www.ayurvedica.org/cristais-e-meditacao/",
     "targetAudience": "Público em geral e interessados em Cristais e Meditação.",
     "price": "",
-    "certification": "Certificado de Formação Profissional em Cristais e Meditação emitido pela ALBA.",
+    "certification": "Certificado de Workshop em Cristais e Meditação emitido pela ALBA.",
     "objectives": [
       "Conhecer as propriedades físicas, metafísicas e curativas dos cristais de quartzo.",
       "Aprender a limpar, purificar e energizar pedras e cristais para benefício próprio e de ambientes.",
@@ -643,13 +643,13 @@ export const initialCourses = [
     "format": "Presencial",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=600&auto=format&fit=crop",
+    "image": "/images/cursos/massagem-nas-costas/page_1_img_1.jpg",
     "description": "Curso focado na saúde e alinhamento da coluna vertebral. Combina manobras clássicas do oriente e ocidente para ativar a circulação sanguínea e linfática profunda, aliviar dores dorsais, lombares e cervicais e desbloquear a musculatura das costas.",
     "originalUrl": "https://www.ayurvedica.org/massagem-nas-costas-coluna-vertebral/",
     "hotmartLink": "https://www.ayurvedica.org/massagem-nas-costas-coluna-vertebral/",
-    "targetAudience": "Profissionais da área da saúde, terapeutas corporais, massoterapeutas, reikianos e público em geral.",
+    "targetAudience": "Profissionais da área da saúde, massagistas, instruendos de enfermagem, enfermeiros, público em geral.",
     "price": "",
-    "certification": "Certificado de Formação Profissional em Massagem nas Costas emitido pela Associação Luso-Brasileira de Ayurveda (ALBA).",
+    "certification": "Certificado de Workshop em Massagem nas Costas - Coluna Vertebral emitido pela ALBA.",
     "objectives": [
       "Ativar a circulação sanguínea periférica e linfática profunda na musculatura das costas.",
       "Combater dores lombares, dorsais, ciáticas, cervicalgias e contraturas musculares decorrentes do estresse.",
@@ -677,41 +677,6 @@ export const initialCourses = [
     "neededMaterials": "1 toalha grande, 1 lençol, óleo de massagem natural e roupa apropriada para receber e fazer massagem."
   },
   {
-    "id": 18,
-    "title": "Anatomia do Yoga - Workshop",
-    "category": "Yoga",
-    "workload": "5h",
-    "format": "Presencial / Pós-laboral",
-    "status": "Inscrições Abertas",
-    "students": 0,
-    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
-    "description": "Workshop direcionado para professores e praticantes de Yoga que pretendam aprender como os asanas trabalham os diferentes grupos musculares, ligamentos e articulações de modo a corrigir desequilíbrios e evitar lesões.",
-    "originalUrl": "https://www.ayurvedica.org/anatomia-do-yoga-workshop/",
-    "hotmartLink": "https://www.ayurvedica.org/anatomia-do-yoga-workshop/",
-    "targetAudience": "Instrutores de Yoga, profissionais da área da saúde, terapeutas corporais, massoterapeutas, reikianos e público em geral.",
-    "price": "",
-    "certification": "Certificado de Formação Profissional em Anatomia do Yoga emitido pela Associação Luso-Brasileira de Ayurveda (ALBA).",
-    "objectives": [
-      "Compreender a atuação dos Asanas em grupos musculares superficiais e profundos.",
-      "Identificar fraquezas e desequilíbrios musculares e posturais mais comuns.",
-      "Desenvolver equilíbrio adequado entre força e flexibilidade para prevenir problemas e lesões a longo prazo."
-    ],
-    "syllabus": [
-      {
-        "moduleTitle": "Diagnóstico e Prevenção de Lesões",
-        "theoretical": [
-          "Diagnóstico dos desequilíbrios musculares e posturais mais comuns",
-          "Anatomia funcional dos grupos musculares, ligamentos e articulações no Yoga",
-          "Prevenção de lesões a nível da coluna, cinturas escapular/pélvica, membros e fáscia"
-        ],
-        "practical": [
-          "Asanas específicos para reduzir desequilíbrios musculares",
-          "Alinhamento postural preventivo para coluna e articulações"
-        ]
-      }
-    ]
-  },
-  {
     "id": 19,
     "title": "O Yoga da Energia",
     "category": "Yoga",
@@ -719,13 +684,13 @@ export const initialCourses = [
     "format": "Presencial / Workshop",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=600&auto=format&fit=crop",
+    "image": "/images/cursos/yoga-da-energia/cover.jpg",
     "description": "Técnica de Yoga desenvolvida por Roger Clerc que conjuga Pranayama com Asanas e coordenação motora para o domínio da mente e circulação de energia pelos Nadis (linhas de energia do corpo).",
     "originalUrl": "https://www.ayurvedica.org/yoga-da-energia/",
     "hotmartLink": "https://www.ayurvedica.org/yoga-da-energia/",
     "targetAudience": "Instrutores de Yoga, profissionais da área da saúde, terapeutas corporais, massoterapeutas, reikianos e público em geral.",
     "price": "",
-    "certification": "Certificado de Formação Profissional em O Yoga da Energia emitido pela ALBA.",
+    "certification": "Certificado de Workshop em O Yoga da Energia emitido pela ALBA.",
     "objectives": [
       "Praticar a integração de Pranayama ritmado com Asanas e coordenação motora.",
       "Fazer a energia circular pelos Nadis (canais energéticos) para desenvolvimento pessoal.",
@@ -742,6 +707,51 @@ export const initialCourses = [
           "Exercícios para aumentar flexibilidade e prevenir lesões",
           "Exercícios respiratórios (Pranayamas ritmados com movimento)",
           "Exercícios para pós-treino e técnicas de concentração e relaxamento"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "title": "Massagem Oriental Terapêutica e de Relaxamento",
+    "category": "Massagens Ayurvédicas",
+    "workload": "40h",
+    "format": "Presencial",
+    "status": "Inscrições Abertas",
+    "students": 0,
+    "image": "/images/cursos/massagem-oriental/page_1_img_1.jpg",
+    "description": "Formação destinada aos que querem iniciar o aprendizado na área das terapias manuais e para os que já possuem um curso e querem complementar o seu leque de possibilidades de atuação.",
+    "originalUrl": "https://www.ayurvedica.org/massagem-oriental/",
+    "hotmartLink": "https://www.ayurvedica.org/massagem-oriental/",
+    "targetAudience": "Instrutores de Yoga, Profissionais da área da saúde; Terapeutas corporais, Massoterapeutas, Reikianos, Público em geral.",
+    "price": "",
+    "certification": "Certificado de Formação Profissional em Massagem Oriental Terapêutica e de Relaxamento emitido pela ALBA.",
+    "objectives": [
+      "Aprender a executar, de forma precisa e criativa, uma massagem completa, dos pés à cabeça utilizando apenas as mãos.",
+      "Perceber o campo energético que compõe o corpo físico e seus efeitos em termos de saúde e de doença.",
+      "Dar ao aluno uma maior consciência do seu corpo e de como ele funciona.",
+      "Desenvolver a percepção de como as energias interagem no organismo.",
+      "Dominar noções de conduta e funcionamento ético de gabinetes de terapias."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Teórico",
+        "theoretical": [
+          "Massagens orientais: Conceito, Características, Ações e Funções",
+          "História das massagens orientais e conceitos gerais da Tradição Védica",
+          "Noções de Anatomia e Fisiologia humana clássica e sutil",
+          "Principais Centros Energéticos (Chakras) e suas funções",
+          "A Arte da Massagem Ayurvédica, suas indicações e contraindicações"
+        ]
+      },
+      {
+        "moduleTitle": "Conteúdo Prático (Sequência de Massagem Completa)",
+        "practical": [
+          "COLUNA: Lombar, dorsal, cervical e estimulação de pontos vitais",
+          "MEMBROS INFERIORES: Região anterior, posterior e planta dos pés",
+          "TRONCO: Abdómen e Tórax",
+          "MEMBROS SUPERIORES: Região anterior e posterior com pontos vitais",
+          "CABEÇA E PESCOÇO: Massagem nas cordas vocais, Face e Couro Cabeludo"
         ]
       }
     ]

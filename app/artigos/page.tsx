@@ -6,26 +6,42 @@ import { Navbar } from '../../components/Navbar';
 
 import { initialArticles } from '../../data/artigos';
 
+const categories = ['Todos', 'Yoga', 'Massagens Ayurvédicas', 'Medicina Ayurvédica', 'Estudos Holísticos', 'Geral'];
+
 export default function ArtigosPage() {
   const [artigosDatabase, setArtigosDatabase] = useState<any[]>([]);
+  const [activeCategory, setActiveCategory] = useState('Todos');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
 
   React.useEffect(() => {
-    const saved = localStorage.getItem('alba_artigos_v4');
+    const saved = localStorage.getItem('alba_artigos_v8');
     if (saved) {
       let parsed = JSON.parse(saved);
       setArtigosDatabase(parsed.filter((a: any) => a.status === 'Publicado'));
     } else {
       setArtigosDatabase(initialArticles.filter((a: any) => a.status === 'Publicado'));
-      localStorage.setItem('alba_artigos_v4', JSON.stringify(initialArticles));
+      localStorage.setItem('alba_artigos_v8', JSON.stringify(initialArticles));
     }
   }, []);
 
+  // Filter articles
+  const filteredArticles = artigosDatabase.filter((artigo) => {
+    const matchesCategory = activeCategory === 'Todos' || artigo.tag === activeCategory;
+    const matchesSearch = artigo.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                          artigo.resumo.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
+
+  // Reset to first page when filter changes
+  React.useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, activeCategory]);
+
   const ITEMS_PER_PAGE = 9;
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(artigosDatabase.length / ITEMS_PER_PAGE);
-  
+  const totalPages = Math.ceil(filteredArticles.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const currentArticles = artigosDatabase.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  const currentArticles = filteredArticles.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   return (
     <div className="min-h-screen bg-stone-50 font-sans text-stone-800">
@@ -39,24 +55,65 @@ export default function ArtigosPage() {
 
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {currentArticles.map((artigo) => (
-              <Link key={artigo.id} href={`/artigos/${artigo.id}`} className="group flex flex-col bg-white rounded-[2rem] border border-stone-100 overflow-hidden hover:shadow-xl transition-all duration-500 cursor-pointer">
-                <div className="relative h-60 w-full overflow-hidden bg-stone-100">
-                  <img src={artigo.imagem} alt={artigo.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <div className="absolute top-4 left-4 bg-white/90 px-3 py-1 rounded-full text-xs font-bold text-emerald-800">{artigo.tag}</div>
-                </div>
-                <div className="p-8 flex flex-col flex-grow">
-                  <h3 className="text-xl font-serif text-stone-900 mb-3 group-hover:text-emerald-700">{artigo.title}</h3>
-                  <p className="text-stone-500 text-sm mb-6 flex-grow">{artigo.resumo}</p>
-                  <div className="text-emerald-700 font-bold text-sm flex items-center gap-1">
-                    Ler Artigo Completo
-                    <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                  </div>
-                </div>
-              </Link>
-            ))}
+          {/* Filtros e Busca */}
+          <div className="flex flex-col md:flex-row gap-4 mb-12">
+            {/* Input de Busca */}
+            <div className="relative w-full md:max-w-xs flex-shrink-0">
+              <input 
+                type="text" 
+                placeholder="Buscar artigo..." 
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-11 pr-4 py-2.5 bg-white border border-stone-200 rounded-full text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all shadow-sm"
+              />
+              <svg className="w-5 h-5 text-stone-400 absolute left-4 top-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+
+            {/* Menu de Filtros Rápidos */}
+            <div className="flex overflow-x-auto gap-2 pb-2 md:pb-0 hide-scrollbar items-center flex-1">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`cursor-pointer whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border ${
+                    activeCategory === cat
+                      ? 'bg-emerald-800 text-white border-emerald-800 shadow-md'
+                      : 'bg-white text-stone-600 border-stone-200 hover:bg-stone-100'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
+
+          {/* Cards */}
+          {currentArticles.length > 0 ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+              {currentArticles.map((artigo) => (
+                <Link key={artigo.id} href={`/artigos/${artigo.id}`} className="group flex flex-col bg-white rounded-[2rem] border border-stone-100 overflow-hidden hover:shadow-xl transition-all duration-500 cursor-pointer">
+                  <div className="relative h-60 w-full overflow-hidden bg-stone-100">
+                    <img src={artigo.imagem} alt={artigo.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <div className="absolute top-4 left-4 bg-white/90 px-3 py-1 rounded-full text-xs font-bold text-emerald-800">{artigo.tag}</div>
+                  </div>
+                  <div className="p-8 flex flex-col flex-grow">
+                    <h3 className="text-xl font-serif text-stone-900 mb-3 group-hover:text-emerald-700">{artigo.title}</h3>
+                    <p className="text-stone-500 text-sm mb-6 flex-grow line-clamp-3">{artigo.resumo}</p>
+                    <div className="text-emerald-700 font-bold text-sm flex items-center gap-1 mt-auto">
+                      Ler Artigo Completo
+                      <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-20 bg-white rounded-[2rem] border border-stone-100 mb-16">
+              <p className="text-stone-500 text-lg">Nenhum artigo encontrado com os filtros selecionados.</p>
+            </div>
+          )}
 
           {/* Paginação */}
           {totalPages > 1 && (

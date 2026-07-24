@@ -118,6 +118,7 @@ export const Navbar = () => {
     { path: '/cursos', label: 'Cursos' },
     { path: '/artigos', label: 'Artigos' },
     { path: '/profissionais', label: 'Profissionais' },
+    { path: '/loja', label: 'Loja' },
   ];
 
   const getDesktopClass = (path: string, isSpecial?: boolean) => {
