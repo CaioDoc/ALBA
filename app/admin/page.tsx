@@ -11,7 +11,7 @@ export default function AdminDashboard() {
       </div>
 
       {/* Cards de Métricas */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm flex items-center gap-4 border-l-4 border-l-emerald-600">
           <div className="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center">
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
@@ -41,16 +41,6 @@ export default function AdminDashboard() {
             <p className="text-2xl font-bold text-stone-900">3</p>
           </div>
         </div>
-
-        <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm flex items-center gap-4 border-l-4 border-l-purple-600">
-          <div className="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center">
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
-          </div>
-          <div>
-            <p className="text-sm text-stone-500 font-medium">Artigos no Blog</p>
-            <p className="text-2xl font-bold text-stone-900">45</p>
-          </div>
-        </div>
       </div>
 
       {/* Atalhos e Mensagens */}
@@ -61,16 +51,15 @@ export default function AdminDashboard() {
             Ações Rápidas
           </h3>
           
-          {/* CORREÇÃO: Botões de Ações Rápidas agora são Links reais e funcionais */}
           <div className="grid grid-cols-2 gap-4">
             <Link href="/admin/associados" className="cursor-pointer bg-stone-50 border border-stone-200 p-4 rounded-2xl text-left hover:bg-emerald-50 hover:border-emerald-200 transition-colors group block">
               <span className="block font-bold text-stone-800 group-hover:text-emerald-800 mb-1">Novo Associado</span>
               <span className="text-xs text-stone-500">Cadastrar terapeuta</span>
             </Link>
             
-            <Link href="/admin/artigos" className="cursor-pointer bg-stone-50 border border-stone-200 p-4 rounded-2xl text-left hover:bg-emerald-50 hover:border-emerald-200 transition-colors group block">
-              <span className="block font-bold text-stone-800 group-hover:text-emerald-800 mb-1">Escrever Artigo</span>
-              <span className="text-xs text-stone-500">Usar assistente IA</span>
+            <Link href="/admin/cursos" className="cursor-pointer bg-stone-50 border border-stone-200 p-4 rounded-2xl text-left hover:bg-emerald-50 hover:border-emerald-200 transition-colors group block">
+              <span className="block font-bold text-stone-800 group-hover:text-emerald-800 mb-1">Gerir Cursos</span>
+              <span className="text-xs text-stone-500">Adicionar ou alterar</span>
             </Link>
             
             <Link href="/admin/promocoes" className="cursor-pointer bg-stone-50 border border-stone-200 p-4 rounded-2xl text-left hover:bg-emerald-50 hover:border-emerald-200 transition-colors group block">

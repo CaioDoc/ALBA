@@ -408,19 +408,19 @@ export const initialCourses = [
   },
   {
     "id": 12,
-    "title": "Massagem Ayurvédica Para Spa Terapias",
+    "title": "Massagem Ayurvédica: Sistema para Spa Terapias e Relaxamento",
     "category": "Massagens Ayurvédicas",
     "workload": "40h",
     "format": "Presencial",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "/images/cursos/massagem-ayurvedica-spa-terapias/page_10_img_4.jpg",
+    "image": "/images/cursos/massagem-ayurvedica-spa-terapias/cover.jpg",
     "description": "Capacitação focada para profissionais de massagem em SPAs, gabinetes e centros de bem-estar. Prepara os alunos para executar as principais manobras do sistema tradicional ayurvédico na vertente de relaxamento e estética holística.",
     "originalUrl": "https://www.ayurvedica.org/massagem-ayurvedica-para-spa-terapias/",
     "hotmartLink": "https://www.ayurvedica.org/massagem-ayurvedica-para-spa-terapias/",
-    "targetAudience": "Profissionais de massagem em SPAs, fisioterapeutas, terapeutas corporais, reflexologistas, psicólogos, osteopatas, esteticistas e profissionais de saúde.",
+    "targetAudience": "Fisioterapeutas, terapeutas corporais, reflexologistas, psicólogos, osteopatas, massagistas, esteticistas, interessados em geral.",
     "price": "",
-    "certification": "Certificado de Formação Profissional em Massagem Ayurvédica para Spa Terapias emitido pela ALBA.",
+    "certification": "Certificado de Formação Profissional em Massagem Ayurvedica: Sistema para Spa Terapias e Relaxamento (40h) emitido pela ALBA.",
     "objectives": [
       "Aprender a executar uma massagem completa de relaxamento, dos pés à cabeça, com foco em spas.",
       "Perceber o campo energético corporal, anatomia muscular de sustentação e sistema nervoso.",
@@ -552,13 +552,13 @@ export const initialCourses = [
     "format": "Semi-Presencial (Fase I & II)",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "/images/cursos/naturopatia-ayurvedica/page_13_img_3.jpg",
+    "image": "/images/cursos/naturopatia-ayurvedica/cover.jpg",
     "description": "Formação profunda e abrangente baseada na tradição de Kerala (Sul da Índia). Capacita o aluno no uso do arsenal terapêutico profilático e curativo da Medicina Ayurvédica, abrangendo estudo de ervas, tratamentos específicos (Shirodhara, Navarakizhi, Elakizhi) e rotinas de equilíbrio.",
     "originalUrl": "https://www.ayurvedica.org/naturopatia-ayurvedica/",
     "hotmartLink": "https://www.ayurvedica.org/naturopatia-ayurvedica/",
-    "targetAudience": "Profissionais de saúde, terapeutas, massoterapeutas, psicólogos, esteticistas, praticantes de Yoga e interessados na abordagem holística natural.",
+    "targetAudience": "Profissionais da área da saúde; terapeutas, Massoterapeutas, psicólogos, Naturopatas, Nutricionistas, público em geral, alunos da área da saúde interessados na Medicina Complementar e suas formas naturais de manutenção da saúde através de uma abordagem holística do ser, Esteticistas, Praticantes de Yoga, público em geral que se identifica com a tradição oriental.",
     "price": "",
-    "certification": "Certificado de Formação Profissional em Naturopatia Ayurvédica emitido pela ALBA.",
+    "certification": "Certificado de Formação Profissional em Naturopatia Ayurvédica - Procedimentos Teóricos emitido pela Associação Luso-Brasileira de Ayurvédica e Disciplinas Associadas (ALBA).",
     "objectives": [
       "Dominar as bases da Medicina Ayurvédica (teoria Tridosha, biótipos e fisiologia dos tecidos).",
       "Conhecer tratamentos clássicos de Kerala: Shirodhara, Navarakizhi, Swedhana, Elakizhi e Lepas.",
@@ -752,6 +752,41 @@ export const initialCourses = [
           "TRONCO: Abdómen e Tórax",
           "MEMBROS SUPERIORES: Região anterior e posterior com pontos vitais",
           "CABEÇA E PESCOÇO: Massagem nas cordas vocais, Face e Couro Cabeludo"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "title": "Osho Meditations",
+    "category": "Estudos Holísticos",
+    "workload": "11h",
+    "format": "Presencial",
+    "status": "Inscrições Abertas",
+    "students": 0,
+    "image": "/images/cursos/osho-meditations/cover.jpg",
+    "description": "Sessões de meditação em grupo utilizando variadas técnicas universais desenvolvidas pelo Mestre Osho para o homem ocidental, envolvendo respiração, movimentos, entoação de mantras, etc., conduzindo a mais Harmonia, Paz e Amor.",
+    "originalUrl": "https://www.ayurvedica.org/osho-meditations/",
+    "hotmartLink": "https://www.ayurvedica.org/osho-meditations/",
+    "targetAudience": "Público em geral, interessados em aprender a meditar.",
+    "price": "Gratuito",
+    "certification": "Certificado de Workshop em Osho Meditations emitido pela ALBA.",
+    "objectives": [
+      "Vivenciar o profundo mundo da meditação de forma prática e em grupo.",
+      "Experimentar variadas técnicas universais desenvolvidas pelo Mestre Osho.",
+      "Integrar respiração, movimentos expressivos e entoação de mantras.",
+      "Obter mais harmonia, paz e amor para a vida quotidiana."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Sessão de Meditações Ativas Osho",
+        "theoretical": [
+          "Introdução teórica aos conceitos de meditação ativa desenvolvidos por Osho",
+          "Instruções e preparação corporal"
+        ],
+        "practical": [
+          "Exercícios práticos de respiração e movimentos corporais",
+          "Entoação de mantras e relaxamento profundo"
         ]
       }
     ]
