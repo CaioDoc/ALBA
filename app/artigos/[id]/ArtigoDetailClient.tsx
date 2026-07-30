@@ -58,6 +58,25 @@ export default function ArtigoDetailClient({ id }: { id: string }) {
     );
   }
 
+  const formatArticleHtml = (html: string) => {
+    if (!html) return '';
+    
+    let formatted = html;
+    
+    // Converter quebras de linha puras em <br/> se não houver tags de parágrafo <p>
+    if (formatted.includes('\n') && !/<p[^>]*>/i.test(formatted)) {
+      formatted = formatted.replace(/\r?\n/g, '<br/>');
+    }
+    
+    // Adicionar espaçamento/quebra antes de <strong> ou <b> se não for precedido por quebra ou parágrafo
+    formatted = formatted.replace(/(?<!<br\s*\/?>|<p[^>]*>|\n|^)\s*(<strong>|<b>)/gi, '<br/><br/>$1');
+    
+    // Adicionar quebra de linha IMEDIATAMENTE APÓS </strong> ou </b> se houver texto em seguida
+    formatted = formatted.replace(/(<\/strong>|<\/b>)\s*(?!<br\s*\/?>|<\/p>|\n|$)/gi, '$1<br/>');
+
+    return formatted;
+  };
+
   return (
     <div className="min-h-screen bg-stone-50 font-sans text-stone-800">
       <Navbar />
@@ -77,8 +96,8 @@ export default function ArtigoDetailClient({ id }: { id: string }) {
       <section className="py-16 px-4">
         <div className="max-w-3xl mx-auto prose prose-stone md:prose-lg">
           <div 
-            className="text-stone-600 leading-relaxed custom-html-content"
-            dangerouslySetInnerHTML={{ __html: artigo.conteudo || artigo.resumo || 'Conteúdo do artigo não disponível.' }}
+            className="text-stone-600 leading-relaxed custom-html-content space-y-4"
+            dangerouslySetInnerHTML={{ __html: formatArticleHtml(artigo.conteudo || artigo.resumo || 'Conteúdo do artigo não disponível.') }}
           />
         </div>
       </section>
