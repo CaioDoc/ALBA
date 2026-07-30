@@ -1,60 +1,5 @@
 export const initialArticles = [
   {
-    "id": 1,
-    "title": "Olá, mundo!",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "06/08/2018",
-    "conteudo": "Bem-vindo ao WordPress. Este é o seu primeiro artigo. Edite-o ou elimine-o e dê vida ao seu site!",
-    "resumo": "Bem-vindo ao WordPress. Este é o seu primeiro artigo. Edite-o ou elimine-o e dê vida ao seu site!...",
-    "imagem": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 597,
-    "title": "Massagem Ayurvédica Tradicional",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "10/06/2020",
-    "conteudo": "<strong>MASSAGEM AYURVÉDICA TRADICIONAL</strong>\n\nA arte milenar da terapia corporal tem na massagem ayurvédica tradicional uma das mais completas e rejuvenescedoras tradições desenvolvidas e praticadas na Índia.\n\nEste sistema faz parte da religião védica, no entanto, é ainda um dos principais pilares utilizados nos tratamentos medicina ayurvédica, que também pertence a mesma tradição religiosa.\n\nCaracteriza-se por ser uma técnica de massagem holística que favorece a integração, o equilíbrio e o intercâmbio dinâmico entre a mente e o corpo.\n\nFigura nos textos védicos mais antigos e se caracteriza pela utilização de óleos.\nÉ conhecida e utilizada, portanto, desde a sua origem, como método para complementar e potencializar as distintas ciências. Era e é utilizada pelas famílias como prática habitual e na medicina era e é utilizada como método diagnóstico, curativo e preventivo.\n\nA religião a tem utilizado, desde a antiguidade remota, como método de purificação do corpo. Importante ressaltar ainda que a ciência médica ayurvédica sempre teve nas massagens um complemento importante com variadas técnicas e inúmeras aplicações.\n\nO sistema que ensinamos é único, completo, tem incorporado em si todo o conhecimento subtil do funcionamento do corpo, tanto em termos físico, como em termos energético e subtil. Por isso os resultados são visíveis de imediato.\n\nDURAÇÃO: Total = 96h (80 presenciais + 16h não presencial). \n\n Total (96hs) = 650 euros * (*Sócios tem 10% de desconto no preço da formação).\n\nPlano do Curso\n\nAgenda\n\nMapa\n\nLocal: (endereço dos contactos do site) <a href=\"https://www.ayurvedica.org/contactos/\">https://www.ayurvedica.org/contactos/</a>",
-    "resumo": "MASSAGEM AYURVÉDICA TRADICIONAL\n\nA arte milenar da terapia corporal tem na massagem ayurvédica tradicional uma das mais...",
-    "imagem": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 620,
-    "title": "MASSAGEM ABHYANGA - WORKSHOP ESPECIAL",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "08/01/2018",
-    "conteudo": "&nbsp;\n\n<hr />\n\n<h3>DETALHES DO CURSO</h3>\n<strong>Massagem Abhyanga - Workshop Especial</strong>\n\n<strong>Objectivo</strong>: Visa preparar os participantes para executar as principais manobras do sistema tradicional desta massagem, na vertente de relaxamento, para espaços especiais, spa terapias, gabinetes de terapias e massagem.\n\n<strong>Público Alvo:</strong>  Fisioterapeutas, terapeutas corporais, profissionais da área da saúde, das terapias corporais e de massagem, enfermeiros, reflexologistas, psicólogos, osteopatas, esteticistas e interessados em geral.\n\n<strong>Numero de hs:</strong> 16\n\n<strong>Conteudo programatico: </strong>\n1. Um pouco de História\n2. O que é Massagem Ayurvedica\n3. Tipos de Massagem Ayurvedica\n4. Fluxos de Energia - Chakras\n5. Beneficios da Massagem\n6. Indicações e Contra Indicações\n7. O Tratamento com Massagem Ayurvedica - Duração - Preparação do local de trabalho - Postura do Massagista - Sequência da Massagem\n\n<strong>Preço:</strong> 120 Euros + 50 de inscrição (os alunos que quiserem continuar no curso e fazer a formação longa tem este valor de desconto)\n\n<strong>E-mail:</strong> <a href=\"mailto:lisboa@ayurvedica.org\">info@ayurvedica.org</a>",
-    "resumo": "&nbsp;\n\n\n\nDETALHES DO CURSO\nMassagem Abhyanga - Workshop Especial\n\nObjectivo: Visa preparar os participantes para execut...",
-    "imagem": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 623,
-    "title": "MASSAGEM SHANTALA",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "08/01/2018",
-    "conteudo": "\n\t\t\t\t<strong>Curso Prático de Massagem Shantala</strong>\nO toque é um dos meios mais poderosos para a comunicação humana com enriquecimento do relacionamento entre pais e filhos.\nO contacto entre a mãe e o filho tem importância vital para o relacionamento, porque possibilita o fortalecimento e o vínculo, contribuindo para o desenvolvimento físico e emocional do bebé.\nQuando o bebé é tocado, acariciado e massajado tem maiores possibilidades de crescer alegre, independente e afectivo.\n\nDuração: 7 hs (o numero de hrs depende da presença de bebés) PREÇO: 60 euros (Inclui um dvd com a massagem + um caderno de apontamentos)\n\nPlano do Workshop\n\nAgenda\t\t",
-    "resumo": "Curso Prático de Massagem Shantala\nO toque é um dos meios mais poderosos para a comunicação humana com enriquecimen...",
-    "imagem": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 629,
-    "title": "MASSAGEM AYURVÉDICA PARA SPA TERAPIAS",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "08/01/2018",
-    "conteudo": "Instrutor: Sem Instrutor específico...\nDirigido a: Publico em geral, fisoterapeutas, massagistas, terapeutas corporais, naturopatas, profissionais da área da saúde e bem-estar\n\nOs profissionais da área de saúde, terapeutas corporais, terapeutas de spa e interessados em geral tem nesta formação a oportunidade de conhecer a arte milenar da terapia corporal Ayurvédica.\n\n<hr />\n\n<h3>DETALHES DO CURSO</h3>\n<strong>OBJECTIVOS</strong>\n\nVisa preparar os participantes para executar as principais manobras do sistema tradicional desta massagem, na vertente de relaxamento, para profissionais que trabalham em espaços de tratamento corporal, gabinetes em spas de terapias.\n\nO curso tem como objectivos principais, levar o aluno a:\n\n- aprender a executar, de forma precisa e criativa, uma massagem completa, dos pés à cabeça utilizando apenas as mãos\n- levar o aluno a perceber o campo energético que compõe o corpo físico e seus efeitos em termos de saúde e de doença\n- dar ao aluno uma maior consciência do seu corpo e de como ele funciona\n- levar o aluno a perceber como as energias se interagem\n- fazer com que o aluno experimente em seu corpo os efeitos da massagem\n- dar conhecimento, em termos de iniciação, de todo complexo teórico que compõe a tradição védica e a medicina ayurvedica\n- dar ao aluno noções de terapia ayurvédica e do seu vasto campo teórico - mostrar ao aluno o desenvolvimento deste sistema ao longo dos séculos\n- mostrar ao aluno como deve funcionar um gabinete - ensinar ao aluno como deve se comportar, de forma ética, perante o cliente e durante o tratamento\n- saber discernir entre os diversos casos que se apresentam e o que deve fazer para realizar uma boa massagem.\n\n<strong>Conteúdos da parte teórica:</strong>\nAyurvédica: Conceito, Características, Acções e Funções.\nHistória da Ayurvédica Conceitos gerais da Medicina Ayurvédica.\nAs diversas massagens na Índia.\nOs preceitos e fundamentos básicos da terapia ayurveda: os 5 elementos e os 3 doshas.\nOs pilares do ayurveda.\nNoções de Anatomia humana, com ênfase aos músculos de sustentação, e subtil.\nNoções de Fisiologia humana (ênfase para o sistema nervoso autónomo e circulatório na aplicação da massagem).\nNoções de anatomia oculta.\nPrincipais Centros Energéticos do sistema subtil, primários e secundários de importância na prática da massagem e suas funções psico-fisiológicas.\nIntrodução ao Sistema de Chakras.\nOs chacras e suas funções.\nOs óleos e suas principais aplicações.\nA Arte da massagem Ayurvédica.\nIndicações, contra-indicações da massagem Ayurvédica.\nCircuitos básicos e subtis da massagem Ayurvédica.\nMassagem Ayurvédica e realinhamento dos chacras.\nMovimentos utilizados na Ayurvédica.\n\n<strong>Conteúdos da parte prática</strong>:\nA parte prática inclui a execução de uma massagem completa, simples, com a seguinte sequência básica:\nCOLUNA: Lombar, dorsal, cervical e estimulação de pontos vitais\nMEMBROS INFERIORES: Região posterior e planta dos pés – massagem e estimulação de pontos vitais\nMEMBROS INFERIORES: Região anterior – massagem e estimulação de pontos vitais\nABDÔMEN: Massagem e estimulação de pontos vitais\nTÓRAX: Massagem e estimulação de pontos vitais\nMEMBROS SUPERIORES: Massagem na parte anterior e posterior e estimulação de pontos vitais\nPESCOÇO: Massagem nas cordas vocais e estimulação de pontos vitais\nFACE: mandíbula, sínus, orelhas, sobrancelhas, testa e estimulação de pontos vitais\nCABEÇA: couro cabeludo, células do cérebro e olhos e estimulação de pontos vitais\n\n<strong>DURAÇÃO</strong>: Total = 48h\n\n<strong>DOCENTES / INSTRUTORES</strong>\n\nOs módulos práticos e teóricos terão a direcção de professores da associação e de convidados especialistas estrangeiros.\n\n<strong>Coordenador Geral do Curso:</strong> Valter Carlos Cardim (Swami Gyanesh)\n\n<strong>Professores:</strong> Formadores da Alba certificados pela Federação Europeia de Yoga, Yogaterapia e Ayurveda e pela Associação Europeia de Yoga, Yogaterapia e Ayurveda.\n\n<strong>DESTINATÁRIOS</strong> Profissionais de Massagem que actuam em Spas, fisioterapeutas, terapeutas corporais, reflexologistas, psicólogos, osteopatas, massagistas, esteticistas, e todos os profissionais da área da saúde e interessados em geral.\n\n<strong>- Preço*:</strong>\n<strong>Módulo I (48hs)</strong> = 50 Euros de inscrição* + 300 Euros pelo curso (Certificado de Massagem Ayurvedica para Spa Terapias\n\n<strong>Total (48hs)</strong> = 350 euros * (*Sócios tem 10% de desconto no preço da formação)\n\n<strong>- MATERIAL FORNECIDO</strong>: Caderno de apontamentos.\n\n<strong>- MATERIAL NECESSÁRIO:</strong> roupa apropriada para fazer e receber massagem, óleo de massagem natural (vegetal do tipo amêndoas doce, sésamo, grainha de uva, etc.), lençol, toalha grande.\n\n<strong>- Condições de Funcionamento</strong>\n\nO Curso de Formação em Massagem Ayurvédica Tradicional – Modulo I e II terá lugar nas Instalações da Associação, ou ainda, quando em outras localidades, em locais alugados, sendo o aluno avisado atempadamente no acto da inscrição. Para cada módulo prevê-se que o número de participantes seja no máximo de 18. Para além das salas de aulas devidamente equipadas para os fins pedagógicos em vista, a Associação fornece aos participantes, para cada módulo, caderno de apontamentos, teórico e prático.\n\n<strong>CERTIFICADO</strong>\n\nOs Alunos aprovados recebem um certificado de formação profissional emitido pela Associação Luso-Brasileira de Ayurvédica.\n\n<strong>INFORMAÇÕES</strong>\n\n<strong>E-mail: </strong><a href=\"mailto:lisboa@ayurvedica.org\">info@ayurvedica.org</a>\n\n* Pagamento da inscrição pode ser feito por transferência bancária: (apresentar recibo no 1º dia de aula)\n* Em caso de desistência por parte do aluno a Associação não devolve a taxa de inscrição.",
-    "resumo": "Instrutor: Sem Instrutor específico...\nDirigido a: Publico em geral, fisoterapeutas, massagistas, terapeutas corporais,...",
-    "imagem": "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
     "id": 632,
     "title": "Drenagem Linfática Manual",
     "author": "Admin",
@@ -66,138 +11,6 @@ export const initialArticles = [
     "tag": "Geral"
   },
   {
-    "id": 635,
-    "title": "MASSAGEM GEOTERMAL - PEDRAS QUENTES",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "08/01/2018",
-    "conteudo": "\n\t\t\t\t<strong>Massagem Geotermal - Pedras Quentes</strong>\nA massagem de pedras quentes, de origem oriental, concilia a massagem manual de tipo sueca com os benefícios da termoterapia no tratamento de determinadas patologias, stress, fadiga e tensão muscular. Trata-se de todo um ritual exótico luxuoso que desperta os sentidos e estimula a mente proporcionando um momento de puro relaxamento.\n\nÉ uma técnica muito relaxante devido ao efeito energizante das pedras quentes e estimulante pois activa a circulação sanguínea e linfática fundamental para o bom funcionamento do organismo.\n\nCarga horária: 16h (lectivas e presenciais) Preço: 120 Euros + 50 Euros de Inscrição – Sócios tem 10% de desconto no valor do curso e não pagam a inscrição.\n\nPlano do Curso\n\nAgenda\t\t",
-    "resumo": "Massagem Geotermal - Pedras Quentes\nA massagem de pedras quentes, de origem oriental, concilia a massagem manual de...",
-    "imagem": "https://images.unsplash.com/photo-1514733670139-4d87a1941d55?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 638,
-    "title": "Massagem Sueca",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "08/01/2018",
-    "conteudo": "<strong>Massagem Sueca</strong>\nA massagem Sueca é das mais requisitadas em Spas de luxo.\nTrata-se de um estilo de massagem desenvolvido na Suécia por Pehr Henrik Ling, no século XIX. Ling era ginasta e esgrimista. Pesquisou estilos de massagens antigas, como a dos romanos e dos chineses e estudou a relação tipo de manobra versus velocidade e intensidade da mesma e qual o efeito no organismo humano.\n\nA massagem no Ocidente, muito popular na Grécia e na Roma antiga, foi praticamente banida na idade média, devido a dogmas religiosos, que viam toda forma de atividade corporal, como algo pecaminoso. Esse fato não ocorreu no Oriente, por isso na época de Per Henrik Lin, os chineses ainda preservavam suas técnicas avançadas de terapias corporais, como o Anmá e o Tuiná.\n\nO principal benefício fisiológico da massagem sueca é a expulsão do ácido lático das fibras musculares. Muito útil para atletas e pessoas com dores musculares decorrentes de tensão. Seu estilo ficou conhecido em toda a Europa e estudantes de vários países aprenderam sua técnica e a disseminaram no Ocidente.\nÉ conhhecida ambém como \"massagem clássica\".\nMétodo\n\nAs manobras baseiam-se em movimentos de deslizamento, amassamento, rolamento, tapotamento, fricção e alongamento.\nTodas as manobras seguem um sentido específico (geralmente em direção ao coração, facilitando o retorno do sistema venoso.\nE sua pressão pode variar de Leve a moderada, e em alguns casos profunda ou muito profunda, de acordo com o objetivo a ser alcançado.\n\nNumero de hs: 24h00 Preço: 180 Euros (inscrição no valor de 50 Euros válida por um ano).\n\nPlano do Curso\n\nAgenda",
-    "resumo": "Massagem Sueca\nA massagem Sueca é das mais requisitadas em Spas de luxo.\nTrata-se de um estilo de massagem desenvolvido...",
-    "imagem": "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 648,
-    "title": "Método Dorn Breuss",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "08/01/2018",
-    "conteudo": "Instrutor: Formadores credenciados pela ALBA*\nDirigido a: Profissionais da área da saúde; terapeutas corporais, massoterapeutas, reikianos, público em geral\n\nO Método Dorn Breuss utiliza dois métodos distintos: A Massagem Breuss e o Método Dorn. Uma técnica complementa a outra com resultados incríveis.\n\n<hr />\n\n<h3>DETALHES DO CURSO</h3>\n<strong>MÉTODO DORN BREUSS</strong>\n\nO Método Dorn Breuss utiliza dois métodos distintos: A Massagem Breuss e o Método Dorn.\n\nÈ uma técnica que complementa a outra e em conjunto com outro tipo de exercícios obtém-se resultados incríveis.\n\nA coluna vertebral não é só a estrutura central de suporte do corpo, mas também o invólucro estável de proteção da espinal-medula.\n\nÉ o principal centro coordenador do funcionamento dos órgãos, tecidos e de todas as células do corpo. A dor, disfunção e alterações nos tecidos – não somente nas costas mas também em todas as outras partes do corpo – são frequentemente induzidas por uma irritação dos nervos que se ramificam da coluna, o que resulta numa deslocação ou bloqueio de uma ou mais vértebras.\n\nO Método Dorn Breuss atua como uma noite de sono reparadora e equilibradora do nosso metabolismo.\n\n<strong style=\"font-style: inherit;\">Tipo de formação:</strong> Pratica e Teórica do Método Dorn-Breuss\n\n<strong style=\"font-style: inherit;\">Objectivo geral do curso: </strong>Dar a conhecer aos profissionais e terapeutas e aos que se iniciarem nesta técnica uma massagem terapêutica que visa a cura do individuo através da coluna Vertebral.\n\n<strong style=\"font-style: inherit;\">Competências adquiridas:</strong> No final do workshop o aluno deverá estar apto a:\n– executar de forma precisa as técnicas do método Dorn e a Massagem Breuss\n– perceber as doenças e patologias que podem advir do desalinhamento da coluna vertebral\n– experimentar no seu corpo os efeitos da massagem\n– saber como aconselhar o cliente para ter melhores posturas e efectuar alongamentos necessários ao fortalecimento muscular para evitar no futuro complicações semelhantes\n– saber discernir nos casos que se apresentam o que deve fazer e se deve ou não aplicar a massagem\n\n<strong style=\"font-style: inherit;\">Plano curricular: </strong>Um pouco de História e os Fundamentos do Método – Anatomia da Coluna Vertebral e suas patologias – Relação entre vértebras e órgãos. Sintomas físicos – Óleos a usar – Indicações – Sequência da Massagem Breuss – Sequência do Método Dorn – Conselhos e recomendações ao Paciente após o tratamento – Prevenção e Auto correção – Avaliação\n\n<strong style=\"font-style: inherit;\">Número total de horas: </strong>16h\n\n<strong style=\"font-style: inherit;\">Material Necessário: </strong>Toalha grande; Toalha média; Lençol; Azeite puro extra-virgem ou óleo de amendoas doce ou sésamo; Roupa confortável ou de algodão para proteger a marquesa.\n\n<strong style=\"font-style: inherit;\">Preço</strong>: 150 euros (o valor inclui a inscrição válida por um ano)\n\n<strong>Informações</strong>: E-Mail: <a href=\"mailto:lisboa@ayurvedica.org\">info@ayurvedica.org</a>\n\n<strong>* Formador: Nuno Nunes</strong>\n\nFormado pela ALBA - Associação Luso Brasileira de Ayurvédica em 2003, tirou a especialização de massagem às costas pela Alba, viajou para França onde viveu e trabalhou e pode amadurecer mais o conceito de tratamentos corporais através das massagens terapêuticas. Em 2017 pode finalizou o curso de massagem quiroprática oriental em conjunto com a massagem shiatsu de relaxamento no norte do país e fez formação de óleos de acordo com a Ayurveda. Em meados do início do ano seguinte concretizou o curso de hidrobalneoterapia em conjunto com podologia. No mesmo ano finalizou o curso de ventosaterapia de moxabustão. Atualmente encontra-se a concretizar a carteira profissional de posturologia.\n\n<hr />",
-    "resumo": "Instrutor: Formadores credenciados pela ALBA*\nDirigido a: Profissionais da área da saúde; terapeutas corporais, massoter...",
-    "imagem": "https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 662,
-    "title": "REFLEXOLOGIA PODAL",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "08/01/2018",
-    "conteudo": "\n\t\t\t\t<strong>Reflexologia Podal</strong>\nUma longa viagem começa com um único passo. (Lao-Tsé (1324-1408 a. C.) Os seus pés caminham sobre a Terra e através deles o seu Espírito se une ao Universo. (Índio Cherokee)\nA Reflexologia é uma prática milenar que consiste em aplicar manualmente diferentes pressões em pontos dos pés e das mãos, a fim de estimular o sistema de cura do próprio corpo.\n\nÉ uma arte suave, uma ciência fascinante e uma forma extremamente eficaz de massagem terapêutica. A pressão exercida com a ponta dos dedos em diversos pontos específicos dos pés ou das mãos trata com êxito vários problemas de saúde. É também conhecida como acupunctura digital.\n\nA sua origem remonta à Antiguidade, teve origem na China há cerca de 4 mil anos. Descobertas arqueológicas defendem também, o seu aparecimento no Egipto por volta de 2500 anos a.C.\nA Reflexologia permite a recuperação gradual do bem-estar, restaura o fluxo normal da energia vital (Chi), activa o mecanismo de cura que existe no interior de cada um de nós.\n\nTotal de horas: Modulo I: 30 hs cada modulo. Preço: 200€ + 50€ inscrição* (Os sócios da Associação não pagam a inscrição e tem 10% de desconto).\n\nPlano do Curso\n\nAgenda\n\n[embed]https://youtu.be/ZOWPCU-gA_k[/embed]\t\t",
-    "resumo": "Reflexologia Podal\nUma longa viagem começa com um único passo. (Lao-Tsé (1324-1408 a. C.) Os seus pés caminham sobr...",
-    "imagem": "https://images.unsplash.com/photo-1599447421416-3414500d18a5?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 668,
-    "title": "MASSAGEM HAVAIANA LOMI-LOMI",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "08/01/2018",
-    "conteudo": "<span style=\"font-weight: 400;\">Lomi-lomi, significa “massagem” no idioma havaiano. É a palavra usada hoje em dia para descrever a massagem havaiana, tradicionalmente chamada “lomi” “para esfregar, pressionar, espremer, massagem, para trabalhar dentro e fora.</span>\n\n<span style=\"font-weight: 400;\">Lomi-lomi é uma tradição de cura holística além das massagens simples. Além de um relaxamento profundo dos músculos, através da manipulação dos tecidos e do sistema músculo-esquelético, a massagem havaiana liberta os bloqueios e gera energia.</span>\n\n<span style=\"font-weight: 400;\">Actua também nos sistemas linfático, imunológico, respiratório, digestivo e circulatório, com estímulos que reequilibram e tonificam.</span>\n\n<span style=\"font-weight: 400;\">É uma técnica de massagem relaxante, sensorial e holística que, liberta o sistema físico, mental e energético do corpo. Obtém-se um profundo relaxamento através do qual consegue-se harmonizar o corpo como um todo e com a sua essência, onde impera a confiança, o amor e a paz.</span>\n\n<b>Duração:</b> <span style=\"font-weight: 400;\"> 32 horas</span>\n\n<b>VALORES</b>\n\n<b>Preço:</b><span style=\"font-weight: 400;\"> 240€</span>\n\n<b>Inscrição:</b><span style=\"font-weight: 400;\"> 50€</span>\n\n<b>INFORMAÇÕES:</b>\n\n<span style=\"font-weight: 400;\">E-mail:  info@ayurvedica.org</span>\n\nPlano do Workshop\n\nAgenda",
-    "resumo": "Lomi-lomi, significa “massagem” no idioma havaiano. É a palavra usada hoje em dia para descrever a massagem havaiana, tr...",
-    "imagem": "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 680,
-    "title": "MASSAGEM TAILANDESA PARA SPA TERAPIAS",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "08/01/2018",
-    "conteudo": "Instrutor:\nDirigido a: Publico em geral, fisoterapeutas, massagistas, terapeutas corporais, naturopatas, profissionais da área da saúde e bem-estar\n\nCurso direccionado para quem quer trabalhar em gabinetes de massagem e de Spa Terapias. A massagem Tailandesa é muito requisitada em Spas e Centros de Terapia pelo seu efeito altamente benéfico.\n\n<hr />\n\n<h3>DETALHES DO CURSO</h3>\nA massagem tailandesa tradicional centra o seu trabalho na energia do corpo que flui por uma rede de canais ou linhas Sen, nadis ou meridianos. Bloqueios desta força vital são a principal causa da dor e da doença. A saúde é vista como o equilíbrio e a harmonia dessas linhas de energia no nosso corpo, proporcionando-nos um estado de vitalidade, força e paz interior.\n\nA Massagem Tailandesa é conhecida como yoga passiva. No fundo é o seu corpo que recebe todos os benefícios do yoga sem que para isso tenha de participar numa aula activamente. Este tipo de massagem tem origem na Tailândia e recebe fortes influências das tradições indianas.\n\n<strong>Curso teórico-pratico.</strong>\n\n<strong>Objectivos</strong>\n\nO curso busca a levar o aluno a:\n\n- aprender a executar com autonomia uma massagem completa\n\n- levar o aluno a perceber o ritmo da massagem tailandesa\n\n- dar conhecimento do contexto em que a massagem tailandesa se insere\n\n- fazer com que o aluno experimente os efeitos da massagem\n\n- mostrar ao aluno como deve funcionar num gabinete perante o cliente e durante o tratamento.\n\n<strong>Programa:</strong>\n\nIntrodução Geral à Massagem Tailandesa\n\nA massagem Tailandesa como é praticada na Tailândia\n\nConceito, características da massagem Tailandesa\n\nHistória da Massagem Tailandesa Anatomia aplicada à massagem Tailandesa Indicações e contra indicações da massagem\n\nPreparação do paciente e terapeuta\n\nExercícios de preparação para a massagem.\n\nTécnicas de massagem\n\n<strong>Numero de hs</strong>: 32\n\n<strong>Preço</strong>: 240 Euros + inscrição no valor de 50 Euros válida por um ano\n\n<strong>Informações e inscrições:</strong>\n\n<strong>Mail</strong>: info@ayurvedica.org",
-    "resumo": "Instrutor:\nDirigido a: Publico em geral, fisoterapeutas, massagistas, terapeutas corporais, naturopatas, profissionais d...",
-    "imagem": "https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 683,
-    "title": "PINDAS TAILANDESAS - WORKSHOP",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "08/01/2018",
-    "conteudo": "\n\t\t\t\t<strong>Pindas Tailandesas </strong>\nAs pindas são saquinhos de linho que se utilizam em determinadas terapias e massagens orientais.\n\nHorário: 10h as 13h – 14h as18h\nTotal de horas: 14h Preço: 120 Euros + 50 Euros de inscrição (inclui material).\n\nPlano do Curso\n\nAgenda\t\t",
-    "resumo": "Pindas Tailandesas \nAs pindas são saquinhos de linho que se utilizam em determinadas terapias e massagens orientais...",
-    "imagem": "https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 689,
-    "title": "NATUROPATIA AYURVÉDICA",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "21/06/2020",
-    "conteudo": "<strong>Formação em Naturopatia Ayurvédica </strong>\nAtravés das bases da Medicina Ayurvédica, segundo a tradição de Kerala, Sul da India, e a sua tradição milenar, tornar o aluno, apto a utilizar esse importante arsenal terapêutico tanto de forma profiláctica quanto instrumento na restauração da saúde.\n\nDuração da 1ª fase: 24 aulas (semi-presencial). O aluno faz o seu horário e será acompanhado, de acordo com a disponibilidade dos formadores, individualmente ou em pequenos grupos. O acompanhamento é de orientação tutorial. (48 Horas – 2h cada aula) – uma vez por semana + 60 hs para pesquisa teórica sobre tema específico = total 108h). Preço da 1ª fase: 50 Euros de inscrição. 100 Euros por mês x 6 meses = total= 600 Euros. Sócios em dia com as quotas não pagam a inscrição e tem 10% de desconto.\n\nLOCAL: Lisboa (endereço dos contactos do site)\n\nPreço: 100 Euros por mês (6 meses = 600 Euros) + 50 Euros de Inscrição. O preço inclui um caderno especial com receitas deliciosas para cada dosha. Pode ser pago de forma parcelada. Desconto de 10% para sócios.\n\n<a href=\"https://www.ayurvedica.org/wp-content/uploads/2019/07/Naturopatia-Ayurv%C3%A9dica.pdf\">Plano do Curso</a>\n\nAgenda",
-    "resumo": "Formação em Naturopatia Ayurvédica \nAtravés das bases da Medicina Ayurvédica, segundo a tradição de Kerala, Sul da India...",
-    "imagem": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 692,
-    "title": "NUTRIÇÃO AYURVÉDICA & ESTILO DE VIDA",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "15/06/2020",
-    "conteudo": "<strong>Nutrição Ayurvédica e Estilo de Vida</strong>\nRespeitando os valores e os princípios da mais antiga medicina do Planeta, esta formação visa dar ferramentas para os participantes adoptarem, sem desrespeitar a cultura local, o conhecimento desta milenar ciência para a sua vida quotidiana e familiar.\n\nNumero de hs: 24h presenciais. \n\n Preço: 100 Euros por mês (3 meses = 300 Euros) + 50 Euros de Inscrição. O preço inclui um caderno especial com receitas deliciosas para cada dosha. Pode ser pago de forma parcelada. Desconto de 10% para sócios.\n\nPlano do Curso\n\nAgenda\n\nMapa",
-    "resumo": "Nutrição Ayurvédica e Estilo de Vida\nRespeitando os valores e os princípios da mais antiga medicina do Planeta, esta for...",
-    "imagem": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 695,
-    "title": "ESTÉTICA, COSMÉTICA E BELEZA PELA AYURVEDA",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "08/01/2018",
-    "conteudo": "\n\t\t\t\t<strong>Estética, Cosmética e Beleza pela Ayurveda</strong>\n\nA Índia é um dos principais berço das Terapias para o tratamento do corpo e da mente. É um dos países que possui uma quantidade infindável de manifestações culturais e espirituais, um mix de aromas, com cenários onde predomina as cores e a magia.\nHá várias maneiras de desvendar os mistérios da Índia e uma delas é pela cosmética Ayurvédica. Nesta formação o aluno aprende a utilizar uma série de técnicas que auxiliam na manutenção da beleza.\n\nNumero de hs total: 168 h Preço: 750€ + inscrição 50€.\n\nPlano do Workshop\n\nAgenda\t\t",
-    "resumo": "Estética, Cosmética e Beleza pela Ayurveda\n\nA Índia é um dos principais berço das Terapias para o tratamento do cor...",
-    "imagem": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 702,
-    "title": "SHIRODHARA - WORKSHOP ESPECIAL PARA TERAPEUTAS",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "08/01/2018",
-    "conteudo": "\n\t\t\t\t<strong>SHIRODHARA - WORKSHOP ESPECIAL PARA TERAPEUTAS</strong>\nShirodhara é uma terapia da Medicina profundamente relaxante, que envolve um líquido medicado que é derramado lentamente na testa, região do chakra Ajna e em toda região frontal, testa e têmporas, quer com óleos orgânicos, que foram preparados com ervas especiais de acordo com as regras da Medicina Ayurveda, ou com leite orgânico aquecido ou medicado com diversos ingredientes (takradhara).\n\nCarga Horária: 8 horas Valor: 60 Euros.\n\nPlano do Workshop\n\nAgenda\t\t",
-    "resumo": "SHIRODHARA - WORKSHOP ESPECIAL PARA TERAPEUTAS\nShirodhara é uma terapia da Medicina profundamente relaxante, que en...",
-    "imagem": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 721,
-    "title": "OSHO MEDITATIONS",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "08/01/2018",
-    "conteudo": "<span style=\"font-weight: 400;\">A meditação é a técnica mais avançada para a auto-descoberta. Todos nós sentimos que somos algo mais. Que podíamos ser mais felizes, mais realizados a todos os níveis na nossa vida. Muitas vezes sentimos que nos falta algo.</span>\n\n<span style=\"font-weight: 400;\">O corpo que nós vemos é apenas uma parte daquilo que nós somos realmente. Através dos sentidos deste corpo apreendemos a realidade que alcançamos. Mas existe muito mais Amor, Alegria e Paz, para além do corpo, para além da mente.</span>\n\n<span style=\"font-weight: 400;\">Existe no nosso coração algo mais profundo, mais preenchedor. A forma mais eficiente de trazer essas qualidades para as nossas acções é através da prática regular da meditação.</span>\n\n<span style=\"font-weight: 400;\">Sozinhos, nem sempre temos a inspiração para ter uma prática regular. E é isso que é proposto nestas sessões: meditando em grupo, somos mais fortes e as experiências são mais intensas, motivando-nos.</span>\n\n<span style=\"font-weight: 400;\">Através da utilização de variadas técnicas universais desenvolvidas pelo Mestre Osho para o homem ocidental, que envolvem a respiração, movimentos, entoação de mantras, etc., os participantes poderão experienciar o profundo mundo da meditação, trazendo para a vida de todos e de quem vos rodeia mais Harmonia, Paz e Amor.</span>\n\n<strong>Meditação Nadabrahma</strong>\nUma poderosa meditação que abre a nossa ligação com a Terra e com as energias curativas de nossas mãos.\n\n<strong>Duração:</strong> 1 hora\n\n<strong>Valor: Gratuito</strong>\n\n<strong>INSCRIÇÕES PRESENCIAIS: </strong>Rua José de Moura, 47 – Centro, Jarinu – SP, 13240-000, Brasil. Tel.: +55 11 96372-3738\n\n<strong>VAGAS LIMITADAS</strong>\n\n<strong>Organizador</strong>\n<strong>Casa das Ervas Leomidê</strong>\n<strong>Telefone</strong>: +55 11 96372-3738\n<strong>WhatsApp</strong> : 97581 7457\nSite:\n<a href=\"https://www.facebook.com/leomide.ervas\">https://www.facebook.com/leomide.ervas</a>\n\n<span style=\"font-weight: 400;\"><strong>E-mail: </strong> <a href=\"mailto:info@ayurvedica.org\">info@ayurvedica.org</a></span>\n\nPlano do Workshop\n\nAgenda",
-    "resumo": "A meditação é a técnica mais avançada para a auto-descoberta. Todos nós sentimos que somos algo mais. Que podíamos ser m...",
-    "imagem": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
     "id": 732,
     "title": "Cristais e Meditação",
     "author": "Admin",
@@ -206,17 +19,6 @@ export const initialArticles = [
     "conteudo": "Hoje, a ciência prova que os cristais têm uma estrutura especial, podemos afirmar que os cristais não são apenas um tipo de rocha qualquer. Eles contém marcas vibratórias da perfeição Divina.\nAs escolas tradicionais de iniciação espiritual dizem-nos que o microcosmo e o macrocosmo são um só.\nDizem-nos que todos os níveis reflectem o Divino, o Espírito Universal.\nOs cristais traduzem de maneira especial esse reflexo, por conterem a totalidade da manifestação Divina no plano material. Podemos afirmar que eles são a expressão do Divino no plano material.\nO uso dos cristais nos dias de hoje é enorme. Eles são, sem duvida alguma, na história actual da humanidade, uma das maiores ferramentas para uma nova reabertura de consciência.\nOs cristais, pedras preciosas e semipreciosas, têm sido na actualidade, sem dúvida, parte da importante transformação planetária que se está a operar e na qual todos nós devemos participar. Por isso, eles devem ser usados como ferramentas do amor e da consciência da verdade.\n\nInformações: info@ayurvedica.org",
     "resumo": "Hoje, a ciência prova que os cristais têm uma estrutura especial, podemos afirmar que os cristais não são apenas um tipo...",
     "imagem": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 741,
-    "title": "FLORAIS DE BACH - FORMAÇÃO DE TERAPEUTAS",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "08/01/2018",
-    "conteudo": "<span style=\"font-weight: 400;\">As Essências Florais e a sua utilização na actualidade – enquadramento do estudo das Essências Florais de Bach no âmbito das terapias alternativas e complementares. </span>\n\n<strong>Programa do curso:</strong>\n\n<strong>Módulo 1</strong>\n\n- Os Florais de Bach, sua História, o seu Fundador/Sintonizador e a sua co-relação com as nossas caracteristicas fisicas (Doshas) padrões mentais (Gunas) e emocionais (Como agimos mediante a mesma realidade no Campo Energético)\n\n- Os actuais Sintonizadores de Florais. Como podemos conhecer melhor o \"Nosso Floral Tipo\".\n\nOs 12 Curadores. Os 4 Auxiliares.\n\nRescue e os Restantes Florais descobertos pelo Dr. Bach.\n\nGatilhos de Memória e Processos de Cura da Athma\n\nCasos práticos e Dúvidas.\n\n<strong>Módulo 2</strong>\n\n- Anamnese /Métodos de Diagnóstico.\n\nDuração do Tratamento Emocional e Regularidade de Consultas (ou não) a agendar\n\nPreparação dos Florais para si e para quem o rodeia em caso de necessidade.\n\n(Ex crianças/idosos/doentes crônicos etc)\n\n- Diluições e Aplicações para as Diversas Patologias.\n\n<strong>CONTRA INDICAÇÕES:</strong> (sem colidir com qualquer outra terapêutica alopática ou não) a considerar em casos específicos.\n\nExemplo: pessoas que  são  ou foram dependentes de álcool, cirrose hepática, refluxo esofágico.\n\n<strong>A LEMBRAR:</strong>\n\n- <strong>TODA AS MEDICINAS NATURAIS</strong> que trabalham de Forma correcta devem ter em conta a Consciencialização DOS PACIENTES para obtenção  dos melhores resultados.\n\n<strong>APLICAÇÃO AINDA EM</strong>: espaços,  animais, plantas e terrenos\n\n- Estudos de Caso\n\n<strong>AVALIAÇÃO: </strong>Apresentação de trabalho prático ou teórico  (de acordo com instruções da Formadora e da Escola)\n\n<strong>RECICLAGENS NÃO SÃO PAGAS CASO CONCLUAM A FORMAÇÃO</strong>\n\n<strong>MATERIAL DE FORMAÇÃO:</strong> Será disponibilizado Manual via email ou formato papel pela formadora assim como vÍdeos e material de Apoio relativo ao Curso tais como os contactos credíveis que necessitam para poder exercer a v/profissão como terapeutas.\n\n<b>INFORMAÇÕES GERAIS:</b>\n\n<b>Duração:</b> <span style=\"font-weight: 400;\"> 90 horas</span>\n\n<strong>CERTIFICAÇÃO:</strong> Aos aprovados será emitido um <strong>Certificado de Formação Profissional</strong> com o selo da <strong>Federação Europeia de Yoga, Yogaterapia e Ayurveda</strong> (e com o logotipo das outras entidades da Federação)\n\n<b>VALORES</b>\n\n<b>Inscrição:</b><span style=\"font-weight: 400;\"> 50€</span>\n\n<b>Preço:</b><span style=\"font-weight: 400;\"> 500€</span><span style=\"font-weight: 400;\"> (100 Euros por mês - 5 meses de duração - aulas sábados e domingos das 9h30 as 18h uma vez por mês)</span>\n\n<strong>Pagamentos a pronto tem 10% de desconto no valor do curso.</strong>\n\n<b>INSCRIÇÕES E ATENDIMENTO</b>\n\n<b>Horário da Secretaria: </b><span style=\"font-weight: 400;\">Marcar hora para visitas</span>\n\n<b>Contacto:</b>\n\n<span style=\"font-weight: 400;\">E-mail:  info@ayurvedica.org </span>\n\nAgenda",
-    "resumo": "As Essências Florais e a sua utilização na actualidade – enquadramento do estudo das Essências Florais de Bach no âmbito...",
-    "imagem": "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=600&auto=format&fit=crop",
     "tag": "Geral"
   },
   {
@@ -275,17 +77,6 @@ export const initialArticles = [
     "tag": "Geral"
   },
   {
-    "id": 883,
-    "title": "Indian Head Massage - Champi",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "09/06/2020",
-    "conteudo": "<strong>Indian Head Massage </strong>\nEntre muitas outras, o combate ao stress, melhoria da circulação e drenagem linfática, oxigenação do cérebro, crescimento capilar, eliminação de dores de cabeça, combate a insónias, ansiedade, dores de pescoço, rigidez muscular dos ombros nuca e pescoço, sem esquecer um profundo efeito de relaxamento e bem-estar.\n\nTotal de hs efectivas: 16 hs. Um Sábado e Domingo o dia todo das 9h30 as 18h30 Os alunos que concluirem o curso com aproveitamento recebem um certificado de workshop em Indian Head Massage (16h). * Em caso de desistência por parte do aluno a Associação não devolve a taxa de inscrição.\n\nPúblico em geral. 120 euros + 50 de inscrição*. (Os sócios da associação não pagam a inscrição e tem 10% de desconto no curso).\n\nhttps://www.ayurvedica.org/contactos/ \n\nPlano do Workshop\n\nAgenda\n\n&nbsp;",
-    "resumo": "Indian Head Massage \nEntre muitas outras, o combate ao stress, melhoria da circulação e drenagem linfática, oxigenação d...",
-    "imagem": "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
     "id": 898,
     "title": "Astrologia",
     "author": "Admin",
@@ -319,28 +110,6 @@ export const initialArticles = [
     "tag": "Geral"
   },
   {
-    "id": 1128,
-    "title": "Aprofundamento em Yoga - Yogaterapia",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "12/01/2018",
-    "conteudo": "<strong>CURSO DE APROFUNDAMENTO EM YOGA - YOGATERAPIA</strong>\nO Yoga está se tornando cada vez mais um sistema válido de reforço da mente, de facilitação da concentração, tendo em vista a saúde psicofísica, a prevenção e até a cura das doenças.\nAprendendo a se observar, a se compreender e a se conhecer em profundidade, descobrir que a felicidade está dentro de si mesmo, bastando tomar consciência.\n\nInteressados deverão contactar diretamente uma das duas entidades formadoras:\n\nCentro de Estudos de Yoga Narayana: <a href=\"https://www.yoganarayana.com.br/\">https://www.yoganarayana.com.br/</a>\n\nE-mail:  <a href=\"mailto:cursos@yoganarayana.com.br\">cursos@yoganarayana.com.br</a>\n\nAssociação Internacional dos Professores de Yoga do Brasil: <a href=\"https://www.iyta.com.br/\">https://www.iyta.com.br/</a>\n\nE-mail: <a href=\"mailto:contato@iyta.com.br\">contato@iyta.com.br</a>",
-    "resumo": "CURSO DE APROFUNDAMENTO EM YOGA - YOGATERAPIA\nO Yoga está se tornando cada vez mais um sistema válido de reforço da ment...",
-    "imagem": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 1131,
-    "title": "Yoga Infantil - Workshop",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "12/01/2018",
-    "conteudo": "<span style=\"font-weight: 400;\">Trabalhar o desenvolvimento emocional, energético e artístico da criança, além de promover o relaxamento e a concentração.</span>\n\nInteressados deverão contactar diretamente uma das duas entidades formadoras:\n\nCentro de Estudos de Yoga Narayana: <a href=\"https://www.yoganarayana.com.br/\">https://www.yoganarayana.com.br/</a>\n\nE-mail:  <a href=\"mailto:cursos@yoganarayana.com.br\">cursos@yoganarayana.com.br</a>\n\nInternacional dos Professores de Yoga do Brasil: <a href=\"https://www.iyta.com.br/\">https://www.iyta.com.br/</a>\n\nE-mail: <a href=\"mailto:contato@iyta.com.br\">contato@iyta.com.br</a>\n\n<b>Instrutor:</b><span style=\"font-weight: 400;\"> Angela Martinez, professora da Associação Internacional de Professores de Yoga do Brasil e do Centro de Estudos de Yoga Narayana vem a Lisboa ministrar um workshop de Yoga Infantil.</span>\n\nPlano do Workshop\n\nAgenda",
-    "resumo": "Trabalhar o desenvolvimento emocional, energético e artístico da criança, além de promover o relaxamento e a concentraçã...",
-    "imagem": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
     "id": 1141,
     "title": "Iniciação Prática às Asanas",
     "author": "Admin",
@@ -349,61 +118,6 @@ export const initialArticles = [
     "conteudo": "<strong>Iniciação Prática às Ásanas</strong>\nDesenvolva seu potencial físico e mental, aprenda a controlar suas emoções e a reeducar sua respiração.\nNeste workshop de ásanas (posturas de yoga), aprenderá de forma progressiva a executar as principais posturas, bem como os benefícios de cada uma.\nAprenderá também a criar suas próprias aulas para um melhor aproveitamento durante as práticas.\n\nInteressados deverão contactar diretamente uma das duas entidades formadoras:\n\nCentro de Estudos de Yoga Narayana: <a href=\"https://www.yoganarayana.com.br/\">https://www.yoganarayana.com.br/</a>\n\nE-mail:  <a href=\"mailto:cursos@yoganarayana.com.br\">cursos@yoganarayana.com.br</a>\n\nInternacional dos Professores de Yoga do Brasil: <a href=\"https://www.iyta.com.br/\">https://www.iyta.com.br/</a>\n\nE-mail: <a href=\"mailto:contato@iyta.com.br\">contato@iyta.com.br</a>",
     "resumo": "Iniciação Prática às Ásanas\nDesenvolva seu potencial físico e mental, aprenda a controlar suas emoções e a reeducar sua...",
     "imagem": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 1144,
-    "title": "Tantrismo, Vedanta e Sanquia",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "12/01/2018",
-    "conteudo": "<span style=\"font-weight: 400;\">Considerada uma escola heterodoxa e sincrética que enfatiza a prática em detrimento das doutrinas, o Tantra (a palavra significa trama ou acrônimo tan=expandir e tra=liberar, expandir a consciência e liberar o Ser) é a base de importantes escolas de yoga, entre elas o Hatha Yoga e o Laya Yoga.</span>\n\n<span style=\"font-weight: 400;\">O curso de Introdução ao Tantrismo visa dar ao praticante os fundamentos das escolas tântricas não só hindus como de outros sistemas religiosos e filosóficos. </span>\n\n<span style=\"font-weight: 400;\">Nas palavras de M.P. Pandit: </span>\n\n<span style=\"font-weight: 400;\">“O Tantra é o maior desenvolvimento na evolução do pensamento espiritual indiano posto que ele representa uma tentativa de reconciliar os pontos de conflito aparentes entre as diferentes escolas filosóficas que surgiram após a era dos épicos.</span>\n\n<span style=\"font-weight: 400;\">O Tantra tenta sintetizar o Monismo do Advaita com o Dualismo do Sanquia, enriquecido com o Jnana e com o rasa (essência) do Bhakti, une a Natureza com o Senhor na individualidade do ser humano, harmonizar as demandas do Espírito com os limites da Matéria. Ele recupera a herança perdida dos Vedas que enfatiza a comunhão entre o homem, Natureza e Deus e a igualdade de status entre a Mãe Terra e o Pai Céu.</span>\n\n<span style=\"font-weight: 400;\">O princípio do tantra é não rejeitar nada que Deus tenha criado, de utilizar todos os meios para elevar a consciência humana ao plano divino. Diferentemente dos sistemas que o antecederam, o Tantrismo é fortemente racional em seu enfoque; ele não exige a fé antecipada. É uma ciência que se auto verifica no desenvolvimento das energias naturais e, seus termos super-naturais levando a desfrute cósmico da vida em consciência espiritual. Em uma palavra é uma via de mukti e bhukti no sentido mais elevado.”</span>\n\nOs interessados deverão contactar diretamente uma das duas entidades formadoras:\n\nCentro de Estudos de Yoga Narayana: <a href=\"https://www.yoganarayana.com.br/\">https://www.yoganarayana.com.br/</a>\n\nE-mail:  <a href=\"mailto:cursos@yoganarayana.com.br\">cursos@yoganarayana.com.br</a>\n\nAssociação Internacional dos Professores de Yoga do Brasil: <a href=\"https://www.iyta.com.br/\">https://www.iyta.com.br/</a>\n\nE-mail: <a href=\"mailto:contato@iyta.com.br\">contato@iyta.com.br</a>\n\n&nbsp;\n\nPlano do Workshop\n\nAgenda",
-    "resumo": "Considerada uma escola heterodoxa e sincrética que enfatiza a prática em detrimento das doutrinas, o Tantra (a palavra s...",
-    "imagem": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 1147,
-    "title": "Kripa Fundations Iyengar Yoga",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "12/01/2018",
-    "conteudo": "A maioria de nossas atitudes perante a vida tem sua contraparte no corpo físico. Do momento em que nascemos até a nossa morte vivemos em um mundo polarizado e de natureza rítmica. O método Kripa Fundations Iyengar Yoga nos ensina que a comparação e a crítica devem começar pelo alinhamento dos nossos lados direito e esquerdo a um grau em que ajustes mais precisos são exequíveis como começar esticando o corpo, dos artelhos ao topo da cabeça, desafiando a gravidade. Esta é uma técnica adequada para prevenir males físicos e mentais, para proteger o corpo como um todo, desenvolvendo um senso de autoconfiança e segurança através do equilíbrio entre as nossas polaridades.\n\nInteressados deverão contactar diretamente uma das duas entidades formadoras:\n\nCentro de Estudos de Yoga Narayana: <a href=\"https://www.yoganarayana.com.br/\">https://www.yoganarayana.com.br/</a>\n\nE-mail:  <a href=\"mailto:cursos@yoganarayana.com.br\">cursos@yoganarayana.com.br</a>\n\nAssociação Internacional dos Professores de Yoga do Brasil: <a href=\"https://www.iyta.com.br/\">https://www.iyta.com.br/</a>\n\nE-mail: <a href=\"mailto:contato@iyta.com.br\">contato@iyta.com.br</a>\n\nPlano do Workshop\n\nAgenda",
-    "resumo": "A maioria de nossas atitudes perante a vida tem sua contraparte no corpo físico. Do momento em que nascemos até a nossa...",
-    "imagem": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 1150,
-    "title": "Meditação Infantil - Workshop",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "12/01/2018",
-    "conteudo": "<span style=\"font-weight: 400;\">Este workshop foi projectado para ser trabalhado com crianças entre 5 anos e adolescência, para que eles possam vivenciar mais de si próprios e aprender a canalizar a energia através da meditação, trazendo benefícios como: o autoconhecimento, ajuda na conexão e relação com o mundo a sua volta. Aumenta a auto-estima, desenvolve a capacidade de relaxar, melhora a atenção, a concentração e o domínio sobre sentimentos e emoções, desenvolvendo uma percepção contínua entre o que acontece dentro e fora do corpo.</span>\n\n<b>INFORMAÇÕES </b>\n\n<b>Duração: </b><span style=\"font-weight: 400;\">4 horas</span>\n\nOs interessados deverão contactar diretamente uma das duas entidades formadoras:\n\nCentro de Estudos de Yoga Narayana: <a href=\"https://www.yoganarayana.com.br/\">https://www.yoganarayana.com.br/</a>\n\nE-mail:  <a href=\"mailto:cursos@yoganarayana.com.br\">cursos@yoganarayana.com.br</a>\n\nAssociação Internacional dos Professores de Yoga do Brasil: <a href=\"https://www.iyta.com.br/\">https://www.iyta.com.br/</a>\n\nE-mail: <a href=\"mailto:contato@iyta.com.br\">contato@iyta.com.br</a>\n\n&nbsp;\n\nPlano do Workshop\n\nAgenda",
-    "resumo": "Este workshop foi projectado para ser trabalhado com crianças entre 5 anos e adolescência, para que eles possam vivencia...",
-    "imagem": "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 1153,
-    "title": "As Plantas do Yoga - Workshop",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "12/01/2018",
-    "conteudo": "<span style=\"font-weight: 400;\">A relação das plantas e sua importância para os vários sadhanas de yoga, suas relações com deuses, deusas , santos e elementais.</span>\n\n<span style=\"font-weight: 400;\">Passagens de textos clássicos hindus, budistas e jaínistas com referências à sacralidade das plantas e seu papel na transcendência humana.</span>\n\n<span style=\"font-weight: 400;\">“Os siddhis podem ser alcançados por nascimento, por ervas medicinais (oşadhi), por mantras, pelo Tapas ou por samadhi” oşadhi=rainha das ervas; a lua, soma (dhi=um receptáculo, cadinho ou mente; osa=transformação incandescente) Aforismos de Patanjali (Kaivalyapāda, sloka 1)</span>\n\nInteressados deverão contactar diretamente com a entidade formadora:\n\nCentro de Estudos de Yoga Narayana: <a href=\"https://www.yoganarayana.com.br/\">https://www.yoganarayana.com.br/</a>\n\nE-mail:  <a href=\"mailto:cursos@yoganarayana.com.br\">cursos@yoganarayana.com.br</a>\n\nPlano do Workshop\n\nAgenda",
-    "resumo": "A relação das plantas e sua importância para os vários sadhanas de yoga, suas relações com deuses, deusas , santos e ele...",
-    "imagem": "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 1156,
-    "title": "Instrutor de Yoga",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "12/01/2018",
-    "conteudo": "<strong>Curso de Instrutor de Yoga</strong>\n\nEsta formação não esta disponivel de forma presencial para Portugal.\n\nFormação internacional com professores do Centro de Estudos de Yoga Narayana de São Paulo ou da Associação Internacional de Professores de Yoga do Brasil. Os interessados deverão escolher em qual entidade deseja fazer o curso e solicitar informações. Contatos abaixo.\n\nCurso credenciado pela Federação Europeia de Yoga, Yogaterapia e Ayurveda.\n\nOs alunos aprovados recebem um Certificado de Formação Profissional como \"Instrutor de Yoga\" de acordo com as normas das duas entidades.\n\nInteressados deverão contactar diretamente uma das duas entidades formadoras:\n\nCentro de Estudos de Yoga Narayana: <a href=\"https://www.yoganarayana.com.br/\">https://www.yoganarayana.com.br/</a>\n\nE-mail:  <a href=\"https://www.yoganarayana.com.br/cursos@yoganarayana.com.br\">cursos@yoganarayana.com.br</a>\n\nInternacional dos Professores de Yoga do Brasil: <a href=\"https://www.iyta.com.br/\">https://www.iyta.com.br/</a>\n\nE-mail: <a href=\"mailto:contato@iyta.com.br\">contato@iyta.com.br</a>",
-    "resumo": "Curso de Instrutor de Yoga\n\nEsta formação não esta disponivel de forma presencial para Portugal.\n\nFormação internacional...",
-    "imagem": "https://images.unsplash.com/photo-1514733670139-4d87a1941d55?q=80&w=600&auto=format&fit=crop",
     "tag": "Geral"
   },
   {
@@ -514,39 +228,6 @@ export const initialArticles = [
     "conteudo": "\n\t\t\t\tA sua intenção é servir de guia no que diz respeito à alimentação e estilo de vida para que os indivíduos saudáveis permaneçam saudáveis e os que tenham problemas possam alcançar a saúde, ou seja, é uma ciência que procura promover a saúde e a felicidade.\n\nHá vários aspectos na Ayurveda que são únicos:\n\n1. As suas recomendações são diferentes para cada indivíduo no que respeita à alimentação e estilo de vida que devem adoptar para que permaneçam equilibrados e com saúde.\n\n2. Foca-se no estabelecimento e manutenção do equilíbrio das energias da vida dentro de nós e não só nos sintomas individuais.\n\n3. Na Ayurveda os diagnósticos são confirmados pela observação, análise, exame directo e pelos conhecimentos extraídos dos antigos textos sagrados.\n\n4. Reconhece-se as diferenças constitucionais de todos os indivíduos, que são únicas, e por isso recomenda diferentes regimes para diferentes tipos de pessoas. Embora duas pessoas possam aparentar ter os mesmos sintomas exteriores, as suas constituições energéticas podem ser diferentes e por isso necessitarem de diferentes tratamentos e remédios.\n\n5. Ayurveda é um sistema médico completo que reconhece que toda a inteligência e sabedoria flui de uma única fonte Absoluta (Paramatman). A saúde manifesta-se pela graça do Absoluto actuando através das leis da Natureza (Prakriti). Ayurveda promove a harmonia entre o indivíduo e a natureza levando-o a viver uma vida de equilíbrio e de acordo com as suas leis.\n\n6. Ayurveda parte do princípio de que existem forças energéticas que influenciam os seres humanos. Estas forças são chamadas de Tridoshas e são descritas como as três energias fundamentais que regulam todo o processo natural nos níveis macrocósmicos e microcósmicos. Isto é, as mesmas energias que produzem efeitos nas várias galáxias e sistemas solares estão a operar a nível da fisiologia humana - na sua própria fisiologia. Estas três energias universais são conhecidas como Tridosha.\n\n7. Uma vez que a Ayurveda relaciona de forma intrínseca o corpo com a mente, ela conjuga ao mesmo tempo uma enorme quantidade de informações sobre esta matéria nos seus diagnósticos e tratamentos.\n\n8. Os antigos médicos Ayurvédicos compreenderam a necessidade de preservar a aliança entre a mente e o corpo e oferecer à humanidade ferramentas para relembrar e nutrir os aspectos subtis da humanidade. A Ayurveda busca curar a fragmentação e a desordem do complexo corpo-mente e restaurar a plenitude e harmonia em todas as pessoas.\n\nPor isso, a Ayurvédica é muito mais do que um sistema médico, é uma Ciência de Vida. Todos nós somos partes integrantes da Natureza. Tal como os animais e as plantas que vivem em harmonia e utilizam as Leis da Natureza para viverem saudáveis e em equilíbrio, a Ayurvédica, através dos conhecimentos que possui, procura levar os humanos também a viverem de acordo com essas leis e princípios. … portanto correcto e justo dizer que a Ayurvédica é um sistema que ajuda a manter a saúde, pois utiliza os princÌpios inerentes da Natureza. Ela leva os indivíduos a reencontrarem o seu equilíbrio e viverem como seres verdadeiros, de acordo com a sua essência. A Ayurvédica é, portanto, uma ciência que existe desde o princípio dos tempos, pois desde sempre fomos governados pelas Leis da Natureza.\n\n<hr />\n\n[embed]https://youtu.be/_g67YcjmbYs[/embed]\t\t",
     "resumo": "A sua intenção é servir de guia no que diz respeito à alimentação e estilo de vida para que os indivíduos saudáveis...",
     "imagem": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 1122,
-    "title": "Instrutor de Yoga - Nível Técnico",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "16/01/2018",
-    "conteudo": "<strong>Curso de Instrutor de Yoga - Nível Técnico</strong>\nFormação internacional com professores do Centro de Estudos de Yoga Narayana de São Paulo e da Associação Internacional de Professores de Yoga do Brasil. Curso credenciado pela Federação Europeia de Yoga, Yogaterapia e Ayurveda.\n\nEste curso conta com a participação de professores convidados do Centro de Estudos do Yoga Narayana de São Paulo e da Associação Internacional dos Professores de Yoga do Brasil.\n\nOs alunos aprovados recebem um Certificado de Formação Profissional como \"Instrutor de Yoga – Nível Técnico\"\n\nOs interessados deverão contactar diretamente uma das duas entidades formadoras:\n\nCentro de Estudos de Yoga Narayana: <a href=\"https://www.yoganarayana.com.br/\">https://www.yoganarayana.com.br/</a>\n\nE-mail:  <a href=\"mailto:cursos@yoganarayana.com.br\">cursos@yoganarayana.com.br</a>\n\nAssociação Internacional dos Professores de Yoga do Brasil: <a href=\"https://www.iyta.com.br/\">https://www.iyta.com.br/</a>\n\nE-mail: <a href=\"mailto:contato@iyta.com.br\">contato@iyta.com.br</a>\n\n[embed]https://youtu.be/gOIS0oYT0vE[/embed]",
-    "resumo": "Curso de Instrutor de Yoga - Nível Técnico\nFormação internacional com professores do Centro de Estudos de Yoga Narayana...",
-    "imagem": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 1135,
-    "title": "Pranayama e Mudras",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "16/01/2018",
-    "conteudo": "<span style=\"font-weight: 400;\">Através dos Pranayamas e dos Mudras regularizamos os cinco elementos no nosso corpo. Uma experiência singular com a professora Anna Ivanov, Presidente da Associação Internacional de Professores de Yoga do Brasil, com 26 anos de experiência no ensino do Yoga. </span>\n\n<b>INFORMAÇÕES </b>\n\n<b>Duração: </b><span style=\"font-weight: 400;\">16 horas</span>\n\n<b>Docentes/Instructor: </b><span style=\"font-weight: 400;\">Anna Ivanov</span>\n\n<b>Contacto:</b>\n\n<strong>Os interessados deverão contatar a Associação Internacional dos Professores de Yoga do Brasil: </strong><a href=\"https://www.iyta.com.br/\">https://www.iyta.com.br/</a>\n\nE-mail: <a href=\"mailto:contato@iyta.com.br\">contato@iyta.com.br</a>\n\nPlano do Workshop\n\nAgenda",
-    "resumo": "Através dos Pranayamas e dos Mudras regularizamos os cinco elementos no nosso corpo. Uma experiência singular com a prof...",
-    "imagem": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 1138,
-    "title": "Yoga Hormonal",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "16/01/2018",
-    "conteudo": "<strong>Yogaterapia Hormonal - Workshop Especial </strong>\n\n<span style=\"font-weight: 400;\">A Yoga Terapia Hormonal difere do Hatha Yoga tradicional por ser dinâmica, trabalhar mais intensamente o corpo energético, circulando continuamente a energia em nosso corpo mantendo-o saudável.</span>\n\n<span style=\"font-weight: 400;\">Essa prática ameniza os sintomas da menopausa para as mulheres e da andropausa para os homens, bem como em qualquer idade com distúrbios hormonais.</span>\n\nInteressados deverão contactar diretamente uma das duas entidades formadoras:\n\nCentro de Estudos de Yoga Narayana: <a href=\"https://www.yoganarayana.com.br/\">https://www.yoganarayana.com.br/</a>\n\nE-mail:  cursos@yoganarayana.com.br\n\nInternacional dos Professores de Yoga do Brasil: <a href=\"https://www.iyta.com.br/\">https://www.iyta.com.br/</a>\n\nE-mail: <a href=\"mailto:contato@iyta.com.br\">contato@iyta.com.br</a>\n\nPlano do Workshop\n\nAgenda\n\n[embed]https://youtu.be/8n9CtMEQAqU[/embed]",
-    "resumo": "Yogaterapia Hormonal - Workshop Especial \n\nA Yoga Terapia Hormonal difere do Hatha Yoga tradicional por ser dinâmica, tr...",
-    "imagem": "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=600&auto=format&fit=crop",
     "tag": "Geral"
   },
   {
