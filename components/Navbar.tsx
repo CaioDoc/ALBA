@@ -115,6 +115,7 @@ export const Navbar = () => {
     { path: '/', label: 'Home' },
     { path: '/quem-somos', label: 'Quem Somos' },
     { path: '/atividades', label: 'Atividades' },
+    { path: '/artigos', label: 'Artigos' },
     { path: '/cursos', label: 'Cursos' },
     { path: '/profissionais', label: 'Profissionais' },
     { path: '/loja', label: 'Loja' },
