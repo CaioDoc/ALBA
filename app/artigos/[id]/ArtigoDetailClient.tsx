@@ -12,12 +12,12 @@ export default function ArtigoDetailClient({ id }: { id: string }) {
 
   useEffect(() => {
     let source = [];
-    const saved = localStorage.getItem('alba_artigos_v4');
+    const saved = localStorage.getItem('alba_artigos_v8');
     if (saved) {
       source = JSON.parse(saved);
     } else {
       source = initialArticles;
-      localStorage.setItem('alba_artigos_v4', JSON.stringify(initialArticles));
+      localStorage.setItem('alba_artigos_v8', JSON.stringify(initialArticles));
     }
     
     const found = source.find((a: any) => String(a.id) === String(id));
@@ -65,10 +65,6 @@ export default function ArtigoDetailClient({ id }: { id: string }) {
 
       <section className="py-16 px-4">
         <div className="max-w-3xl mx-auto prose prose-stone md:prose-lg">
-          {artigo.imagem && (
-            <img src={artigo.imagem} alt={artigo.title} className="rounded-3xl w-full object-cover h-80 mb-10 shadow-md" />
-          )}
-          
           <div 
             className="text-stone-600 leading-relaxed custom-html-content"
             dangerouslySetInnerHTML={{ __html: artigo.conteudo || artigo.resumo || 'Conteúdo do artigo não disponível.' }}

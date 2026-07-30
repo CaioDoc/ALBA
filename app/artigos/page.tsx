@@ -93,18 +93,16 @@ export default function ArtigosPage() {
           {currentArticles.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
               {currentArticles.map((artigo) => (
-                <Link key={artigo.id} href={`/artigos/${artigo.id}`} className="group flex flex-col bg-white rounded-[2rem] border border-stone-100 overflow-hidden hover:shadow-xl transition-all duration-500 cursor-pointer">
-                  <div className="relative h-60 w-full overflow-hidden bg-stone-100">
-                    <img src={artigo.imagem} alt={artigo.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                    <div className="absolute top-4 left-4 bg-white/90 px-3 py-1 rounded-full text-xs font-bold text-emerald-800">{artigo.tag}</div>
+                <Link key={artigo.id} href={`/artigos/${artigo.id}`} className="group flex flex-col bg-white rounded-[2rem] border border-stone-200/80 p-8 hover:shadow-xl hover:border-emerald-200 transition-all duration-300 cursor-pointer">
+                  <div className="flex items-center justify-between gap-2 mb-4">
+                    <span className="bg-emerald-50 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full border border-emerald-100/60">{artigo.tag || 'Geral'}</span>
+                    <span className="text-xs text-stone-400 font-medium">{artigo.date || ''}</span>
                   </div>
-                  <div className="p-8 flex flex-col flex-grow">
-                    <h3 className="text-xl font-serif text-stone-900 mb-3 group-hover:text-emerald-700">{artigo.title}</h3>
-                    <p className="text-stone-500 text-sm mb-6 flex-grow line-clamp-3">{artigo.resumo}</p>
-                    <div className="text-emerald-700 font-bold text-sm flex items-center gap-1 mt-auto">
-                      Ler Artigo Completo
-                      <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                    </div>
+                  <h3 className="text-xl font-serif text-stone-900 mb-3 group-hover:text-emerald-700 transition-colors leading-snug">{artigo.title}</h3>
+                  <p className="text-stone-600 text-sm mb-6 flex-grow line-clamp-3 leading-relaxed">{artigo.resumo}</p>
+                  <div className="text-emerald-700 font-bold text-sm flex items-center gap-1.5 mt-auto pt-4 border-t border-stone-100">
+                    Ler Artigo Completo
+                    <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                   </div>
                 </Link>
               ))}

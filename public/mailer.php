@@ -39,13 +39,19 @@ if (!empty($phone)) $body .= "Telefone: $phone\n";
 if (!empty($category)) $body .= "Categoria: $category\n";
 $body .= "\nMensagem:\n$message\n";
 
-$headers = "From: $from_name <$to>\r\n";
+$encoded_subject = "=?UTF-8?B?" . base64_encode($subject) . "?=";
+$encoded_from_name = "=?UTF-8?B?" . base64_encode($from_name) . "?=";
+
+$headers = "MIME-Version: 1.0\r\n";
+$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+$headers .= "Content-Transfer-Encoding: 8bit\r\n";
+$headers .= "From: $encoded_from_name <$to>\r\n";
 if (!empty($data['email'])) {
     $headers .= "Reply-To: " . $data['email'] . "\r\n";
 }
 $headers .= "X-Mailer: PHP/" . phpversion();
 
-$success = mail($to, $subject, $body, $headers);
+$success = mail($to, $encoded_subject, $body, $headers);
 
 if ($success) {
     http_response_code(200);
