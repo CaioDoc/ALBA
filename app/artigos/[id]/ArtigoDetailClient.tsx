@@ -12,12 +12,23 @@ export default function ArtigoDetailClient({ id }: { id: string }) {
 
   useEffect(() => {
     let source = [];
-    const saved = localStorage.getItem('alba_artigos_v8');
+    const saved = localStorage.getItem('alba_artigos_v9');
     if (saved) {
-      source = JSON.parse(saved);
+      try {
+        let parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          source = parsed;
+        } else {
+          source = initialArticles;
+          localStorage.setItem('alba_artigos_v9', JSON.stringify(initialArticles));
+        }
+      } catch (e) {
+        source = initialArticles;
+        localStorage.setItem('alba_artigos_v9', JSON.stringify(initialArticles));
+      }
     } else {
       source = initialArticles;
-      localStorage.setItem('alba_artigos_v8', JSON.stringify(initialArticles));
+      localStorage.setItem('alba_artigos_v9', JSON.stringify(initialArticles));
     }
     
     const found = source.find((a: any) => String(a.id) === String(id));
