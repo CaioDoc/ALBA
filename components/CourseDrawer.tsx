@@ -54,6 +54,22 @@ export const CourseDrawer = ({ course, isOpen, onClose }: CourseDrawerProps) => 
 
   const hasSyllabus = Array.isArray(course.syllabus) && course.syllabus.length > 0;
 
+  const getImagePath = (src: string) => {
+    const fallback = 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=600&auto=format&fit=crop';
+    if (!src) return fallback;
+    if (src.startsWith('http://') || src.startsWith('https://')) return src;
+    
+    const clean = src.replace(/^\//, '');
+    
+    if (typeof window !== 'undefined') {
+      const pathname = window.location.pathname;
+      if (window.location.hostname.includes('github.io') || pathname.startsWith('/ALBA')) {
+        return `/ALBA/${clean}`;
+      }
+    }
+    return `/${clean}`;
+  };
+
   return (
     <>
       {/* Overlay escuro */}
@@ -67,8 +83,15 @@ export const CourseDrawer = ({ course, isOpen, onClose }: CourseDrawerProps) => 
         
         {/* Imagem do Topo */}
         <div className="relative h-56 md:h-64 w-full bg-stone-900 flex items-center justify-center overflow-hidden flex-shrink-0">
-          <img src={course.image} alt="" className="absolute inset-0 w-full h-full object-cover blur-md opacity-40 scale-110" />
-          <img src={course.image} alt={course.title} className="relative z-10 max-h-full max-w-full object-contain" />
+          <img src={getImagePath(course.image)} alt="" className="absolute inset-0 w-full h-full object-cover blur-md opacity-40 scale-110" />
+          <img 
+            src={getImagePath(course.image)} 
+            alt={course.title} 
+            className="relative z-10 max-h-full max-w-full object-contain" 
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=600&auto=format&fit=crop';
+            }}
+          />
           <div className="absolute inset-0 z-10 bg-gradient-to-t from-stone-900/80 via-transparent to-transparent pointer-events-none"></div>
           
           <button 

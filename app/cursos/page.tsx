@@ -64,6 +64,22 @@ export default function CursosPage() {
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const currentCourses = filteredCourses.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
+  const getImagePath = (src: string) => {
+    const fallback = 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=600&auto=format&fit=crop';
+    if (!src) return fallback;
+    if (src.startsWith('http://') || src.startsWith('https://')) return src;
+    
+    const clean = src.replace(/^\//, '');
+    
+    if (typeof window !== 'undefined') {
+      const pathname = window.location.pathname;
+      if (window.location.hostname.includes('github.io') || pathname.startsWith('/ALBA')) {
+        return `/ALBA/${clean}`;
+      }
+    }
+    return `/${clean}`;
+  };
+
   const handleOpenDrawer = (course: Course) => {
     setSelectedCourse(course);
     setIsDrawerOpen(true);
@@ -122,8 +138,19 @@ export default function CursosPage() {
               {currentCourses.map((course) => (
                 <div key={course.id} className="group bg-white rounded-[2rem] border border-stone-200/80 hover:shadow-xl hover:border-emerald-200 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer" onClick={() => handleOpenDrawer(course)}>
                   <div className="h-56 w-full overflow-hidden relative bg-stone-900 flex items-center justify-center flex-shrink-0">
-                    <img src={course.image || 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=600&auto=format&fit=crop'} alt="" className="absolute inset-0 w-full h-full object-cover blur-md opacity-40 scale-110" />
-                    <img src={course.image || 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=600&auto=format&fit=crop'} alt={course.title} className="relative z-10 max-h-full max-w-full object-contain transition-transform duration-700 group-hover:scale-105" />
+                    <img 
+                      src={getImagePath(course.image)} 
+                      alt="" 
+                      className="absolute inset-0 w-full h-full object-cover blur-md opacity-40 scale-110" 
+                    />
+                    <img 
+                      src={getImagePath(course.image)} 
+                      alt={course.title} 
+                      className="relative z-10 max-h-full max-w-full object-contain transition-transform duration-700 group-hover:scale-105" 
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=600&auto=format&fit=crop';
+                      }}
+                    />
                     <div className="absolute top-4 left-4 z-20 bg-white/95 px-3 py-1 rounded-full text-xs font-bold text-emerald-800 shadow-sm">{course.category}</div>
                   </div>
                   <div className="p-8 pb-4 flex-1 flex flex-col">
