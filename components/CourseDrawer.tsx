@@ -66,9 +66,10 @@ export const CourseDrawer = ({ course, isOpen, onClose }: CourseDrawerProps) => 
       <div className={`fixed top-0 right-0 h-full w-full max-w-xl bg-white z-[70] shadow-2xl transform transition-transform duration-500 ease-out flex flex-col ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         
         {/* Imagem do Topo */}
-        <div className="relative h-56 md:h-64 w-full bg-stone-100 flex-shrink-0">
-          <img src={course.image} alt={course.title} className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/20 to-transparent"></div>
+        <div className="relative h-56 md:h-64 w-full bg-stone-900 flex items-center justify-center overflow-hidden flex-shrink-0">
+          <img src={course.image} alt="" className="absolute inset-0 w-full h-full object-cover blur-md opacity-40 scale-110" />
+          <img src={course.image} alt={course.title} className="relative z-10 max-h-full max-w-full object-contain" />
+          <div className="absolute inset-0 z-10 bg-gradient-to-t from-stone-900/80 via-transparent to-transparent pointer-events-none"></div>
           
           <button 
             onClick={onClose}

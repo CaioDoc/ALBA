@@ -110,9 +110,10 @@ export default function CursosPage() {
             <div className="grid md:grid-cols-2 gap-8">
               {filteredCourses.map((course) => (
                 <div key={course.id} className="group bg-white rounded-[2.5rem] border border-stone-100 shadow-sm flex flex-col justify-between overflow-hidden">
-                  <div className="h-56 w-full overflow-hidden relative">
-                    <img src={course.image || 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=600&auto=format&fit=crop'} alt={course.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                    <div className="absolute top-4 left-4 bg-white/95 px-3 py-1 rounded-full text-xs font-bold text-emerald-800">{course.category}</div>
+                  <div className="h-56 w-full overflow-hidden relative bg-stone-900 flex items-center justify-center">
+                    <img src={course.image || 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=600&auto=format&fit=crop'} alt="" className="absolute inset-0 w-full h-full object-cover blur-md opacity-40 scale-110" />
+                    <img src={course.image || 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=600&auto=format&fit=crop'} alt={course.title} className="relative z-10 max-h-full max-w-full object-contain transition-transform duration-700 group-hover:scale-105" />
+                    <div className="absolute top-4 left-4 z-20 bg-white/95 px-3 py-1 rounded-full text-xs font-bold text-emerald-800 shadow-sm">{course.category}</div>
                   </div>
                   <div className="p-8 pb-4 flex-1">
                     <h3 className="text-2xl font-serif text-stone-900 mb-3">{course.title}</h3>
