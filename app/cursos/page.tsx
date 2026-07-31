@@ -27,12 +27,23 @@ export default function CursosPage() {
   const [courses, setCourses] = useState<any[]>([]);
 
   useEffect(() => {
-    const savedCourses = localStorage.getItem('alba_cursos_v19');
+    const savedCourses = localStorage.getItem('alba_cursos_v20');
     if (savedCourses) {
-      setCourses(JSON.parse(savedCourses));
+      try {
+        const parsed = JSON.parse(savedCourses);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setCourses(parsed);
+        } else {
+          setCourses(scrapedCourses);
+          localStorage.setItem('alba_cursos_v20', JSON.stringify(scrapedCourses));
+        }
+      } catch (e) {
+        setCourses(scrapedCourses);
+        localStorage.setItem('alba_cursos_v20', JSON.stringify(scrapedCourses));
+      }
     } else {
       setCourses(scrapedCourses);
-      localStorage.setItem('alba_cursos_v19', JSON.stringify(scrapedCourses));
+      localStorage.setItem('alba_cursos_v20', JSON.stringify(scrapedCourses));
     }
   }, []);
 

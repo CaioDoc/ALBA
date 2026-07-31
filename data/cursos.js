@@ -790,5 +790,517 @@ export const initialCourses = [
         ]
       }
     ]
+  },
+  {
+    "id": 22,
+    "title": "MASSAGEM ABHYANGA - WORKSHOP ESPECIAL",
+    "category": "Massagens Ayurvédicas",
+    "workload": "16h",
+    "format": "Presencial / Online",
+    "status": "Inscrições Abertas",
+    "students": 0,
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
+    "description": "&nbsp; DETALHES DO CURSO Massagem Abhyanga - Workshop Especial Objectivo: Visa preparar os participantes para execut......",
+    "originalUrl": "https://www.ayurvedica.org/cursos/",
+    "hotmartLink": "https://www.ayurvedica.org/cursos/",
+    "targetAudience": "Profissionais da área da saúde, Terapeutas corporais, Massoterapeutas e Interessados em geral.",
+    "price": "",
+    "certification": "Certificado de Capacitação Profissional em MASSAGEM ABHYANGA - WORKSHOP ESPECIAL emitido pela ALBA.",
+    "objectives": [
+      "Capacitar o aluno na execução prática e fundamentos teóricos do módulo de MASSAGEM ABHYANGA - WORKSHOP ESPECIAL.",
+      "Proporcionar conhecimento abrangente da anatomia sutil e aplicações terapêuticas.",
+      "Desenvolver autonomia na condução de tratamentos e atendimento aos clientes."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Programático (Teórico e Prático)",
+        "theoretical": [
+          "Fundamentos Históricos e Teóricos",
+          "Anatomia e Fisiologia Aplicada",
+          "Técnicas Práticas e Sequência de Aplicação",
+          "Indicações, Contraindicações e Cuidados Éticos"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "title": "MASSAGEM SHANTALA",
+    "category": "Massagens Ayurvédicas",
+    "workload": "7 hs",
+    "format": "Presencial / Online",
+    "status": "Inscrições Abertas",
+    "students": 0,
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
+    "description": "Curso Prático de Massagem Shantala O toque é um dos meios mais poderosos para a comunicação humana com enriquecimen......",
+    "originalUrl": "https://www.ayurvedica.org/cursos/",
+    "hotmartLink": "https://www.ayurvedica.org/cursos/",
+    "targetAudience": "Profissionais da área da saúde, Terapeutas corporais, Massoterapeutas e Interessados em geral.",
+    "price": "",
+    "certification": "Certificado de Capacitação Profissional em MASSAGEM SHANTALA emitido pela ALBA.",
+    "objectives": [
+      "Capacitar o aluno na execução prática e fundamentos teóricos do módulo de MASSAGEM SHANTALA.",
+      "Proporcionar conhecimento abrangente da anatomia sutil e aplicações terapêuticas.",
+      "Desenvolver autonomia na condução de tratamentos e atendimento aos clientes."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Programático (Teórico e Prático)",
+        "theoretical": [
+          "Fundamentos Históricos e Teóricos",
+          "Anatomia e Fisiologia Aplicada",
+          "Técnicas Práticas e Sequência de Aplicação",
+          "Indicações, Contraindicações e Cuidados Éticos"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "title": "MASSAGEM AYURVÉDICA PARA SPA TERAPIAS",
+    "category": "Massagens Ayurvédicas",
+    "workload": "16h",
+    "format": "Presencial / Online",
+    "status": "Inscrições Abertas",
+    "students": 0,
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
+    "description": "Instrutor: Sem Instrutor específico... Dirigido a: Publico em geral, fisoterapeutas, massagistas, terapeutas corporais,......",
+    "originalUrl": "https://www.ayurvedica.org/cursos/",
+    "hotmartLink": "https://www.ayurvedica.org/cursos/",
+    "targetAudience": "Profissionais da área da saúde, Terapeutas corporais, Massoterapeutas e Interessados em geral.",
+    "price": "",
+    "certification": "Certificado de Capacitação Profissional em MASSAGEM AYURVÉDICA PARA SPA TERAPIAS emitido pela ALBA.",
+    "objectives": [
+      "Capacitar o aluno na execução prática e fundamentos teóricos do módulo de MASSAGEM AYURVÉDICA PARA SPA TERAPIAS.",
+      "Proporcionar conhecimento abrangente da anatomia sutil e aplicações terapêuticas.",
+      "Desenvolver autonomia na condução de tratamentos e atendimento aos clientes."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Programático (Teórico e Prático)",
+        "theoretical": [
+          "Fundamentos Históricos e Teóricos",
+          "Anatomia e Fisiologia Aplicada",
+          "Técnicas Práticas e Sequência de Aplicação",
+          "Indicações, Contraindicações e Cuidados Éticos"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "title": "Drenagem Linfática Manual",
+    "category": "Massagens Ayurvédicas",
+    "workload": "24 horas",
+    "format": "Presencial / Online",
+    "status": "Inscrições Abertas",
+    "students": 0,
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
+    "description": "Drenagem Linfática Manual A Drenagem Linfática Manual é uma técnica específica de massagem manual, caracterizando-se po......",
+    "originalUrl": "https://www.ayurvedica.org/cursos/",
+    "hotmartLink": "https://www.ayurvedica.org/cursos/",
+    "targetAudience": "Profissionais da área da saúde, Terapeutas corporais, Massoterapeutas e Interessados em geral.",
+    "price": "",
+    "certification": "Certificado de Capacitação Profissional em Drenagem Linfática Manual emitido pela ALBA.",
+    "objectives": [
+      "Capacitar o aluno na execução prática e fundamentos teóricos do módulo de Drenagem Linfática Manual.",
+      "Proporcionar conhecimento abrangente da anatomia sutil e aplicações terapêuticas.",
+      "Desenvolver autonomia na condução de tratamentos e atendimento aos clientes."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Programático (Teórico e Prático)",
+        "theoretical": [
+          "Fundamentos Históricos e Teóricos",
+          "Anatomia e Fisiologia Aplicada",
+          "Técnicas Práticas e Sequência de Aplicação",
+          "Indicações, Contraindicações e Cuidados Éticos"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "title": "MASSAGEM GEOTERMAL - PEDRAS QUENTES",
+    "category": "Massagens Ayurvédicas",
+    "workload": "16h",
+    "format": "Presencial / Online",
+    "status": "Inscrições Abertas",
+    "students": 0,
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
+    "description": "Massagem Geotermal - Pedras Quentes A massagem de pedras quentes, de origem oriental, concilia a massagem manual de......",
+    "originalUrl": "https://www.ayurvedica.org/cursos/",
+    "hotmartLink": "https://www.ayurvedica.org/cursos/",
+    "targetAudience": "Profissionais da área da saúde, Terapeutas corporais, Massoterapeutas e Interessados em geral.",
+    "price": "",
+    "certification": "Certificado de Capacitação Profissional em MASSAGEM GEOTERMAL - PEDRAS QUENTES emitido pela ALBA.",
+    "objectives": [
+      "Capacitar o aluno na execução prática e fundamentos teóricos do módulo de MASSAGEM GEOTERMAL - PEDRAS QUENTES.",
+      "Proporcionar conhecimento abrangente da anatomia sutil e aplicações terapêuticas.",
+      "Desenvolver autonomia na condução de tratamentos e atendimento aos clientes."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Programático (Teórico e Prático)",
+        "theoretical": [
+          "Fundamentos Históricos e Teóricos",
+          "Anatomia e Fisiologia Aplicada",
+          "Técnicas Práticas e Sequência de Aplicação",
+          "Indicações, Contraindicações e Cuidados Éticos"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "title": "Massagem Sueca",
+    "category": "Massagens Ayurvédicas",
+    "workload": "24h00",
+    "format": "Presencial / Online",
+    "status": "Inscrições Abertas",
+    "students": 0,
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
+    "description": "Massagem Sueca A massagem Sueca é das mais requisitadas em Spas de luxo. Trata-se de um estilo de massagem desenvolvido......",
+    "originalUrl": "https://www.ayurvedica.org/cursos/",
+    "hotmartLink": "https://www.ayurvedica.org/cursos/",
+    "targetAudience": "Profissionais da área da saúde, Terapeutas corporais, Massoterapeutas e Interessados em geral.",
+    "price": "",
+    "certification": "Certificado de Capacitação Profissional em Massagem Sueca emitido pela ALBA.",
+    "objectives": [
+      "Capacitar o aluno na execução prática e fundamentos teóricos do módulo de Massagem Sueca.",
+      "Proporcionar conhecimento abrangente da anatomia sutil e aplicações terapêuticas.",
+      "Desenvolver autonomia na condução de tratamentos e atendimento aos clientes."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Programático (Teórico e Prático)",
+        "theoretical": [
+          "Fundamentos Históricos e Teóricos",
+          "Anatomia e Fisiologia Aplicada",
+          "Técnicas Práticas e Sequência de Aplicação",
+          "Indicações, Contraindicações e Cuidados Éticos"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "title": "Método Dorn Breuss",
+    "category": "Massagens Ayurvédicas",
+    "workload": "16h",
+    "format": "Presencial / Online",
+    "status": "Inscrições Abertas",
+    "students": 0,
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
+    "description": "Instrutor: Formadores credenciados pela ALBA* Dirigido a: Profissionais da área da saúde; terapeutas corporais, massoter......",
+    "originalUrl": "https://www.ayurvedica.org/cursos/",
+    "hotmartLink": "https://www.ayurvedica.org/cursos/",
+    "targetAudience": "Profissionais da área da saúde, Terapeutas corporais, Massoterapeutas e Interessados em geral.",
+    "price": "",
+    "certification": "Certificado de Capacitação Profissional em Método Dorn Breuss emitido pela ALBA.",
+    "objectives": [
+      "Capacitar o aluno na execução prática e fundamentos teóricos do módulo de Método Dorn Breuss.",
+      "Proporcionar conhecimento abrangente da anatomia sutil e aplicações terapêuticas.",
+      "Desenvolver autonomia na condução de tratamentos e atendimento aos clientes."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Programático (Teórico e Prático)",
+        "theoretical": [
+          "Fundamentos Históricos e Teóricos",
+          "Anatomia e Fisiologia Aplicada",
+          "Técnicas Práticas e Sequência de Aplicação",
+          "Indicações, Contraindicações e Cuidados Éticos"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "title": "REFLEXOLOGIA PODAL",
+    "category": "Massagens Ayurvédicas",
+    "workload": "16h",
+    "format": "Presencial / Online",
+    "status": "Inscrições Abertas",
+    "students": 0,
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
+    "description": "Reflexologia Podal Uma longa viagem começa com um único passo. (Lao-Tsé (1324-1408 a. C.) Os seus pés caminham sobr......",
+    "originalUrl": "https://www.ayurvedica.org/cursos/",
+    "hotmartLink": "https://www.ayurvedica.org/cursos/",
+    "targetAudience": "Profissionais da área da saúde, Terapeutas corporais, Massoterapeutas e Interessados em geral.",
+    "price": "",
+    "certification": "Certificado de Capacitação Profissional em REFLEXOLOGIA PODAL emitido pela ALBA.",
+    "objectives": [
+      "Capacitar o aluno na execução prática e fundamentos teóricos do módulo de REFLEXOLOGIA PODAL.",
+      "Proporcionar conhecimento abrangente da anatomia sutil e aplicações terapêuticas.",
+      "Desenvolver autonomia na condução de tratamentos e atendimento aos clientes."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Programático (Teórico e Prático)",
+        "theoretical": [
+          "Fundamentos Históricos e Teóricos",
+          "Anatomia e Fisiologia Aplicada",
+          "Técnicas Práticas e Sequência de Aplicação",
+          "Indicações, Contraindicações e Cuidados Éticos"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "title": "MASSAGEM HAVAIANA LOMI-LOMI",
+    "category": "Massagens Ayurvédicas",
+    "workload": "16h",
+    "format": "Presencial / Online",
+    "status": "Inscrições Abertas",
+    "students": 0,
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
+    "description": "Lomi-lomi, significa “massagem” no idioma havaiano. É a palavra usada hoje em dia para descrever a massagem havaiana, tr......",
+    "originalUrl": "https://www.ayurvedica.org/cursos/",
+    "hotmartLink": "https://www.ayurvedica.org/cursos/",
+    "targetAudience": "Profissionais da área da saúde, Terapeutas corporais, Massoterapeutas e Interessados em geral.",
+    "price": "",
+    "certification": "Certificado de Capacitação Profissional em MASSAGEM HAVAIANA LOMI-LOMI emitido pela ALBA.",
+    "objectives": [
+      "Capacitar o aluno na execução prática e fundamentos teóricos do módulo de MASSAGEM HAVAIANA LOMI-LOMI.",
+      "Proporcionar conhecimento abrangente da anatomia sutil e aplicações terapêuticas.",
+      "Desenvolver autonomia na condução de tratamentos e atendimento aos clientes."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Programático (Teórico e Prático)",
+        "theoretical": [
+          "Fundamentos Históricos e Teóricos",
+          "Anatomia e Fisiologia Aplicada",
+          "Técnicas Práticas e Sequência de Aplicação",
+          "Indicações, Contraindicações e Cuidados Éticos"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "title": "MASSAGEM TAILANDESA PARA SPA TERAPIAS",
+    "category": "Massagens Ayurvédicas",
+    "workload": "16h",
+    "format": "Presencial / Online",
+    "status": "Inscrições Abertas",
+    "students": 0,
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
+    "description": "Instrutor: Dirigido a: Publico em geral, fisoterapeutas, massagistas, terapeutas corporais, naturopatas, profissionais d......",
+    "originalUrl": "https://www.ayurvedica.org/cursos/",
+    "hotmartLink": "https://www.ayurvedica.org/cursos/",
+    "targetAudience": "Profissionais da área da saúde, Terapeutas corporais, Massoterapeutas e Interessados em geral.",
+    "price": "",
+    "certification": "Certificado de Capacitação Profissional em MASSAGEM TAILANDESA PARA SPA TERAPIAS emitido pela ALBA.",
+    "objectives": [
+      "Capacitar o aluno na execução prática e fundamentos teóricos do módulo de MASSAGEM TAILANDESA PARA SPA TERAPIAS.",
+      "Proporcionar conhecimento abrangente da anatomia sutil e aplicações terapêuticas.",
+      "Desenvolver autonomia na condução de tratamentos e atendimento aos clientes."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Programático (Teórico e Prático)",
+        "theoretical": [
+          "Fundamentos Históricos e Teóricos",
+          "Anatomia e Fisiologia Aplicada",
+          "Técnicas Práticas e Sequência de Aplicação",
+          "Indicações, Contraindicações e Cuidados Éticos"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "title": "PINDAS TAILANDESAS - WORKSHOP",
+    "category": "Massagens Ayurvédicas",
+    "workload": "16h",
+    "format": "Presencial / Online",
+    "status": "Inscrições Abertas",
+    "students": 0,
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
+    "description": "Pindas Tailandesas As pindas são saquinhos de linho que se utilizam em determinadas terapias e massagens orientais......",
+    "originalUrl": "https://www.ayurvedica.org/cursos/",
+    "hotmartLink": "https://www.ayurvedica.org/cursos/",
+    "targetAudience": "Profissionais da área da saúde, Terapeutas corporais, Massoterapeutas e Interessados em geral.",
+    "price": "",
+    "certification": "Certificado de Capacitação Profissional em PINDAS TAILANDESAS - WORKSHOP emitido pela ALBA.",
+    "objectives": [
+      "Capacitar o aluno na execução prática e fundamentos teóricos do módulo de PINDAS TAILANDESAS - WORKSHOP.",
+      "Proporcionar conhecimento abrangente da anatomia sutil e aplicações terapêuticas.",
+      "Desenvolver autonomia na condução de tratamentos e atendimento aos clientes."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Programático (Teórico e Prático)",
+        "theoretical": [
+          "Fundamentos Históricos e Teóricos",
+          "Anatomia e Fisiologia Aplicada",
+          "Técnicas Práticas e Sequência de Aplicação",
+          "Indicações, Contraindicações e Cuidados Éticos"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "title": "ESTÉTICA, COSMÉTICA E BELEZA PELA AYURVEDA",
+    "category": "Medicina Ayurvédica",
+    "workload": "16h",
+    "format": "Presencial / Online",
+    "status": "Inscrições Abertas",
+    "students": 0,
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
+    "description": "Estética, Cosmética e Beleza pela Ayurveda A Índia é um dos principais berço das Terapias para o tratamento do cor......",
+    "originalUrl": "https://www.ayurvedica.org/cursos/",
+    "hotmartLink": "https://www.ayurvedica.org/cursos/",
+    "targetAudience": "Profissionais da área da saúde, Terapeutas corporais, Massoterapeutas e Interessados em geral.",
+    "price": "",
+    "certification": "Certificado de Capacitação Profissional em ESTÉTICA, COSMÉTICA E BELEZA PELA AYURVEDA emitido pela ALBA.",
+    "objectives": [
+      "Capacitar o aluno na execução prática e fundamentos teóricos do módulo de ESTÉTICA, COSMÉTICA E BELEZA PELA AYURVEDA.",
+      "Proporcionar conhecimento abrangente da anatomia sutil e aplicações terapêuticas.",
+      "Desenvolver autonomia na condução de tratamentos e atendimento aos clientes."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Programático (Teórico e Prático)",
+        "theoretical": [
+          "Fundamentos Históricos e Teóricos",
+          "Anatomia e Fisiologia Aplicada",
+          "Técnicas Práticas e Sequência de Aplicação",
+          "Indicações, Contraindicações e Cuidados Éticos"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "title": "SHIRODHARA - WORKSHOP ESPECIAL PARA TERAPEUTAS",
+    "category": "Massagens Ayurvédicas",
+    "workload": "8 horas",
+    "format": "Presencial / Online",
+    "status": "Inscrições Abertas",
+    "students": 0,
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
+    "description": "SHIRODHARA - WORKSHOP ESPECIAL PARA TERAPEUTAS Shirodhara é uma terapia da Medicina profundamente relaxante, que en......",
+    "originalUrl": "https://www.ayurvedica.org/cursos/",
+    "hotmartLink": "https://www.ayurvedica.org/cursos/",
+    "targetAudience": "Profissionais da área da saúde, Terapeutas corporais, Massoterapeutas e Interessados em geral.",
+    "price": "",
+    "certification": "Certificado de Capacitação Profissional em SHIRODHARA - WORKSHOP ESPECIAL PARA TERAPEUTAS emitido pela ALBA.",
+    "objectives": [
+      "Capacitar o aluno na execução prática e fundamentos teóricos do módulo de SHIRODHARA - WORKSHOP ESPECIAL PARA TERAPEUTAS.",
+      "Proporcionar conhecimento abrangente da anatomia sutil e aplicações terapêuticas.",
+      "Desenvolver autonomia na condução de tratamentos e atendimento aos clientes."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Programático (Teórico e Prático)",
+        "theoretical": [
+          "Fundamentos Históricos e Teóricos",
+          "Anatomia e Fisiologia Aplicada",
+          "Técnicas Práticas e Sequência de Aplicação",
+          "Indicações, Contraindicações e Cuidados Éticos"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "title": "FLORAIS DE BACH - FORMAÇÃO DE TERAPEUTAS",
+    "category": "Terapias Holísticas",
+    "workload": "16h",
+    "format": "Presencial / Online",
+    "status": "Inscrições Abertas",
+    "students": 0,
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
+    "description": "As Essências Florais e a sua utilização na actualidade – enquadramento do estudo das Essências Florais de Bach no âmbito......",
+    "originalUrl": "https://www.ayurvedica.org/cursos/",
+    "hotmartLink": "https://www.ayurvedica.org/cursos/",
+    "targetAudience": "Profissionais da área da saúde, Terapeutas corporais, Massoterapeutas e Interessados em geral.",
+    "price": "",
+    "certification": "Certificado de Capacitação Profissional em FLORAIS DE BACH - FORMAÇÃO DE TERAPEUTAS emitido pela ALBA.",
+    "objectives": [
+      "Capacitar o aluno na execução prática e fundamentos teóricos do módulo de FLORAIS DE BACH - FORMAÇÃO DE TERAPEUTAS.",
+      "Proporcionar conhecimento abrangente da anatomia sutil e aplicações terapêuticas.",
+      "Desenvolver autonomia na condução de tratamentos e atendimento aos clientes."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Programático (Teórico e Prático)",
+        "theoretical": [
+          "Fundamentos Históricos e Teóricos",
+          "Anatomia e Fisiologia Aplicada",
+          "Técnicas Práticas e Sequência de Aplicação",
+          "Indicações, Contraindicações e Cuidados Éticos"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "title": "Kripa Fundations Iyengar Yoga",
+    "category": "Yoga",
+    "workload": "16h",
+    "format": "Presencial / Online",
+    "status": "Inscrições Abertas",
+    "students": 0,
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
+    "description": "A maioria de nossas atitudes perante a vida tem sua contraparte no corpo físico. Do momento em que nascemos até a nossa......",
+    "originalUrl": "https://www.ayurvedica.org/cursos/",
+    "hotmartLink": "https://www.ayurvedica.org/cursos/",
+    "targetAudience": "Profissionais da área da saúde, Terapeutas corporais, Massoterapeutas e Interessados em geral.",
+    "price": "",
+    "certification": "Certificado de Capacitação Profissional em Kripa Fundations Iyengar Yoga emitido pela ALBA.",
+    "objectives": [
+      "Capacitar o aluno na execução prática e fundamentos teóricos do módulo de Kripa Fundations Iyengar Yoga.",
+      "Proporcionar conhecimento abrangente da anatomia sutil e aplicações terapêuticas.",
+      "Desenvolver autonomia na condução de tratamentos e atendimento aos clientes."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Programático (Teórico e Prático)",
+        "theoretical": [
+          "Fundamentos Históricos e Teóricos",
+          "Anatomia e Fisiologia Aplicada",
+          "Técnicas Práticas e Sequência de Aplicação",
+          "Indicações, Contraindicações e Cuidados Éticos"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "title": "Pranayama e Mudras",
+    "category": "Yoga",
+    "workload": "16h",
+    "format": "Presencial / Online",
+    "status": "Inscrições Abertas",
+    "students": 0,
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
+    "description": "Através dos Pranayamas e dos Mudras regularizamos os cinco elementos no nosso corpo. Uma experiência singular com a prof......",
+    "originalUrl": "https://www.ayurvedica.org/cursos/",
+    "hotmartLink": "https://www.ayurvedica.org/cursos/",
+    "targetAudience": "Profissionais da área da saúde, Terapeutas corporais, Massoterapeutas e Interessados em geral.",
+    "price": "",
+    "certification": "Certificado de Capacitação Profissional em Pranayama e Mudras emitido pela ALBA.",
+    "objectives": [
+      "Capacitar o aluno na execução prática e fundamentos teóricos do módulo de Pranayama e Mudras.",
+      "Proporcionar conhecimento abrangente da anatomia sutil e aplicações terapêuticas.",
+      "Desenvolver autonomia na condução de tratamentos e atendimento aos clientes."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Programático (Teórico e Prático)",
+        "theoretical": [
+          "Fundamentos Históricos e Teóricos",
+          "Anatomia e Fisiologia Aplicada",
+          "Técnicas Práticas e Sequência de Aplicação",
+          "Indicações, Contraindicações e Cuidados Éticos"
+        ]
+      }
+    ]
   }
 ];
