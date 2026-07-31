@@ -25,6 +25,7 @@ export default function CursosPage() {
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [courses, setCourses] = useState<any[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const savedCourses = localStorage.getItem('alba_cursos_v20');
@@ -53,6 +54,16 @@ export default function CursosPage() {
     return matchesCategory && matchesSearch;
   });
 
+  // Reset para a primeira página ao filtrar ou buscar
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, activeCategory]);
+
+  const ITEMS_PER_PAGE = 12;
+  const totalPages = Math.ceil(filteredCourses.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const currentCourses = filteredCourses.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
   const handleOpenDrawer = (course: Course) => {
     setSelectedCourse(course);
     setIsDrawerOpen(true);
@@ -70,7 +81,7 @@ export default function CursosPage() {
       </section>
 
       <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           {/* Filtros e Busca */}
           <div className="flex flex-col md:flex-row gap-4 mb-12">
             {/* Input de Busca */}
@@ -105,27 +116,30 @@ export default function CursosPage() {
             </div>
           </div>
 
-          {/* Cards */}
-          {filteredCourses.length > 0 ? (
-            <div className="grid md:grid-cols-2 gap-8">
-              {filteredCourses.map((course) => (
-                <div key={course.id} className="group bg-white rounded-[2.5rem] border border-stone-100 shadow-sm flex flex-col justify-between overflow-hidden">
-                  <div className="h-56 w-full overflow-hidden relative bg-stone-900 flex items-center justify-center">
+          {/* Cards (Mesmo grid de 3 colunas e mesmo tamanho de Artigos) */}
+          {currentCourses.length > 0 ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+              {currentCourses.map((course) => (
+                <div key={course.id} className="group bg-white rounded-[2rem] border border-stone-200/80 hover:shadow-xl hover:border-emerald-200 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer" onClick={() => handleOpenDrawer(course)}>
+                  <div className="h-56 w-full overflow-hidden relative bg-stone-900 flex items-center justify-center flex-shrink-0">
                     <img src={course.image || 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=600&auto=format&fit=crop'} alt="" className="absolute inset-0 w-full h-full object-cover blur-md opacity-40 scale-110" />
                     <img src={course.image || 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=600&auto=format&fit=crop'} alt={course.title} className="relative z-10 max-h-full max-w-full object-contain transition-transform duration-700 group-hover:scale-105" />
                     <div className="absolute top-4 left-4 z-20 bg-white/95 px-3 py-1 rounded-full text-xs font-bold text-emerald-800 shadow-sm">{course.category}</div>
                   </div>
-                  <div className="p-8 pb-4 flex-1">
-                    <h3 className="text-2xl font-serif text-stone-900 mb-3">{course.title}</h3>
-                    <p className="text-stone-500 text-sm line-clamp-2">{course.description}</p>
+                  <div className="p-8 pb-4 flex-1 flex flex-col">
+                    <h3 className="text-xl font-serif text-stone-900 mb-3 group-hover:text-emerald-700 transition-colors leading-snug">{course.title}</h3>
+                    <p className="text-stone-600 text-sm line-clamp-3 leading-relaxed flex-grow">{course.description}</p>
                   </div>
-                  <div className="px-8 pb-8">
+                  <div className="px-8 pb-8 pt-2">
                     <div className="flex items-center justify-between pt-4 border-t border-stone-100">
                       <span className="text-xs font-bold uppercase text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-lg">{course.status || 'Inscrições Abertas'}</span>
                       {/* Botão que chama a Drawer */}
                       <button 
-                        onClick={() => handleOpenDrawer(course)}
-                        className="cursor-pointer bg-stone-900 text-white px-6 py-3 rounded-xl text-sm font-bold hover:bg-emerald-800 transition-all active:scale-95 flex items-center gap-1"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleOpenDrawer(course);
+                        }}
+                        className="cursor-pointer bg-stone-900 text-white px-5 py-2.5 rounded-xl text-xs font-bold hover:bg-emerald-800 transition-all active:scale-95 flex items-center gap-1"
                       >
                         Saber Mais
                       </button>
@@ -135,8 +149,39 @@ export default function CursosPage() {
               ))}
             </div>
           ) : (
-            <div className="text-center py-20 text-stone-500">
-              Nenhum curso encontrado para sua busca.
+            <div className="text-center py-20 bg-white rounded-[2rem] border border-stone-100 mb-16">
+              <p className="text-stone-500 text-lg">Nenhum curso encontrado para sua busca.</p>
+            </div>
+          )}
+
+          {/* Paginação (12 itens por página) */}
+          {totalPages > 1 && (
+            <div className="flex justify-center items-center gap-2">
+              <button 
+                disabled={currentPage === 1}
+                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                className="cursor-pointer px-4 py-2 rounded-xl bg-white border border-stone-200 text-stone-600 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-stone-50"
+              >
+                Anterior
+              </button>
+              {Array.from({ length: totalPages }).map((_, idx) => (
+                <button 
+                  key={idx}
+                  onClick={() => setCurrentPage(idx + 1)}
+                  className={`cursor-pointer w-10 h-10 rounded-xl font-bold flex items-center justify-center transition-colors ${
+                    currentPage === idx + 1 ? 'bg-emerald-800 text-white shadow-md' : 'bg-white border border-stone-200 text-stone-600 hover:bg-stone-50'
+                  }`}
+                >
+                  {idx + 1}
+                </button>
+              ))}
+              <button 
+                disabled={currentPage === totalPages}
+                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                className="cursor-pointer px-4 py-2 rounded-xl bg-white border border-stone-200 text-stone-600 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-stone-50"
+              >
+                Próxima
+              </button>
             </div>
           )}
         </div>
