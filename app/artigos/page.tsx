@@ -15,7 +15,7 @@ export default function ArtigosPage() {
   const [currentPage, setCurrentPage] = useState(1);
 
   React.useEffect(() => {
-    const saved = localStorage.getItem('alba_artigos_v10');
+    const saved = localStorage.getItem('alba_artigos_v11');
     if (saved) {
       try {
         let parsed = JSON.parse(saved);
@@ -23,11 +23,11 @@ export default function ArtigosPage() {
           setArtigosDatabase(parsed.filter((a: any) => a.status === 'Publicado'));
         } else {
           setArtigosDatabase(initialArticles.filter((a: any) => a.status === 'Publicado'));
-          localStorage.setItem('alba_artigos_v10', JSON.stringify(initialArticles));
+          localStorage.setItem('alba_artigos_v11', JSON.stringify(initialArticles));
         }
       } catch (e) {
         setArtigosDatabase(initialArticles.filter((a: any) => a.status === 'Publicado'));
-        localStorage.setItem('alba_artigos_v10', JSON.stringify(initialArticles));
+        localStorage.setItem('alba_artigos_v11', JSON.stringify(initialArticles));
       }
     } else {
       setArtigosDatabase(initialArticles.filter((a: any) => a.status === 'Publicado'));

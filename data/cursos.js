@@ -769,7 +769,7 @@ export const initialCourses = [
     "originalUrl": "https://www.ayurvedica.org/osho-meditations/",
     "hotmartLink": "https://www.ayurvedica.org/osho-meditations/",
     "targetAudience": "Público em geral, interessados em aprender a meditar.",
-    "price": "Gratuito",
+    "price": "",
     "certification": "Certificado de Workshop em Osho Meditations emitido pela ALBA.",
     "objectives": [
       "Vivenciar o profundo mundo da meditação de forma prática e em grupo.",
@@ -1288,6 +1288,134 @@ export const initialCourses = [
     "certification": "Certificado de Capacitação Profissional em Pranayama e Mudras emitido pela ALBA.",
     "objectives": [
       "Capacitar o aluno na execução prática e fundamentos teóricos do módulo de Pranayama e Mudras.",
+      "Proporcionar conhecimento abrangente da anatomia sutil e aplicações terapêuticas.",
+      "Desenvolver autonomia na condução de tratamentos e atendimento aos clientes."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Programático (Teórico e Prático)",
+        "theoretical": [
+          "Fundamentos Históricos e Teóricos",
+          "Anatomia e Fisiologia Aplicada",
+          "Técnicas Práticas e Sequência de Aplicação",
+          "Indicações, Contraindicações e Cuidados Éticos"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "title": "VASTU SHASTRA",
+    "category": "Massagens Ayurvédicas",
+    "workload": "16h",
+    "format": "Presencial / Online",
+    "status": "Inscrições Abertas",
+    "students": 0,
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
+    "description": "O Vastu Shastra ou “Ciência do Bem Viver” é a milenar Ciência Védica da Arquitetura. O Vastu canaliza os cinco elemento......",
+    "originalUrl": "https://www.ayurvedica.org/cursos/",
+    "hotmartLink": "https://www.ayurvedica.org/cursos/",
+    "targetAudience": "Profissionais da área da saúde, Terapeutas corporais, Massoterapeutas e Interessados em geral.",
+    "price": "",
+    "certification": "Certificado de Capacitação Profissional em VASTU SHASTRA emitido pela ALBA.",
+    "objectives": [
+      "Capacitar o aluno na execução prática e fundamentos teóricos do módulo de VASTU SHASTRA.",
+      "Proporcionar conhecimento abrangente da anatomia sutil e aplicações terapêuticas.",
+      "Desenvolver autonomia na condução de tratamentos e atendimento aos clientes."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Programático (Teórico e Prático)",
+        "theoretical": [
+          "Fundamentos Históricos e Teóricos",
+          "Anatomia e Fisiologia Aplicada",
+          "Técnicas Práticas e Sequência de Aplicação",
+          "Indicações, Contraindicações e Cuidados Éticos"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "title": "Hatha Yoga",
+    "category": "Yoga",
+    "workload": "16h",
+    "format": "Presencial / Online",
+    "status": "Inscrições Abertas",
+    "students": 0,
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
+    "description": "Numa atmosfera com pés e mãos a descobrirem um novo espaço, o trabalho inicia-se com o próprio corpo como instrumento e......",
+    "originalUrl": "https://www.ayurvedica.org/cursos/",
+    "hotmartLink": "https://www.ayurvedica.org/cursos/",
+    "targetAudience": "Profissionais da área da saúde, Terapeutas corporais, Massoterapeutas e Interessados em geral.",
+    "price": "",
+    "certification": "Certificado de Capacitação Profissional em Hatha Yoga emitido pela ALBA.",
+    "objectives": [
+      "Capacitar o aluno na execução prática e fundamentos teóricos do módulo de Hatha Yoga.",
+      "Proporcionar conhecimento abrangente da anatomia sutil e aplicações terapêuticas.",
+      "Desenvolver autonomia na condução de tratamentos e atendimento aos clientes."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Programático (Teórico e Prático)",
+        "theoretical": [
+          "Fundamentos Históricos e Teóricos",
+          "Anatomia e Fisiologia Aplicada",
+          "Técnicas Práticas e Sequência de Aplicação",
+          "Indicações, Contraindicações e Cuidados Éticos"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "title": "Astrologia",
+    "category": "Massagens Ayurvédicas",
+    "workload": "16h",
+    "format": "Presencial / Online",
+    "status": "Inscrições Abertas",
+    "students": 0,
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
+    "description": "A Astrologia baseia-se na leitura e interpretação do mapa Astrológico (“fotografia” dos céus no momento de nascimento),......",
+    "originalUrl": "https://www.ayurvedica.org/cursos/",
+    "hotmartLink": "https://www.ayurvedica.org/cursos/",
+    "targetAudience": "Profissionais da área da saúde, Terapeutas corporais, Massoterapeutas e Interessados em geral.",
+    "price": "",
+    "certification": "Certificado de Capacitação Profissional em Astrologia emitido pela ALBA.",
+    "objectives": [
+      "Capacitar o aluno na execução prática e fundamentos teóricos do módulo de Astrologia.",
+      "Proporcionar conhecimento abrangente da anatomia sutil e aplicações terapêuticas.",
+      "Desenvolver autonomia na condução de tratamentos e atendimento aos clientes."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Programático (Teórico e Prático)",
+        "theoretical": [
+          "Fundamentos Históricos e Teóricos",
+          "Anatomia e Fisiologia Aplicada",
+          "Técnicas Práticas e Sequência de Aplicação",
+          "Indicações, Contraindicações e Cuidados Éticos"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "title": "Medicina Ayurvédica",
+    "category": "Massagens Ayurvédicas",
+    "workload": "16h",
+    "format": "Presencial / Online",
+    "status": "Inscrições Abertas",
+    "students": 0,
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
+    "description": "A Ayurveda tem como intenção servir de guia no que diz respeito à alimentação e estilo de vida para que os indivíduos sa......",
+    "originalUrl": "https://www.ayurvedica.org/cursos/",
+    "hotmartLink": "https://www.ayurvedica.org/cursos/",
+    "targetAudience": "Profissionais da área da saúde, Terapeutas corporais, Massoterapeutas e Interessados em geral.",
+    "price": "",
+    "certification": "Certificado de Capacitação Profissional em Medicina Ayurvédica emitido pela ALBA.",
+    "objectives": [
+      "Capacitar o aluno na execução prática e fundamentos teóricos do módulo de Medicina Ayurvédica.",
       "Proporcionar conhecimento abrangente da anatomia sutil e aplicações terapêuticas.",
       "Desenvolver autonomia na condução de tratamentos e atendimento aos clientes."
     ],

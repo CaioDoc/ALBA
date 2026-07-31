@@ -11,17 +11,6 @@ export const initialArticles = [
     "tag": "Geral"
   },
   {
-    "id": 755,
-    "title": "VASTU SHASTRA",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "08/01/2018",
-    "conteudo": "<span style=\"font-weight: 400;\">O Vastu Shastra ou “Ciência do Bem Viver” é a milenar Ciência Védica da Arquitetura.</span>\n\n<span style=\"font-weight: 400;\">O Vastu canaliza os cinco elementos da natureza para trabalharem de forma coerente com as outras forças naturais como as forças magnéticas, força da gravidade e energia solar para que os efeitos combinados sejam benéficos para os indivíduos que ali residem.</span>\n\n<span style=\"font-weight: 400;\">“Uma casa adequadamente desenhada e agradável será a morada da boa saúde, riqueza, inteligência, boa progênie, paz e felicidade e redimirá seu dono de débitos e obrigações. Negligenciar os cânones da Arquitetura resultará em viagens desnecessárias, mau nome, perda da fama, lamentações e desapontamentos. Todas as casas, vilas, comunidades e cidades, portanto, deverão ser construídas de acordo com o Vastu Shastra. Trazido à luz em favor do universo inteiro, esse conhecimento é para a satisfação, melhoria e bem-estar generalizado de todos.” (Saramananga Sutradhara)</span>\n\n<span style=\"font-weight: 400;\">Sempre ouvimos falar de casos de lugares onde nada dá certo ou onde ninguém é feliz e de outros onde tudo prospera.</span>\n\n<b>Conteúdo da Formação em Vastu Shastra – Nível Básico</b>\n<ul>\n \t<li><span style=\"font-weight: 400;\"> Introdução e Organização do espaço da casa</span></li>\n \t<li><span style=\"font-weight: 400;\"> Princípios básicos, Vastu Purusha e os cinco elementos</span></li>\n \t<li><span style=\"font-weight: 400;\"> Direções: como verificar as direcções para organizar o espaço</span></li>\n \t<li><span style=\"font-weight: 400;\"> Seleção do Lote / terreno</span></li>\n \t<li><span style=\"font-weight: 400;\"> Vastu e Meio Ambiente, Vastu e Astrologia, Vastu e Ayurveda</span></li>\n \t<li><span style=\"font-weight: 400;\"> Planeamento interno de uma casa com sala de jantar, cozinha, quarto de dormir, banheiros etc.</span></li>\n \t<li><span style=\"font-weight: 400;\"> Vastu: planeamento para o espaço de um banco, hospital, lojas, fábricas etc.</span></li>\n \t<li><span style=\"font-weight: 400;\"> Possíveis falhas na organização do espaço segundo Vastu e como minimizar as falhas segundo Vastu</span></li>\n \t<li><span style=\"font-weight: 400;\"> Conceitos Básicos de Feng Shui e como remediar espaços com problemas</span></li>\n</ul>\n<b>INFORMAÇÕES</b>\n\nEste curso deixou de ser presencial. Os interessados deverão contatar o Instituto Pindorama: <a href=\"https://pindorama.org.br/\">https://pindorama.org.br/</a>\n\nhttps://pindorama.org.br/design-interiores/curso-online-de-vastu-shastra/\n\n<b>Dirigido a: </b><span style=\"font-weight: 400;\">Profissionais da área da saúde, público em geral, arquitectos, designers de interiores, designers de ambientes.</span>\n\n<b>Certificado:</b><span style=\"font-weight: 400;\"> Contatar o Instituto para saber que tipo de certificado emitem.</span>\n\n<b>Saída Profissional: </b><span style=\"font-weight: 400;\">Este nível já habilita o aluno a prestar consultorias em Vastu Shastra.</span>\n\n<b>INSCRIÇÕES E ATENDIMENTO</b>\n\n<b>Horário da Secretaria: </b><span style=\"font-weight: 400;\">Das 10h às 18h</span>\n\n<b>Contacto: </b><span style=\"font-weight: 400;\">E-mail: <a href=\"mailto:contato@pindorama.org.br\">contato@pindorama.org.br</a></span>",
-    "resumo": "O Vastu Shastra ou “Ciência do Bem Viver” é a milenar Ciência Védica da Arquitetura.\n\nO Vastu canaliza os cinco elemento...",
-    "imagem": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
     "id": 780,
     "title": "Calatonia e Toques Subtis",
     "author": "Admin",
@@ -40,61 +29,6 @@ export const initialArticles = [
     "date": "09/01/2018",
     "conteudo": "<span style=\"font-weight: 400;\">O Yoga está a tornar-se cada vez mais um sistema válido de reforço da mente, de facilitação da concentração, tendo em vista a saúde psicofísica, a prevenção e até a cura das doenças.</span>\n\n<span style=\"font-weight: 400;\">Aprendendo a se observar, a se compreender e a se conhecer em profundidade, descobrir que a felicidade está dentro de si mesmo, bastando tomar consciência.</span>\n\n<span style=\"font-weight: 400;\">* Programa elaborado com base nas características biológicas de cada pessoa.</span>\n\n<span style=\"font-weight: 400;\">* Acompanhamento do desempenho em cada prática.</span>\n\n<span style=\"font-weight: 400;\">* Práticas elaboradas em fichas personalizadas com ilustrações para conferir auto-suficiência e estimular a prática solo.</span>\n\n<span style=\"font-weight: 400;\">* Rápida evolução a nível físico (flexibilidade, força e resistência), nível mental (Concentração, equilíbrio, controlo das emoções) e espiritual (desenvolvimento e controlo da intuição).</span>\n\n<span style=\"font-weight: 400;\"> * Aprendizado na arte do relaxamento.</span>\n\nInformações: info@ayurvedica.org",
     "resumo": "O Yoga está a tornar-se cada vez mais um sistema válido de reforço da mente, de facilitação da concentração, tendo em vi...",
-    "imagem": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 854,
-    "title": "Hatha Yoga",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "09/01/2018",
-    "conteudo": "<span style=\"font-weight: 400;\">Numa atmosfera com pés e mãos a descobrirem um novo espaço, o trabalho inicia-se com o próprio corpo como instrumento e tradutor da linguagem a ser explorada. Surge assim a possibilidade de  pesquisar ações e reações desse mesmo corpo, no momento em que se enfrenta com transferências de peso, mudanças de direções, níveis no espaço e dinâmicas de movimento.</span>\n\n<span style=\"font-weight: 400;\">O que pode parecer uma simples sala, vazia de móveis, e preenchida por pessoas, afirmar-se-á por quem lá caminhar, uma relação viva coberta de plasticidade.</span>\n\n<strong>INSTRUTOR: Luis García </strong>\n\nLuís García, de nacionalidade espanhola, performer, coreógrafo, ator e dançarino. Possui formação em  Hatha-Yoga &amp; Hatha-Vinyasa Yoga + YOGA-COACH. (Instituto Europeu do Yoga. Red Yoga 10 e Yoga Alliance). 200 horas, concluido em 2020. Possui especialidade em Yoga e lesões com Julia Zatta (Yin Yoga e Yoga restaurativo);  corpo e movimento baseado na técnica Klein (Escola de verão “entendendo o corpo em movimento”) com Britta Pudelko; Yoga pela “Formación sin Barreras”, Universidade Juan Carlos I, Madrid, Espanha. 50 horas.\n\n<b>INFORMAÇÕES </b>\n\n<b>Yogers (Hatha Yoga)</b>\n\n<b>Preço: </b>\n\n<span style=\"font-weight: 400;\"><strong>1 vez por semana:</strong> 25 Euros para alunos regulares. Estudantes e sócios da ALBA pagam 20 euros</span>\n\n<span style=\"font-weight: 400;\"><strong>2 vezes por semana:</strong> 35 Euros para alunos regulares. Estudantes e sócios da ALBA pagam 30 euros</span>\n\n<span style=\"font-weight: 400;\"><strong>Aula avulsa:</strong> 10€</span>\n\n<span style=\"font-weight: 400;\"><strong>Primeira aula experimental:</strong> 10€ (o valor será descontado na mensalidade se o cliente for participar das aulas mensais).</span>\n\n<strong>PERSONAL YOGA: </strong>Na primeira aula experimental, o instrutor avalia o aluno para indicar qual o melhor procedimento a ser tomado em relação às suas necessidades.\n\n<b>VALORES: </b><strong>1x Aula:</strong> 30€  /  <strong>Pack 5x Aulas: 1</strong>20€  /  <strong>Pack 3x Aulas: </strong>80€\n\n<b>INSCRIÇÕES E ATENDIMENTO</b>\n\n<b>Horário da Secretaria: </b><span style=\"font-weight: 400;\">Das 10h às 18h (marcar hora para ser atendido por telefone)</span>\n\n<b>Contacto:</b>\n\n<span style=\"font-weight: 400;\"><strong>E-mail: </strong> info@ayurvedica.org</span>",
-    "resumo": "Numa atmosfera com pés e mãos a descobrirem um novo espaço, o trabalho inicia-se com o próprio corpo como instrumento e...",
-    "imagem": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 880,
-    "title": "Massagem Ayurvédica Tradicional",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "09/01/2018",
-    "conteudo": "<span style=\"font-weight: 400;\">Estimula as energias do corpo físico; equilibra as emoções; facilita o auto-conhecimento; combate o “stress”; recupera e mantém a saúde física, psíquica, mental, amplia a capacidade respiratória; activa a circulação sanguínea; recupera o nível máximo da energia vital, desfazendo os seus bloqueios; reequilibra a energia nos chakras; corrige a postura corporal, acrescenta-se efeitos positivos nos alongamentos e estiramentos, soltura das tensões com a massagem realizada com os pés, redistribuição da energia e o relaxamento que advém da inserção destas novas manobras.</span>\n\n<b>INFORMAÇÕES </b>\n\n<b>Duração:</b> <span style=\"font-weight: 400;\">1h</span>\n\nNOTA IMPORTANTE: A Associação não tem serviço de massagens. A Associação apenas indica os interessados em receber massagens ou tratamentos para terapeutas que constam em sua lista de ex-alunos. A Associação sede uma de suas salas para execução da mesma. A responsabilidade para passar recibos é por conta dos terapeutas.\n\n<b>VALORES</b>\n\n<b>Preço:</b><span style=\"font-weight: 400;\"> 1 Massagem – 50€ / Pack 4 Massagens – 140€ </span>\n\n<b>INSCRIÇÕES E ATENDIMENTO</b>\n\n<b>Horário da Secretaria: </b><span style=\"font-weight: 400;\">marcar hora para visitas</span>\n\n<b>Contacto:</b>\n\n<span style=\"font-weight: 400;\">E-mail:  info@ayurvedica.org </span>",
-    "resumo": "Estimula as energias do corpo físico; equilibra as emoções; facilita o auto-conhecimento; combate o “stress”; recupera e...",
-    "imagem": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 898,
-    "title": "Astrologia",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "09/01/2018",
-    "conteudo": "<span style=\"font-weight: 400;\">A Astrologia baseia-se na leitura e interpretação do mapa Astrológico (“fotografia” dos céus no momento de nascimento), e é uma poderosa ferramenta de autoconhecimento. Através do gráfico de nascimento, é possível desvendar potenciais e dons e também padrões desafiadores e bloqueios que não permitem a vida da pessoa de fluir.</span>\n\n<strong>NOTA IMPORTANTE:</strong> A Associação não tem serviço de massagens. A Associação apenas indica os interessados em receber massagens ou tratamentos para terapeutas que constam em sua lista de ex-alunos. A Associação sede uma de suas salas para execução da mesma. A responsabilidade para passar recibos é por conta dos terapeutas.\n\n<b>VALORES: </b><b>4</b><span style=\"font-weight: 400;\">0€ </span>\n\n<b>Contacto:</b>\n\n<span style=\"font-weight: 400;\">E-mail:  info@ayurvedica.org</span>",
-    "resumo": "A Astrologia baseia-se na leitura e interpretação do mapa Astrológico (“fotografia” dos céus no momento de nascimento),...",
-    "imagem": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 901,
-    "title": "Florais de Bach",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "09/01/2018",
-    "conteudo": "<span style=\"font-weight: 400;\">“Os Florais de Bach são uma terapia natural que consiste na utilização da energia sutil das flores do campo para nos ajudar a trabalhar as nossas emoções. Toda a doença tem uma causa emocional e os Florais de Bach vão ajudar a equilibrar as emoções negativas causadoras da doença. Trata-se de uma terapia natural que recorre às flores silvestres para trazer harmonia e restaurar a saúde de todos os que sofrem.”</span>\n\n<b>INFORMAÇÕES </b>\n\n<b>Duração: </b><span style=\"font-weight: 400;\">Cerca de 6</span><span style=\"font-weight: 400;\">0 minutos (1ª consulta)</span>\n\n<strong>NOTA IMPORTANTE:</strong> A Associação não tem serviço de massagens. A Associação apenas indica os interessados em receber massagens ou tratamentos para terapeutas que constam em sua lista de ex-alunos. A Associação sede uma de suas salas para execução da mesma. A responsabilidade para passar recibos é por conta dos terapeutas.\n\n<b>INSCRIÇÕES E ATENDIMENTO</b>\n\n<b>Horário da Secretaria: </b><span style=\"font-weight: 400;\">Das 10h às 18h</span>\n\n<b>Contacto:</b>\n\n<span style=\"font-weight: 400;\">E-mail:  info@ayurvedica.org</span>\n\n<hr />\n\n[embed]https://youtu.be/rap4JZ1Ek84[/embed]",
-    "resumo": "“Os Florais de Bach são uma terapia natural que consiste na utilização da energia sutil das flores do campo para nos aju...",
-    "imagem": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 905,
-    "title": "Medicina Ayurvédica",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "09/01/2018",
-    "conteudo": "<span style=\"font-weight: 400;\">A Ayurveda tem como intenção servir de guia no que diz respeito à alimentação e estilo de vida para que os indivíduos saudáveis permaneçam saudáveis e os que tenham problemas possam alcançar a saúde, ou seja, é uma ciência que procura promover a saúde e a felicidade.</span>\n\n<span style=\"font-weight: 400;\">O médico ayurvédico determina o seu dosha principal, o dosha ou doshas que estão em desequilíbrio para recomendar o tratamento mais adequado.</span>\n\n<b>INFORMAÇÕES </b>\n\n<b>Duração: </b><span style=\"font-weight: 400;\">Cerca de 1h30 </span>\n\n<b>Contacto:</b>\n\n<span style=\"font-weight: 400;\">E-mail:  info@ayurvedica.org</span>",
-    "resumo": "A Ayurveda tem como intenção servir de guia no que diz respeito à alimentação e estilo de vida para que os indivíduos sa...",
     "imagem": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
     "tag": "Geral"
   },
@@ -352,17 +286,6 @@ export const initialArticles = [
     "tag": "Geral"
   },
   {
-    "id": 1773,
-    "title": "Massagem Oriental Terapêutica e de Relaxamento",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "01/03/2018",
-    "conteudo": "<strong>MASSAGEM ORIENTAL TERAPÊUTICA E DE RELAXAMENTO</strong>\nFormação destinada aos que querem iniciar o aprendizado na área das terapias manuais e para os que já possuem um curso e querem complementar o seu leque de possibilidades. Visa dar aos participantes técnicas que ajudem as pessoas no caminho do bem estar e da saúde nos dias em que vivemos, cujo stress é grande.  Desconto de 50% no valor do curso para Desempregados com comprovativo do Instituto de Emprego.\n\nDURAÇÃO - PREÇO - INFO\nNúmero de Horas: 48 h\nDia e Horário: Segunda a quinta das 9 às 13h\nPreço: 300€ + 50€ de Inscrição*\n( *Sócios tem 10% de desconto no preço da formação )\nMaterial Fornecido: Caderno de apontamentos\nMaterial Necessário: Roupa apropriada para fazer e receber massagem, Óleo de massagem\nnatural (vegetal do tipo amêndoas doce, sésamo, grainha de uva, etc.), lençol, toalha grande.\n\n<span class=\"text-dark\">Email: </span><a href=\"mailto:lisboa@ayurvedica.org\">info@ayurvedica.org</a>",
-    "resumo": "MASSAGEM ORIENTAL TERAPÊUTICA E DE RELAXAMENTO\nFormação destinada aos que querem iniciar o aprendizado na área das terap...",
-    "imagem": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
     "id": 2160,
     "title": "Dosha Yoga",
     "author": "Admin",
@@ -370,17 +293,6 @@ export const initialArticles = [
     "date": "02/04/2018",
     "conteudo": "<b>Yoga para o equilíbrio dos Doshas</b>\n\n<span style=\"font-weight: 400;\">Já fez alguma aula de yoga, mas não se sentiu bem?</span>\n\n<span style=\"font-weight: 400;\">Talvez isso tenha acontecido porque aula não foi feita para ti…</span>\n\n<span style=\"font-weight: 400;\">Ao juntarmos o Yoga com a Ayurvédica, cada pessoa recebe uma aula directamente de acordo com o seu Dosha, ou seja, o seu Biótipo Físico e Mental.</span>\n\n<span style=\"font-weight: 400;\">– Pessoas Vata (elementos ar e éter) – Com a cabeça no ar, mais pensativas, rápidas. Têm a tendência para serem mais ansiosas e inseguras quando desequilibradas. Estas dar-se-ão muito bem com aulas de yoga que as tragam para a terra, para o corpo. Trazendo assim, mais calma, estabilidade, concentração e enraizamento físico e mental.</span>\n\n<span style=\"font-weight: 400;\">– Pessoas Pitta (elementos fogo e água) – Que são mais activas, quentes, determinadas, lógicas. Têm a tendência para se irritarem mais facilmente, impulsivas e explosivas quando desequilibradas. Estas dar-se-ão muito bem com aulas que as tragam mais introspecção, frescor, relaxamento e entrega.</span>\n\n<span style=\"font-weight: 400;\">– Pessoas Kapha (elementos água e terra) – Que são mais calmos, lentos, seguros, estáveis, disciplinados . Têm a tendência para serem mais letárgicos, possessivos e magoados quando desequilibrados. Estas dar-se-ão darão bem com aulas mais inspiradoras e estimulantes que as tragam mais energia, oxigênio e movimento.</span>\n\n<span style=\"font-weight: 400;\">Todos temos os três doshas presentes em nós, somente a percentagem de cada um é que muda. </span>\n\n<span style=\"font-weight: 400;\">Vivemos numa altura em que podemos e devemos ter o mundo moldado à nossa imagem e necessidades e o yoga não deve ser excepção. </span>\n\n<b>Descubra aqui seu Dosha</b>\n\n<span style=\"font-weight: 400;\">Avalie a pontuação total de cada Dosha. O número maior irá determinar a sua constituição. Dependendo da pontuação, se a mesma for inferior a 10% de um dosha para o outro, a pessoa é bidoshica, ou mesmo tridoshica.</span>\n\n<span style=\"font-weight: 400;\">A prática do Yoga, com posições específicas, ajuda no equilíbrio dos doshas. Traz harmonia, saúde e bem-estar.</span>\n\nInformações: info@ayurvedica.org",
     "resumo": "Yoga para o equilíbrio dos Doshas\n\nJá fez alguma aula de yoga, mas não se sentiu bem?\n\nTalvez isso tenha acontecido porq...",
-    "imagem": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 2201,
-    "title": "Indian Head Massage",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "13/06/2019",
-    "conteudo": "<span style=\"font-weight: 400;\">Entre muitas outras, a Indian Head Massage ajuda no combate ao stress, na melhoria da circulação e drenagem linfática, na oxigenação do cérebro, no crescimento capilar, na eliminação de dores de cabeça, no combate a insónias, ansiedade, dores de pescoço, rigidez muscular dos ombros nuca e pescoço, sem esquecer um profundo efeito de relaxamento e bem-estar.</span>\n\n<b>INFORMAÇÕES </b>\n\n<b>Duração:</b> <span style=\"font-weight: 400;\">45min</span>\n\nNOTA IMPORTANTE: A Associação não tem serviço de massagens. A Associação apenas indica os interessados em receber massagens ou tratamentos para terapeutas que constam em sua lista de ex-alunos. A Associação sede uma de suas salas para execução da mesma. A responsabilidade para passar recibos é por conta dos terapeutas.\n\n<b>VALORES</b>\n\n<b>Preço:</b><span style=\"font-weight: 400;\"> 25€</span>\n\n<b>INSCRIÇÕES E ATENDIMENTO</b>\n\n<b>Horário da Secretaria: </b><span style=\"font-weight: 400;\">Das 10h às 18h</span>\n\n<b>Contacto:</b>\n\n<span style=\"font-weight: 400;\">Telefone: 919075904 / 212467740</span>\n\n<span style=\"font-weight: 400;\">E-mail:  info@ayurvedica.org</span>\n\n&nbsp;",
-    "resumo": "Entre muitas outras, a Indian Head Massage ajuda no combate ao stress, na melhoria da circulação e drenagem linfática, n...",
     "imagem": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
     "tag": "Geral"
   },
@@ -469,17 +381,6 @@ export const initialArticles = [
     "date": "27/07/2020",
     "conteudo": "De 2006 a 2010 a ALBA publicou um Boletim que circulou com a Revista Beija Flor. Era enviado para os sócios e amigos da ALBA.\n\nO Boletim deixou de ser publicado pois a Revista Beija flor deixou de circular.\n\nAbaixo algumas fotos do boletim.\n\n<a href=\"https://www.ayurvedica.org/primavera_2008/\"><img class=\"alignnone wp-image-3747\" src=\"https://www.ayurvedica.org/wp-content/uploads/2020/07/PRIMAVERA_2008.jpg\" alt=\"\" width=\"345\" height=\"244\" />   </a><a href=\"https://www.ayurvedica.org/boletim-outono-a/\"><img class=\"alignnone wp-image-3745\" src=\"https://www.ayurvedica.org/wp-content/uploads/2020/07/Boletim-Outono-A.jpg\" alt=\"\" width=\"343\" height=\"243\" /></a>\n\n<a href=\"https://www.ayurvedica.org/boletim-inverno-2008-1/\"><img class=\"alignnone wp-image-3743\" src=\"https://www.ayurvedica.org/wp-content/uploads/2020/07/Boletim-Inverno-2008-1.jpg\" alt=\"\" width=\"348\" height=\"247\" />   </a><a href=\"https://www.ayurvedica.org/boletim_1a/\"><img class=\"alignnone wp-image-3741\" src=\"https://www.ayurvedica.org/wp-content/uploads/2020/07/Boletim_1a.jpg\" alt=\"\" width=\"348\" height=\"248\" /></a>\n\n<a href=\"https://www.ayurvedica.org/boletim-ayur-2/\"><img class=\"alignnone wp-image-3738\" src=\"https://www.ayurvedica.org/wp-content/uploads/2020/07/Boletim-Ayur-1.jpg\" alt=\"\" width=\"352\" height=\"248\" />   </a><a href=\"https://www.ayurvedica.org/boletim_v/\"><img class=\"alignnone wp-image-3750\" src=\"https://www.ayurvedica.org/wp-content/uploads/2020/07/Boletim_V...jpg\" alt=\"\" width=\"349\" height=\"247\" /></a>\n\n<a href=\"https://www.ayurvedica.org/primavera_2008_2/\"><img class=\"alignnone wp-image-3748\" src=\"https://www.ayurvedica.org/wp-content/uploads/2020/07/PRIMAVERA_2008_2.jpg\" alt=\"\" width=\"351\" height=\"247\" />   </a><a href=\"https://www.ayurvedica.org/boletim_ayur_pantone_violetaazul_2745_uncoated_2/\"><img class=\"alignnone wp-image-3740\" src=\"https://www.ayurvedica.org/wp-content/uploads/2020/07/Boletim_Ayur_Pantone_VioletaAzul_2745_Uncoated_2.jpg\" alt=\"\" width=\"348\" height=\"246\" /></a>",
     "resumo": "De 2006 a 2010 a ALBA publicou um Boletim que circulou com a Revista Beija Flor. Era enviado para os sócios e amigos da...",
-    "imagem": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
-    "tag": "Geral"
-  },
-  {
-    "id": 3891,
-    "title": "Massagem Abhyanga",
-    "author": "Admin",
-    "status": "Publicado",
-    "date": "09/05/2021",
-    "conteudo": "<span style=\"font-weight: 400;\">Estimula as energias do corpo físico; equilibra as emoções; facilita o auto-conhecimento; combate o “stress”; recupera e mantém a saúde física, psíquica, mental, amplia a capacidade respiratória; ativa a circulação sanguínea; desfaz bloqueios; reequilibra a energia nos chakras; redistribui a energia e promove o relaxamento do corpo.</span>\n\n<b>INFORMAÇÕES </b>\n\n<b>Duração:</b> <span style=\"font-weight: 400;\">1h</span>\n\n<strong>NOTA IMPORTANTE:</strong> A Associação não tem serviço de massagens. A Associação apenas indica os interessados em receber massagens ou tratamentos para terapeutas que constam em sua lista de ex-alunos e professores. A Associação sede uma de suas salas para execução da mesma. A responsabilidade para passar recibos é por conta dos terapeutas.\n\n<b>VALORES</b>\n\n<b>Preço:</b><span style=\"font-weight: 400;\"> 1 Massagem = 50€ </span>\n\n<b>INSCRIÇÕES E ATENDIMENTO</b>\n\n<b>Horário da Secretaria: </b><span style=\"font-weight: 400;\">marcar hora para visitas</span>\n\n<b>Contacto:</b>\n\n<span style=\"font-weight: 400;\">E-mail:  info@ayurvedica.org </span>",
-    "resumo": "Estimula as energias do corpo físico; equilibra as emoções; facilita o auto-conhecimento; combate o “stress”; recupera e...",
     "imagem": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
     "tag": "Geral"
   },
