@@ -7,7 +7,7 @@ export const initialCourses = [
     "format": "Presencial / Online",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "/images/cursos/aprofundamento-em-yoga-yogaterapia/cover.jpg",
+    "image": "/images/aprofundamento_yogaterapia.jpg",
     "description": "Curso teórico e prático de técnicas milenares do Yoga com fins terapêuticos. Ensina a prevenção e auxílio no tratamento de desequilíbrios psicofísicos através de asanas, pranayamas, mudras e meditação direcionada.",
     "originalUrl": "https://www.ayurvedica.org/aprofundamento-em-yoga-yogaterapia/",
     "hotmartLink": "https://www.ayurvedica.org/aprofundamento-em-yoga-yogaterapia/",
