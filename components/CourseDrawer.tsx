@@ -82,12 +82,11 @@ export const CourseDrawer = ({ course, isOpen, onClose }: CourseDrawerProps) => 
       <div className={`fixed top-0 right-0 h-full w-full max-w-xl bg-white z-[70] shadow-2xl transform transition-transform duration-500 ease-out flex flex-col ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         
         {/* Imagem do Topo */}
-        <div className="relative h-56 md:h-64 w-full bg-stone-900 flex items-center justify-center overflow-hidden flex-shrink-0">
-          <img src={getImagePath((course as any).drawerImage || course.image)} alt="" className="absolute inset-0 w-full h-full object-cover blur-md opacity-40 scale-110" />
+        <div className="relative h-56 md:h-64 w-full bg-stone-100 flex-shrink-0 overflow-hidden">
           <img 
             src={getImagePath((course as any).drawerImage || course.image)} 
             alt={course.title} 
-            className="relative z-10 max-h-full max-w-full object-contain" 
+            className="w-full h-full object-cover" 
             onError={(e) => {
               (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=600&auto=format&fit=crop';
             }}

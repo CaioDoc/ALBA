@@ -138,16 +138,11 @@ export default function CursosPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
               {currentCourses.map((course) => (
                 <div key={course.id} className="group bg-white rounded-[2rem] border border-stone-200/80 hover:shadow-xl hover:border-emerald-200 transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer" onClick={() => handleOpenDrawer(course)}>
-                  <div className="h-56 w-full overflow-hidden relative bg-stone-900 flex items-center justify-center flex-shrink-0">
-                    <img 
-                      src={getImagePath(course.image)} 
-                      alt="" 
-                      className="absolute inset-0 w-full h-full object-cover blur-md opacity-40 scale-110" 
-                    />
+                  <div className="h-56 w-full overflow-hidden relative flex-shrink-0 bg-stone-100">
                     <img 
                       src={getImagePath(course.image)} 
                       alt={course.title} 
-                      className="relative z-10 max-h-full max-w-full object-contain transition-transform duration-700 group-hover:scale-105" 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
                       onError={(e) => {
                         (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=600&auto=format&fit=crop';
                       }}
