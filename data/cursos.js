@@ -31,7 +31,8 @@ export const initialCourses = [
           "Técnicas de relaxamento e meditação direcionados"
         ]
       }
-    ]
+    ],
+    "active": true
   },
   {
     "id": 2,
@@ -69,7 +70,8 @@ export const initialCourses = [
       }
     ],
     "providedMaterials": "Caderno ilustrado com a sequência e alinhamento das posturas de Yoga.",
-    "neededMaterials": "Roupa confortável apropriada para prática."
+    "neededMaterials": "Roupa confortável apropriada para prática.",
+    "active": true
   },
   {
     "id": 3,
@@ -122,7 +124,8 @@ export const initialCourses = [
           "Variações de Surya Namaskar, técnicas de relaxamento e estágio supervisionado"
         ]
       }
-    ]
+    ],
+    "active": true
   },
   {
     "id": 5,
@@ -156,7 +159,8 @@ export const initialCourses = [
           "Respirações e meditações para serenidade e concentração"
         ]
       }
-    ]
+    ],
+    "active": true
   },
   {
     "id": 6,
@@ -191,7 +195,8 @@ export const initialCourses = [
           "O uso tradicional dos incensos no Yoga"
         ]
       }
-    ]
+    ],
+    "active": true
   },
   {
     "id": 7,
@@ -225,7 +230,8 @@ export const initialCourses = [
           "Dinâmicas de conexão e concentração"
         ]
       }
-    ]
+    ],
+    "active": true
   },
   {
     "id": 8,
@@ -267,7 +273,8 @@ export const initialCourses = [
           "Bases científicas e neurofisiológicas da concentração e meditação"
         ]
       }
-    ]
+    ],
+    "active": true
   },
   {
     "id": 9,
@@ -301,7 +308,8 @@ export const initialCourses = [
           "Exercícios respiratórios lúdicos e técnicas de calma"
         ]
       }
-    ]
+    ],
+    "active": true
   },
   {
     "id": 10,
@@ -337,7 +345,8 @@ export const initialCourses = [
           "Visualizações direcionadas para o sistema endócrino e relaxamento"
         ]
       }
-    ]
+    ],
+    "active": true
   },
   {
     "id": 11,
@@ -404,7 +413,8 @@ export const initialCourses = [
       }
     ],
     "providedMaterials": "Caderno de apontamentos teórico e prático fornecido pela ALBA.",
-    "neededMaterials": "Roupa apropriada para fazer e receber massagem, óleo de massagem natural (amêndoas doce, sésamo, grainha de uva), lençol e toalha grande."
+    "neededMaterials": "Roupa apropriada para fazer e receber massagem, óleo de massagem natural (amêndoas doce, sésamo, grainha de uva), lençol e toalha grande.",
+    "active": true
   },
   {
     "id": 12,
@@ -451,7 +461,8 @@ export const initialCourses = [
       }
     ],
     "providedMaterials": "Caderno de apontamentos teórico e prático fornecido pela ALBA.",
-    "neededMaterials": "Roupa apropriada para fazer e receber massagem, óleo de massagem natural (amêndoas doce, sésamo, etc.), lençol e toalha grande."
+    "neededMaterials": "Roupa apropriada para fazer e receber massagem, óleo de massagem natural (amêndoas doce, sésamo, etc.), lençol e toalha grande.",
+    "active": true
   },
   {
     "id": 13,
@@ -498,7 +509,8 @@ export const initialCourses = [
       }
     ],
     "providedMaterials": "Caderno de apontamentos e certificado de formação.",
-    "neededMaterials": "Roupa apropriada (fato de treino ou calções), toalha de rosto, escova ou pente e óleo vegetal natural (amêndoas doces, sésamo, grainha de uva ou coco)."
+    "neededMaterials": "Roupa apropriada (fato de treino ou calções), toalha de rosto, escova ou pente e óleo vegetal natural (amêndoas doces, sésamo, grainha de uva ou coco).",
+    "active": true
   },
   {
     "id": 14,
@@ -542,7 +554,8 @@ export const initialCourses = [
       }
     ],
     "providedMaterials": "Dois cadernos de apontamentos e um caderno exclusivo com receitas saborosas para cada dosha.",
-    "neededMaterials": "Material de anotações e disposição para práticas respiratórias."
+    "neededMaterials": "Material de anotações e disposição para práticas respiratórias.",
+    "active": true
   },
   {
     "id": 15,
@@ -598,7 +611,8 @@ export const initialCourses = [
       }
     ],
     "providedMaterials": "Caderno de Apontamentos exclusivo em Português e tutoria com formadores da ALBA.",
-    "neededMaterials": "Documentação necessária para inscrição e material para apontamentos."
+    "neededMaterials": "Documentação necessária para inscrição e material para apontamentos.",
+    "active": true
   },
   {
     "id": 16,
@@ -633,7 +647,8 @@ export const initialCourses = [
           "Aplicação prática dos cristais no corpo humano e energização ambiental para meditação"
         ]
       }
-    ]
+    ],
+    "active": true
   },
   {
     "id": 17,
@@ -674,7 +689,8 @@ export const initialCourses = [
       }
     ],
     "providedMaterials": "Caderno de apontamentos e certificado de formação profissional.",
-    "neededMaterials": "1 toalha grande, 1 lençol, óleo de massagem natural e roupa apropriada para receber e fazer massagem."
+    "neededMaterials": "1 toalha grande, 1 lençol, óleo de massagem natural e roupa apropriada para receber e fazer massagem.",
+    "active": true
   },
   {
     "id": 19,
@@ -709,7 +725,8 @@ export const initialCourses = [
           "Exercícios para pós-treino e técnicas de concentração e relaxamento"
         ]
       }
-    ]
+    ],
+    "active": true
   },
   {
     "id": 20,
@@ -754,7 +771,8 @@ export const initialCourses = [
           "CABEÇA E PESCOÇO: Massagem nas cordas vocais, Face e Couro Cabeludo"
         ]
       }
-    ]
+    ],
+    "active": true
   },
   {
     "id": 21,
@@ -789,7 +807,8 @@ export const initialCourses = [
           "Entoação de mantras e relaxamento profundo"
         ]
       }
-    ]
+    ],
+    "active": true
   },
   {
     "id": 22,
@@ -797,7 +816,7 @@ export const initialCourses = [
     "category": "Massagens Ayurvédicas",
     "workload": "16h",
     "format": "Presencial / Online",
-    "status": "Inscrições Abertas",
+    "status": "Desativado",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
     "description": "&nbsp; DETALHES DO CURSO Massagem Abhyanga - Workshop Especial Objectivo: Visa preparar os participantes para execut......",
@@ -821,7 +840,8 @@ export const initialCourses = [
           "Indicações, Contraindicações e Cuidados Éticos"
         ]
       }
-    ]
+    ],
+    "active": false
   },
   {
     "id": 23,
@@ -829,7 +849,7 @@ export const initialCourses = [
     "category": "Massagens Ayurvédicas",
     "workload": "7 hs",
     "format": "Presencial / Online",
-    "status": "Inscrições Abertas",
+    "status": "Desativado",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
     "description": "Curso Prático de Massagem Shantala O toque é um dos meios mais poderosos para a comunicação humana com enriquecimen......",
@@ -853,7 +873,8 @@ export const initialCourses = [
           "Indicações, Contraindicações e Cuidados Éticos"
         ]
       }
-    ]
+    ],
+    "active": false
   },
   {
     "id": 24,
@@ -861,7 +882,7 @@ export const initialCourses = [
     "category": "Massagens Ayurvédicas",
     "workload": "16h",
     "format": "Presencial / Online",
-    "status": "Inscrições Abertas",
+    "status": "Desativado",
     "students": 0,
     "image": "/images/cursos/massagem-ayurvedica-spa-terapias/massagem-ayurvedica-spa-terapias.jpg",
     "description": "Instrutor: Sem Instrutor específico... Dirigido a: Publico em geral, fisoterapeutas, massagistas, terapeutas corporais,......",
@@ -885,7 +906,8 @@ export const initialCourses = [
           "Indicações, Contraindicações e Cuidados Éticos"
         ]
       }
-    ]
+    ],
+    "active": false
   },
   {
     "id": 25,
@@ -893,7 +915,7 @@ export const initialCourses = [
     "category": "Massagens Ayurvédicas",
     "workload": "24 horas",
     "format": "Presencial / Online",
-    "status": "Inscrições Abertas",
+    "status": "Desativado",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
     "description": "Drenagem Linfática Manual A Drenagem Linfática Manual é uma técnica específica de massagem manual, caracterizando-se po......",
@@ -917,7 +939,8 @@ export const initialCourses = [
           "Indicações, Contraindicações e Cuidados Éticos"
         ]
       }
-    ]
+    ],
+    "active": false
   },
   {
     "id": 26,
@@ -925,7 +948,7 @@ export const initialCourses = [
     "category": "Massagens Ayurvédicas",
     "workload": "16h",
     "format": "Presencial / Online",
-    "status": "Inscrições Abertas",
+    "status": "Desativado",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
     "description": "Massagem Geotermal - Pedras Quentes A massagem de pedras quentes, de origem oriental, concilia a massagem manual de......",
@@ -949,7 +972,8 @@ export const initialCourses = [
           "Indicações, Contraindicações e Cuidados Éticos"
         ]
       }
-    ]
+    ],
+    "active": false
   },
   {
     "id": 27,
@@ -957,7 +981,7 @@ export const initialCourses = [
     "category": "Massagens Ayurvédicas",
     "workload": "24h00",
     "format": "Presencial / Online",
-    "status": "Inscrições Abertas",
+    "status": "Desativado",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
     "description": "Massagem Sueca A massagem Sueca é das mais requisitadas em Spas de luxo. Trata-se de um estilo de massagem desenvolvido......",
@@ -981,7 +1005,8 @@ export const initialCourses = [
           "Indicações, Contraindicações e Cuidados Éticos"
         ]
       }
-    ]
+    ],
+    "active": false
   },
   {
     "id": 28,
@@ -989,7 +1014,7 @@ export const initialCourses = [
     "category": "Massagens Ayurvédicas",
     "workload": "16h",
     "format": "Presencial / Online",
-    "status": "Inscrições Abertas",
+    "status": "Desativado",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
     "description": "Instrutor: Formadores credenciados pela ALBA* Dirigido a: Profissionais da área da saúde; terapeutas corporais, massoter......",
@@ -1013,7 +1038,8 @@ export const initialCourses = [
           "Indicações, Contraindicações e Cuidados Éticos"
         ]
       }
-    ]
+    ],
+    "active": false
   },
   {
     "id": 29,
@@ -1021,7 +1047,7 @@ export const initialCourses = [
     "category": "Massagens Ayurvédicas",
     "workload": "16h",
     "format": "Presencial / Online",
-    "status": "Inscrições Abertas",
+    "status": "Desativado",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
     "description": "Reflexologia Podal Uma longa viagem começa com um único passo. (Lao-Tsé (1324-1408 a. C.) Os seus pés caminham sobr......",
@@ -1045,7 +1071,8 @@ export const initialCourses = [
           "Indicações, Contraindicações e Cuidados Éticos"
         ]
       }
-    ]
+    ],
+    "active": false
   },
   {
     "id": 30,
@@ -1053,7 +1080,7 @@ export const initialCourses = [
     "category": "Massagens Ayurvédicas",
     "workload": "16h",
     "format": "Presencial / Online",
-    "status": "Inscrições Abertas",
+    "status": "Desativado",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
     "description": "Lomi-lomi, significa “massagem” no idioma havaiano. É a palavra usada hoje em dia para descrever a massagem havaiana, tr......",
@@ -1077,7 +1104,8 @@ export const initialCourses = [
           "Indicações, Contraindicações e Cuidados Éticos"
         ]
       }
-    ]
+    ],
+    "active": false
   },
   {
     "id": 31,
@@ -1085,7 +1113,7 @@ export const initialCourses = [
     "category": "Massagens Ayurvédicas",
     "workload": "16h",
     "format": "Presencial / Online",
-    "status": "Inscrições Abertas",
+    "status": "Desativado",
     "students": 0,
     "image": "/images/cursos/massagem-ayurvedica-spa-terapias/massagem-ayurvedica-spa-terapias.jpg",
     "description": "Instrutor: Dirigido a: Publico em geral, fisoterapeutas, massagistas, terapeutas corporais, naturopatas, profissionais d......",
@@ -1109,7 +1137,8 @@ export const initialCourses = [
           "Indicações, Contraindicações e Cuidados Éticos"
         ]
       }
-    ]
+    ],
+    "active": false
   },
   {
     "id": 32,
@@ -1117,7 +1146,7 @@ export const initialCourses = [
     "category": "Massagens Ayurvédicas",
     "workload": "16h",
     "format": "Presencial / Online",
-    "status": "Inscrições Abertas",
+    "status": "Desativado",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
     "description": "Pindas Tailandesas As pindas são saquinhos de linho que se utilizam em determinadas terapias e massagens orientais......",
@@ -1141,7 +1170,8 @@ export const initialCourses = [
           "Indicações, Contraindicações e Cuidados Éticos"
         ]
       }
-    ]
+    ],
+    "active": false
   },
   {
     "id": 33,
@@ -1149,7 +1179,7 @@ export const initialCourses = [
     "category": "Medicina Ayurvédica",
     "workload": "16h",
     "format": "Presencial / Online",
-    "status": "Inscrições Abertas",
+    "status": "Desativado",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
     "description": "Estética, Cosmética e Beleza pela Ayurveda A Índia é um dos principais berço das Terapias para o tratamento do cor......",
@@ -1173,7 +1203,8 @@ export const initialCourses = [
           "Indicações, Contraindicações e Cuidados Éticos"
         ]
       }
-    ]
+    ],
+    "active": false
   },
   {
     "id": 34,
@@ -1181,7 +1212,7 @@ export const initialCourses = [
     "category": "Massagens Ayurvédicas",
     "workload": "8 horas",
     "format": "Presencial / Online",
-    "status": "Inscrições Abertas",
+    "status": "Desativado",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
     "description": "SHIRODHARA - WORKSHOP ESPECIAL PARA TERAPEUTAS Shirodhara é uma terapia da Medicina profundamente relaxante, que en......",
@@ -1205,7 +1236,8 @@ export const initialCourses = [
           "Indicações, Contraindicações e Cuidados Éticos"
         ]
       }
-    ]
+    ],
+    "active": false
   },
   {
     "id": 35,
@@ -1213,7 +1245,7 @@ export const initialCourses = [
     "category": "Terapias Holísticas",
     "workload": "16h",
     "format": "Presencial / Online",
-    "status": "Inscrições Abertas",
+    "status": "Desativado",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
     "description": "As Essências Florais e a sua utilização na actualidade – enquadramento do estudo das Essências Florais de Bach no âmbito......",
@@ -1237,7 +1269,8 @@ export const initialCourses = [
           "Indicações, Contraindicações e Cuidados Éticos"
         ]
       }
-    ]
+    ],
+    "active": false
   },
   {
     "id": 36,
@@ -1245,7 +1278,7 @@ export const initialCourses = [
     "category": "Yoga",
     "workload": "16h",
     "format": "Presencial / Online",
-    "status": "Inscrições Abertas",
+    "status": "Desativado",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
     "description": "A maioria de nossas atitudes perante a vida tem sua contraparte no corpo físico. Do momento em que nascemos até a nossa......",
@@ -1269,7 +1302,8 @@ export const initialCourses = [
           "Indicações, Contraindicações e Cuidados Éticos"
         ]
       }
-    ]
+    ],
+    "active": false
   },
   {
     "id": 37,
@@ -1277,7 +1311,7 @@ export const initialCourses = [
     "category": "Yoga",
     "workload": "16h",
     "format": "Presencial / Online",
-    "status": "Inscrições Abertas",
+    "status": "Desativado",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
     "description": "Através dos Pranayamas e dos Mudras regularizamos os cinco elementos no nosso corpo. Uma experiência singular com a prof......",
@@ -1301,7 +1335,8 @@ export const initialCourses = [
           "Indicações, Contraindicações e Cuidados Éticos"
         ]
       }
-    ]
+    ],
+    "active": false
   },
   {
     "id": 38,
@@ -1309,7 +1344,7 @@ export const initialCourses = [
     "category": "Massagens Ayurvédicas",
     "workload": "16h",
     "format": "Presencial / Online",
-    "status": "Inscrições Abertas",
+    "status": "Desativado",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
     "description": "O Vastu Shastra ou “Ciência do Bem Viver” é a milenar Ciência Védica da Arquitetura. O Vastu canaliza os cinco elemento......",
@@ -1333,7 +1368,8 @@ export const initialCourses = [
           "Indicações, Contraindicações e Cuidados Éticos"
         ]
       }
-    ]
+    ],
+    "active": false
   },
   {
     "id": 39,
@@ -1341,7 +1377,7 @@ export const initialCourses = [
     "category": "Yoga",
     "workload": "16h",
     "format": "Presencial / Online",
-    "status": "Inscrições Abertas",
+    "status": "Desativado",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
     "description": "Numa atmosfera com pés e mãos a descobrirem um novo espaço, o trabalho inicia-se com o próprio corpo como instrumento e......",
@@ -1365,7 +1401,8 @@ export const initialCourses = [
           "Indicações, Contraindicações e Cuidados Éticos"
         ]
       }
-    ]
+    ],
+    "active": false
   },
   {
     "id": 40,
@@ -1373,7 +1410,7 @@ export const initialCourses = [
     "category": "Massagens Ayurvédicas",
     "workload": "16h",
     "format": "Presencial / Online",
-    "status": "Inscrições Abertas",
+    "status": "Desativado",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
     "description": "A Astrologia baseia-se na leitura e interpretação do mapa Astrológico (“fotografia” dos céus no momento de nascimento),......",
@@ -1397,7 +1434,8 @@ export const initialCourses = [
           "Indicações, Contraindicações e Cuidados Éticos"
         ]
       }
-    ]
+    ],
+    "active": false
   },
   {
     "id": 41,
@@ -1405,7 +1443,7 @@ export const initialCourses = [
     "category": "Massagens Ayurvédicas",
     "workload": "16h",
     "format": "Presencial / Online",
-    "status": "Inscrições Abertas",
+    "status": "Desativado",
     "students": 0,
     "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
     "description": "A Ayurveda tem como intenção servir de guia no que diz respeito à alimentação e estilo de vida para que os indivíduos sa......",
@@ -1429,6 +1467,7 @@ export const initialCourses = [
           "Indicações, Contraindicações e Cuidados Éticos"
         ]
       }
-    ]
+    ],
+    "active": false
   }
 ];

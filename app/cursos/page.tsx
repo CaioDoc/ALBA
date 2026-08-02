@@ -28,7 +28,7 @@ export default function CursosPage() {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    const savedCourses = localStorage.getItem('alba_cursos_v23');
+    const savedCourses = localStorage.getItem('alba_cursos_v24');
     if (savedCourses) {
       try {
         const parsed = JSON.parse(savedCourses);
@@ -36,22 +36,23 @@ export default function CursosPage() {
           setCourses(parsed);
         } else {
           setCourses(scrapedCourses);
-          localStorage.setItem('alba_cursos_v23', JSON.stringify(scrapedCourses));
+          localStorage.setItem('alba_cursos_v24', JSON.stringify(scrapedCourses));
         }
       } catch (e) {
         setCourses(scrapedCourses);
-        localStorage.setItem('alba_cursos_v23', JSON.stringify(scrapedCourses));
+        localStorage.setItem('alba_cursos_v24', JSON.stringify(scrapedCourses));
       }
     } else {
       setCourses(scrapedCourses);
-      localStorage.setItem('alba_cursos_v20', JSON.stringify(scrapedCourses));
+      localStorage.setItem('alba_cursos_v24', JSON.stringify(scrapedCourses));
     }
   }, []);
 
   const filteredCourses = courses.filter((course) => {
+    const isEnabled = course.active !== false && course.status !== 'Desativado' && course.status !== 'Rascunho';
     const matchesCategory = activeCategory === 'Todos' || course.category === activeCategory;
     const matchesSearch = course.title.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesCategory && matchesSearch;
+    return isEnabled && matchesCategory && matchesSearch;
   });
 
   // Reset para a primeira página ao filtrar ou buscar
