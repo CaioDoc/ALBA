@@ -130,6 +130,40 @@ export const initialCourses = [
     "drawerImage": "/images/cursos/instrutor-de-yoga/drawer/img_1.jpg"
   },
   {
+    "id": 4,
+    "title": "Anatomia do Yoga - Workshop",
+    "category": "Yoga",
+    "workload": "16h",
+    "format": "Presencial / Online",
+    "status": "Inscrições Abertas",
+    "active": true,
+    "students": 0,
+    "image": "/images/cursos/anatomia-do-yoga/thumb/anatomia_do_yoga.jpg",
+    "drawerImage": "/images/cursos/anatomia-do-yoga/drawer/drawer.jpg",
+    "description": "Estudo aprofundado dos fundamentos anatômicos, fisiológicos e biomecânicos aplicados à prática do Yoga e alinhamento de Asanas.",
+    "originalUrl": "https://www.ayurvedica.org/cursos/",
+    "hotmartLink": "https://www.ayurvedica.org/cursos/",
+    "targetAudience": "Instrutores de Yoga, Praticantes avançados, Fisioterapeutas e Terapeutas corporais.",
+    "price": "",
+    "certification": "Certificado de Workshop em Anatomia do Yoga emitido pela ALBA.",
+    "objectives": [
+      "Compreender a biomecânica e o alinhamento seguro das posturas de Yoga.",
+      "Identificar grupos musculares e articulações acionados em cada Asana.",
+      "Prevenir lesões e adequar a prática para diferentes biotipos físicos."
+    ],
+    "syllabus": [
+      {
+        "moduleTitle": "Conteúdo Programático (Teórico e Prático)",
+        "theoretical": [
+          "Anatomia Musculoesquelética Aplicada ao Yoga",
+          "Fisiologia Respiratória e Pranayamas",
+          "Cadeias Musculares e Fáscia Corporal",
+          "Adaptações Anatômicas e Prevenção de Lesões"
+        ]
+      }
+    ]
+  },
+  {
     "id": 5,
     "title": "Yoga para Idosos",
     "category": "Yoga",
