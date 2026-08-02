@@ -83,9 +83,9 @@ export const CourseDrawer = ({ course, isOpen, onClose }: CourseDrawerProps) => 
         
         {/* Imagem do Topo */}
         <div className="relative h-56 md:h-64 w-full bg-stone-900 flex items-center justify-center overflow-hidden flex-shrink-0">
-          <img src={getImagePath(course.image)} alt="" className="absolute inset-0 w-full h-full object-cover blur-md opacity-40 scale-110" />
+          <img src={getImagePath((course as any).drawerImage || course.image)} alt="" className="absolute inset-0 w-full h-full object-cover blur-md opacity-40 scale-110" />
           <img 
-            src={getImagePath(course.image)} 
+            src={getImagePath((course as any).drawerImage || course.image)} 
             alt={course.title} 
             className="relative z-10 max-h-full max-w-full object-contain" 
             onError={(e) => {

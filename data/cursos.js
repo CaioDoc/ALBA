@@ -7,7 +7,7 @@ export const initialCourses = [
     "format": "Presencial / Online",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "/images/cursos/aprofundamento-em-yoga-yogaterapia/aprofundamento_yogaterapia.jpg",
+    "image": "/images/cursos/aprofundamento-em-yoga-yogaterapia/thumb/aprofundamento_yogaterapia.jpg",
     "description": "Curso teórico e prático de técnicas milenares do Yoga com fins terapêuticos. Ensina a prevenção e auxílio no tratamento de desequilíbrios psicofísicos através de asanas, pranayamas, mudras e meditação direcionada.",
     "originalUrl": "https://www.ayurvedica.org/aprofundamento-em-yoga-yogaterapia/",
     "hotmartLink": "https://www.ayurvedica.org/aprofundamento-em-yoga-yogaterapia/",
@@ -32,7 +32,8 @@ export const initialCourses = [
         ]
       }
     ],
-    "active": true
+    "active": true,
+    "drawerImage": "/images/cursos/aprofundamento-em-yoga-yogaterapia/drawer/aprofundamento_yogaterapia.jpg"
   },
   {
     "id": 2,
@@ -81,7 +82,7 @@ export const initialCourses = [
     "format": "Presencial / Online",
     "status": "Vagas Limitadas",
     "students": 0,
-    "image": "/images/cursos/instrutor-de-yoga/instrutor_de_yoga.jpg",
+    "image": "/images/cursos/instrutor-de-yoga/thumb/img_1.jpg",
     "description": "Formação internacional profissionalizante de Instrutor de Yoga credenciada pela Federação Europeia de Yoga, Yogaterapia e Ayurveda e pela IYTA do Brasil. Conta com corpo docente multidisciplinar especialista.",
     "originalUrl": "https://www.ayurvedica.org/instrutor-de-yoga-nivel-tecnico/",
     "hotmartLink": "https://www.ayurvedica.org/instrutor-de-yoga-nivel-tecnico/",
@@ -125,7 +126,8 @@ export const initialCourses = [
         ]
       }
     ],
-    "active": true
+    "active": true,
+    "drawerImage": "/images/cursos/instrutor-de-yoga/drawer/img_1.jpg"
   },
   {
     "id": 5,
@@ -135,7 +137,7 @@ export const initialCourses = [
     "format": "Presencial / Online",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "/images/cursos/yoga-para-idosos/yoga-para-idosos.jpg",
+    "image": "/images/cursos/yoga-para-idosos/thumb/img_1.jpg",
     "description": "Capacitação focada no rejuvenescimento natural e na adaptação das práticas de Yoga para a terceira idade, ensinando a envelhecer com arte, serenidade e utilidade à coletividade.",
     "originalUrl": "https://www.ayurvedica.org/yoga-para-idosos/",
     "hotmartLink": "https://www.ayurvedica.org/yoga-para-idosos/",
@@ -160,7 +162,8 @@ export const initialCourses = [
         ]
       }
     ],
-    "active": true
+    "active": true,
+    "drawerImage": "/images/cursos/yoga-para-idosos/drawer/img_1.jpg"
   },
   {
     "id": 6,
@@ -206,7 +209,7 @@ export const initialCourses = [
     "format": "Presencial",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "/images/cursos/meditacao-infantil/meditacao-infantil.jpg",
+    "image": "/images/cursos/meditacao-infantil/thumb/img_1.jpg",
     "description": "Capacitação projetada para o ensino de meditação a crianças dos 5 anos à adolescência, ensinando a canalizar energia, elevar autoestima e desenvolver autoconhecimento de forma lúdica.",
     "originalUrl": "https://www.ayurvedica.org/meditacao-infantil-workshop/",
     "hotmartLink": "https://www.ayurvedica.org/meditacao-infantil-workshop/",
@@ -231,7 +234,8 @@ export const initialCourses = [
         ]
       }
     ],
-    "active": true
+    "active": true,
+    "drawerImage": "/images/cursos/meditacao-infantil/drawer/img_1.jpg"
   },
   {
     "id": 8,
@@ -241,7 +245,7 @@ export const initialCourses = [
     "format": "Online / Presencial",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "/images/cursos/tantrismo-vedanta-e-sanquia/tantrismo-vedanta-e-sanquia.jpg",
+    "image": "/images/cursos/tantrismo-vedanta-e-sanquia/thumb/img_1.jpg",
     "description": "Formação teórica e prática aprofundada nas três principais escolas filosóficas da Índia. Estudo das escolas tântricas, correntes do Vedanta e a metafísica do Sanquia clássico.",
     "originalUrl": "https://www.ayurvedica.org/tantrismo-vedanta-e-sanquia/",
     "hotmartLink": "https://www.ayurvedica.org/tantrismo-vedanta-e-sanquia/",
@@ -274,7 +278,8 @@ export const initialCourses = [
         ]
       }
     ],
-    "active": true
+    "active": true,
+    "drawerImage": "/images/cursos/tantrismo-vedanta-e-sanquia/drawer/img_1.jpg"
   },
   {
     "id": 9,
@@ -284,7 +289,7 @@ export const initialCourses = [
     "format": "Presencial / Online",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "/images/cursos/yoga-infantil/yoga-infantil.jpg",
+    "image": "/images/cursos/yoga-infantil/thumb/img_1.jpg",
     "description": "Capacitação lúdica desenvolvida para ensinar Yoga a crianças através de histórias, jogos e brincadeiras motoras, promovendo equilíbrio, respiração, disciplina e serenidade.",
     "originalUrl": "https://www.ayurvedica.org/yoga-infantil-workshop/",
     "hotmartLink": "https://www.ayurvedica.org/yoga-infantil-workshop/",
@@ -309,7 +314,8 @@ export const initialCourses = [
         ]
       }
     ],
-    "active": true
+    "active": true,
+    "drawerImage": "/images/cursos/yoga-infantil/drawer/img_1.jpg"
   },
   {
     "id": 10,
@@ -319,7 +325,7 @@ export const initialCourses = [
     "format": "Presencial / Híbrido",
     "status": "Vagas Limitadas",
     "students": 0,
-    "image": "/images/cursos/yoga-hormonal/yoga-hormonal.jpg",
+    "image": "/images/cursos/yoga-hormonal/thumb/img_1.jpg",
     "description": "Técnica dinâmica e holística de Yoga Terapia Hormonal que atua intensamente no corpo energético para reativar a produção de hormônios. Ameniza sintomas da menopausa em mulheres e andropausa em homens.",
     "originalUrl": "https://www.ayurvedica.org/yoga-hormonal/",
     "hotmartLink": "https://www.ayurvedica.org/yoga-hormonal/",
@@ -346,7 +352,8 @@ export const initialCourses = [
         ]
       }
     ],
-    "active": true
+    "active": true,
+    "drawerImage": "/images/cursos/yoga-hormonal/drawer/img_1.jpg"
   },
   {
     "id": 11,
@@ -356,7 +363,7 @@ export const initialCourses = [
     "format": "Presencial (Módulo I + II)",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "/images/cursos/massagem-ayurvedica-tradicional/massagem-ayurvedica-tradicional.jpg",
+    "image": "/images/cursos/massagem-ayurvedica-tradicional/thumb/img_1.jpg",
     "description": "Formação prática e intensa na técnica clássica da terapia corporal Ayurvédica. Dividido em 2 módulos específicos com certificação de formação profissional, ensinando manobras precisas com mãos e pés, estiramentos, realinhamento dos chakras e diagnóstico corporal.",
     "originalUrl": "https://www.ayurvedica.org/massagem-ayurvedica-tradicional/",
     "hotmartLink": "https://www.ayurvedica.org/massagem-ayurvedica-tradicional/",
@@ -414,7 +421,8 @@ export const initialCourses = [
     ],
     "providedMaterials": "Caderno de apontamentos teórico e prático fornecido pela ALBA.",
     "neededMaterials": "Roupa apropriada para fazer e receber massagem, óleo de massagem natural (amêndoas doce, sésamo, grainha de uva), lençol e toalha grande.",
-    "active": true
+    "active": true,
+    "drawerImage": "/images/cursos/massagem-ayurvedica-tradicional/drawer/img_1.jpg"
   },
   {
     "id": 12,
@@ -472,7 +480,7 @@ export const initialCourses = [
     "format": "Presencial",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "/images/cursos/indian-head-massage-champi/indian_head_massage_1.jpg",
+    "image": "/images/cursos/indian-head-massage-champi/thumb/img_1.jpg",
     "description": "Massagem indiana tradicional focada no pescoço, nuca, ombros, orelhas, face e couro cabeludo (Champi). Atua em 37 pontos energéticos, combatendo estresse, insónia, ansiedade e rigidez muscular, além de promover nutrição e crescimento capilar.",
     "originalUrl": "https://www.ayurvedica.org/indian-head-massage-champi/",
     "hotmartLink": "https://www.ayurvedica.org/indian-head-massage-champi/",
@@ -510,7 +518,8 @@ export const initialCourses = [
     ],
     "providedMaterials": "Caderno de apontamentos e certificado de formação.",
     "neededMaterials": "Roupa apropriada (fato de treino ou calções), toalha de rosto, escova ou pente e óleo vegetal natural (amêndoas doces, sésamo, grainha de uva ou coco).",
-    "active": true
+    "active": true,
+    "drawerImage": "/images/cursos/indian-head-massage-champi/drawer/img_1.jpg"
   },
   {
     "id": 14,
@@ -520,7 +529,7 @@ export const initialCourses = [
     "format": "Presencial / Híbrido",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "/images/cursos/nutricao-ayurvedica/nutricao-ayurvedica.jpg",
+    "image": "/images/cursos/nutricao-ayurvedica/thumb/img_1.jpg",
     "description": "Formação prática sobre a alimentação e estilo de vida de acordo com cada biótipo constitutional (Prakrati). Aprenda a utilizar a energia dos alimentos, especiarias e práticas diárias (Dinacharya) para reequilíbrio da saúde, digestão e vitalidade.",
     "originalUrl": "https://www.ayurvedica.org/nutricao-ayurvedica-estilo-de-vida/",
     "hotmartLink": "https://www.ayurvedica.org/nutricao-ayurvedica-estilo-de-vida/",
@@ -555,7 +564,8 @@ export const initialCourses = [
     ],
     "providedMaterials": "Dois cadernos de apontamentos e um caderno exclusivo com receitas saborosas para cada dosha.",
     "neededMaterials": "Material de anotações e disposição para práticas respiratórias.",
-    "active": true
+    "active": true,
+    "drawerImage": "/images/cursos/nutricao-ayurvedica/drawer/img_1.jpg"
   },
   {
     "id": 15,
@@ -565,7 +575,7 @@ export const initialCourses = [
     "format": "Semi-Presencial (Fase I & II)",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "/images/cursos/naturopatia-ayurvedica/naturopatia-ayurvedica.jpg",
+    "image": "/images/cursos/naturopatia-ayurvedica/thumb/cover.jpg",
     "description": "Formação profunda e abrangente baseada na tradição de Kerala (Sul da Índia). Capacita o aluno no uso do arsenal terapêutico profilático e curativo da Medicina Ayurvédica, abrangendo estudo de ervas, tratamentos específicos (Shirodhara, Navarakizhi, Elakizhi) e rotinas de equilíbrio.",
     "originalUrl": "https://www.ayurvedica.org/naturopatia-ayurvedica/",
     "hotmartLink": "https://www.ayurvedica.org/naturopatia-ayurvedica/",
@@ -612,7 +622,8 @@ export const initialCourses = [
     ],
     "providedMaterials": "Caderno de Apontamentos exclusivo em Português e tutoria com formadores da ALBA.",
     "neededMaterials": "Documentação necessária para inscrição e material para apontamentos.",
-    "active": true
+    "active": true,
+    "drawerImage": "/images/cursos/naturopatia-ayurvedica/drawer/cover.jpg"
   },
   {
     "id": 16,
@@ -622,7 +633,7 @@ export const initialCourses = [
     "format": "Presencial / Online",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "/images/cursos/cristais-e-meditacao/cristais_e_meditacao.jpg",
+    "image": "/images/cursos/cristais-e-meditacao/thumb/cristais_e_meditacao.jpg",
     "description": "Estudo profundo do uso físico, metafísico, espiritual e curativo dos cristais e pedras semipreciosas. Aprenda métodos de limpeza, energização e aplicação na meditação, purificação de ambientes e medicina Ayurvédica.",
     "originalUrl": "https://www.ayurvedica.org/cristais-e-meditacao/",
     "hotmartLink": "https://www.ayurvedica.org/cristais-e-meditacao/",
@@ -648,7 +659,8 @@ export const initialCourses = [
         ]
       }
     ],
-    "active": true
+    "active": true,
+    "drawerImage": "/images/cursos/cristais-e-meditacao/drawer/cristais_e_meditacao.jpg"
   },
   {
     "id": 17,
@@ -658,7 +670,7 @@ export const initialCourses = [
     "format": "Presencial",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "/images/cursos/massagem-nas-costas/massagem-nas-costas.jpg",
+    "image": "/images/cursos/massagem-nas-costas/thumb/img_1.jpg",
     "description": "Curso focado na saúde e alinhamento da coluna vertebral. Combina manobras clássicas do oriente e ocidente para ativar a circulação sanguínea e linfática profunda, aliviar dores dorsais, lombares e cervicais e desbloquear a musculatura das costas.",
     "originalUrl": "https://www.ayurvedica.org/massagem-nas-costas-coluna-vertebral/",
     "hotmartLink": "https://www.ayurvedica.org/massagem-nas-costas-coluna-vertebral/",
@@ -690,7 +702,8 @@ export const initialCourses = [
     ],
     "providedMaterials": "Caderno de apontamentos e certificado de formação profissional.",
     "neededMaterials": "1 toalha grande, 1 lençol, óleo de massagem natural e roupa apropriada para receber e fazer massagem.",
-    "active": true
+    "active": true,
+    "drawerImage": "/images/cursos/massagem-nas-costas/drawer/img_1.jpg"
   },
   {
     "id": 19,
@@ -700,7 +713,7 @@ export const initialCourses = [
     "format": "Presencial / Workshop",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "/images/cursos/yoga-da-energia/yoga-da-energia.jpg",
+    "image": "/images/cursos/yoga-da-energia/thumb/cover.jpg",
     "description": "Técnica de Yoga desenvolvida por Roger Clerc que conjuga Pranayama com Asanas e coordenação motora para o domínio da mente e circulação de energia pelos Nadis (linhas de energia do corpo).",
     "originalUrl": "https://www.ayurvedica.org/yoga-da-energia/",
     "hotmartLink": "https://www.ayurvedica.org/yoga-da-energia/",
@@ -726,7 +739,8 @@ export const initialCourses = [
         ]
       }
     ],
-    "active": true
+    "active": true,
+    "drawerImage": "/images/cursos/yoga-da-energia/drawer/cover.jpg"
   },
   {
     "id": 20,
@@ -736,7 +750,7 @@ export const initialCourses = [
     "format": "Presencial",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "/images/cursos/massagem-oriental/massagem-oriental.jpg",
+    "image": "/images/cursos/massagem-oriental/thumb/massagem-oriental.jpg",
     "description": "Formação destinada aos que querem iniciar o aprendizado na área das terapias manuais e para os que já possuem um curso e querem complementar o seu leque de possibilidades de atuação.",
     "originalUrl": "https://www.ayurvedica.org/massagem-oriental/",
     "hotmartLink": "https://www.ayurvedica.org/massagem-oriental/",
@@ -772,7 +786,8 @@ export const initialCourses = [
         ]
       }
     ],
-    "active": true
+    "active": true,
+    "drawerImage": "/images/cursos/massagem-oriental/drawer/massagem-oriental.jpg"
   },
   {
     "id": 21,
@@ -782,7 +797,7 @@ export const initialCourses = [
     "format": "Presencial",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "/images/cursos/osho-meditations/osho-meditations.jpg",
+    "image": "/images/cursos/osho-meditations/thumb/cover.jpg",
     "description": "Sessões de meditação em grupo utilizando variadas técnicas universais desenvolvidas pelo Mestre Osho para o homem ocidental, envolvendo respiração, movimentos, entoação de mantras, etc., conduzindo a mais Harmonia, Paz e Amor.",
     "originalUrl": "https://www.ayurvedica.org/osho-meditations/",
     "hotmartLink": "https://www.ayurvedica.org/osho-meditations/",
@@ -808,7 +823,8 @@ export const initialCourses = [
         ]
       }
     ],
-    "active": true
+    "active": true,
+    "drawerImage": "/images/cursos/osho-meditations/drawer/cover.jpg"
   },
   {
     "id": 22,
