@@ -12,8 +12,6 @@ export default function ArtigoDetailClient({ id }: { id: string }) {
 
   useEffect(() => {
     let source = [];
-  useEffect(() => {
-    let source = [];
     const saved = localStorage.getItem('alba_artigos_v12');
     if (saved) {
       try {
