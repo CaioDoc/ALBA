@@ -312,14 +312,38 @@ export const CourseDrawer = ({ course, isOpen, onClose }: CourseDrawerProps) => 
 
         </div>
 
-        {/* Rodapé Fixo com Botão de Inscrição */}
-        <div className="p-6 bg-white border-t border-stone-200 flex-shrink-0">
+        {/* Rodapé Fixo com Botão de Inscrição e Botão PDF do Curso */}
+        <div className="p-6 bg-white border-t border-stone-200 flex-shrink-0 flex flex-col sm:flex-row gap-3">
+          {(course as any).pdfUrl ? (
+            <a 
+              href={getImagePath((course as any).pdfUrl)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sm:w-1/2 bg-amber-700 text-white py-3.5 px-4 rounded-xl font-bold hover:bg-amber-800 transition-all active:scale-[0.98] shadow-md flex justify-center items-center gap-2 cursor-pointer text-center text-sm"
+            >
+              <svg className="w-5 h-5 text-amber-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              PDF do Curso
+            </a>
+          ) : (
+            <Link 
+              href={`/associe-se?interesse=${encodeURIComponent(`PDF do Curso: ${course.title}`)}`}
+              className="sm:w-1/2 bg-amber-700 text-white py-3.5 px-4 rounded-xl font-bold hover:bg-amber-800 transition-all active:scale-[0.98] shadow-md flex justify-center items-center gap-2 cursor-pointer text-center text-sm"
+            >
+              <svg className="w-5 h-5 text-amber-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              PDF do Curso
+            </Link>
+          )}
+
           <Link 
             href={`/associe-se?interesse=${encodeURIComponent(course.title)}`}
-            className="w-full bg-emerald-800 text-white py-4 rounded-xl font-bold hover:bg-emerald-900 transition-all active:scale-[0.98] shadow-md flex justify-center items-center gap-2 cursor-pointer"
+            className="sm:w-1/2 bg-emerald-800 text-white py-3.5 px-4 rounded-xl font-bold hover:bg-emerald-900 transition-all active:scale-[0.98] shadow-md flex justify-center items-center gap-2 cursor-pointer text-center text-sm"
           >
-            Garantir Minha Vaga / Pedir Informações
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            Garantir Minha Vaga / Informações
+            <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </Link>

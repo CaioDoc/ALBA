@@ -33,7 +33,8 @@ export const initialCourses = [
       }
     ],
     "active": true,
-    "drawerImage": "/images/cursos/aprofundamento-em-yoga-yogaterapia/drawer/drawer.jpg"
+    "drawerImage": "/images/cursos/aprofundamento-em-yoga-yogaterapia/drawer/drawer.jpg",
+    "pdfUrl": "/documents/aprofundamento em Yoga-Yogaterapia.pdf"
   },
   {
     "id": 2,
@@ -72,7 +73,8 @@ export const initialCourses = [
     ],
     "providedMaterials": "Caderno ilustrado com a sequência e alinhamento das posturas de Yoga.",
     "neededMaterials": "Roupa confortável apropriada para prática.",
-    "active": true
+    "active": true,
+    "pdfUrl": "/documents/Iniciação Prática às Asanas.pdf"
   },
   {
     "id": 3,
@@ -127,7 +129,8 @@ export const initialCourses = [
       }
     ],
     "active": true,
-    "drawerImage": "/images/cursos/instrutor-de-yoga/drawer/drawer.jpg"
+    "drawerImage": "/images/cursos/instrutor-de-yoga/drawer/drawer.jpg",
+    "pdfUrl": "/documents/Intrutor de Yoga - Nível Técnico.pdf"
   },
   {
     "id": 4,
@@ -161,7 +164,8 @@ export const initialCourses = [
           "Adaptações Anatômicas e Prevenção de Lesões"
         ]
       }
-    ]
+    ],
+    "pdfUrl": "/documents/Anatomia-do-Yoga.pdf"
   },
   {
     "id": 5,
@@ -197,7 +201,8 @@ export const initialCourses = [
       }
     ],
     "active": true,
-    "drawerImage": "/images/cursos/yoga-para-idosos/drawer/drawer.jpg"
+    "drawerImage": "/images/cursos/yoga-para-idosos/drawer/drawer.jpg",
+    "pdfUrl": "/documents/Yoga para Idosos.pdf"
   },
   {
     "id": 6,
@@ -233,7 +238,8 @@ export const initialCourses = [
         ]
       }
     ],
-    "active": true
+    "active": true,
+    "pdfUrl": "/documents/As Plantas do Yoga.pdf"
   },
   {
     "id": 7,
@@ -269,7 +275,8 @@ export const initialCourses = [
       }
     ],
     "active": true,
-    "drawerImage": "/images/cursos/meditacao-infantil/drawer/drawer.jpg"
+    "drawerImage": "/images/cursos/meditacao-infantil/drawer/drawer.jpg",
+    "pdfUrl": "/documents/Meditação Infantil.pdf"
   },
   {
     "id": 8,
@@ -313,7 +320,8 @@ export const initialCourses = [
       }
     ],
     "active": true,
-    "drawerImage": "/images/cursos/tantrismo-vedanta-e-sanquia/drawer/drawer.jpg"
+    "drawerImage": "/images/cursos/tantrismo-vedanta-e-sanquia/drawer/drawer.jpg",
+    "pdfUrl": "/documents/Tantrismo, vedanta e sanquia.pdf"
   },
   {
     "id": 9,
@@ -349,7 +357,8 @@ export const initialCourses = [
       }
     ],
     "active": true,
-    "drawerImage": "/images/cursos/yoga-infantil/drawer/drawer.jpg"
+    "drawerImage": "/images/cursos/yoga-infantil/drawer/drawer.jpg",
+    "pdfUrl": "/documents/Yoga Infantil.pdf"
   },
   {
     "id": 10,
@@ -387,7 +396,8 @@ export const initialCourses = [
       }
     ],
     "active": true,
-    "drawerImage": "/images/cursos/yoga-hormonal/drawer/drawer.jpg"
+    "drawerImage": "/images/cursos/yoga-hormonal/drawer/drawer.jpg",
+    "pdfUrl": "/documents/Yoga Hormonal.pdf"
   },
   {
     "id": 11,
@@ -456,7 +466,8 @@ export const initialCourses = [
     "providedMaterials": "Caderno de apontamentos teórico e prático fornecido pela ALBA.",
     "neededMaterials": "Roupa apropriada para fazer e receber massagem, óleo de massagem natural (amêndoas doce, sésamo, grainha de uva), lençol e toalha grande.",
     "active": true,
-    "drawerImage": "/images/cursos/massagem-ayurvedica-tradicional/drawer/drawer.jpg"
+    "drawerImage": "/images/cursos/massagem-ayurvedica-tradicional/drawer/drawer.jpg",
+    "pdfUrl": "/documents/Massagem-Ayurvédica-Tradicional.pdf"
   },
   {
     "id": 12,
@@ -504,7 +515,8 @@ export const initialCourses = [
     ],
     "providedMaterials": "Caderno de apontamentos teórico e prático fornecido pela ALBA.",
     "neededMaterials": "Roupa apropriada para fazer e receber massagem, óleo de massagem natural (amêndoas doce, sésamo, etc.), lençol e toalha grande.",
-    "active": true
+    "active": true,
+    "pdfUrl": "/documents/massagem ayurvédica-SPA-Terapias.pdf"
   },
   {
     "id": 13,
@@ -553,7 +565,8 @@ export const initialCourses = [
     "providedMaterials": "Caderno de apontamentos e certificado de formação.",
     "neededMaterials": "Roupa apropriada (fato de treino ou calções), toalha de rosto, escova ou pente e óleo vegetal natural (amêndoas doces, sésamo, grainha de uva ou coco).",
     "active": true,
-    "drawerImage": "/images/cursos/indian-head-massage-champi/drawer/drawer.jpg"
+    "drawerImage": "/images/cursos/indian-head-massage-champi/drawer/drawer.jpg",
+    "pdfUrl": "/documents/Indian Head Massage.pdf"
   },
   {
     "id": 14,
@@ -599,7 +612,8 @@ export const initialCourses = [
     "providedMaterials": "Dois cadernos de apontamentos e um caderno exclusivo com receitas saborosas para cada dosha.",
     "neededMaterials": "Material de anotações e disposição para práticas respiratórias.",
     "active": true,
-    "drawerImage": "/images/cursos/nutricao-ayurvedica/drawer/drawer.jpg"
+    "drawerImage": "/images/cursos/nutricao-ayurvedica/drawer/drawer.jpg",
+    "pdfUrl": "/documents/Nutrição Ayurvédica.pdf"
   },
   {
     "id": 15,
@@ -657,7 +671,8 @@ export const initialCourses = [
     "providedMaterials": "Caderno de Apontamentos exclusivo em Português e tutoria com formadores da ALBA.",
     "neededMaterials": "Documentação necessária para inscrição e material para apontamentos.",
     "active": true,
-    "drawerImage": "/images/cursos/naturopatia-ayurvedica/drawer/drawer.jpg"
+    "drawerImage": "/images/cursos/naturopatia-ayurvedica/drawer/drawer.jpg",
+    "pdfUrl": "/documents/Naturopatia Ayurvédica.pdf"
   },
   {
     "id": 16,
@@ -694,7 +709,8 @@ export const initialCourses = [
       }
     ],
     "active": true,
-    "drawerImage": "/images/cursos/cristais-e-meditacao/drawer/drawer.jpg"
+    "drawerImage": "/images/cursos/cristais-e-meditacao/drawer/drawer.jpg",
+    "pdfUrl": "/documents/Cristais e Meditação.pdf"
   },
   {
     "id": 17,
@@ -737,7 +753,8 @@ export const initialCourses = [
     "providedMaterials": "Caderno de apontamentos e certificado de formação profissional.",
     "neededMaterials": "1 toalha grande, 1 lençol, óleo de massagem natural e roupa apropriada para receber e fazer massagem.",
     "active": true,
-    "drawerImage": "/images/cursos/massagem-nas-costas/drawer/drawer.jpg"
+    "drawerImage": "/images/cursos/massagem-nas-costas/drawer/drawer.jpg",
+    "pdfUrl": "/documents/Massagem nas Costas.pdf"
   },
   {
     "id": 19,
@@ -774,7 +791,8 @@ export const initialCourses = [
       }
     ],
     "active": true,
-    "drawerImage": "/images/cursos/yoga-da-energia/drawer/drawer.jpg"
+    "drawerImage": "/images/cursos/yoga-da-energia/drawer/drawer.jpg",
+    "pdfUrl": "/documents/Yoga da Energia.pdf"
   },
   {
     "id": 20,
@@ -821,7 +839,8 @@ export const initialCourses = [
       }
     ],
     "active": true,
-    "drawerImage": "/images/cursos/massagem-oriental/drawer/drawer.jpg"
+    "drawerImage": "/images/cursos/massagem-oriental/drawer/drawer.jpg",
+    "pdfUrl": "/documents/12-massagem Oriental.pdf"
   },
   {
     "id": 21,
@@ -858,7 +877,8 @@ export const initialCourses = [
       }
     ],
     "active": true,
-    "drawerImage": "/images/cursos/osho-meditations/drawer/drawer.jpg"
+    "drawerImage": "/images/cursos/osho-meditations/drawer/drawer.jpg",
+    "pdfUrl": "/documents/Osho Meditations.pdf"
   },
   {
     "id": 22,
