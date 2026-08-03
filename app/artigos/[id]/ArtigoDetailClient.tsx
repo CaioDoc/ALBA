@@ -12,7 +12,7 @@ export default function ArtigoDetailClient({ id }: { id: string }) {
 
   useEffect(() => {
     let source = [];
-    const saved = localStorage.getItem('alba_artigos_v12');
+    const saved = localStorage.getItem('alba_artigos_v13');
     if (saved) {
       try {
         let parsed = JSON.parse(saved);
@@ -20,15 +20,15 @@ export default function ArtigoDetailClient({ id }: { id: string }) {
           source = parsed;
         } else {
           source = initialArticles;
-          localStorage.setItem('alba_artigos_v12', JSON.stringify(initialArticles));
+          localStorage.setItem('alba_artigos_v13', JSON.stringify(initialArticles));
         }
       } catch (e) {
         source = initialArticles;
-        localStorage.setItem('alba_artigos_v12', JSON.stringify(initialArticles));
+        localStorage.setItem('alba_artigos_v13', JSON.stringify(initialArticles));
       }
     } else {
       source = initialArticles;
-      localStorage.setItem('alba_artigos_v12', JSON.stringify(initialArticles));
+      localStorage.setItem('alba_artigos_v13', JSON.stringify(initialArticles));
     }
     
     const found = source.find((a: any) => String(a.id) === String(id));
@@ -63,7 +63,15 @@ export default function ArtigoDetailClient({ id }: { id: string }) {
     
     let formatted = html;
 
-    // 1. Converter shortcodes de vídeo [embed]https://youtu.be/...[/embed] ou [embed]https://www.youtube.com/...[/embed] em iframe responsivo
+    // 1. Converter [su_button url="URL" ...]Texto[/su_button] em botão de destaque estilizado
+    formatted = formatted.replace(
+      /\[su_button\s+url=["\']([^"\']+)["\'][^\]]*\](.*?)\[\/su_button\]/gi,
+      (match, url, text) => {
+        return `<div class="my-6"><a href="${url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-emerald-800 text-white px-6 py-3 rounded-xl font-bold hover:bg-emerald-900 shadow-md transition-all cursor-pointer">${text} &rarr;</a></div>`;
+      }
+    );
+
+    // 2. Converter shortcodes de vídeo [embed]https://youtu.be/...[/embed] ou [embed]https://www.youtube.com/...[/embed] em iframe responsivo
     formatted = formatted.replace(
       /\[embed\]\s*(https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_\-]+)[^\s<]*)\s*\[\/embed\]/gi,
       (match, url, videoId) => {
@@ -79,15 +87,22 @@ export default function ArtigoDetailClient({ id }: { id: string }) {
       }
     );
 
-    // 2. Limpar shortcodes brutos de galeria WordPress [gallery ...] para não exibir texto bruto de código
+    // 3. Converter links em texto puro (não contidos em tags <a>) em links clicáveis
+    formatted = formatted.replace(
+      /(?<!href=["\'])(?<!src=["\'])(?<!">)(https?:\/\/[^\s<"\'\)\\]+)/gi,
+      (match, url) => {
+        return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-emerald-700 font-medium underline hover:text-emerald-800 break-all">${url}</a>`;
+      }
+    );
+
+    // 4. Limpar shortcodes brutos de galeria WordPress [gallery ...] para não exibir texto bruto de código
     formatted = formatted.replace(/\[gallery[^\]]*\]/gi, '');
 
-    // 3. Limpar outros shortcodes WordPress como [su_button...], [/su_button], [caption...]
-    formatted = formatted.replace(/\[\/?su_[^\]]*\]/gi, '');
+    // 5. Limpar outros shortcodes isolados
     formatted = formatted.replace(/\[caption[^\]]*\](.*?)\[\/caption\]/gi, '$1');
     formatted = formatted.replace(/\[\/?embed\]/gi, '');
     
-    // 4. Converter quebras de linha puras em <br/> se não houver tags de parágrafo <p>
+    // 6. Converter quebras de linha puras em <br/> se não houver tags de parágrafo <p>
     if (formatted.includes('\n') && !/<p[^>]*>/i.test(formatted)) {
       formatted = formatted.replace(/\r?\n/g, '<br/>');
     }

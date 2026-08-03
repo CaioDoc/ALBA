@@ -15,7 +15,7 @@ export default function ArtigosPage() {
   const [currentPage, setCurrentPage] = useState(1);
 
   React.useEffect(() => {
-    const saved = localStorage.getItem('alba_artigos_v12');
+    const saved = localStorage.getItem('alba_artigos_v13');
     if (saved) {
       try {
         let parsed = JSON.parse(saved);
@@ -23,15 +23,15 @@ export default function ArtigosPage() {
           setArtigosDatabase(parsed);
         } else {
           setArtigosDatabase(initialArticles);
-          localStorage.setItem('alba_artigos_v12', JSON.stringify(initialArticles));
+          localStorage.setItem('alba_artigos_v13', JSON.stringify(initialArticles));
         }
       } catch (e) {
         setArtigosDatabase(initialArticles);
-        localStorage.setItem('alba_artigos_v12', JSON.stringify(initialArticles));
+        localStorage.setItem('alba_artigos_v13', JSON.stringify(initialArticles));
       }
     } else {
       setArtigosDatabase(initialArticles);
-      localStorage.setItem('alba_artigos_v12', JSON.stringify(initialArticles));
+      localStorage.setItem('alba_artigos_v13', JSON.stringify(initialArticles));
     }
   }, []);
 
