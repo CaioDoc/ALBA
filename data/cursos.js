@@ -44,7 +44,7 @@ export const initialCourses = [
     "format": "Presencial / Online",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?q=80&w=600&auto=format&fit=crop",
+    "image": "/images/cursos/iniciacao_boas_praticas_asanas/thumb/thumb.jpg",
     "description": "Desenvolva seu potencial físico e mental aprendendo de forma progressiva a executar as principais posturas (Asanas), a reeducar a respiração e a obter autonomia para a prática diária de Yoga.",
     "originalUrl": "https://www.ayurvedica.org/iniciacao-pratica-asanas/",
     "hotmartLink": "https://www.ayurvedica.org/iniciacao-pratica-asanas/",
@@ -74,7 +74,8 @@ export const initialCourses = [
     "providedMaterials": "Caderno ilustrado com a sequência e alinhamento das posturas de Yoga.",
     "neededMaterials": "Roupa confortável apropriada para prática.",
     "active": true,
-    "pdfUrl": "/documents/Iniciação Prática às Asanas.pdf"
+    "pdfUrl": "/documents/Iniciação Prática às Asanas.pdf",
+    "drawerImage": "/images/cursos/iniciacao_boas_praticas_asanas/drawer/drawer.jpg"
   },
   {
     "id": 3,
@@ -212,7 +213,7 @@ export const initialCourses = [
     "format": "Presencial",
     "status": "Últimas Vagas",
     "students": 0,
-    "image": "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=600&auto=format&fit=crop",
+    "image": "/images/cursos/as_plantas_do_yoga/thumb/thumb.jpeg",
     "description": "Mergulhe no estudo sagrado das plantas nos sadhanas de Yoga e textos clássicos hindus, budistas e jaínistas. Descubra a botânica do Soma, ervas do Atharva Veda e o poder dos incensos e beejas.",
     "originalUrl": "https://www.ayurvedica.org/plantas-yoga-workshop/",
     "hotmartLink": "https://www.ayurvedica.org/plantas-yoga-workshop/",
@@ -239,7 +240,8 @@ export const initialCourses = [
       }
     ],
     "active": true,
-    "pdfUrl": "/documents/As Plantas do Yoga.pdf"
+    "pdfUrl": "/documents/As Plantas do Yoga.pdf",
+    "drawerImage": "/images/cursos/as_plantas_do_yoga/drawer/drawer.jpeg"
   },
   {
     "id": 7,
@@ -477,7 +479,7 @@ export const initialCourses = [
     "format": "Presencial",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "/images/cursos/massagem-ayurvedica-spa-terapias/massagem-ayurvedica-spa-terapias.jpg",
+    "image": "/images/cursos/massagem_ayurvedica_terapia_relaxamento/thumb/thumb.jpeg",
     "description": "Capacitação focada para profissionais de massagem em SPAs, gabinetes e centros de bem-estar. Prepara os alunos para executar as principais manobras do sistema tradicional ayurvédico na vertente de relaxamento e estética holística.",
     "originalUrl": "https://www.ayurvedica.org/massagem-ayurvedica-para-spa-terapias/",
     "hotmartLink": "https://www.ayurvedica.org/massagem-ayurvedica-para-spa-terapias/",
@@ -516,7 +518,8 @@ export const initialCourses = [
     "providedMaterials": "Caderno de apontamentos teórico e prático fornecido pela ALBA.",
     "neededMaterials": "Roupa apropriada para fazer e receber massagem, óleo de massagem natural (amêndoas doce, sésamo, etc.), lençol e toalha grande.",
     "active": true,
-    "pdfUrl": "/documents/massagem ayurvédica-SPA-Terapias.pdf"
+    "pdfUrl": "/documents/massagem ayurvédica-SPA-Terapias.pdf",
+    "drawerImage": "/images/cursos/massagem_ayurvedica_terapia_relaxamento/drawer/drawer.jpeg"
   },
   {
     "id": 13,
@@ -720,7 +723,7 @@ export const initialCourses = [
     "format": "Presencial",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "/images/cursos/massagem-nas-costas/thumb/thumb.jpg",
+    "image": "/images/cursos/massagem-nas-costas/thumb/thumb.jpeg",
     "description": "Curso focado na saúde e alinhamento da coluna vertebral. Combina manobras clássicas do oriente e ocidente para ativar a circulação sanguínea e linfática profunda, aliviar dores dorsais, lombares e cervicais e desbloquear a musculatura das costas.",
     "originalUrl": "https://www.ayurvedica.org/massagem-nas-costas-coluna-vertebral/",
     "hotmartLink": "https://www.ayurvedica.org/massagem-nas-costas-coluna-vertebral/",
@@ -753,7 +756,7 @@ export const initialCourses = [
     "providedMaterials": "Caderno de apontamentos e certificado de formação profissional.",
     "neededMaterials": "1 toalha grande, 1 lençol, óleo de massagem natural e roupa apropriada para receber e fazer massagem.",
     "active": true,
-    "drawerImage": "/images/cursos/massagem-nas-costas/drawer/drawer.jpg",
+    "drawerImage": "/images/cursos/massagem-nas-costas/drawer/drawer.jpeg",
     "pdfUrl": "/documents/Massagem nas Costas.pdf"
   },
   {
@@ -802,7 +805,7 @@ export const initialCourses = [
     "format": "Presencial",
     "status": "Inscrições Abertas",
     "students": 0,
-    "image": "/images/cursos/massagem-oriental/thumb/thumb.jpg",
+    "image": "/images/cursos/massagem-oriental/thumb/thumb.jpeg",
     "description": "Formação destinada aos que querem iniciar o aprendizado na área das terapias manuais e para os que já possuem um curso e querem complementar o seu leque de possibilidades de atuação.",
     "originalUrl": "https://www.ayurvedica.org/massagem-oriental/",
     "hotmartLink": "https://www.ayurvedica.org/massagem-oriental/",
@@ -839,7 +842,7 @@ export const initialCourses = [
       }
     ],
     "active": true,
-    "drawerImage": "/images/cursos/massagem-oriental/drawer/drawer.jpg",
+    "drawerImage": "/images/cursos/massagem-oriental/drawer/drawer.jpeg",
     "pdfUrl": "/documents/12-massagem Oriental.pdf"
   },
   {
