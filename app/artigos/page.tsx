@@ -15,32 +15,33 @@ export default function ArtigosPage() {
   const [currentPage, setCurrentPage] = useState(1);
 
   React.useEffect(() => {
-    const saved = localStorage.getItem('alba_artigos_v11');
+    const saved = localStorage.getItem('alba_artigos_v12');
     if (saved) {
       try {
         let parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          setArtigosDatabase(parsed.filter((a: any) => a.status === 'Publicado'));
+          setArtigosDatabase(parsed);
         } else {
-          setArtigosDatabase(initialArticles.filter((a: any) => a.status === 'Publicado'));
-          localStorage.setItem('alba_artigos_v11', JSON.stringify(initialArticles));
+          setArtigosDatabase(initialArticles);
+          localStorage.setItem('alba_artigos_v12', JSON.stringify(initialArticles));
         }
       } catch (e) {
-        setArtigosDatabase(initialArticles.filter((a: any) => a.status === 'Publicado'));
-        localStorage.setItem('alba_artigos_v11', JSON.stringify(initialArticles));
+        setArtigosDatabase(initialArticles);
+        localStorage.setItem('alba_artigos_v12', JSON.stringify(initialArticles));
       }
     } else {
-      setArtigosDatabase(initialArticles.filter((a: any) => a.status === 'Publicado'));
-      localStorage.setItem('alba_artigos_v9', JSON.stringify(initialArticles));
+      setArtigosDatabase(initialArticles);
+      localStorage.setItem('alba_artigos_v12', JSON.stringify(initialArticles));
     }
   }, []);
 
   // Filter articles
   const filteredArticles = artigosDatabase.filter((artigo) => {
+    const isEnabled = artigo.status !== 'Desativado' && artigo.active !== false;
     const matchesCategory = activeCategory === 'Todos' || artigo.tag === activeCategory;
     const matchesSearch = artigo.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
                           artigo.resumo.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesCategory && matchesSearch;
+    return isEnabled && matchesCategory && matchesSearch;
   });
 
   // Reset to first page when filter changes

@@ -12,7 +12,9 @@ export default function ArtigoDetailClient({ id }: { id: string }) {
 
   useEffect(() => {
     let source = [];
-    const saved = localStorage.getItem('alba_artigos_v11');
+  useEffect(() => {
+    let source = [];
+    const saved = localStorage.getItem('alba_artigos_v12');
     if (saved) {
       try {
         let parsed = JSON.parse(saved);
@@ -20,15 +22,15 @@ export default function ArtigoDetailClient({ id }: { id: string }) {
           source = parsed;
         } else {
           source = initialArticles;
-          localStorage.setItem('alba_artigos_v11', JSON.stringify(initialArticles));
+          localStorage.setItem('alba_artigos_v12', JSON.stringify(initialArticles));
         }
       } catch (e) {
         source = initialArticles;
-        localStorage.setItem('alba_artigos_v11', JSON.stringify(initialArticles));
+        localStorage.setItem('alba_artigos_v12', JSON.stringify(initialArticles));
       }
     } else {
       source = initialArticles;
-      localStorage.setItem('alba_artigos_v9', JSON.stringify(initialArticles));
+      localStorage.setItem('alba_artigos_v12', JSON.stringify(initialArticles));
     }
     
     const found = source.find((a: any) => String(a.id) === String(id));
@@ -62,8 +64,32 @@ export default function ArtigoDetailClient({ id }: { id: string }) {
     if (!html) return '';
     
     let formatted = html;
+
+    // 1. Converter shortcodes de vídeo [embed]https://youtu.be/...[/embed] ou [embed]https://www.youtube.com/...[/embed] em iframe responsivo
+    formatted = formatted.replace(
+      /\[embed\]\s*(https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_\-]+)[^\s<]*)\s*\[\/embed\]/gi,
+      (match, url, videoId) => {
+        return `<div class="relative w-full aspect-video my-8 rounded-2xl overflow-hidden shadow-xl bg-stone-900"><iframe src="https://www.youtube.com/embed/${videoId}" title="Vídeo do YouTube" class="w-full h-full border-0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
+      }
+    );
+
+    // Converter URLs puras do YouTube em vídeo embutido responsivo
+    formatted = formatted.replace(
+      /(?:<p>)?\s*(https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_\-]+)[^\s<]*)\s*(?:<\/p>)?/gi,
+      (match, url, videoId) => {
+        return `<div class="relative w-full aspect-video my-8 rounded-2xl overflow-hidden shadow-xl bg-stone-900"><iframe src="https://www.youtube.com/embed/${videoId}" title="Vídeo do YouTube" class="w-full h-full border-0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
+      }
+    );
+
+    // 2. Limpar shortcodes brutos de galeria WordPress [gallery ...] para não exibir texto bruto de código
+    formatted = formatted.replace(/\[gallery[^\]]*\]/gi, '');
+
+    // 3. Limpar outros shortcodes WordPress como [su_button...], [/su_button], [caption...]
+    formatted = formatted.replace(/\[\/?su_[^\]]*\]/gi, '');
+    formatted = formatted.replace(/\[caption[^\]]*\](.*?)\[\/caption\]/gi, '$1');
+    formatted = formatted.replace(/\[\/?embed\]/gi, '');
     
-    // Converter quebras de linha puras em <br/> se não houver tags de parágrafo <p>
+    // 4. Converter quebras de linha puras em <br/> se não houver tags de parágrafo <p>
     if (formatted.includes('\n') && !/<p[^>]*>/i.test(formatted)) {
       formatted = formatted.replace(/\r?\n/g, '<br/>');
     }
@@ -71,7 +97,7 @@ export default function ArtigoDetailClient({ id }: { id: string }) {
     // Adicionar espaçamento/quebra antes de <strong> ou <b> se não for precedido por quebra ou parágrafo
     formatted = formatted.replace(/(?<!<br\s*\/?>|<p[^>]*>|\n|^)\s*(<strong>|<b>)/gi, '<br/><br/>$1');
     
-    // Adicionar quebra de linha IMEDIATAMENTE APÓS </strong> ou </b> se houver texto em seguida
+    // Adicionar quebra de linha IMEDIATAMENTE APÓS </strong> ou <b> se houver texto em seguida
     formatted = formatted.replace(/(<\/strong>|<\/b>)\s*(?!<br\s*\/?>|<\/p>|\n|$)/gi, '$1<br/>');
 
     return formatted;
