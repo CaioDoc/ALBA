@@ -44,7 +44,7 @@ export default function CursosPage() {
       }
     } else {
       setCourses(scrapedCourses);
-      localStorage.setItem('alba_cursos_v24', JSON.stringify(scrapedCourses));
+      localStorage.setItem('alba_cursos_v31', JSON.stringify(scrapedCourses));
     }
   }, []);
 
