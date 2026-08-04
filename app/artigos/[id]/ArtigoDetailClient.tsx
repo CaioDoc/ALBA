@@ -87,7 +87,15 @@ export default function ArtigoDetailClient({ id }: { id: string }) {
       }
     );
 
-    // 3. Converter links em texto puro (não contidos em tags <a>) em links clicáveis
+    // 3. Converter links diretos de imagem (.jpg, .jpeg, .png, .webp, .gif) em elementos <img> com moldura estilizada
+    formatted = formatted.replace(
+      /(?<!href=["\'])(?<!src=["\'])(?<!">)(https?:\/\/[^\s<"\'\)\\]+\.(?:jpg|jpeg|png|webp|gif))/gi,
+      (match, url) => {
+        return `<div class="my-8 rounded-2xl overflow-hidden shadow-lg border border-stone-200 bg-stone-100"><img src="${url}" alt="Imagem do artigo" class="w-full h-auto max-h-[550px] object-cover" /></div>`;
+      }
+    );
+
+    // 4. Converter links em texto puro (não contidos em tags <a> ou <img>) em links clicáveis
     formatted = formatted.replace(
       /(?<!href=["\'])(?<!src=["\'])(?<!">)(https?:\/\/[^\s<"\'\)\\]+)/gi,
       (match, url) => {
@@ -95,14 +103,14 @@ export default function ArtigoDetailClient({ id }: { id: string }) {
       }
     );
 
-    // 4. Limpar shortcodes brutos de galeria WordPress [gallery ...] para não exibir texto bruto de código
+    // 5. Limpar shortcodes brutos de galeria WordPress [gallery ...] para não exibir texto bruto de código
     formatted = formatted.replace(/\[gallery[^\]]*\]/gi, '');
 
-    // 5. Limpar outros shortcodes isolados
+    // 6. Limpar outros shortcodes isolados
     formatted = formatted.replace(/\[caption[^\]]*\](.*?)\[\/caption\]/gi, '$1');
     formatted = formatted.replace(/\[\/?embed\]/gi, '');
     
-    // 6. Converter quebras de linha puras em <br/> se não houver tags de parágrafo <p>
+    // 7. Converter quebras de linha puras em <br/> se não houver tags de parágrafo <p>
     if (formatted.includes('\n') && !/<p[^>]*>/i.test(formatted)) {
       formatted = formatted.replace(/\r?\n/g, '<br/>');
     }
@@ -134,6 +142,16 @@ export default function ArtigoDetailClient({ id }: { id: string }) {
 
       <section className="py-16 px-4">
         <div className="max-w-3xl mx-auto prose prose-stone md:prose-lg">
+          {artigo.imagem && (
+            <div className="mb-10 rounded-2xl overflow-hidden shadow-xl border border-stone-200 aspect-video relative bg-stone-100">
+              <img 
+                src={artigo.imagem} 
+                alt={artigo.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          )}
+
           <div 
             className="text-stone-600 leading-relaxed custom-html-content space-y-4"
             dangerouslySetInnerHTML={{ __html: formatArticleHtml(artigo.conteudo || artigo.resumo || 'Conteúdo do artigo não disponível.') }}
