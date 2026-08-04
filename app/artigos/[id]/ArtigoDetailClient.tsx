@@ -12,7 +12,7 @@ export default function ArtigoDetailClient({ id }: { id: string }) {
 
   useEffect(() => {
     let source = [];
-    const saved = localStorage.getItem('alba_artigos_v13');
+    const saved = localStorage.getItem('alba_artigos_v14');
     if (saved) {
       try {
         let parsed = JSON.parse(saved);
@@ -20,15 +20,15 @@ export default function ArtigoDetailClient({ id }: { id: string }) {
           source = parsed;
         } else {
           source = initialArticles;
-          localStorage.setItem('alba_artigos_v13', JSON.stringify(initialArticles));
+          localStorage.setItem('alba_artigos_v14', JSON.stringify(initialArticles));
         }
       } catch (e) {
         source = initialArticles;
-        localStorage.setItem('alba_artigos_v13', JSON.stringify(initialArticles));
+        localStorage.setItem('alba_artigos_v14', JSON.stringify(initialArticles));
       }
     } else {
       source = initialArticles;
-      localStorage.setItem('alba_artigos_v13', JSON.stringify(initialArticles));
+      localStorage.setItem('alba_artigos_v14', JSON.stringify(initialArticles));
     }
     
     const found = source.find((a: any) => String(a.id) === String(id));
