@@ -33,7 +33,48 @@ export default function ArtigosPage() {
       setArtigosDatabase(initialArticles);
       localStorage.setItem('alba_artigos_v14', JSON.stringify(initialArticles));
     }
+
+    // Restaurar página atual, categoria e busca salvas na sessão do usuário
+    try {
+      const savedPage = sessionStorage.getItem('alba_artigos_current_page');
+      const savedCategory = sessionStorage.getItem('alba_artigos_active_category');
+      const savedSearch = sessionStorage.getItem('alba_artigos_search_term');
+
+      if (savedPage) {
+        const p = parseInt(savedPage, 10);
+        if (!isNaN(p) && p > 0) setCurrentPage(p);
+      }
+      if (savedCategory) setActiveCategory(savedCategory);
+      if (savedSearch) setSearchTerm(savedSearch);
+    } catch (e) {}
   }, []);
+
+  const handleCategorySelect = (category: string) => {
+    setActiveCategory(category);
+    setCurrentPage(1);
+    try {
+      sessionStorage.setItem('alba_artigos_active_category', category);
+      sessionStorage.setItem('alba_artigos_current_page', '1');
+    } catch (e) {}
+  };
+
+  const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const term = e.target.value;
+    setSearchTerm(term);
+    setCurrentPage(1);
+    try {
+      sessionStorage.setItem('alba_artigos_search_term', term);
+      sessionStorage.setItem('alba_artigos_current_page', '1');
+    } catch (e) {}
+  };
+
+  const goToPage = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+    try {
+      sessionStorage.setItem('alba_artigos_current_page', pageNumber.toString());
+    } catch (e) {}
+    window.scrollTo({ top: 250, behavior: 'smooth' });
+  };
 
   // Filter articles
   const filteredArticles = artigosDatabase.filter((artigo) => {
@@ -43,11 +84,6 @@ export default function ArtigosPage() {
                           artigo.resumo.toLowerCase().includes(searchTerm.toLowerCase());
     return isEnabled && matchesCategory && matchesSearch;
   });
-
-  // Reset to first page when filter changes
-  React.useEffect(() => {
-    setCurrentPage(1);
-  }, [searchTerm, activeCategory]);
 
   const ITEMS_PER_PAGE = 9;
   const totalPages = Math.ceil(filteredArticles.length / ITEMS_PER_PAGE);
@@ -59,44 +95,45 @@ export default function ArtigosPage() {
       <Navbar />
       <section className="pt-24 pb-16 px-4 bg-stone-100 border-b border-stone-200">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-serif text-stone-900 mb-6">Artigos e Publicações</h1>
-          <p className="text-lg text-stone-600 max-w-2xl mx-auto">Explore nosso acervo histórico de publicações sobre o Ayurveda.</p>
+          <span className="block text-emerald-800 font-bold uppercase tracking-widest text-xs mb-3">Conhecimento & Bem-Estar</span>
+          <h1 className="text-4xl md:text-5xl font-serif text-stone-900 mb-6">Artigos & Publicações</h1>
+          <p className="text-stone-600 text-lg leading-relaxed max-w-2xl mx-auto">
+            Explore textos, guias e reflexões sobre Ayurveda, Yoga, terapias corporais e saúde holística produzidos pelos especialistas da ALBA.
+          </p>
         </div>
       </section>
 
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          {/* Filtros e Busca */}
-          <div className="flex flex-col md:flex-row gap-4 mb-12">
-            {/* Input de Busca */}
-            <div className="relative w-full md:max-w-xs flex-shrink-0">
-              <input 
-                type="text" 
-                placeholder="Buscar artigo..." 
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-11 pr-4 py-2.5 bg-white border border-stone-200 rounded-full text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all shadow-sm"
-              />
-              <svg className="w-5 h-5 text-stone-400 absolute left-4 top-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
-
-            {/* Menu de Filtros Rápidos */}
-            <div className="flex overflow-x-auto gap-2 pb-2 md:pb-0 hide-scrollbar items-center flex-1">
+      <section className="py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          {/* Busca e Filtros */}
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
+            <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-none">
               {categories.map((cat) => (
                 <button
                   key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={`cursor-pointer whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border ${
+                  onClick={() => handleCategorySelect(cat)}
+                  className={`cursor-pointer px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-all ${
                     activeCategory === cat
-                      ? 'bg-emerald-800 text-white border-emerald-800 shadow-md'
-                      : 'bg-white text-stone-600 border-stone-200 hover:bg-stone-100'
+                      ? 'bg-emerald-800 text-white shadow-md'
+                      : 'bg-white text-stone-600 hover:bg-stone-100 border border-stone-200'
                   }`}
                 >
                   {cat}
                 </button>
               ))}
+            </div>
+
+            <div className="relative w-full md:w-72">
+              <input
+                type="text"
+                placeholder="Buscar artigo..."
+                value={searchTerm}
+                onChange={handleSearchInput}
+                className="w-full pl-10 pr-4 py-2.5 bg-white border border-stone-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-emerald-700 shadow-sm"
+              />
+              <svg className="w-4 h-4 text-stone-400 absolute left-3.5 top-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
             </div>
           </div>
 
@@ -129,7 +166,7 @@ export default function ArtigosPage() {
             <div className="flex justify-center items-center gap-2">
               <button 
                 disabled={currentPage === 1}
-                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                onClick={() => goToPage(Math.max(1, currentPage - 1))}
                 className="cursor-pointer px-4 py-2 rounded-xl bg-white border border-stone-200 text-stone-600 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-stone-50"
               >
                 Anterior
@@ -137,7 +174,7 @@ export default function ArtigosPage() {
               {Array.from({ length: totalPages }).map((_, idx) => (
                 <button 
                   key={idx}
-                  onClick={() => setCurrentPage(idx + 1)}
+                  onClick={() => goToPage(idx + 1)}
                   className={`cursor-pointer w-10 h-10 rounded-xl font-bold flex items-center justify-center transition-colors ${
                     currentPage === idx + 1 ? 'bg-emerald-800 text-white shadow-md' : 'bg-white border border-stone-200 text-stone-600 hover:bg-stone-50'
                   }`}
@@ -147,7 +184,7 @@ export default function ArtigosPage() {
               ))}
               <button 
                 disabled={currentPage === totalPages}
-                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                onClick={() => goToPage(Math.min(totalPages, currentPage + 1))}
                 className="cursor-pointer px-4 py-2 rounded-xl bg-white border border-stone-200 text-stone-600 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-stone-50"
               >
                 Próxima

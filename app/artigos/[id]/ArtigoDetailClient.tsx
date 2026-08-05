@@ -2,13 +2,24 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Navbar } from '../../../components/Navbar';
 
 import { initialArticles } from '../../../data/artigos';
 
 export default function ArtigoDetailClient({ id }: { id: string }) {
+  const router = useRouter();
   const [artigo, setArtigo] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+
+  const handleBackToArticles = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (typeof window !== 'undefined' && window.history.length > 1) {
+      router.back();
+    } else {
+      router.push('/artigos');
+    }
+  };
 
   useEffect(() => {
     let source = [];
@@ -130,10 +141,13 @@ export default function ArtigoDetailClient({ id }: { id: string }) {
       
       <section className="pt-24 pb-16 px-4 bg-stone-100 border-b border-stone-200">
         <div className="max-w-3xl mx-auto">
-          <Link href="/artigos" className="inline-flex items-center gap-2 text-sm font-bold text-emerald-700 hover:text-emerald-800 mb-6 cursor-pointer">
+          <button 
+            onClick={handleBackToArticles}
+            className="inline-flex items-center gap-2 text-sm font-bold text-emerald-700 hover:text-emerald-800 mb-6 cursor-pointer bg-transparent border-0 p-0"
+          >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
             Voltar para Artigos
-          </Link>
+          </button>
           <span className="block text-emerald-700 font-bold mb-4 uppercase tracking-widest text-xs">{artigo.tag || 'Publicado'}</span>
           <h1 className="text-4xl md:text-5xl font-serif text-stone-900 mb-6">{artigo.title}</h1>
           <p className="text-stone-500 text-sm">Escrito por {artigo.author || 'Equipe ALBA Ayurveda'} • {artigo.date || ''}</p>
