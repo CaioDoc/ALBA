@@ -4,13 +4,20 @@ import React, { useState } from 'react';
 import { Navbar } from '../../components/Navbar';
 import { ActivityDrawer } from '../../components/ActivityDrawer';
 
+const getImagePath = (path: string) => {
+  if (!path) return '';
+  if (path.startsWith('http://') || path.startsWith('https://')) return path;
+  const basePath = process.env.NODE_ENV === 'production' ? '/ALBA' : '';
+  return `${basePath}${path.startsWith('/') ? '' : '/'}${path}`;
+};
+
 const activitiesData = [
-  // Aulas
+  // Aulas e Práticas
   {
     id: 'dosha-yoga',
     title: 'Dosha Yoga',
     category: 'Aulas e Práticas',
-    image: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=600&auto=format&fit=crop',
+    image: getImagePath('/images/atividades/dosha_yoga.jpg'),
     description: 'Prática de yoga totalmente personalizada e adaptada para equilibrar o seu Dosha predominante ou tratar desvios de saúde atuais (Vikriti). Utiliza asanas, pranayamas e meditações específicas para acalmar Vata, resfriar Pitta ou estimular Kapha.',
     duration: '60 minutos',
     indicatedFor: 'Alinhamento energético, redução de estresse e equilíbrio dos biotipos.'
@@ -33,66 +40,49 @@ const activitiesData = [
     duration: '60 a 75 minutos',
     indicatedFor: 'Praticantes de todos os níveis que buscam evolução direcionada ou possuem restrições físicas.'
   },
-  // Consultas
+  
+  // Consultas Terapêuticas
   {
-    id: 'medicina-ayurvedica',
-    title: 'Consulta de Medicina Ayurvédica',
+    id: 'naturopatia-ayurvedica',
+    title: 'Consulta de Naturopatia Ayurvédica',
     category: 'Consultas Terapêuticas',
     image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop',
-    description: 'Avaliação clínica minuciosa que inclui a anamnese profunda, exame físico e a leitura tradicional do pulso (Nadi Pariksha). Identifica sua constituição de nascimento e prescreve planos de desintoxicação, fitoterapia e rotinas alimentares.',
+    description: 'Avaliação clínica minuciosa que inclui a anamnese profunda, exame físico e a leitura tradicional do pulso (Nadi Pariksha). Identifica sua constituição de nascimento e prescreve planos de desintoxicação, fitoterapia, hábitos de vida e rotinas alimentares.',
     duration: '90 minutos (Primeira consulta)',
-    indicatedFor: 'Identificação do Dosha, tratamento de doenças crônicas e transição de estilo de vida.'
+    indicatedFor: 'Identificação do Dosha, prevenção de enfermidades, promoção da saúde e transição de estilo de vida.'
   },
+
+  // Massagens e Terapias
   {
-    id: 'florais-bach',
-    title: 'Terapia com Florais de Bach',
-    category: 'Consultas Terapêuticas',
-    image: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=600&auto=format&fit=crop',
-    description: 'Abordagem focada no reequilíbrio das emoções e estados mentais. Através de uma conversa terapêutica, são selecionadas essências florais específicas para modular o medo, ansiedade, insegurança ou cansaço.',
-    duration: '50 minutos',
-    indicatedFor: 'Suporte emocional, gerenciamento de crises, estresse e autoconhecimento.'
-  },
-  {
-    id: 'astrologia-vedica',
-    title: 'Astrologia Védica (Jyotish)',
-    category: 'Consultas Terapêuticas',
-    image: 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?q=80&w=600&auto=format&fit=crop',
-    description: 'Estudo do mapa astral sob a ótica da sabedoria védica tradicional. Revela as tendências de saúde, carreira, relacionamentos e propósitos espirituais (Dharma), oferecendo remédios astrológicos como mantras e meditações.',
-    duration: '75 minutos',
-    indicatedFor: 'Clareza de caminhos de vida, entendimento de ciclos temporais e tendências de saúde sutil.'
-  },
-  // Massagem
-  {
-    id: 'massagem-ayurvedica',
-    title: 'Massagem Ayurvédica (Abhyanga)',
+    id: 'massagem-ayurvedica-tradicional',
+    title: 'Massagem Ayurvedica Tradicional',
     category: 'Massagens e Terapias',
-    image: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=600&auto=format&fit=crop',
-    description: 'Massagem profunda realizada com óleos vegetais mornos e medicados com ervas específicas para o seu biotipo. Nutre os tecidos, remove toxinas físicas arraigadas e induz a um relaxamento absoluto do sistema nervoso.',
+    image: getImagePath('/images/atividades/massagem_ayurvedica_tradicional.jpg'),
+    description: 'Técnica clássica de massagem corporal com óleos vegetais e pós medicinais tradicionais da Índia. Atua no reequilíbrio energético, desintoxicação profunda e relaxamento dos tecidos.',
     duration: '60 a 75 minutos',
-    indicatedFor: 'Redução drástica de ansiedade, insônia, dores musculares e eliminação de toxinas (Ama).'
+    indicatedFor: 'Equilíbrio corporal, alívio de tensões, eliminação de toxinas e rejuvenescimento.'
+  },
+  {
+    id: 'massagem-ayurvedica-terapeutica-relaxamento',
+    title: 'Massagem Ayurvédica Terapêutica e de Relaxamento',
+    category: 'Massagens e Terapias',
+    image: getImagePath('/images/atividades/massagem_ayurvedica_terapeutica_e_de_relaxamento.jpg'),
+    description: 'Combinação de manobras profundas, alongamentos e pontos Marma para aliviar o estresse, restaurar a mobilidade muscular e induzir a um estado profundo de relaxamento e paz mental.',
+    duration: '60 a 90 minutos',
+    indicatedFor: 'Alívio do estresse diário, fadiga crônica, rigidez muscular e ansiedade.'
   },
   {
     id: 'indian-head',
     title: 'Indian Head Massage (Champi)',
     category: 'Massagens e Terapias',
-    image: 'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=600&auto=format&fit=crop',
+    image: getImagePath('/images/atividades/indian_head_massage.jpg'),
     description: 'Técnica tradicional focada nos ombros, pescoço, couro cabeludo e pontos marma da face. Alivia instantaneamente a tensão acumulada na região cervical e melhora a circulação de energia vital em direção à mente.',
     duration: '45 minutos',
     indicatedFor: 'Alívio de dores de cabeça, enxaqueca, bruxismo e estresse mental gerado por excesso de telas.'
-  },
-  // Meditação
-  {
-    id: 'meditacao-cromatica',
-    title: 'Meditação Cromática Vibracional',
-    category: 'Terapias Vibracionais',
-    image: 'https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?q=80&w=600&auto=format&fit=crop',
-    description: 'Uma jornada sutil guiada que combina técnicas de visualização de frequências de cores específicas associadas ao alinhamento dos centros energéticos (Chakras). Ajuda a harmonizar as camadas mais profundas e sutis da mente.',
-    duration: '45 minutos',
-    indicatedFor: 'Paz interior profunda, limpeza de impressões mentais negativas (Samskaras) e equilíbrio emocional.'
   }
 ];
 
-const categories = ['Todos', 'Aulas e Práticas', 'Consultas Terapêuticas', 'Massagens e Terapias', 'Terapias Vibracionais'];
+const categories = ['Todos', 'Aulas e Práticas', 'Consultas Terapêuticas', 'Massagens e Terapias'];
 
 export default function AtividadesPage() {
   const [activeCategory, setActiveCategory] = useState('Todos');
@@ -105,7 +95,7 @@ export default function AtividadesPage() {
 
   const handleOpenDrawer = (activity: typeof activitiesData[0]) => {
     setSelectedActivity(activity);
-    isDrawerOpen ? setIsDrawerOpen(false) : setIsDrawerOpen(true);
+    setIsDrawerOpen(true);
   };
 
   return (
@@ -117,7 +107,7 @@ export default function AtividadesPage() {
           <p className="text-emerald-700 font-bold mb-4 uppercase tracking-widest text-sm">Nossa Grade de Práticas</p>
           <h1 className="text-4xl md:text-5xl font-serif text-stone-900 mb-6">Atividades</h1>
           <p className="text-lg text-stone-600 max-w-2xl mx-auto">
-            Oferecemos uma abordagem integrativa completa para cuidar do seu bem-estar. Navegue e agende as aulas, consultas e terapias ideais para o seu momento.
+            Oferecemos uma abordagem integrativa completa para cuidar do seu bem-estar. Navegue e consulte informações sobre as aulas, consultas e terapias ideais para o seu momento.
           </p>
         </div>
       </section>
@@ -140,7 +130,7 @@ export default function AtividadesPage() {
             ))}
           </div>
 
-          {/* Grid de Atividades Refinado com Imagens Recortadas */}
+          {/* Grid de Atividades */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredActivities.map((act) => (
               <div 
@@ -152,7 +142,7 @@ export default function AtividadesPage() {
                     <img 
                       src={act.image} 
                       alt={act.title} 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-emerald-800">
                       {act.category}

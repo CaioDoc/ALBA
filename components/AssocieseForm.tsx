@@ -8,12 +8,10 @@ const atividadesList = [
   "Dosha Yoga",
   "Hatha Yoga Tradicional",
   "Personal Yoga",
-  "Consulta de Medicina Ayurvédica",
-  "Terapia com Florais de Bach",
-  "Astrologia Védica (Jyotish)",
-  "Massagem Ayurvédica (Abhyanga)",
-  "Indian Head Massage (Champi)",
-  "Meditação Cromática Vibracional"
+  "Consulta de Naturopatia Ayurvédica",
+  "Massagem Ayurvedica Tradicional",
+  "Massagem Ayurvédica Terapêutica e de Relaxamento",
+  "Indian Head Massage (Champi)"
 ];
 
 function FormContent() {

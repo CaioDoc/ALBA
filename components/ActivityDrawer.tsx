@@ -92,10 +92,10 @@ export const ActivityDrawer: React.FC<ActivityDrawerProps> = ({ activity, isOpen
         <div className="p-6 bg-white border-t border-stone-100 flex-shrink-0">
           <Link 
             href={`/associe-se?interesse=${encodeURIComponent(activity.title)}`}
-            className="w-full bg-emerald-800 text-white py-4 rounded-xl font-bold hover:bg-emerald-900 transition-all active:scale-[0.98] shadow-md flex justify-center items-center gap-2 cursor-pointer"
+            className="w-full bg-emerald-800 text-white py-3.5 rounded-xl font-bold hover:bg-emerald-900 transition-all active:scale-[0.98] shadow-md flex justify-center items-center gap-2 cursor-pointer text-center text-sm"
           >
-            Agendar / Inscrever-se
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            Saber mais
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </Link>
