@@ -39,7 +39,7 @@ export default function ProfissionaisPage() {
           <div className="lg:col-span-5 sticky top-28 space-y-6">
             <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white bg-stone-900 group">
               <img 
-                src={getImagePath('/images/profissional/valter.jpeg')} 
+                src="/images/profissional/valter.jpeg" 
                 alt="Valter Carlos Cardim (Swami Gyanesh)" 
                 className="w-full h-auto object-cover max-h-[620px] transition-transform duration-500 group-hover:scale-105"
               />

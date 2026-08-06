@@ -4,20 +4,13 @@ import React, { useState } from 'react';
 import { Navbar } from '../../components/Navbar';
 import { ActivityDrawer } from '../../components/ActivityDrawer';
 
-const getImagePath = (path: string) => {
-  if (!path) return '';
-  if (path.startsWith('http://') || path.startsWith('https://')) return path;
-  const basePath = process.env.NODE_ENV === 'production' ? '/ALBA' : '';
-  return `${basePath}${path.startsWith('/') ? '' : '/'}${path}`;
-};
-
 const activitiesData = [
   // Aulas e Práticas
   {
     id: 'dosha-yoga',
     title: 'Dosha Yoga',
     category: 'Aulas e Práticas',
-    image: getImagePath('/images/atividades/dosha_yoga.jpg'),
+    image: '/images/atividades/dosha_yoga.jpg',
     description: 'Prática de yoga totalmente personalizada e adaptada para equilibrar o seu Dosha predominante ou tratar desvios de saúde atuais (Vikriti). Utiliza asanas, pranayamas e meditações específicas para acalmar Vata, resfriar Pitta ou estimular Kapha.',
     duration: '60 minutos',
     indicatedFor: 'Alinhamento energético, redução de estresse e equilíbrio dos biotipos.'
@@ -57,7 +50,7 @@ const activitiesData = [
     id: 'massagem-ayurvedica-tradicional',
     title: 'Massagem Ayurvedica Tradicional',
     category: 'Massagens e Terapias',
-    image: getImagePath('/images/atividades/massagem_ayurvedica_tradicional.jpg'),
+    image: '/images/atividades/massagem_ayurvedica_tradicional.jpg',
     description: 'Técnica clássica de massagem corporal com óleos vegetais e pós medicinais tradicionais da Índia. Atua no reequilíbrio energético, desintoxicação profunda e relaxamento dos tecidos.',
     duration: '60 a 75 minutos',
     indicatedFor: 'Equilíbrio corporal, alívio de tensões, eliminação de toxinas e rejuvenescimento.'
@@ -66,7 +59,7 @@ const activitiesData = [
     id: 'massagem-ayurvedica-terapeutica-relaxamento',
     title: 'Massagem Ayurvédica Terapêutica e de Relaxamento',
     category: 'Massagens e Terapias',
-    image: getImagePath('/images/atividades/massagem_ayurvedica_terapeutica_e_de_relaxamento.jpg'),
+    image: '/images/atividades/massagem_ayurvedica_terapeutica_e_de_relaxamento.jpg',
     description: 'Combinação de manobras profundas, alongamentos e pontos Marma para aliviar o estresse, restaurar a mobilidade muscular e induzir a um estado profundo de relaxamento e paz mental.',
     duration: '60 a 90 minutos',
     indicatedFor: 'Alívio do estresse diário, fadiga crônica, rigidez muscular e ansiedade.'
@@ -75,7 +68,7 @@ const activitiesData = [
     id: 'indian-head',
     title: 'Indian Head Massage (Champi)',
     category: 'Massagens e Terapias',
-    image: getImagePath('/images/atividades/indian_head_massage.jpg'),
+    image: '/images/atividades/indian_head_massage.jpg',
     description: 'Técnica tradicional focada nos ombros, pescoço, couro cabeludo e pontos marma da face. Alivia instantaneamente a tensão acumulada na região cervical e melhora a circulação de energia vital em direção à mente.',
     duration: '45 minutos',
     indicatedFor: 'Alívio de dores de cabeça, enxaqueca, bruxismo e estresse mental gerado por excesso de telas.'
