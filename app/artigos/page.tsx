@@ -15,7 +15,7 @@ export default function ArtigosPage() {
   const [currentPage, setCurrentPage] = useState(1);
 
   React.useEffect(() => {
-    const saved = localStorage.getItem('alba_artigos_v15');
+    const saved = localStorage.getItem('alba_artigos_v16');
     if (saved) {
       try {
         let parsed = JSON.parse(saved);
@@ -23,15 +23,15 @@ export default function ArtigosPage() {
           setArtigosDatabase(parsed);
         } else {
           setArtigosDatabase(initialArticles);
-          localStorage.setItem('alba_artigos_v15', JSON.stringify(initialArticles));
+          localStorage.setItem('alba_artigos_v16', JSON.stringify(initialArticles));
         }
       } catch (e) {
         setArtigosDatabase(initialArticles);
-        localStorage.setItem('alba_artigos_v15', JSON.stringify(initialArticles));
+        localStorage.setItem('alba_artigos_v16', JSON.stringify(initialArticles));
       }
     } else {
       setArtigosDatabase(initialArticles);
-      localStorage.setItem('alba_artigos_v15', JSON.stringify(initialArticles));
+      localStorage.setItem('alba_artigos_v16', JSON.stringify(initialArticles));
     }
 
     // Restaurar página atual, categoria e busca salvas na sessão do usuário
