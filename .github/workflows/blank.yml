@@ -18,35 +18,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout do código
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configurar Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: "20"
           cache: "npm"
 
-      - name: Restaurar Cache do Next.js
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.npm
-            ${{ github.workspace }}/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-          restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
-
-      - name: Instalar Dependências
+      - name: Install dependencies
         run: npm install
 
-      - name: Buildar e Exportar Projeto
-        run: npm run build
+      - name: Build Next.js
+        run: npx next build
         env:
           NEXT_TELEMETRY_DISABLED: 1
-          NODE_OPTIONS: "--no-deprecation"
 
-      - name: Upload do Artefato
+      - name: Run postbuild
+        run: node postbuild.js
+
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
@@ -58,6 +50,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Deploy para GitHub Pages
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
