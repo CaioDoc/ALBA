@@ -10,13 +10,13 @@ export default function AdminArtigosPage() {
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
   
   React.useEffect(() => {
-    const saved = localStorage.getItem('alba_artigos_v14');
+    const saved = localStorage.getItem('alba_artigos_v15');
     if (saved) {
       let parsed = JSON.parse(saved);
       setArticles(parsed);
     } else {
       setArticles(initialArticles);
-      localStorage.setItem('alba_artigos_v14', JSON.stringify(initialArticles));
+      localStorage.setItem('alba_artigos_v15', JSON.stringify(initialArticles));
     }
   }, []);
 
@@ -35,7 +35,7 @@ export default function AdminArtigosPage() {
     if (confirm('Tem certeza que deseja deletar este artigo? Essa ação não pode ser desfeita.')) {
       const newArticles = articles.filter(a => a.id !== id);
       setArticles(newArticles);
-      localStorage.setItem('alba_artigos_v14', JSON.stringify(newArticles));
+      localStorage.setItem('alba_artigos_v15', JSON.stringify(newArticles));
     }
   };
 
@@ -60,7 +60,7 @@ export default function AdminArtigosPage() {
     if (confirm(`Tem certeza que deseja deletar os ${selectedItems.length} artigos selecionados permanentemente?`)) {
       const newArticles = articles.filter(a => !selectedItems.includes(a.id));
       setArticles(newArticles);
-      localStorage.setItem('alba_artigos_v14', JSON.stringify(newArticles));
+      localStorage.setItem('alba_artigos_v15', JSON.stringify(newArticles));
       setSelectedItems([]);
     }
   };
@@ -95,7 +95,7 @@ export default function AdminArtigosPage() {
       date: new Date().toLocaleDateString('pt-BR'),
       conteudo: conteudo,
       resumo: conteudo ? conteudo.substring(0, 100) + '...' : '',
-      imagem: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop', // default image
+      imagem: '/images/artigos/medicina_ayurv_dica___um_sistema_de_cura_hol_stica.jpg', // default image
       tag: 'Geral'
     };
 

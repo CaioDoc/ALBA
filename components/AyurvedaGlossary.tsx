@@ -24,7 +24,7 @@ const glossaryData = [
     title: 'Panchakarma',
     subtitle: 'Desintoxicação profunda',
     description: 'O principal programa de limpeza e rejuvenescimento do Ayurveda. Composto por cinco processos terapêuticos principais, ele atua limpando as toxinas (Ama) acumuladas nos canais do corpo, restaurando o equilíbrio imunológico e celular.',
-    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop'
+    image: '/images/artigos/medicina_ayurv_dica___um_sistema_de_cura_hol_stica.jpg'
   },
   {
     id: 'dinacharya',

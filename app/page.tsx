@@ -158,7 +158,7 @@ export default function Home() {
       <section className="px-4 py-16 bg-stone-50">
         <div className="max-w-7xl mx-auto bg-emerald-900 rounded-[3rem] p-8 md:p-16 relative overflow-hidden shadow-2xl">
           {/* Textura sutil no fundo do banner */}
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1200&auto=format&fit=crop')] opacity-10 mix-blend-overlay bg-cover bg-center"></div>
+          <div className="absolute inset-0 bg-[url('/images/artigos/medicina_ayurv_dica___um_sistema_de_cura_hol_stica.jpg')] opacity-10 mix-blend-overlay bg-cover bg-center"></div>
           
           <div className="relative z-10 max-w-3xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-serif text-white mb-6 leading-tight">

@@ -41,7 +41,7 @@ export function HistoricoModal() {
             {/* Header Image */}
             <div className="w-full h-64 md:h-80 relative">
               <img 
-                src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1200&auto=format&fit=crop" 
+                src="/images/artigos/medicina_ayurv_dica___um_sistema_de_cura_hol_stica.jpg" 
                 alt="Histórico Ayurveda" 
                 className="w-full h-full object-cover"
               />
