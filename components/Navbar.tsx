@@ -81,9 +81,15 @@ export const Navbar = () => {
   const pathname = usePathname();
 
   useEffect(() => {
+    const savedLang = localStorage.getItem('alba_user_lang');
     const match = document.cookie.match(/googtrans=\/pt\/([a-z]{2})/);
+    
     if (match && match[1]) {
       setCurrentLang(match[1]);
+    } else if (savedLang && ['pt', 'en', 'es', 'fr'].includes(savedLang)) {
+      setCurrentLang(savedLang);
+    } else {
+      setCurrentLang('pt');
     }
 
     const savedLinks = localStorage.getItem('alba_social_links');
@@ -92,15 +98,61 @@ export const Navbar = () => {
     }
   }, []);
 
-  const changeLanguage = (lang: string) => {
-    if (lang === 'pt') {
-      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=" + location.hostname + "; path=/;";
+  const changeLanguage = (langCode: string) => {
+    if (typeof window === 'undefined') return;
+
+    const hostname = window.location.hostname;
+    const domainParts = hostname.split('.');
+    const rootDomain = domainParts.length > 1 ? '.' + domainParts.slice(-2).join('.') : hostname;
+
+    const setCookie = (name: string, value: string, domain?: string, path: string = '/') => {
+      let cookieStr = `${name}=${value}; path=${path};`;
+      if (domain) cookieStr += ` domain=${domain};`;
+      if (value === '') cookieStr += ` expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
+      document.cookie = cookieStr;
+    };
+
+    const purgeGoogtransCookies = () => {
+      const paths = ['/', '/ALBA', '/ALBA/'];
+      const domains = ['', hostname, `.${hostname}`, rootDomain, `.${rootDomain.replace(/^\./, '')}`];
+      
+      paths.forEach(p => {
+        domains.forEach(d => {
+          setCookie('googtrans', '', d, p);
+        });
+      });
+    };
+
+    if (langCode === 'pt') {
+      purgeGoogtransCookies();
+      setCookie('googtrans', '/pt/pt', '', '/');
+      setCookie('googtrans', '/pt/pt', hostname, '/');
+      purgeGoogtransCookies();
+
+      localStorage.setItem('alba_user_lang', 'pt');
+      setCurrentLang('pt');
     } else {
-      document.cookie = `googtrans=/pt/${lang}; path=/`;
-      document.cookie = `googtrans=/pt/${lang}; domain=${location.hostname}; path=/`;
+      purgeGoogtransCookies();
+      setCookie('googtrans', `/pt/${langCode}`, '', '/');
+      setCookie('googtrans', `/pt/${langCode}`, hostname, '/');
+      if (rootDomain !== hostname) {
+        setCookie('googtrans', `/pt/${langCode}`, rootDomain, '/');
+      }
+
+      localStorage.setItem('alba_user_lang', langCode);
+      setCurrentLang(langCode);
     }
-    window.location.reload();
+
+    // Trigger select element if available
+    const selectEl = document.querySelector('.goog-te-combo') as HTMLSelectElement | null;
+    if (selectEl) {
+      selectEl.value = langCode === 'pt' ? 'pt' : langCode;
+      selectEl.dispatchEvent(new Event('change'));
+    }
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 150);
   };
 
   const currentLangDetails = languages.find(l => l.code === currentLang) || languages[0];

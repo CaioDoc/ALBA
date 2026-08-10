@@ -67,11 +67,14 @@ export default function RootLayout({
         <Script id="google-translate-init" strategy="afterInteractive">
           {`
             function googleTranslateElementInit() {
-              new google.translate.TranslateElement({
-                pageLanguage: 'pt',
-                includedLanguages: 'pt,en,es,fr',
-                autoDisplay: false
-              }, 'google_translate_element');
+              if (window.google && window.google.translate) {
+                new window.google.translate.TranslateElement({
+                  pageLanguage: 'pt',
+                  includedLanguages: 'pt,en,es,fr',
+                  autoDisplay: false,
+                  layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE
+                }, 'google_translate_element');
+              }
             }
           `}
         </Script>
