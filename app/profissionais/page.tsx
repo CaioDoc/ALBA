@@ -8,8 +8,7 @@ export default function ProfissionaisPage() {
   const getImagePath = (path: string) => {
     if (!path) return '';
     if (path.startsWith('http://') || path.startsWith('https://')) return path;
-    const basePath = process.env.NODE_ENV === 'production' ? '/ALBA' : '';
-    return `${basePath}${path.startsWith('/') ? '' : '/'}${path}`;
+    return path.startsWith('/') ? path : `/${path}`;
   };
 
   return (
