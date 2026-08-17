@@ -167,6 +167,7 @@ export const Navbar = () => {
     { path: '/', label: 'Home' },
     { path: '/quem-somos', label: 'Quem Somos' },
     { path: '/atividades', label: 'Atividades' },
+    { path: '/agenda', label: 'Agenda' },
     { path: '/artigos', label: 'Artigos' },
     { path: '/cursos', label: 'Cursos' },
     { path: '/profissionais', label: 'Profissionais' },
