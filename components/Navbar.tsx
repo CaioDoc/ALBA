@@ -213,7 +213,7 @@ export const Navbar = () => {
           </Link>
           
           {/* Links da Navegação Desktop */}
-          <div className="hidden md:flex gap-6 lg:gap-8 text-sm">
+          <div className="hidden md:flex gap-3 lg:gap-6 text-xs lg:text-sm font-medium">
             {navItems.map((item) => (
               <Link key={item.path} href={item.path} className={getDesktopClass(item.path, item.isSpecial)}>
                 {item.label}
