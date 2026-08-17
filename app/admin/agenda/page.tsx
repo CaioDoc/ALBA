@@ -3,12 +3,7 @@
 import React, { useState } from 'react';
 
 // Dados simulados da agenda de eventos
-const initialEvents = [
-  { id: 1, title: 'Congresso Luso-Brasileiro de Ayurveda', date: '12 a 15 de Novembro, 2026', location: 'Lisboa, Portugal (Transmissão Online)', type: 'Congresso', status: 'Confirmado' },
-  { id: 2, title: 'Palestra Gratuita: Ayurveda e Saúde Mental', date: '20 de Julho, 2026 - 19h30', location: 'YouTube Live', type: 'Palestra', status: 'Confirmado' },
-  { id: 3, title: 'Encontro Mensal de Associados (Networking)', date: '05 de Agosto, 2026 - 18h00', location: 'Google Meet', type: 'Reunião Interna', status: 'Confirmado' },
-  { id: 4, title: 'Workshop de Massagem Indian Head (Champi)', date: '10 de Setembro, 2026', location: 'Sede São Paulo, SP', type: 'Workshop Prático', status: 'Esgotado' },
-];
+const initialEvents: any[] = [];
 
 export default function AdminAgendaPage() {
   const [events, setEvents] = useState<any[]>([]);
@@ -27,12 +22,12 @@ export default function AdminAgendaPage() {
   const [editingId, setEditingId] = useState<number | null>(null);
 
   React.useEffect(() => {
-    const saved = localStorage.getItem('alba_agenda');
+    const saved = localStorage.getItem('alba_agenda_v2');
     if (saved) {
       setEvents(JSON.parse(saved));
     } else {
-      setEvents(initialEvents);
-      localStorage.setItem('alba_agenda', JSON.stringify(initialEvents));
+      setEvents([]);
+      localStorage.setItem('alba_agenda_v2', JSON.stringify([]));
     }
   }, []);
 
@@ -45,7 +40,7 @@ export default function AdminAgendaPage() {
     if(confirm('Deseja realmente cancelar e remover este evento da agenda pública?')) {
       const newEvents = events.filter(e => e.id !== id);
       setEvents(newEvents);
-      localStorage.setItem('alba_agenda', JSON.stringify(newEvents));
+      localStorage.setItem('alba_agenda_v2', JSON.stringify(newEvents));
     }
   };
 
@@ -70,7 +65,7 @@ export default function AdminAgendaPage() {
     if (confirm(`Tem certeza que deseja cancelar e remover os ${selectedItems.length} eventos selecionados permanentemente?`)) {
       const newEvents = events.filter(e => !selectedItems.includes(e.id));
       setEvents(newEvents);
-      localStorage.setItem('alba_agenda', JSON.stringify(newEvents));
+      localStorage.setItem('alba_agenda_v2', JSON.stringify(newEvents));
       setSelectedItems([]);
     }
   };
@@ -125,7 +120,7 @@ export default function AdminAgendaPage() {
     }
 
     setEvents(newEvents);
-    localStorage.setItem('alba_agenda', JSON.stringify(newEvents));
+    localStorage.setItem('alba_agenda_v2', JSON.stringify(newEvents));
 
     alert('Evento salvo e publicado na Agenda Oficial!');
     setView('list');
