@@ -10,6 +10,9 @@ interface Event {
   title: string;
   location: string;
   type: string;
+  date?: string;
+  description?: string;
+  status?: string;
 }
 
 export const PublicAgenda = () => {
@@ -48,9 +51,24 @@ export const PublicAgenda = () => {
                     <span className="text-3xl font-serif text-stone-900 flex-1 flex items-center justify-center mt-1">{event.day}</span>
                   </div>
                   <div className="flex-1 w-full text-left">
-                    <p className="text-xs font-bold text-stone-400 uppercase mb-1">{event.type}</p>
-                    <h3 className="text-xl font-serif text-stone-900 mb-2">{event.title}</h3>
-                    <p className="text-sm text-stone-500">{event.location}</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-xs font-bold text-stone-400 uppercase">{event.type}</span>
+                      {event.status && (
+                        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                          event.status === 'Confirmado' ? 'bg-emerald-100 text-emerald-800' :
+                          event.status === 'Esgotado' ? 'bg-orange-100 text-orange-800' : 'bg-red-100 text-red-800'
+                        }`}>
+                          {event.status}
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="text-xl font-serif text-stone-900 mb-1">{event.title}</h3>
+                    <p className="text-sm text-stone-500 font-medium mb-1">{event.location}</p>
+                    {event.description && (
+                      <p className="text-xs text-stone-600 line-clamp-2 mt-1 leading-relaxed">
+                        {event.description}
+                      </p>
+                    )}
                   </div>
                   <button onClick={() => setSelectedEvent(event)} className="cursor-pointer w-full sm:w-auto text-center bg-stone-900 text-white px-6 py-3 rounded-xl text-sm font-bold hover:bg-emerald-800 transition-all whitespace-nowrap">
                     Garantir Vaga
