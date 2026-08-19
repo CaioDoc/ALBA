@@ -9,7 +9,7 @@ export const PublicAgenda = () => {
   const [upcomingEvents, setUpcomingEvents] = useState<EventItem[]>([]);
 
   React.useEffect(() => {
-    const saved = localStorage.getItem('alba_agenda_v3');
+    const saved = localStorage.getItem('alba_agenda_v4');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -22,7 +22,7 @@ export const PublicAgenda = () => {
     }
     const sortedInitial = sortEventsChronologically(initialEvents.filter(e => e.status !== 'Cancelado / Adiado'));
     setUpcomingEvents(sortedInitial);
-    localStorage.setItem('alba_agenda_v3', JSON.stringify(sortedInitial));
+    localStorage.setItem('alba_agenda_v4', JSON.stringify(sortedInitial));
   }, []);
 
   return (

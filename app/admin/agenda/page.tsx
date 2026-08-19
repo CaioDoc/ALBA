@@ -89,7 +89,7 @@ Ganta sua vaga com antecedência. Encontro aberto a associados e comunidade gera
 
 
   React.useEffect(() => {
-    const saved = localStorage.getItem('alba_agenda_v3');
+    const saved = localStorage.getItem('alba_agenda_v4');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -101,7 +101,7 @@ Ganta sua vaga com antecedência. Encontro aberto a associados e comunidade gera
     }
     const sortedInitial = sortEventsChronologically(initialEvents);
     setEvents(sortedInitial);
-    localStorage.setItem('alba_agenda_v3', JSON.stringify(sortedInitial));
+    localStorage.setItem('alba_agenda_v4', JSON.stringify(sortedInitial));
   }, []);
 
   const filteredEvents = sortEventsChronologically(
@@ -115,7 +115,7 @@ Ganta sua vaga com antecedência. Encontro aberto a associados e comunidade gera
     if(confirm('Deseja realmente cancelar e remover este evento da agenda pública?')) {
       const newEvents = events.filter(e => e.id !== id);
       setEvents(newEvents);
-      localStorage.setItem('alba_agenda_v3', JSON.stringify(newEvents));
+      localStorage.setItem('alba_agenda_v4', JSON.stringify(newEvents));
     }
   };
 
@@ -140,7 +140,7 @@ Ganta sua vaga com antecedência. Encontro aberto a associados e comunidade gera
     if (confirm(`Tem certeza que deseja cancelar e remover os ${selectedItems.length} eventos selecionados permanentemente?`)) {
       const newEvents = events.filter(e => !selectedItems.includes(e.id));
       setEvents(newEvents);
-      localStorage.setItem('alba_agenda_v3', JSON.stringify(newEvents));
+      localStorage.setItem('alba_agenda_v4', JSON.stringify(newEvents));
       setSelectedItems([]);
     }
   };
@@ -196,7 +196,7 @@ Ganta sua vaga com antecedência. Encontro aberto a associados e comunidade gera
 
     const sortedEvents = sortEventsChronologically(newEvents);
     setEvents(sortedEvents);
-    localStorage.setItem('alba_agenda_v3', JSON.stringify(sortedEvents));
+    localStorage.setItem('alba_agenda_v4', JSON.stringify(sortedEvents));
 
     alert('Evento salvo e publicado na Agenda Oficial!');
     setView('list');

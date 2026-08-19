@@ -60,6 +60,17 @@ export const initialEvents: EventItem[] = sortEventsChronologically([
   },
   {
     id: 2,
+    day: "18",
+    month: "SET",
+    title: "Encontro Mensal de Associados ALBA (Networking & Casos Clínicos)",
+    location: "Transmissão Online via Google Meet",
+    type: "Reunião Interna (Associados)",
+    date: "18 de Setembro, 2026 - 18h30",
+    status: "Confirmado",
+    description: "Reunião periódica de integração dos terapeutas e associados credenciados da ALBA.\n\n• Apresentação e discussão colaborativa de casos clínicos avançados.\n• Esclarecimento de dúvidas metodológicas e éticas.\n• Networking profissional e novidades institucionais."
+  },
+  {
+    id: 3,
     day: "10",
     month: "OUT",
     title: "Palestra Gratuita: Ayurveda e Saúde Mental na Vida Moderna",
@@ -70,7 +81,18 @@ export const initialEvents: EventItem[] = sortEventsChronologically([
     description: "Nesta palestra exclusiva, abordaremos como a sabedoria secular do Ayurveda pode prevenir e tratar desequilíbrios mentais, estresse, ansiedade e insônia na rotina moderna.\n\n• O papel do fogo digestivo (Agni) na saúde do sistema nervoso.\n• Fitoterapia e rotinas diárias (Dinacharya) para equilíbrio das emoções.\n• Sessão interativa de perguntas e respostas com docentes da ALBA.\n\nEvento gratuito e aberto ao público."
   },
   {
-    id: 3,
+    id: 4,
+    day: "28",
+    month: "OUT",
+    title: "Webinar: Guia Prático de Alimentação e Culinária Ayurvédica",
+    location: "Transmissão Online via Zoom Live",
+    type: "Live / Webinar",
+    date: "28 de Outubro, 2026 - 20h00",
+    status: "Confirmado",
+    description: "Conheça os segredos do uso das especiarias medicinais e combinações alimentares equilibradas.\n\n• Como adaptar as refeições para cada biotipo (Prakriti).\n• O uso de temperos como medicina na cozinha diária.\n• Guia prático de preparo de Ghee e chás terapêuticos."
+  },
+  {
+    id: 5,
     day: "20",
     month: "NOV",
     title: "Workshop Prático de Massagem Indian Head (Champi)",
@@ -81,7 +103,7 @@ export const initialEvents: EventItem[] = sortEventsChronologically([
     description: "Aprenda a aplicação milenar da massagem indiana na cabeça, ombros e pescoço (Champi).\n\n• Técnicas de alívio de tensões profundas e estimulação dos pontos Marma.\n• Utilização de óleos medicados específicos para cada Dosha.\n• Certificado de participação emitido pela ALBA.\n\nVagas limitadas."
   },
   {
-    id: 4,
+    id: 6,
     day: "15",
     month: "JAN",
     title: "Congresso Internacional Luso-Brasileiro de Ayurveda",
