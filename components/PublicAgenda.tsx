@@ -2,31 +2,25 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { EventDrawer } from './EventDrawer';
-
-interface Event {
-  id: number;
-  day: string;
-  month: string;
-  title: string;
-  location: string;
-  type: string;
-  date?: string;
-  description?: string;
-  status?: string;
-}
+import { initialEvents, EventItem } from '../data/agenda';
 
 export const PublicAgenda = () => {
-  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
-  const [upcomingEvents, setUpcomingEvents] = useState<Event[]>([]);
+  const [selectedEvent, setSelectedEvent] = useState<EventItem | null>(null);
+  const [upcomingEvents, setUpcomingEvents] = useState<EventItem[]>([]);
 
   React.useEffect(() => {
-    const saved = localStorage.getItem('alba_agenda_v2');
+    const saved = localStorage.getItem('alba_agenda_v3');
     if (saved) {
-      setUpcomingEvents(JSON.parse(saved).filter((e: any) => e.status !== 'Cancelado / Adiado'));
-    } else {
-      setUpcomingEvents([]);
-      localStorage.setItem('alba_agenda_v2', JSON.stringify([]));
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setUpcomingEvents(parsed.filter((e: any) => e.status !== 'Cancelado / Adiado'));
+          return;
+        }
+      } catch (e) {}
     }
+    setUpcomingEvents(initialEvents.filter(e => e.status !== 'Cancelado / Adiado'));
+    localStorage.setItem('alba_agenda_v3', JSON.stringify(initialEvents));
   }, []);
 
   return (

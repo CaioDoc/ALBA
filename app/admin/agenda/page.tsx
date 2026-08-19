@@ -2,8 +2,7 @@
 
 import React, { useState } from 'react';
 
-// Dados simulados da agenda de eventos
-const initialEvents: any[] = [];
+import { initialEvents } from '../../../data/agenda';
 
 export default function AdminAgendaPage() {
   const [events, setEvents] = useState<any[]>([]);
@@ -90,13 +89,18 @@ Ganta sua vaga com antecedência. Encontro aberto a associados e comunidade gera
 
 
   React.useEffect(() => {
-    const saved = localStorage.getItem('alba_agenda_v2');
+    const saved = localStorage.getItem('alba_agenda_v3');
     if (saved) {
-      setEvents(JSON.parse(saved));
-    } else {
-      setEvents([]);
-      localStorage.setItem('alba_agenda_v2', JSON.stringify([]));
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setEvents(parsed);
+          return;
+        }
+      } catch (e) {}
     }
+    setEvents(initialEvents);
+    localStorage.setItem('alba_agenda_v3', JSON.stringify(initialEvents));
   }, []);
 
   const filteredEvents = events.filter(event => 
@@ -108,7 +112,7 @@ Ganta sua vaga com antecedência. Encontro aberto a associados e comunidade gera
     if(confirm('Deseja realmente cancelar e remover este evento da agenda pública?')) {
       const newEvents = events.filter(e => e.id !== id);
       setEvents(newEvents);
-      localStorage.setItem('alba_agenda_v2', JSON.stringify(newEvents));
+      localStorage.setItem('alba_agenda_v3', JSON.stringify(newEvents));
     }
   };
 
@@ -133,7 +137,7 @@ Ganta sua vaga com antecedência. Encontro aberto a associados e comunidade gera
     if (confirm(`Tem certeza que deseja cancelar e remover os ${selectedItems.length} eventos selecionados permanentemente?`)) {
       const newEvents = events.filter(e => !selectedItems.includes(e.id));
       setEvents(newEvents);
-      localStorage.setItem('alba_agenda_v2', JSON.stringify(newEvents));
+      localStorage.setItem('alba_agenda_v3', JSON.stringify(newEvents));
       setSelectedItems([]);
     }
   };
@@ -188,7 +192,7 @@ Ganta sua vaga com antecedência. Encontro aberto a associados e comunidade gera
     }
 
     setEvents(newEvents);
-    localStorage.setItem('alba_agenda_v2', JSON.stringify(newEvents));
+    localStorage.setItem('alba_agenda_v3', JSON.stringify(newEvents));
 
     alert('Evento salvo e publicado na Agenda Oficial!');
     setView('list');
