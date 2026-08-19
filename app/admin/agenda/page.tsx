@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 
-import { initialEvents } from '../../../data/agenda';
+import { initialEvents, sortEventsChronologically } from '../../../data/agenda';
 
 export default function AdminAgendaPage() {
   const [events, setEvents] = useState<any[]>([]);
@@ -94,18 +94,21 @@ Ganta sua vaga com antecedência. Encontro aberto a associados e comunidade gera
       try {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          setEvents(parsed);
+          setEvents(sortEventsChronologically(parsed));
           return;
         }
       } catch (e) {}
     }
-    setEvents(initialEvents);
-    localStorage.setItem('alba_agenda_v3', JSON.stringify(initialEvents));
+    const sortedInitial = sortEventsChronologically(initialEvents);
+    setEvents(sortedInitial);
+    localStorage.setItem('alba_agenda_v3', JSON.stringify(sortedInitial));
   }, []);
 
-  const filteredEvents = events.filter(event => 
-    event.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    event.type.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredEvents = sortEventsChronologically(
+    events.filter(event => 
+      event.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      event.type.toLowerCase().includes(searchTerm.toLowerCase())
+    )
   );
 
   const handleDelete = (id: number) => {
@@ -191,8 +194,9 @@ Ganta sua vaga com antecedência. Encontro aberto a associados e comunidade gera
       newEvents = [...events, novoEvento];
     }
 
-    setEvents(newEvents);
-    localStorage.setItem('alba_agenda_v3', JSON.stringify(newEvents));
+    const sortedEvents = sortEventsChronologically(newEvents);
+    setEvents(sortedEvents);
+    localStorage.setItem('alba_agenda_v3', JSON.stringify(sortedEvents));
 
     alert('Evento salvo e publicado na Agenda Oficial!');
     setView('list');

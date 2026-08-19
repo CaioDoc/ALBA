@@ -10,31 +10,78 @@ export interface EventItem {
   description: string;
 }
 
-export const initialEvents: EventItem[] = [
+const monthsMap: { [key: string]: number } = {
+  jan: 0, fev: 1, feb: 1, mar: 2, abr: 3, apr: 3, mai: 4, may: 4, jun: 5,
+  jul: 6, ago: 7, aug: 7, set: 8, sep: 8, out: 9, oct: 9, nov: 10, dez: 11, dec: 11
+};
+
+export const getEventTimestamp = (evt: Partial<EventItem>): number => {
+  const text = `${evt.date || ''} ${evt.month || ''} ${evt.day || ''}`.toLowerCase();
+  
+  // Extract year if available (e.g. 2026, 2027)
+  const yearMatch = text.match(/20\d{2}/);
+  const year = yearMatch ? parseInt(yearMatch[0], 10) : new Date().getFullYear();
+  
+  // Extract day number
+  let day = 1;
+  const dayMatch = text.match(/\b([0-3]?[0-9])\b/);
+  if (dayMatch) {
+    const dVal = parseInt(dayMatch[1], 10);
+    if (dVal >= 1 && dVal <= 31) day = dVal;
+  }
+  
+  // Extract month
+  let month = 0;
+  for (const [mName, mIndex] of Object.entries(monthsMap)) {
+    if (text.includes(mName)) {
+      month = mIndex;
+      break;
+    }
+  }
+  
+  return new Date(year, month, day).getTime();
+};
+
+export const sortEventsChronologically = <T extends Partial<EventItem>>(events: T[]): T[] => {
+  return [...events].sort((a, b) => getEventTimestamp(a) - getEventTimestamp(b));
+};
+
+export const initialEvents: EventItem[] = sortEventsChronologically([
   {
     id: 1,
-    day: "20",
-    month: "NOV",
-    title: "Palestra Gratuita: Ayurveda e Saúde Mental na Vida Moderna",
-    location: "Transmissão Online via YouTube Live",
-    type: "Palestra Online",
-    date: "20 de Novembro, 2026 - 19h30",
+    day: "04",
+    month: "SET",
+    title: "Workshop de Diagnóstico Ayurvédico e Pulsologia",
+    location: "Sede ALBA / Transmissão Online",
+    type: "Workshop Prático",
+    date: "04 de Setembro, 2026 - 19h00",
     status: "Confirmado",
-    description: "Nesta palestra exclusiva, abordaremos como a sabedoria secular do Ayurveda pode prevenir e tratar desequilíbrios mentais, estresse, ansiedade e insônia na rotina moderna.\n\n• O papel do fogo digestivo (Agni) na saúde do sistema nervoso.\n• Fitoterapia e rotinas diárias (Dinacharya) para equilíbrio das emoções.\n• Sessão interativa de perguntas e respostas com docentes da ALBA.\n\nEvento gratuito e aberto ao público."
+    description: "Aprenda os métodos tradicionais de avaliação clínica (Nadi Pariksha) e diagnóstico constitucional segundo os princípios do Ayurveda.\n\n• Avaliação dos doshas Vata, Pitta e Kapha através da leitura de pulso.\n• Sinais clínicos da pele, olhos e língua.\n• Certificado de participação emitido pela ALBA."
   },
   {
     id: 2,
     day: "10",
-    month: "DEZ",
+    month: "OUT",
+    title: "Palestra Gratuita: Ayurveda e Saúde Mental na Vida Moderna",
+    location: "Transmissão Online via YouTube Live",
+    type: "Palestra Online",
+    date: "10 de Outubro, 2026 - 19h30",
+    status: "Confirmado",
+    description: "Nesta palestra exclusiva, abordaremos como a sabedoria secular do Ayurveda pode prevenir e tratar desequilíbrios mentais, estresse, ansiedade e insônia na rotina moderna.\n\n• O papel do fogo digestivo (Agni) na saúde do sistema nervoso.\n• Fitoterapia e rotinas diárias (Dinacharya) para equilíbrio das emoções.\n• Sessão interativa de perguntas e respostas com docentes da ALBA.\n\nEvento gratuito e aberto ao público."
+  },
+  {
+    id: 3,
+    day: "20",
+    month: "NOV",
     title: "Workshop Prático de Massagem Indian Head (Champi)",
     location: "Sede da ALBA - Presencial",
     type: "Workshop Prático",
-    date: "10 de Dezembro, 2026 - 10h00 às 17h00",
+    date: "20 de Novembro, 2026 - 10h00 às 17h00",
     status: "Confirmado",
     description: "Aprenda a aplicação milenar da massagem indiana na cabeça, ombros e pescoço (Champi).\n\n• Técnicas de alívio de tensões profundas e estimulação dos pontos Marma.\n• Utilização de óleos medicados específicos para cada Dosha.\n• Certificado de participação emitido pela ALBA.\n\nVagas limitadas."
   },
   {
-    id: 3,
+    id: 4,
     day: "15",
     month: "JAN",
     title: "Congresso Internacional Luso-Brasileiro de Ayurveda",
@@ -44,4 +91,4 @@ export const initialEvents: EventItem[] = [
     status: "Confirmado",
     description: "O maior encontro de profissionais e pesquisadores do Ayurveda em língua portuguesa.\n\n• Apresentação de trabalhos científicos e casos clínicos de sucesso.\n• Palestrantes internacionais e feira de produtos naturais.\n• Descontos especiais para associados da ALBA."
   }
-];
+]);

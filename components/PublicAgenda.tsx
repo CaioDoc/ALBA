@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { EventDrawer } from './EventDrawer';
-import { initialEvents, EventItem } from '../data/agenda';
+import { initialEvents, EventItem, sortEventsChronologically } from '../data/agenda';
 
 export const PublicAgenda = () => {
   const [selectedEvent, setSelectedEvent] = useState<EventItem | null>(null);
@@ -14,13 +14,15 @@ export const PublicAgenda = () => {
       try {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          setUpcomingEvents(parsed.filter((e: any) => e.status !== 'Cancelado / Adiado'));
+          const filtered = parsed.filter((e: any) => e.status !== 'Cancelado / Adiado');
+          setUpcomingEvents(sortEventsChronologically(filtered));
           return;
         }
       } catch (e) {}
     }
-    setUpcomingEvents(initialEvents.filter(e => e.status !== 'Cancelado / Adiado'));
-    localStorage.setItem('alba_agenda_v3', JSON.stringify(initialEvents));
+    const sortedInitial = sortEventsChronologically(initialEvents.filter(e => e.status !== 'Cancelado / Adiado'));
+    setUpcomingEvents(sortedInitial);
+    localStorage.setItem('alba_agenda_v3', JSON.stringify(sortedInitial));
   }, []);
 
   return (
