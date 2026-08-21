@@ -19,15 +19,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 // Arquivo JSON onde os eventos ficam salvos no servidor
 $dataFile = __DIR__ . '/agenda_data.json';
 
-// Garantir que o arquivo existe
+// Garantir que o arquivo existe e tem permissões corretas
 if (!file_exists($dataFile)) {
-    file_put_contents($dataFile, json_encode([], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+    file_put_contents($dataFile, '[]');
+    chmod($dataFile, 0666);
+} else {
+    // Corrigir permissões automaticamente se necessário
+    if (!is_writable($dataFile)) {
+        @chmod($dataFile, 0666);
+    }
 }
 
 // GET - Retorna todos os eventos
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $data = file_get_contents($dataFile);
-    echo $data;
+    if ($data === false || trim($data) === '') {
+        echo '[]';
+    } else {
+        echo $data;
+    }
     exit;
 }
 
@@ -46,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     if ($result === false) {
         http_response_code(500);
-        echo json_encode(['error' => 'Erro ao salvar dados no servidor.']);
+        echo json_encode(['error' => 'Erro ao salvar dados no servidor. Verifique as permissões do arquivo agenda_data.json']);
         exit;
     }
     
