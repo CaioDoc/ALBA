@@ -50,7 +50,7 @@ try {
     const files = fs.readdirSync(sourceDir);
     files.forEach(file => {
       // Copiar apenas arquivos relevantes
-      if (file.endsWith('.php') || file.endsWith('.sql')) {
+      if (file.endsWith('.php') || file.endsWith('.sql') || file.endsWith('.json')) {
         fs.copyFileSync(path.join(sourceDir, file), path.join(destDir, file));
         console.log(`✓ Copiado: ${file} -> out/api/${file}`);
       }

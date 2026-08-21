@@ -2,27 +2,45 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { EventDrawer } from './EventDrawer';
-import { initialEvents, EventItem, sortEventsChronologically } from '../data/agenda';
+import { EventItem, sortEventsChronologically } from '../data/agenda';
+
+const API_URL = '/api/agenda.php';
 
 export const PublicAgenda = () => {
   const [selectedEvent, setSelectedEvent] = useState<EventItem | null>(null);
   const [upcomingEvents, setUpcomingEvents] = useState<EventItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   React.useEffect(() => {
-    const saved = localStorage.getItem('alba_agenda_v6');
-    if (saved !== null) {
+    const load = async () => {
+      setIsLoading(true);
+      let events: EventItem[] = [];
+
+      // Try loading from server API first
       try {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed)) {
-          const filtered = parsed.filter((e: any) => e.status !== 'Cancelado / Adiado');
-          setUpcomingEvents(sortEventsChronologically(filtered));
-          return;
+        const res = await fetch(API_URL, { cache: 'no-store' });
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data)) {
+            events = data;
+          }
         }
-      } catch (e) {}
-    }
-    const sortedInitial = sortEventsChronologically(initialEvents.filter(e => e.status !== 'Cancelado / Adiado'));
-    setUpcomingEvents(sortedInitial);
-    localStorage.setItem('alba_agenda_v6', JSON.stringify(sortedInitial));
+      } catch (e) {
+        // Server unavailable, try localStorage fallback
+        const saved = localStorage.getItem('alba_agenda_server');
+        if (saved) {
+          try {
+            const parsed = JSON.parse(saved);
+            if (Array.isArray(parsed)) events = parsed;
+          } catch (e) {}
+        }
+      }
+
+      const filtered = events.filter((e: any) => e.status !== 'Cancelado / Adiado');
+      setUpcomingEvents(sortEventsChronologically(filtered));
+      setIsLoading(false);
+    };
+    load();
   }, []);
 
   return (
@@ -38,7 +56,12 @@ export const PublicAgenda = () => {
         </div>
 
         <div className="lg:w-2/3 flex flex-col">
-          {upcomingEvents.length > 0 ? (
+          {isLoading ? (
+            <div className="w-full flex flex-col items-center justify-center min-h-[320px] gap-4">
+              <div className="w-10 h-10 border-4 border-emerald-200 border-t-emerald-700 rounded-full animate-spin"></div>
+              <p className="text-stone-500 text-sm">Carregando eventos...</p>
+            </div>
+          ) : upcomingEvents.length > 0 ? (
             <div className="flex flex-col gap-4">
               {upcomingEvents.map((event) => (
                 <div key={event.id} className="group flex flex-col sm:flex-row items-center gap-6 p-6 bg-stone-50 rounded-[2rem] border border-stone-100 hover:shadow-xl hover:bg-white transition-all">

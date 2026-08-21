@@ -2,18 +2,50 @@
 
 import React, { useState } from 'react';
 
-import { initialEvents, sortEventsChronologically } from '../../../data/agenda';
+import { sortEventsChronologically } from '../../../data/agenda';
+
+const API_URL = '/api/agenda.php';
+
+// Helper: save events to server
+const saveToServer = async (events: any[]) => {
+  try {
+    await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(events),
+    });
+  } catch (e) {
+    console.warn('Servidor indisponível, salvando localmente.', e);
+  }
+  // Always keep localStorage in sync as fallback
+  localStorage.setItem('alba_agenda_server', JSON.stringify(events));
+};
+
+// Helper: load events from server
+const loadFromServer = async (): Promise<any[] | null> => {
+  try {
+    const res = await fetch(API_URL, { cache: 'no-store' });
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data)) return data;
+    }
+  } catch (e) {
+    console.warn('Servidor indisponível, lendo do localStorage.', e);
+  }
+  return null;
+};
 
 export default function AdminAgendaPage() {
   const [events, setEvents] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [view, setView] = useState<'list' | 'form'>('list');
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [formData, setFormData] = useState({
     title: '',
     type: 'Palestra',
-    date: '', // Will be parsed to day/month for public view
+    date: '',
     location: '',
     status: 'Confirmado',
     description: ''
@@ -77,7 +109,7 @@ Traga roupas confortáveis e seu tapete de prática. Todos os níveis de experi�
 • Discussão técnica e cases com especialistas e docentes convidados.
 • Momento dedicado para perguntas, networking e troca de saberes entre os participantes.
 
-Ganta sua vaga com antecedência. Encontro aberto a associados e comunidade geral.`;
+Garanta sua vaga com antecedência. Encontro aberto a associados e comunidade geral.`;
       }
 
       setFormData(prev => ({ ...prev, description: generatedText }));
@@ -89,19 +121,28 @@ Ganta sua vaga com antecedência. Encontro aberto a associados e comunidade gera
 
 
   React.useEffect(() => {
-    const saved = localStorage.getItem('alba_agenda_v6');
-    if (saved !== null) {
-      try {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed)) {
-          setEvents(sortEventsChronologically(parsed));
-          return;
+    const load = async () => {
+      setIsLoading(true);
+      // Try server first
+      const serverData = await loadFromServer();
+      if (serverData !== null) {
+        setEvents(sortEventsChronologically(serverData));
+        localStorage.setItem('alba_agenda_server', JSON.stringify(serverData));
+      } else {
+        // Fallback: localStorage
+        const saved = localStorage.getItem('alba_agenda_server');
+        if (saved !== null) {
+          try {
+            const parsed = JSON.parse(saved);
+            if (Array.isArray(parsed)) {
+              setEvents(sortEventsChronologically(parsed));
+            }
+          } catch (e) {}
         }
-      } catch (e) {}
-    }
-    const sortedInitial = sortEventsChronologically(initialEvents);
-    setEvents(sortedInitial);
-    localStorage.setItem('alba_agenda_v6', JSON.stringify(sortedInitial));
+      }
+      setIsLoading(false);
+    };
+    load();
   }, []);
 
   const filteredEvents = sortEventsChronologically(
@@ -111,11 +152,11 @@ Ganta sua vaga com antecedência. Encontro aberto a associados e comunidade gera
     )
   );
 
-  const handleDelete = (id: number) => {
+  const handleDelete = async (id: number) => {
     if(confirm('Deseja realmente cancelar e remover este evento da agenda pública?')) {
       const newEvents = events.filter(e => e.id !== id);
       setEvents(newEvents);
-      localStorage.setItem('alba_agenda_v6', JSON.stringify(newEvents));
+      await saveToServer(newEvents);
     }
   };
 
@@ -135,12 +176,12 @@ Ganta sua vaga com antecedência. Encontro aberto a associados e comunidade gera
     }
   };
 
-  const handleBulkDelete = () => {
+  const handleBulkDelete = async () => {
     if (selectedItems.length === 0) return;
     if (confirm(`Tem certeza que deseja cancelar e remover os ${selectedItems.length} eventos selecionados permanentemente?`)) {
       const newEvents = events.filter(e => !selectedItems.includes(e.id));
       setEvents(newEvents);
-      localStorage.setItem('alba_agenda_v6', JSON.stringify(newEvents));
+      await saveToServer(newEvents);
       setSelectedItems([]);
     }
   };
@@ -171,7 +212,7 @@ Ganta sua vaga com antecedência. Encontro aberto a associados e comunidade gera
     setView('form');
   };
 
-  const handleSalvar = (e: React.FormEvent) => {
+  const handleSalvar = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Auto generate day and month from date string if possible, or use defaults
@@ -196,7 +237,7 @@ Ganta sua vaga com antecedência. Encontro aberto a associados e comunidade gera
 
     const sortedEvents = sortEventsChronologically(newEvents);
     setEvents(sortedEvents);
-    localStorage.setItem('alba_agenda_v6', JSON.stringify(sortedEvents));
+    await saveToServer(sortedEvents);
 
     alert('Evento salvo e publicado na Agenda Oficial!');
     setView('list');
