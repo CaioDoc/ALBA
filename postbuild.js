@@ -49,7 +49,6 @@ try {
     
     const files = fs.readdirSync(sourceDir);
     files.forEach(file => {
-      // Copiar apenas arquivos relevantes
       if (file.endsWith('.php') || file.endsWith('.sql') || file.endsWith('.json')) {
         fs.copyFileSync(path.join(sourceDir, file), path.join(destDir, file));
         console.log(`✓ Copiado: ${file} -> out/api/${file}`);
@@ -61,4 +60,23 @@ try {
   }
 } catch (err) {
   console.error('Erro ao copiar a pasta backend:', err);
+}
+
+// 3. Copiar a pasta documents para out/documents
+const docsSource = path.join(__dirname, 'documents');
+const docsDest = path.join(__dirname, 'out', 'documents');
+
+try {
+  if (fs.existsSync(docsSource)) {
+    if (!fs.existsSync(docsDest)) {
+      fs.mkdirSync(docsDest, { recursive: true });
+    }
+    const docFiles = fs.readdirSync(docsSource);
+    docFiles.forEach(file => {
+      fs.copyFileSync(path.join(docsSource, file), path.join(docsDest, file));
+    });
+    console.log(`✓ ${docFiles.length} documentos copiados para out/documents com sucesso.`);
+  }
+} catch (err) {
+  console.error('Erro ao copiar a pasta documents:', err);
 }

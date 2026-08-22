@@ -5,6 +5,8 @@ import { Navbar } from '../../components/Navbar';
 import { CourseDrawer } from '../../components/CourseDrawer';
 import { initialCourses as scrapedCourses } from '../../data/cursos.js';
 
+const API_URL = '/api/cursos.php';
+
 interface Course {
   id: number;
   title: string;
@@ -26,26 +28,46 @@ export default function CursosPage() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [courses, setCourses] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const savedCourses = localStorage.getItem('alba_cursos_v32');
-    if (savedCourses) {
+    const load = async () => {
+      setIsLoading(true);
+      
+      // 1. Try server first
       try {
-        const parsed = JSON.parse(savedCourses);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          setCourses(parsed);
-        } else {
-          setCourses(scrapedCourses);
-          localStorage.setItem('alba_cursos_v32', JSON.stringify(scrapedCourses));
+        const res = await fetch(API_URL, { cache: 'no-store' });
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data) && data.length > 0) {
+            setCourses(data);
+            localStorage.setItem('alba_cursos_server', JSON.stringify(data));
+            setIsLoading(false);
+            return;
+          }
         }
       } catch (e) {
-        setCourses(scrapedCourses);
-        localStorage.setItem('alba_cursos_v32', JSON.stringify(scrapedCourses));
+        console.warn('Servidor indisponível, tentando localStorage.', e);
       }
-    } else {
+      
+      // 2. Fallback: localStorage
+      const saved = localStorage.getItem('alba_cursos_server');
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            setCourses(parsed);
+            setIsLoading(false);
+            return;
+          }
+        } catch (e) {}
+      }
+      
+      // 3. Ultimate fallback: built-in data
       setCourses(scrapedCourses);
-      localStorage.setItem('alba_cursos_v32', JSON.stringify(scrapedCourses));
-    }
+      setIsLoading(false);
+    };
+    load();
   }, []);
 
   const filteredCourses = courses.filter((course) => {

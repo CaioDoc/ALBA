@@ -3,11 +3,41 @@
 import React, { useState, useEffect } from 'react';
 import { initialCourses as scrapedCourses } from '../../../data/cursos.js';
 
+const API_URL = '/api/cursos.php';
+
+const saveToServer = async (courses: any[]) => {
+  try {
+    await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(courses),
+    });
+  } catch (e) {
+    console.warn('Servidor indisponível, salvando localmente.', e);
+  }
+  localStorage.setItem('alba_cursos_server', JSON.stringify(courses));
+};
+
+const loadFromServer = async (): Promise<any[] | null> => {
+  try {
+    const res = await fetch(API_URL, { cache: 'no-store' });
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data)) return data;
+    }
+  } catch (e) {
+    console.warn('Servidor indisponível, lendo do localStorage.', e);
+  }
+  return null;
+};
+
 export default function AdminCursosPage() {
   const [courses, setCourses] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [view, setView] = useState<'list' | 'form'>('list');
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
+
+  const [editingId, setEditingId] = useState<number | null>(null);
 
   const [formData, setFormData] = useState({
     title: '',
@@ -19,10 +49,13 @@ export default function AdminCursosPage() {
     image: '',
     status: 'Inscrições Abertas',
     price: '',
-    featured: false
+    featured: false,
+    pdfUrl: '',
+    googleDriveLink: ''
   });
 
   const handleEdit = (course: any) => {
+    setEditingId(course.id);
     setFormData({
       title: course.title || '',
       category: course.category || 'Formação',
@@ -33,12 +66,15 @@ export default function AdminCursosPage() {
       image: course.image || '',
       status: course.status || 'Inscrições Abertas',
       price: course.price || '',
-      featured: course.featured || false
+      featured: course.featured || false,
+      pdfUrl: course.pdfUrl || '',
+      googleDriveLink: course.googleDriveLink || (course.pdfUrl && course.pdfUrl.startsWith('http') ? course.pdfUrl : '')
     });
     setView('form');
   };
 
   const handleNovo = () => {
+    setEditingId(null);
     setFormData({
       title: '',
       category: 'Formação',
@@ -49,38 +85,53 @@ export default function AdminCursosPage() {
       image: '',
       status: 'Inscrições Abertas',
       price: '',
-      featured: false
+      featured: false,
+      pdfUrl: '',
+      googleDriveLink: ''
     });
     setView('form');
   };
 
   useEffect(() => {
-    const savedCourses = localStorage.getItem('alba_cursos_v32');
-    if (savedCourses) {
-      setCourses(JSON.parse(savedCourses));
-    } else {
-      setCourses(scrapedCourses);
-      localStorage.setItem('alba_cursos_v32', JSON.stringify(scrapedCourses));
-    }
+    const fetchCourses = async () => {
+      const serverData = await loadFromServer();
+      if (serverData && serverData.length > 0) {
+        setCourses(serverData);
+      } else {
+        const saved = localStorage.getItem('alba_cursos_server');
+        if (saved) {
+          try {
+            const parsed = JSON.parse(saved);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+              setCourses(parsed);
+              return;
+            }
+          } catch(e) {}
+        }
+        setCourses(scrapedCourses);
+        saveToServer(scrapedCourses);
+      }
+    };
+    fetchCourses();
   }, []);
 
   const filteredCourses = courses.filter(course => 
     course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    course.category.toLowerCase().includes(searchTerm.toLowerCase())
+    (course.category && course.category.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
   const handleDelete = (id: number) => {
     if(confirm('Tem certeza que deseja deletar ou suspender este curso permanentemente?')) {
       const newCourses = courses.filter(c => c.id !== id);
       setCourses(newCourses);
-      localStorage.setItem('alba_cursos_v32', JSON.stringify(newCourses));
+      saveToServer(newCourses);
     }
   };
 
   const toggleFeatured = (id: number) => {
     const newCourses = courses.map(c => c.id === id ? { ...c, featured: !c.featured } : c);
     setCourses(newCourses);
-    localStorage.setItem('alba_cursos_v32', JSON.stringify(newCourses));
+    saveToServer(newCourses);
   };
 
   const toggleSelectAll = () => {
@@ -104,7 +155,7 @@ export default function AdminCursosPage() {
     if (confirm(`Tem certeza que deseja deletar os ${selectedItems.length} cursos selecionados permanentemente?`)) {
       const newCourses = courses.filter(c => !selectedItems.includes(c.id));
       setCourses(newCourses);
-      localStorage.setItem('alba_cursos_v32', JSON.stringify(newCourses));
+      saveToServer(newCourses);
       setSelectedItems([]);
     }
   };
@@ -112,30 +163,56 @@ export default function AdminCursosPage() {
   const handleSalvar = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Simplification: We don't have an editingId state, so we check if course exists by title
-    const existingIndex = courses.findIndex(c => c.title === formData.title);
-    
     let newCourses;
-    if (existingIndex >= 0) {
-      // Update
-      const updatedCourses = [...courses];
-      updatedCourses[existingIndex] = { ...updatedCourses[existingIndex], ...formData };
-      newCourses = updatedCourses;
+    if (editingId) {
+      // Update existing course, preserving syllabus/objectives etc.
+      newCourses = courses.map(c => {
+        if (c.id === editingId) {
+          return { ...c, ...formData };
+        }
+        return c;
+      });
     } else {
-      // Create
+      // Create new course
       const novoCurso = {
         id: Date.now(),
         ...formData,
-        students: 0 // Default value
+        students: 0,
+        active: true
       };
       newCourses = [novoCurso, ...courses];
     }
     
     setCourses(newCourses);
-    localStorage.setItem('alba_cursos_v32', JSON.stringify(newCourses));
+    saveToServer(newCourses);
     
     alert('Curso salvo e publicado com sucesso!');
     setView('list');
+  };
+
+  const handlePdfUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const fd = new FormData();
+    fd.append('file', file);
+
+    try {
+      const res = await fetch(`${API_URL}?action=upload`, {
+        method: 'POST',
+        body: fd
+      });
+      const data = await res.json();
+      if (data.path) {
+        setFormData(prev => ({ ...prev, pdfUrl: data.path }));
+        alert('Documento enviado com sucesso!');
+      } else {
+        alert('Erro ao enviar documento. Tente novamente.');
+      }
+    } catch (error) {
+      console.error('Erro ao enviar documento:', error);
+      alert('Erro ao enviar documento.');
+    }
   };
 
   return (
@@ -232,7 +309,10 @@ export default function AdminCursosPage() {
                       />
                     </td>
                     <td className="p-6 font-bold text-stone-900 max-w-xs truncate" title={course.title}>
-                      {course.title}
+                      <div className="flex items-center gap-2">
+                        {course.title}
+                        {course.pdfUrl && <span title="Possui documento associado" className="text-lg">📄</span>}
+                      </div>
                     </td>
                     <td className="p-6 text-center">
                       <button onClick={() => toggleFeatured(course.id)} className={`cursor-pointer transition-colors ${course.featured ? 'text-amber-400 hover:text-amber-500' : 'text-stone-300 hover:text-stone-400'}`} title={course.featured ? 'Remover Destaque' : 'Marcar como Destaque'}>
@@ -335,6 +415,49 @@ export default function AdminCursosPage() {
             <div>
               <label className="block text-sm font-medium text-stone-700 mb-2">Preço (Opcional)</label>
               <input type="text" value={formData.price} onChange={e => setFormData({...formData, price: e.target.value})} className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" placeholder="Ex: €200 ou Grátis" />
+            </div>
+
+            <div className="md:col-span-2 mt-4">
+              <h4 className="text-lg font-bold text-stone-800 mb-4 flex items-center gap-2">
+                📄 PDF / Documento do Curso
+              </h4>
+              <div className="p-6 bg-stone-50 border border-stone-200 rounded-xl space-y-4">
+                
+                {formData.pdfUrl && (
+                  <div className="p-3 bg-emerald-50 text-emerald-800 rounded-lg flex justify-between items-center border border-emerald-100">
+                    <span className="flex items-center gap-2 font-medium">
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                      Documento Atual: 
+                      <a href={formData.pdfUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-emerald-600 truncate max-w-xs">{formData.pdfUrl}</a>
+                    </span>
+                    <button type="button" onClick={() => setFormData({...formData, pdfUrl: '', googleDriveLink: ''})} className="cursor-pointer text-red-500 hover:text-red-700 font-bold text-sm">Remover</button>
+                  </div>
+                )}
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-stone-700 mb-2">Upload de Arquivo (.pdf, .doc, .docx, .txt)</label>
+                    <input 
+                      type="file" 
+                      accept=".pdf,.doc,.docx,.txt" 
+                      onChange={handlePdfUpload}
+                      className="w-full px-4 py-2.5 bg-white border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all cursor-pointer" 
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-stone-700 mb-2">Ou Link do Google Drive</label>
+                    <input 
+                      type="url" 
+                      value={formData.googleDriveLink} 
+                      onChange={e => {
+                        setFormData({...formData, googleDriveLink: e.target.value, pdfUrl: e.target.value});
+                      }}
+                      className="w-full px-4 py-3 bg-white border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" 
+                      placeholder="https://drive.google.com/..." 
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="md:col-span-2 flex items-center gap-3 p-4 bg-amber-50 border border-amber-100 rounded-xl mt-4">
