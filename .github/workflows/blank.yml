@@ -30,13 +30,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build Next.js
-        run: npx next build
+      - name: Build Next.js Export
+        run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: 1
-
-      - name: Run postbuild
-        run: node postbuild.js
+          GITHUB_ACTIONS: "true"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
