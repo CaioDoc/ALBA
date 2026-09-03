@@ -58,7 +58,65 @@ export const CheckoutModal = ({ product, isOpen, onClose }: CheckoutModalProps) 
     installments: 1
   });
 
+  const [copyFeedback, setCopyFeedback] = useState<'payload' | 'cpf' | null>(null);
+
+  // Chave PIX oficial do cliente (CPF)
+  const pixCpfRaw = "00750851864";
+  const pixCpfFormatted = "007.508.518-64";
+
+  // Gerador de Payload PIX Padrão Banco Central (EMVCo BR Code)
+  const generatePixPayload = (amount: number) => {
+    const crc16 = (str: string) => {
+      let crc = 0xFFFF;
+      for (let i = 0; i < str.length; i++) {
+        crc ^= (str.charCodeAt(i) << 8);
+        for (let j = 0; j < 8; j++) {
+          if ((crc & 0x8000) !== 0) {
+            crc = ((crc << 1) ^ 0x1021) & 0xFFFF;
+          } else {
+            crc = (crc << 1) & 0xFFFF;
+          }
+        }
+      }
+      return crc.toString(16).toUpperCase().padStart(4, '0');
+    };
+
+    const tlv = (tag: string, val: string) => tag + val.length.toString().padStart(2, '0') + val;
+    const merchantAccount = tlv('00', 'br.gov.bcb.pix') + tlv('01', pixCpfRaw);
+    const amountStr = (amount || 47.9).toFixed(2);
+
+    let raw = 
+      tlv('00', '01') +
+      tlv('26', merchantAccount) +
+      tlv('52', '0000') +
+      tlv('53', '986') +
+      tlv('54', amountStr) +
+      tlv('58', 'BR') +
+      tlv('59', 'ALBA AYURVEDA') +
+      tlv('60', 'SAO PAULO') +
+      tlv('62', tlv('05', 'ALBA' + Math.floor(1000 + Math.random() * 9000))) +
+      '6304';
+
+    return raw + crc16(raw);
+  };
+
+  // Se não estiver aberto ou não tiver produto, não renderiza
   if (!isOpen || !product) return null;
+
+  const pixCodePayload = generatePixPayload(product.priceNumber || 47.9);
+  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(pixCodePayload)}&size=250x250&margin=6`;
+
+  const handleCopyPixPayload = () => {
+    navigator.clipboard.writeText(pixCodePayload);
+    setCopyFeedback('payload');
+    setTimeout(() => setCopyFeedback(null), 3000);
+  };
+
+  const handleCopyPixCpf = () => {
+    navigator.clipboard.writeText(pixCpfRaw);
+    setCopyFeedback('cpf');
+    setTimeout(() => setCopyFeedback(null), 3000);
+  };
 
   // Formatação de Máscaras
   const formatCPF = (val: string) => {
@@ -113,63 +171,6 @@ export const CheckoutModal = ({ product, isOpen, onClose }: CheckoutModalProps) 
         setIsSearchingCep(false);
       }
     }
-  };
-
-  // Chave PIX oficial do cliente (CPF)
-  const pixCpfRaw = "00750851864";
-  const pixCpfFormatted = "007.508.518-64";
-
-  // Gerador de Payload PIX Padrão Banco Central (EMVCo BR Code)
-  const generatePixPayload = (amount: number) => {
-    const crc16 = (str: string) => {
-      let crc = 0xFFFF;
-      for (let i = 0; i < str.length; i++) {
-        crc ^= (str.charCodeAt(i) << 8);
-        for (let j = 0; j < 8; j++) {
-          if ((crc & 0x8000) !== 0) {
-            crc = ((crc << 1) ^ 0x1021) & 0xFFFF;
-          } else {
-            crc = (crc << 1) & 0xFFFF;
-          }
-        }
-      }
-      return crc.toString(16).toUpperCase().padStart(4, '0');
-    };
-
-    const tlv = (tag: string, val: string) => tag + val.length.toString().padStart(2, '0') + val;
-    const merchantAccount = tlv('00', 'br.gov.bcb.pix') + tlv('01', pixCpfRaw);
-    const amountStr = (amount || 47.9).toFixed(2);
-
-    let raw = 
-      tlv('00', '01') +
-      tlv('26', merchantAccount) +
-      tlv('52', '0000') +
-      tlv('53', '986') +
-      tlv('54', amountStr) +
-      tlv('58', 'BR') +
-      tlv('59', 'ALBA AYURVEDA') +
-      tlv('60', 'SAO PAULO') +
-      tlv('62', tlv('05', 'ALBA' + Math.floor(1000 + Math.random() * 9000))) +
-      '6304';
-
-    return raw + crc16(raw);
-  };
-
-  const pixCodePayload = generatePixPayload(product.priceNumber || 47.9);
-  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(pixCodePayload)}&size=250x250&margin=6`;
-
-  const [copyFeedback, setCopyFeedback] = useState<'payload' | 'cpf' | null>(null);
-
-  const handleCopyPixPayload = () => {
-    navigator.clipboard.writeText(pixCodePayload);
-    setCopyFeedback('payload');
-    setTimeout(() => setCopyFeedback(null), 3000);
-  };
-
-  const handleCopyPixCpf = () => {
-    navigator.clipboard.writeText(pixCpfRaw);
-    setCopyFeedback('cpf');
-    setTimeout(() => setCopyFeedback(null), 3000);
   };
 
   // Submissão do Checkout
