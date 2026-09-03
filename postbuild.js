@@ -1,20 +1,25 @@
 const fs = require('fs');
 const path = require('path');
 
-// 1. Criar o arquivo .htaccess na pasta out/
+// 1. Criar o arquivo .htaccess robusto na pasta out/
 const htaccessContent = `# Habilitar Reescritas de URL
+Options -MultiViews
 RewriteEngine On
 RewriteBase /
 
-# Redirecionar /pagina para /pagina/ (trailing slash) para manter as URLs limpas e evitar 404
-RewriteCond %{REQUEST_FILENAME} !-f
+# Se o arquivo ou diretório físico existir, serve diretamente
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Redirecionar /pagina para /pagina/ (trailing slash) para manter URLs limpas e carregar index.html da subpasta
 RewriteCond %{REQUEST_URI} !(.*)/$
 RewriteRule ^(.*)$ /$1/ [L,R=301]
 
-# Servir index.html de subpastas automaticamente
+# Servir index.html automaticamente
 DirectoryIndex index.html
 
-# Configuração de Cache para arquivos estáticos (Melhoria de Performance)
+# Configuração de Cache para arquivos estáticos
 <IfModule mod_expires.c>
     ExpiresActive On
     ExpiresDefault "access plus 1 month"
