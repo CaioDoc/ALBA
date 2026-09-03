@@ -8,40 +8,40 @@ const API_URL = '/api/loja.php';
 
 const defaultProducts: ProductItem[] = [
   {
-    id: 'prod-1',
-    title: 'Guia Prático de Culinária Ayurvédica',
-    category: 'E-book',
-    type: 'digital',
-    price: 'R$ 47,90',
-    priceNumber: 47.9,
-    image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=600&auto=format&fit=crop',
-    description: 'Aprenda a aplicar os princípios do Ayurveda na sua cozinha diária para mais saúde, digestão equilibrada (Agni) e vitalidade.',
-    digitalUrl: 'https://drive.google.com/drive/folders/1wzSkQvPnCh1RL_fik42pP4o_pMF2wXKC?usp=drive_link',
-    status: 'Ativo'
+    "id": "prod-champi-livro-fisico",
+    "title": "Massagem Indiana à Cabeça Champi, Manual Prático e Noções Teóricas Básicas",
+    "category": "Livros & Apostilas",
+    "type": "fisico",
+    "price": "R$ 60,00",
+    "priceNumber": 60.0,
+    "image": "/books/champi.jpeg",
+    "description": "O manual de Indian Head Massage (conhecida como Champi) descreve a técnica de massagem na cabeça passo a passo, com todos os movimentos e pontos de energia.",
+    "digitalUrl": "",
+    "status": "Ativo"
   },
   {
-    id: 'prod-2',
-    title: 'Manual dos Tridoshas: Vata, Pitta e Kapha',
-    category: 'E-book',
-    type: 'digital',
-    price: 'R$ 39,00',
-    priceNumber: 39.0,
-    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop',
-    description: 'Descubra sua constituição biológica (Prakriti) e desequilíbrios momentâneos (Vikriti) com rotinas de autocuidado diário (Dinacharya).',
-    digitalUrl: 'https://drive.google.com/drive/folders/1wzSkQvPnCh1RL_fik42pP4o_pMF2wXKC?usp=drive_link',
-    status: 'Ativo'
+    "id": "prod-champi-livro-digital",
+    "title": "Massagem Indiana à Cabeça Champi, Manual Prático e Noções Teóricas Básicas",
+    "category": "E-book",
+    "type": "digital",
+    "price": "R$ 20,00",
+    "priceNumber": 20.0,
+    "image": "/books/champi.jpeg",
+    "description": "O manual de Indian Head Massage (conhecida como Champi) descreve a técnica de massagem na cabeça passo a passo, com todos os movimentos e pontos de energia.",
+    "digitalUrl": "https://drive.google.com/file/d/1s3hwrKcM3YzwkgBArDhbzdRvSP_xvPfQ/view?usp=sharing",
+    "status": "Ativo"
   },
   {
-    id: 'prod-3',
-    title: 'Kit Óleos Vegetais Terapêuticos para Massagem (250ml)',
-    category: 'Produtos Corporais',
-    type: 'fisico',
-    price: 'R$ 120,00',
-    priceNumber: 120.0,
-    image: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?q=80&w=600&auto=format&fit=crop',
-    description: 'Óleo 100% puro medicado com ervas ayurvédicas para massagem Abhyanga e Champi. Indicado para nutrição dos tecidos e relaxamento profundo.',
-    digitalUrl: '',
-    status: 'Ativo'
+    "id": "prod-manual-indian-head-massage-digital",
+    "title": "Manual de Indian Head Massage",
+    "category": "E-book",
+    "type": "digital",
+    "price": "R$ 15,00",
+    "priceNumber": 15.0,
+    "image": "/images/cursos/indian-head-massage-champi/thumb/thumb.jpg",
+    "description": "Este manual descreve, passo a passo, a realização de uma massagem completa com as mãos dos pés à cabeça.",
+    "digitalUrl": "https://drive.google.com/file/d/1WOEPtqbReenpSo9Hpj7rRL1CS9ya4Wgn/view?usp=sharing",
+    "status": "Ativo"
   }
 ];
 
@@ -51,6 +51,22 @@ export default function LojaPage() {
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+
+  // Helper para resolver caminho de imagens locais no GitHub Pages ou domínio principal
+  const getImagePath = (src: string) => {
+    const fallback = 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop';
+    if (!src) return fallback;
+    if (src.startsWith('http://') || src.startsWith('https://')) return src;
+    
+    const clean = src.replace(/^\//, '');
+    if (typeof window !== 'undefined') {
+      const pathname = window.location.pathname;
+      if (window.location.hostname.includes('github.io') || pathname.startsWith('/ALBA')) {
+        return `/ALBA/${clean}`;
+      }
+    }
+    return `/${clean}`;
+  };
 
   // Carregar produtos do servidor / fallback
   useEffect(() => {
@@ -113,9 +129,9 @@ export default function LojaPage() {
       <section className="pt-24 pb-16 px-4 bg-stone-100 border-b border-stone-200">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-emerald-700 font-bold mb-4 uppercase tracking-widest text-sm">Loja Oficial ALBA</p>
-          <h1 className="text-4xl md:text-5xl font-serif text-stone-900 mb-6">Produtos & Materiais Ayurvédicos</h1>
+          <h1 className="text-4xl md:text-5xl font-serif text-stone-900 mb-6">Livros & Materiais Ayurvédicos</h1>
           <p className="text-lg text-stone-600 max-w-2xl mx-auto">
-            Adquira e-books digitais com acesso imediato ou produtos físicos terapêuticos com entrega em todo o Brasil. Pagamento seguro via PIX ou Cartão.
+            Adquira e-books digitais com acesso exclusivo após o pagamento ou livros e produtos físicos com entrega em todo o Brasil. Pagamento seguro via PIX ou Cartão.
           </p>
         </div>
       </section>
@@ -161,9 +177,16 @@ export default function LojaPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredProducts.map((product) => (
                 <div key={product.id} className="group flex flex-col bg-white rounded-[2rem] border border-stone-200/80 overflow-hidden hover:shadow-xl hover:border-emerald-200 transition-all duration-300">
-                  <div className="relative h-64 w-full overflow-hidden bg-stone-100">
+                  <div className="relative h-64 w-full overflow-hidden bg-stone-100 flex items-center justify-center">
                     {product.image ? (
-                      <img src={product.image} alt={product.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                      <img 
+                        src={getImagePath(product.image)} 
+                        alt={product.title} 
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                        onError={(e) => {
+                          (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop';
+                        }}
+                      />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center bg-stone-200 text-stone-400 font-medium">
                         Sem Imagem
@@ -182,7 +205,7 @@ export default function LojaPage() {
                           ? 'bg-emerald-600 text-white' 
                           : 'bg-amber-600 text-white'
                       }`}>
-                        {product.type === 'digital' ? '✨ Digital (Drive)' : '📦 Físico'}
+                        {product.type === 'digital' ? '✨ Livro Digital' : '📦 Livro Físico'}
                       </span>
                     </div>
                   </div>

@@ -44,45 +44,60 @@ interface OrderItem {
 
 const defaultProducts: ProductItem[] = [
   {
-    id: 'prod-1',
-    title: 'Guia Prático de Culinária Ayurvédica',
-    category: 'E-book',
-    type: 'digital',
-    price: 'R$ 47,90',
-    priceNumber: 47.9,
-    image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=600&auto=format&fit=crop',
-    description: 'Aprenda a aplicar os princípios do Ayurveda na sua cozinha diária para mais saúde e vitalidade.',
-    digitalUrl: 'https://drive.google.com/drive/folders/1wzSkQvPnCh1RL_fik42pP4o_pMF2wXKC?usp=drive_link',
-    status: 'Ativo'
+    id: "prod-champi-livro-fisico",
+    title: "Massagem Indiana à Cabeça Champi, Manual Prático e Noções Teóricas Básicas",
+    category: "Livros & Apostilas",
+    type: "fisico",
+    price: "R$ 60,00",
+    priceNumber: 60.0,
+    image: "/books/champi.jpeg",
+    description: "O manual de Indian Head Massage (conhecida como Champi) descreve a técnica de massagem na cabeça passo a passo, com todos os movimentos e pontos de energia.",
+    digitalUrl: "",
+    status: "Ativo"
   },
   {
-    id: 'prod-2',
-    title: 'Manual dos Tridoshas: Vata, Pitta e Kapha',
-    category: 'E-book',
-    type: 'digital',
-    price: 'R$ 39,00',
-    priceNumber: 39.0,
-    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop',
-    description: 'Descubra sua constituição biológica (Prakriti) e desequilíbrios momentâneos (Vikriti).',
-    digitalUrl: 'https://drive.google.com/drive/folders/1wzSkQvPnCh1RL_fik42pP4o_pMF2wXKC?usp=drive_link',
-    status: 'Ativo'
+    id: "prod-champi-livro-digital",
+    title: "Massagem Indiana à Cabeça Champi, Manual Prático e Noções Teóricas Básicas",
+    category: "E-book",
+    type: "digital",
+    price: "R$ 20,00",
+    priceNumber: 20.0,
+    image: "/books/champi.jpeg",
+    description: "O manual de Indian Head Massage (conhecida como Champi) descreve a técnica de massagem na cabeça passo a passo, com todos os movimentos e pontos de energia.",
+    digitalUrl: "https://drive.google.com/file/d/1s3hwrKcM3YzwkgBArDhbzdRvSP_xvPfQ/view?usp=sharing",
+    status: "Ativo"
   },
   {
-    id: 'prod-3',
-    title: 'Kit Óleos Vegetais Terapêuticos para Massagem (250ml)',
-    category: 'Produtos Corporais',
-    type: 'fisico',
-    price: 'R$ 120,00',
-    priceNumber: 120.0,
-    image: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?q=80&w=600&auto=format&fit=crop',
-    description: 'Óleo 100% puro medicado com ervas ayurvédicas para massagem Abhyanga e Champi.',
-    digitalUrl: '',
-    status: 'Ativo'
+    id: "prod-manual-indian-head-massage-digital",
+    title: "Manual de Indian Head Massage",
+    category: "E-book",
+    type: "digital",
+    price: "R$ 15,00",
+    priceNumber: 15.0,
+    image: "/images/cursos/indian-head-massage-champi/thumb/thumb.jpg",
+    description: "Este manual descreve, passo a passo, a realização de uma massagem completa com as mãos dos pés à cabeça.",
+    digitalUrl: "https://drive.google.com/file/d/1WOEPtqbReenpSo9Hpj7rRL1CS9ya4Wgn/view?usp=sharing",
+    status: "Ativo"
   }
 ];
 
 export default function AdminLojaPage() {
   const [activeTab, setActiveTab] = useState<'orders' | 'products'>('orders');
+
+  const getImagePath = (src: string) => {
+    const fallback = 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop';
+    if (!src) return fallback;
+    if (src.startsWith('http://') || src.startsWith('https://')) return src;
+    
+    const clean = src.replace(/^\//, '');
+    if (typeof window !== 'undefined') {
+      const pathname = window.location.pathname;
+      if (window.location.hostname.includes('github.io') || pathname.startsWith('/ALBA')) {
+        return `/ALBA/${clean}`;
+      }
+    }
+    return `/${clean}`;
+  };
 
   // Estados de Produtos
   const [products, setProducts] = useState<ProductItem[]>([]);
@@ -675,7 +690,14 @@ export default function AdminLojaPage() {
                         <td className="p-6 flex items-center gap-4">
                           <div className="w-12 h-12 rounded-xl bg-stone-100 overflow-hidden flex-shrink-0 border border-stone-200">
                             {product.image ? (
-                              <img src={product.image} alt={product.title} className="w-full h-full object-cover" />
+                              <img 
+                                src={getImagePath(product.image)} 
+                                alt={product.title} 
+                                className="w-full h-full object-cover"
+                                onError={(e) => {
+                                  (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop';
+                                }}
+                              />
                             ) : (
                               <div className="w-full h-full flex items-center justify-center text-stone-400">
                                 🛍️

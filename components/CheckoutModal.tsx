@@ -240,6 +240,21 @@ export const CheckoutModal = ({ product, isOpen, onClose }: CheckoutModalProps) 
     onClose();
   };
 
+  const getImagePath = (src: string) => {
+    const fallback = 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop';
+    if (!src) return fallback;
+    if (src.startsWith('http://') || src.startsWith('https://')) return src;
+    
+    const clean = src.replace(/^\//, '');
+    if (typeof window !== 'undefined') {
+      const pathname = window.location.pathname;
+      if (window.location.hostname.includes('github.io') || pathname.startsWith('/ALBA')) {
+        return `/ALBA/${clean}`;
+      }
+    }
+    return `/${clean}`;
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/70 backdrop-blur-sm overflow-y-auto">
       <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden my-8 animate-fade-in-up border border-stone-200">
@@ -263,7 +278,14 @@ export const CheckoutModal = ({ product, isOpen, onClose }: CheckoutModalProps) 
             <div className="p-6 md:p-8 bg-stone-50 border-b border-stone-200">
               <div className="flex items-center gap-4">
                 {product.image && (
-                  <img src={product.image} alt={product.title} className="w-16 h-16 rounded-2xl object-cover border border-stone-200 shadow-sm flex-shrink-0" />
+                  <img 
+                    src={getImagePath(product.image)} 
+                    alt={product.title} 
+                    className="w-16 h-16 rounded-2xl object-cover border border-stone-200 shadow-sm flex-shrink-0"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop';
+                    }}
+                  />
                 )}
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
