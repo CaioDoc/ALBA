@@ -115,14 +115,61 @@ export const CheckoutModal = ({ product, isOpen, onClose }: CheckoutModalProps) 
     }
   };
 
-  // Chave PIX e Cópia
-  const pixKey = "contato@ayurvedica.org";
-  const pixCodePayload = `00020126580014br.gov.bcb.pix0136${pixKey}5204000053039865405${(product.priceNumber || 47.9).toFixed(2)}5802BR5910ALBA LOJA6008BRASILIA62070503***6304`;
+  // Chave PIX oficial do cliente (CPF)
+  const pixCpfRaw = "00750851864";
+  const pixCpfFormatted = "007.508.518-64";
 
-  const handleCopyPix = () => {
-    navigator.clipboard.writeText(pixKey);
-    setPixCopied(true);
-    setTimeout(() => setPixCopied(false), 3000);
+  // Gerador de Payload PIX Padrão Banco Central (EMVCo BR Code)
+  const generatePixPayload = (amount: number) => {
+    const crc16 = (str: string) => {
+      let crc = 0xFFFF;
+      for (let i = 0; i < str.length; i++) {
+        crc ^= (str.charCodeAt(i) << 8);
+        for (let j = 0; j < 8; j++) {
+          if ((crc & 0x8000) !== 0) {
+            crc = ((crc << 1) ^ 0x1021) & 0xFFFF;
+          } else {
+            crc = (crc << 1) & 0xFFFF;
+          }
+        }
+      }
+      return crc.toString(16).toUpperCase().padStart(4, '0');
+    };
+
+    const tlv = (tag: string, val: string) => tag + val.length.toString().padStart(2, '0') + val;
+    const merchantAccount = tlv('00', 'br.gov.bcb.pix') + tlv('01', pixCpfRaw);
+    const amountStr = (amount || 47.9).toFixed(2);
+
+    let raw = 
+      tlv('00', '01') +
+      tlv('26', merchantAccount) +
+      tlv('52', '0000') +
+      tlv('53', '986') +
+      tlv('54', amountStr) +
+      tlv('58', 'BR') +
+      tlv('59', 'ALBA AYURVEDA') +
+      tlv('60', 'SAO PAULO') +
+      tlv('62', tlv('05', 'ALBA' + Math.floor(1000 + Math.random() * 9000))) +
+      '6304';
+
+    return raw + crc16(raw);
+  };
+
+  const pixCodePayload = generatePixPayload(product.priceNumber || 47.9);
+  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(pixCodePayload)}&size=250x250&margin=6`;
+
+  const [copyFeedback, setCopyFeedback] = useState<'payload' | 'cpf' | null>(null);
+
+  const handleCopyPixPayload = () => {
+    navigator.clipboard.writeText(pixCodePayload);
+    setCopyFeedback('payload');
+    setTimeout(() => setCopyFeedback(null), 3000);
+  };
+
+  const handleCopyPixCpf = () => {
+    navigator.clipboard.writeText(pixCpfRaw);
+    setCopyFeedback('cpf');
+    setTimeout(() => setCopyFeedback(null), 3000);
   };
 
   // Submissão do Checkout
@@ -451,28 +498,55 @@ export const CheckoutModal = ({ product, isOpen, onClose }: CheckoutModalProps) 
 
                 {/* Conteúdo do PIX */}
                 {paymentMethod === 'pix' && (
-                  <div className="p-5 bg-teal-50/60 border border-teal-200 rounded-2xl">
-                    <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
-                      <div className="w-24 h-24 bg-white p-2 rounded-xl border border-teal-200 flex items-center justify-center flex-shrink-0 shadow-sm">
-                        <svg className="w-20 h-20 text-teal-700" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M4 4h4v4H4V4zm2 2v0h0v0zm10-2h4v4h-4V4zm2 2v0h0v0zM4 16h4v4H4v-4zm2 2v0h0v0zM12 4h2v2h-2V4zm0 4h2v2h-2V8zm-2 2H8v2h2v-2zm6 0h-2v2h2v-2zm2 2h2v2h-2v-2zm-6 2h2v2h-2v-2zm-4 0H6v2h2v-2zm8 0h2v2h-2v-2zm2 2h2v2h-2v-2zm-6 2h2v2h-2v-2zm-4 0H6v2h2v-2zm12 0h2v2h-2v-2zM4 10h2v2H4v-2zm14 0h2v2h-2v-2zm-2 4h2v2h-2v-2z" />
-                        </svg>
+                  <div className="p-6 bg-teal-50/80 border border-teal-200 rounded-2xl">
+                    <div className="flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+                      {/* Imagem do QR Code PIX Real */}
+                      <div className="w-36 h-36 bg-white p-2.5 rounded-2xl border-2 border-teal-200 flex flex-col items-center justify-center flex-shrink-0 shadow-md">
+                        <img 
+                          src={qrCodeUrl} 
+                          alt="QR Code PIX" 
+                          className="w-full h-full object-contain rounded-lg"
+                        />
                       </div>
-                      <div className="flex-1">
-                        <p className="text-xs font-bold text-teal-900 mb-1">Chave PIX Oficial (E-mail):</p>
-                        <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-xl border border-teal-200 font-mono text-xs text-teal-950 select-all">
-                          <span className="truncate">{pixKey}</span>
+
+                      <div className="flex-1 space-y-3">
+                        <div>
+                          <span className="text-[10px] uppercase font-bold tracking-wider text-teal-800 bg-teal-100/80 px-2.5 py-0.5 rounded-full">
+                            Pagamento Instantâneo
+                          </span>
+                          <h4 className="text-sm font-bold text-teal-950 mt-1">
+                            Escaneie o QR Code ou use o Copia e Cola
+                          </h4>
+                          <p className="text-xs text-teal-800 mt-0.5">
+                            Abra o aplicativo do seu banco e aponte a câmera para o QR Code acima.
+                          </p>
+                        </div>
+
+                        {/* Botões de Ação PIX */}
+                        <div className="flex flex-col sm:flex-row gap-2 pt-1">
                           <button
                             type="button"
-                            onClick={handleCopyPix}
-                            className="cursor-pointer ml-auto bg-teal-700 hover:bg-teal-800 text-white px-3 py-1 rounded-lg text-xs font-sans font-bold whitespace-nowrap transition-colors"
+                            onClick={handleCopyPixPayload}
+                            className="cursor-pointer bg-teal-700 hover:bg-teal-800 active:scale-95 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition-all shadow-sm flex items-center justify-center gap-1.5"
                           >
-                            {pixCopied ? '✓ Copiado!' : 'Copiar Chave'}
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                            </svg>
+                            <span>{copyFeedback === 'payload' ? '✓ Código Copiado!' : 'Copiar Código PIX'}</span>
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={handleCopyPixCpf}
+                            className="cursor-pointer bg-white hover:bg-teal-100 active:scale-95 text-teal-900 border border-teal-300 px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5"
+                          >
+                            <span>{copyFeedback === 'cpf' ? '✓ CPF Copiado!' : `Copiar CPF: ${pixCpfFormatted}`}</span>
                           </button>
                         </div>
-                        <p className="text-[11px] text-teal-800 mt-2">
-                          Valor a pagar: <strong>{product.price}</strong> • Liberação imediata após a confirmação.
-                        </p>
+
+                        <div className="text-[11px] text-teal-900 bg-white/70 p-2.5 rounded-xl border border-teal-100 leading-snug">
+                          <strong>Chave PIX (CPF):</strong> <span className="font-mono">{pixCpfFormatted}</span> • <strong>Valor:</strong> {product.price}
+                        </div>
                       </div>
                     </div>
                   </div>
