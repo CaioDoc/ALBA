@@ -1,0 +1,38 @@
+[
+  {
+    "id": "prod-1",
+    "title": "Guia Prático de Culinária Ayurvédica",
+    "category": "E-book",
+    "type": "digital",
+    "price": "R$ 47,90",
+    "priceNumber": 47.9,
+    "image": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=600&auto=format&fit=crop",
+    "description": "Aprenda a aplicar os princípios do Ayurveda na sua cozinha diária para mais saúde, digestão equilibrada (Agni) e vitalidade.",
+    "digitalUrl": "https://drive.google.com/drive/folders/1wzSkQvPnCh1RL_fik42pP4o_pMF2wXKC?usp=drive_link",
+    "status": "Ativo"
+  },
+  {
+    "id": "prod-2",
+    "title": "Manual dos Tridoshas: Vata, Pitta e Kapha",
+    "category": "E-book",
+    "type": "digital",
+    "price": "R$ 39,00",
+    "priceNumber": 39.0,
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop",
+    "description": "Descubra sua constituição biológica (Prakriti) e desequilíbrios momentâneos (Vikriti) com rotinas de autocuidado diário (Dinacharya).",
+    "digitalUrl": "https://drive.google.com/drive/folders/1wzSkQvPnCh1RL_fik42pP4o_pMF2wXKC?usp=drive_link",
+    "status": "Ativo"
+  },
+  {
+    "id": "prod-3",
+    "title": "Kit Óleos Vegetais Terapêuticos para Massagem (250ml)",
+    "category": "Produtos Corporais",
+    "type": "fisico",
+    "price": "R$ 120,00",
+    "priceNumber": 120.0,
+    "image": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?q=80&w=600&auto=format&fit=crop",
+    "description": "Óleo 100% puro medicado com ervas ayurvédicas para massagem Abhyanga e Champi. Indicado para nutrição dos tecidos e relaxamento profundo.",
+    "digitalUrl": "",
+    "status": "Ativo"
+  }
+]
