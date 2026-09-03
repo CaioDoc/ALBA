@@ -492,64 +492,53 @@ export const CheckoutModal = ({ product, isOpen, onClose }: CheckoutModalProps) 
           </div>
         )}
 
-        {/* ── ETAPA 3: SUCESSO ── */}
+        {/* ── ETAPA 3: AGUARDANDO VERIFICAÇÃO ── */}
         {step === 'success' && (
           <div className="p-8 text-center">
-            {/* Ícone */}
-            <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-5">
-              <svg className="w-10 h-10 text-emerald-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+            {/* Ícone de análise */}
+            <div className="w-20 h-20 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-5">
+              <svg className="w-10 h-10 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
 
-            <span className="text-xs font-bold uppercase tracking-widest text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">
-              Pagamento Confirmado!
+            <span className="text-xs font-bold uppercase tracking-widest text-amber-700 bg-amber-50 px-3 py-1 rounded-full">
+              Aguardando Verificação
             </span>
-            <h2 className="text-2xl font-serif text-stone-900 mt-3 mb-1">Obrigado, {customer.name.split(' ')[0]}!</h2>
-            <p className="text-stone-500 text-sm max-w-xs mx-auto mb-6">
-              Um e-mail de confirmação foi enviado para <strong className="text-stone-700">{customer.email}</strong>.
+            <h2 className="text-2xl font-serif text-stone-900 mt-3 mb-2">Pedido recebido!</h2>
+            <p className="text-stone-600 text-sm max-w-xs mx-auto">
+              Seu pedido foi registrado e está aguardando a confirmação do pagamento PIX.
             </p>
 
-            {/* Produto digital — acesso imediato */}
-            {product.type === 'digital' && product.digitalUrl && (
-              <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-5 mb-6 text-left">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center">
-                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-emerald-800 uppercase tracking-wide">Acesso Liberado!</p>
-                    <p className="text-xs text-emerald-700">Clique abaixo para baixar seu material.</p>
-                  </div>
-                </div>
-                <a
-                  href={product.digitalUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="cursor-pointer mt-3 w-full inline-flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-6 py-3 rounded-xl text-sm transition-all shadow-md active:scale-95"
-                >
-                  <span>Acessar Material no Google Drive</span>
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
+            {/* Número do pedido */}
+            {completedOrder?.id && (
+              <div className="mt-4 mb-5 inline-block bg-stone-100 rounded-xl px-5 py-2">
+                <p className="text-xs text-stone-500 font-medium">Número do Pedido</p>
+                <p className="text-lg font-mono font-bold text-stone-900">{completedOrder.id}</p>
               </div>
             )}
 
-            {/* Produto físico — confirmação de envio */}
-            {product.type === 'fisico' && (
-              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-6 text-left">
-                <p className="text-sm font-bold text-amber-900 mb-2">📦 Seu pedido será despachado para:</p>
-                <div className="text-xs text-stone-600 space-y-0.5 bg-white rounded-xl p-3 border border-amber-100">
-                  <p><strong>Nome:</strong> {customer.name}</p>
-                  <p><strong>Endereço:</strong> {address.street}, {address.number}{address.complement ? ` (${address.complement})` : ''}</p>
-                  <p><strong>Bairro:</strong> {address.neighborhood} — {address.city}/{address.state}</p>
-                  <p><strong>CEP:</strong> {address.cep}</p>
+            {/* O que acontece agora */}
+            <div className="bg-blue-50 border border-blue-200 rounded-2xl p-5 mb-6 text-left space-y-3">
+              <p className="text-sm font-bold text-blue-900">O que acontece agora?</p>
+              <div className="space-y-2">
+                <div className="flex items-start gap-2">
+                  <span className="w-5 h-5 rounded-full bg-blue-200 text-blue-800 text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
+                  <p className="text-xs text-blue-800">Nossa equipe confirma o pagamento PIX no banco (em até 24 horas úteis).</p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="w-5 h-5 rounded-full bg-blue-200 text-blue-800 text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
+                  <p className="text-xs text-blue-800">
+                    Você recebe um e-mail em <strong>{customer.email}</strong> com{' '}
+                    {product.type === 'digital' ? 'o link de acesso ao seu material no Google Drive.' : 'a confirmação e o código de rastreio do envio.'}
+                  </p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="w-5 h-5 rounded-full bg-blue-200 text-blue-800 text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
+                  <p className="text-xs text-blue-800">Em caso de dúvidas, responda o e-mail que enviamos ou entre em contato pelo WhatsApp da ALBA.</p>
                 </div>
               </div>
-            )}
+            </div>
 
             <button
               type="button"
