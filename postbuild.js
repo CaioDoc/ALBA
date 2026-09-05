@@ -85,3 +85,16 @@ try {
 } catch (err) {
   console.error('Erro ao copiar a pasta documents:', err);
 }
+
+// 4. Criar pasta uploads/loja em out/ (imagens de capa dos produtos)
+const uploadsDir = path.join(__dirname, 'out', 'uploads', 'loja');
+try {
+  if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+    console.log('✓ Pasta out/uploads/loja criada com sucesso.');
+  } else {
+    console.log('✓ Pasta out/uploads/loja já existe.');
+  }
+} catch (err) {
+  console.error('Erro ao criar a pasta uploads/loja:', err);
+}

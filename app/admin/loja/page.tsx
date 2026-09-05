@@ -46,7 +46,7 @@ const defaultProducts: ProductItem[] = [
   {
     id: "prod-champi-livro-fisico",
     title: "Massagem Indiana à Cabeça Champi, Manual Prático e Noções Teóricas Básicas",
-    category: "Livros & Apostilas",
+    category: "Livro",
     type: "fisico",
     price: "R$ 60,00",
     priceNumber: 60.0,
@@ -801,11 +801,12 @@ export default function AdminLojaPage() {
                     className="cursor-pointer w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all"
                   >
                     <option>E-book</option>
-                    <option>Livros & Apostilas</option>
+                    <option>Livro</option>
+                    <option>Apostila</option>
                     <option>Produtos Corporais</option>
-                    <option>Culinária & Ervas</option>
+                    <option>Culinária &amp; Ervas</option>
                     <option>Ferramenta / Planner</option>
-                    <option>Mentoria & Aulas</option>
+                    <option>Mentoria &amp; Aulas</option>
                     <option>Outros</option>
                   </select>
                 </div>
@@ -841,17 +842,30 @@ export default function AdminLojaPage() {
                       <svg className="w-5 h-5 text-teal-700" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
                       </svg>
-                      Link Compartilhado do Google Drive (Acesso Exclusivo)
+                      Link do PDF / Conteúdo Digital (Google Drive)
                     </label>
-                    <input 
-                      type="url" 
-                      value={productFormData.digitalUrl}
-                      onChange={e => setProductFormData({...productFormData, digitalUrl: e.target.value})}
-                      className="w-full px-4 py-3 bg-white border border-teal-300 rounded-xl text-sm focus:outline-none focus:border-teal-600 transition-all" 
-                      placeholder="https://drive.google.com/drive/folders/..." 
-                    />
+                    <div className="flex gap-2 mt-2">
+                      <input 
+                        type="url" 
+                        value={productFormData.digitalUrl}
+                        onChange={e => setProductFormData({...productFormData, digitalUrl: e.target.value})}
+                        className="flex-1 px-4 py-3 bg-white border border-teal-300 rounded-xl text-sm focus:outline-none focus:border-teal-600 transition-all" 
+                        placeholder="Cole aqui o link de compartilhamento do Drive..." 
+                      />
+                      <a
+                        href="https://drive.google.com/drive/folders/1-rj7efRgEP5PvZ8z2n8muQIIR67zEeCa"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="cursor-pointer flex items-center gap-2 px-4 py-3 bg-teal-700 hover:bg-teal-800 text-white text-xs font-bold rounded-xl transition-colors whitespace-nowrap"
+                      >
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                        Abrir Pasta de PDFs
+                      </a>
+                    </div>
                     <p className="text-xs text-teal-800 mt-2">
-                      Este link será entregue ao comprador na tela de sucesso e por e-mail após a confirmação da compra.
+                      📂 Abra a pasta no Drive, clique com o botão direito no arquivo → <strong>Compartilhar</strong> → <strong>Copiar link</strong> → cole acima.
                     </p>
                   </div>
                 )}
@@ -867,15 +881,105 @@ export default function AdminLojaPage() {
                   />
                 </div>
 
-                <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-stone-700 mb-2">URL da Imagem de Capa</label>
-                  <input 
-                    type="url" 
-                    value={productFormData.image}
-                    onChange={e => setProductFormData({...productFormData, image: e.target.value})}
-                    className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" 
-                    placeholder="https://..." 
-                  />
+                {/* ═════════════════════════════════════════════ */}
+                {/* IMAGEM DE CAPA — Upload + Google Drive       */}
+                {/* ═════════════════════════════════════════════ */}
+                <div className="md:col-span-2 p-5 bg-stone-50 border border-stone-200 rounded-2xl">
+                  <label className="block text-sm font-bold text-stone-800 mb-3">📷 Imagem de Capa do Produto</label>
+                  
+                  {/* Preview da imagem atual */}
+                  {productFormData.image && (
+                    <div className="mb-4 flex items-start gap-4">
+                      <img 
+                        src={getImagePath(productFormData.image)} 
+                        alt="Preview" 
+                        className="w-24 h-24 rounded-xl object-cover border-2 border-stone-200 shadow-sm"
+                        onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+                      />
+                      <div className="flex-1 min-w-0">
+                        <p className="text-xs text-stone-500 font-mono truncate">{productFormData.image}</p>
+                        <button 
+                          type="button" 
+                          onClick={() => setProductFormData({...productFormData, image: ''})}
+                          className="cursor-pointer mt-1 text-xs text-red-500 hover:text-red-700 font-semibold"
+                        >
+                          ✕ Remover imagem
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="flex flex-wrap gap-3">
+                    {/* Botão Upload do Computador */}
+                    <label className="cursor-pointer flex items-center gap-2 px-4 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold rounded-xl transition-colors">
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                      </svg>
+                      Enviar do Computador
+                      <input 
+                        type="file" 
+                        accept="image/jpeg,image/png,image/webp,image/gif"
+                        className="hidden"
+                        onChange={async (e) => {
+                          const file = e.target.files?.[0];
+                          if (!file) return;
+                          if (file.size > 5 * 1024 * 1024) { alert('Imagem muito grande! Máximo: 5MB'); return; }
+                          const form = new FormData();
+                          form.append('image', file);
+                          try {
+                            const res = await fetch('/api/loja.php?action=upload_image', { method: 'POST', body: form });
+                            const data = await res.json();
+                            if (data.success && data.url) {
+                              setProductFormData(prev => ({...prev, image: data.url}));
+                            } else {
+                              alert('Erro: ' + (data.error || 'Falha no upload'));
+                            }
+                          } catch (err) {
+                            alert('Erro ao enviar imagem. Verifique a conexão com o servidor.');
+                          }
+                          e.target.value = '';
+                        }}
+                      />
+                    </label>
+
+                    {/* Botão Google Drive - Capas */}
+                    <a
+                      href="https://drive.google.com/drive/folders/1YVd2N_bCrof0YjrzwbFJSI9PQF7SXJ3P"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cursor-pointer flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-colors"
+                    >
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                      Abrir Pasta de Capas (Drive)
+                    </a>
+                  </div>
+
+                  {/* Campo URL manual com conversor de Drive */}
+                  <div className="mt-3">
+                    <label className="block text-xs font-medium text-stone-500 mb-1">Ou cole uma URL diretamente:</label>
+                    <div className="flex gap-2">
+                      <input 
+                        type="text"
+                        value={productFormData.image}
+                        onChange={e => {
+                          let url = e.target.value;
+                          // Converter link de compartilhamento do Drive para thumbnail
+                          const driveMatch = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+                          if (driveMatch) {
+                            url = `https://drive.google.com/thumbnail?id=${driveMatch[1]}&sz=w600`;
+                          }
+                          setProductFormData({...productFormData, image: url});
+                        }}
+                        className="flex-1 px-4 py-2.5 bg-white border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all" 
+                        placeholder="https://... ou link de compartilhamento do Drive" 
+                      />
+                    </div>
+                    <p className="text-[11px] text-stone-400 mt-1.5">
+                      💡 <strong>Dica:</strong> Se colar um link do Google Drive (ex: drive.google.com/file/d/...), ele será convertido automaticamente para URL de imagem.
+                    </p>
+                  </div>
                 </div>
 
               </div>

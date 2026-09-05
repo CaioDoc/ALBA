@@ -10,7 +10,7 @@ const defaultProducts: ProductItem[] = [
   {
     "id": "prod-champi-livro-fisico",
     "title": "Massagem Indiana à Cabeça Champi, Manual Prático e Noções Teóricas Básicas",
-    "category": "Livros & Apostilas",
+    "category": "Livro",
     "type": "fisico",
     "price": "R$ 60,00",
     "priceNumber": 60.0,

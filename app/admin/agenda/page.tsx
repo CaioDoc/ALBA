@@ -47,7 +47,7 @@ export default function AdminAgendaPage() {
     type: 'Palestra',
     date: '',
     location: '',
-    status: 'Confirmado',
+    status: 'Programado',
     description: ''
   });
   const [editingId, setEditingId] = useState<number | null>(null);
@@ -193,7 +193,7 @@ Garanta sua vaga com antecedência. Encontro aberto a associados e comunidade ge
       type: evt.type || 'Palestra',
       date: evt.date || '',
       location: evt.location || '',
-      status: evt.status || 'Confirmado',
+      status: evt.status || 'Programado',
       description: evt.description || ''
     });
     setView('form');
@@ -206,7 +206,7 @@ Garanta sua vaga com antecedência. Encontro aberto a associados e comunidade ge
       type: 'Palestra',
       date: '',
       location: '',
-      status: 'Confirmado',
+      status: 'Programado',
       description: ''
     });
     setView('form');
@@ -348,7 +348,7 @@ Garanta sua vaga com antecedência. Encontro aberto a associados e comunidade ge
                     </td>
                     <td className="p-6">
                       <span className={`px-3 py-1 rounded-full text-xs font-bold ${
-                        event.status === 'Confirmado' ? 'bg-blue-100 text-blue-800' : 
+                        event.status === 'Programado' ? 'bg-blue-100 text-blue-800' : 
                         event.status === 'Esgotado' ? 'bg-orange-100 text-orange-800' : 
                         'bg-red-100 text-red-800'
                       }`}>
@@ -406,7 +406,7 @@ Garanta sua vaga com antecedência. Encontro aberto a associados e comunidade ge
             <div>
               <label className="block text-sm font-medium text-stone-700 mb-2">Status do Evento</label>
               <select value={formData.status} onChange={e => setFormData({...formData, status: e.target.value})} className="cursor-pointer w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all font-bold text-stone-700">
-                <option>Confirmado</option>
+                <option>Programado</option>
                 <option>Esgotado</option>
                 <option>Cancelado / Adiado</option>
               </select>

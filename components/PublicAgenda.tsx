@@ -74,7 +74,7 @@ export const PublicAgenda = () => {
                       <span className="text-xs font-bold text-stone-400 uppercase">{event.type}</span>
                       {event.status && (
                         <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                          event.status === 'Confirmado' ? 'bg-emerald-100 text-emerald-800' :
+                          event.status === 'Programado' ? 'bg-emerald-100 text-emerald-800' :
                           event.status === 'Esgotado' ? 'bg-orange-100 text-orange-800' : 'bg-red-100 text-red-800'
                         }`}>
                           {event.status}

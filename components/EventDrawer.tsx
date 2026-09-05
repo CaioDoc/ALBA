@@ -51,7 +51,7 @@ export const EventDrawer = ({ event, isOpen, onClose }: EventDrawerProps) => {
               <div className="flex items-center gap-3">
                 <span className="text-stone-500 text-sm">Status:</span> 
                 <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${
-                  event.status === 'Confirmado' ? 'bg-emerald-100 text-emerald-800' :
+                  event.status === 'Programado' ? 'bg-emerald-100 text-emerald-800' :
                   event.status === 'Esgotado' ? 'bg-orange-100 text-orange-800' : 'bg-red-100 text-red-800'
                 }`}>
                   {event.status}

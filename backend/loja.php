@@ -187,6 +187,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 // ROTAS POST
 // ============================================================
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    // 0. Upload de imagem de capa (multipart/form-data)
+    if ($action === 'upload_image') {
+        if (empty($_FILES['image'])) {
+            http_response_code(400);
+            echo json_encode(['error' => 'Nenhuma imagem enviada']);
+            exit;
+        }
+        $file = $_FILES['image'];
+        $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+        $allowed = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
+        if (!in_array($ext, $allowed)) {
+            http_response_code(400);
+            echo json_encode(['error' => 'Extensão não permitida. Use: ' . implode(', ', $allowed)]);
+            exit;
+        }
+        if ($file['size'] > 5 * 1024 * 1024) { // 5MB max
+            http_response_code(400);
+            echo json_encode(['error' => 'Imagem muito grande. Máximo: 5MB']);
+            exit;
+        }
+        $uploadDir = dirname(__DIR__) . '/uploads/loja/';
+        if (!is_dir($uploadDir)) {
+            @mkdir($uploadDir, 0755, true);
+        }
+        $safeName = preg_replace('/[^a-zA-Z0-9._-]/', '-', pathinfo($file['name'], PATHINFO_FILENAME));
+        $finalName = $safeName . '-' . time() . '.' . $ext;
+        $dest = $uploadDir . $finalName;
+        if (move_uploaded_file($file['tmp_name'], $dest)) {
+            echo json_encode(['success' => true, 'url' => '/uploads/loja/' . $finalName]);
+        } else {
+            http_response_code(500);
+            echo json_encode(['error' => 'Falha ao salvar a imagem no servidor']);
+        }
+        exit;
+    }
+
     $body = json_decode(file_get_contents('php://input'), true);
 
     // 1. Salvar produtos (Admin)
