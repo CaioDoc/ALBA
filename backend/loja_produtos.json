@@ -2,7 +2,7 @@
   {
     "id": "prod-champi-livro-fisico",
     "title": "Massagem Indiana à Cabeça Champi, Manual Prático e Noções Teóricas Básicas",
-    "category": "Livros & Apostilas",
+    "category": "Livro",
     "type": "fisico",
     "price": "R$ 60,00",
     "priceNumber": 60.0,
@@ -26,7 +26,7 @@
   {
     "id": "prod-manual-indian-head-massage-digital",
     "title": "Manual de Indian Head Massage",
-    "category": "E-book",
+    "category": "Apostila",
     "type": "digital",
     "price": "R$ 15,00",
     "priceNumber": 15.0,

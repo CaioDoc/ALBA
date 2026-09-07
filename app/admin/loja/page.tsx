@@ -70,7 +70,7 @@ const defaultProducts: ProductItem[] = [
   {
     id: "prod-manual-indian-head-massage-digital",
     title: "Manual de Indian Head Massage",
-    category: "E-book",
+    category: "Apostila",
     type: "digital",
     price: "R$ 15,00",
     priceNumber: 15.0,

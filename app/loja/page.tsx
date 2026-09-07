@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from '../../components/Navbar';
 import { CheckoutModal, ProductItem } from '../../components/CheckoutModal';
+import { ProductDrawer } from '../../components/ProductDrawer';
 
 const API_URL = '/api/loja.php';
 
@@ -34,7 +35,7 @@ const defaultProducts: ProductItem[] = [
   {
     "id": "prod-manual-indian-head-massage-digital",
     "title": "Manual de Indian Head Massage",
-    "category": "E-book",
+    "category": "Apostila",
     "type": "digital",
     "price": "R$ 15,00",
     "priceNumber": 15.0,
@@ -45,11 +46,18 @@ const defaultProducts: ProductItem[] = [
   }
 ];
 
+const STORE_FILTERS = ['Todos', 'Apostilas', 'Livros', 'E-books'] as const;
+type StoreFilter = typeof STORE_FILTERS[number];
+
+const MAX_DESC_CHARS = 165;
+
 export default function LojaPage() {
   const [products, setProducts] = useState<ProductItem[]>([]);
-  const [activeCategory, setActiveCategory] = useState('Todos');
+  const [activeFilter, setActiveFilter] = useState<StoreFilter>('Todos');
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+  const [drawerProduct, setDrawerProduct] = useState<ProductItem | null>(null);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   // Helper para resolver caminho de imagens locais no GitHub Pages ou domínio principal
@@ -110,13 +118,46 @@ export default function LojaPage() {
     load();
   }, []);
 
-  const categories = ['Todos', ...Array.from(new Set(products.map(p => p.category)))];
+  // Lógica de correspondência de categoria por filtro
+  const isCategoryMatch = (product: ProductItem, filter: StoreFilter): boolean => {
+    if (filter === 'Todos') return true;
+    const cat = (product.category || '').toLowerCase().trim();
+    if (filter === 'Apostilas') {
+      return cat.includes('apostil') || cat.includes('manual');
+    }
+    if (filter === 'Livros') {
+      return cat.includes('livro');
+    }
+    if (filter === 'E-books') {
+      return cat.includes('e-book') || cat.includes('ebook');
+    }
+    return false;
+  };
 
-  const filteredProducts = activeCategory === 'Todos' 
-    ? products 
-    : products.filter(p => p.category === activeCategory);
+  const filteredProducts = products.filter(p => isCategoryMatch(p, activeFilter));
+
+  const getFilterCount = (filter: StoreFilter) => {
+    return products.filter(p => isCategoryMatch(p, filter)).length;
+  };
 
   const handleOpenCheckout = (product: ProductItem) => {
+    setSelectedProduct(product);
+    setIsCheckoutOpen(true);
+  };
+
+  const handleOpenDrawer = (product: ProductItem) => {
+    setDrawerProduct(product);
+    setIsDrawerOpen(true);
+  };
+
+  const handleCloseDrawer = () => {
+    setIsDrawerOpen(false);
+    setDrawerProduct(null);
+  };
+
+  const handleBuyFromDrawer = (product: ProductItem) => {
+    setIsDrawerOpen(false);
+    setDrawerProduct(null);
     setSelectedProduct(product);
     setIsCheckoutOpen(true);
   };
@@ -129,9 +170,9 @@ export default function LojaPage() {
       <section className="pt-24 pb-16 px-4 bg-stone-100 border-b border-stone-200">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-emerald-700 font-bold mb-4 uppercase tracking-widest text-sm">Loja Oficial ALBA</p>
-          <h1 className="text-4xl md:text-5xl font-serif text-stone-900 mb-6">Livros & Materiais Ayurvédicos</h1>
+          <h1 className="text-4xl md:text-5xl font-serif text-stone-900 mb-6">Livros, Apostilas & E-books</h1>
           <p className="text-lg text-stone-600 max-w-2xl mx-auto">
-            Adquira e-books digitais com acesso exclusivo após o pagamento ou livros e produtos físicos com entrega em todo o Brasil. Pagamento seguro via PIX ou Cartão.
+            Adquira apostilas e e-books digitais com acesso liberado após a confirmação ou livros impressos com entrega em todo o Brasil.
           </p>
         </div>
       </section>
@@ -140,24 +181,31 @@ export default function LojaPage() {
       <section className="py-16 px-4 flex-grow">
         <div className="max-w-7xl mx-auto">
           
-          {/* Categorias / Filtro */}
-          {categories.length > 1 && (
-            <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
-              {categories.map(cat => (
+          {/* Categorias / Filtros Requisitados: Todos, Apostilas, Livros, E-books */}
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
+            {STORE_FILTERS.map(filter => {
+              const count = getFilterCount(filter);
+              const isActive = activeFilter === filter;
+              return (
                 <button 
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={`cursor-pointer px-6 py-2.5 rounded-full text-sm font-bold transition-all ${
-                    activeCategory === cat 
-                      ? 'bg-emerald-800 text-white shadow-md' 
-                      : 'bg-white text-stone-600 border border-stone-200 hover:bg-stone-50'
+                  key={filter}
+                  onClick={() => setActiveFilter(filter)}
+                  className={`cursor-pointer px-6 py-2.5 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${
+                    isActive 
+                      ? 'bg-emerald-800 text-white shadow-md scale-105' 
+                      : 'bg-white text-stone-600 border border-stone-200 hover:bg-stone-50 hover:text-emerald-800'
                   }`}
                 >
-                  {cat}
+                  <span>{filter}</span>
+                  <span className={`text-xs px-2 py-0.5 rounded-full font-semibold ${
+                    isActive ? 'bg-emerald-950/40 text-emerald-100' : 'bg-stone-100 text-stone-500'
+                  }`}>
+                    {count}
+                  </span>
                 </button>
-              ))}
-            </div>
-          )}
+              );
+            })}
+          </div>
 
           {/* Grid de Produtos */}
           {isLoading ? (
@@ -166,77 +214,130 @@ export default function LojaPage() {
               <p className="text-stone-500 text-sm">Carregando catálogo da loja...</p>
             </div>
           ) : filteredProducts.length === 0 ? (
-            <div className="text-center py-20 bg-white rounded-[2rem] border border-stone-100 max-w-xl mx-auto">
+            <div className="text-center py-20 bg-white rounded-[2rem] border border-stone-100 max-w-xl mx-auto shadow-sm">
               <svg className="w-16 h-16 text-stone-300 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
               </svg>
-              <h3 className="text-xl font-serif text-stone-700 font-bold">Nenhum produto disponível</h3>
-              <p className="text-stone-500 text-sm mt-2">No momento não temos produtos nesta categoria. Volte em breve!</p>
+              <h3 className="text-xl font-serif text-stone-700 font-bold">Nenhum item em "{activeFilter}"</h3>
+              <p className="text-stone-500 text-sm mt-2 mb-6">No momento não encontramos materiais cadastrados nesta categoria.</p>
+              <button
+                onClick={() => setActiveFilter('Todos')}
+                className="cursor-pointer text-xs font-bold px-5 py-2.5 rounded-xl bg-emerald-100 text-emerald-800 hover:bg-emerald-200 transition-colors"
+              >
+                Ver todos os materiais
+              </button>
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredProducts.map((product) => (
-                <div key={product.id} className="group flex flex-col bg-white rounded-[2rem] border border-stone-200/80 overflow-hidden hover:shadow-xl hover:border-emerald-200 transition-all duration-300">
-                  <div className="relative h-64 w-full overflow-hidden bg-stone-100 flex items-center justify-center">
-                    {product.image ? (
-                      <img 
-                        src={getImagePath(product.image)} 
-                        alt={product.title} 
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                        onError={(e) => {
-                          (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop';
-                        }}
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-stone-200 text-stone-400 font-medium">
-                        Sem Imagem
-                      </div>
-                    )}
-                    
-                    {/* Badge de Categoria */}
-                    <div className="absolute top-4 left-4 bg-white/95 px-3 py-1 rounded-full text-xs font-bold text-stone-800 shadow-sm">
-                      {product.category}
-                    </div>
+              {filteredProducts.map((product) => {
+                const description = product.description || '';
+                const isLong = description.length > MAX_DESC_CHARS;
+                const shortDesc = isLong ? description.slice(0, MAX_DESC_CHARS).trim() + '...' : description;
 
-                    {/* Badge de Tipo (Digital vs Físico) */}
-                    <div className="absolute top-4 right-4 shadow-sm">
-                      <span className={`px-3 py-1 rounded-full text-xs font-bold ${
-                        product.type === 'digital' 
-                          ? 'bg-emerald-600 text-white' 
-                          : 'bg-amber-600 text-white'
-                      }`}>
-                        {product.type === 'digital' ? '✨ Livro Digital' : '📦 Livro Físico'}
-                      </span>
+                return (
+                  <div 
+                    key={product.id} 
+                    className="group flex flex-col bg-white rounded-[2rem] border border-stone-200/80 overflow-hidden hover:shadow-xl hover:border-emerald-200 transition-all duration-300"
+                  >
+                    {/* Imagem de Capa do Card */}
+                    <div 
+                      onClick={() => handleOpenDrawer(product)}
+                      className="relative h-64 w-full overflow-hidden bg-stone-100 flex items-center justify-center cursor-pointer"
+                      title="Clique para ver detalhes"
+                    >
+                      {product.image ? (
+                        <img 
+                          src={getImagePath(product.image)} 
+                          alt={product.title} 
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                          onError={(e) => {
+                            (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop';
+                          }}
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center bg-stone-200 text-stone-400 font-medium">
+                          Sem Imagem
+                        </div>
+                      )}
+                      
+                      {/* Badge de Categoria */}
+                      <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-xs px-3 py-1 rounded-full text-xs font-bold text-stone-800 shadow-sm">
+                        {product.category}
+                      </div>
+
+                      {/* Badge de Tipo (Digital vs Físico) */}
+                      <div className="absolute top-4 right-4 shadow-sm">
+                        <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+                          product.type === 'digital' 
+                            ? 'bg-emerald-600 text-white' 
+                            : 'bg-amber-600 text-white'
+                        }`}>
+                          {product.type === 'digital' ? '✨ Digital' : '📦 Físico'}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                  
-                  <div className="p-8 flex flex-col flex-grow">
-                    <h3 className="text-2xl font-serif text-stone-900 mb-3 group-hover:text-emerald-700 transition-colors leading-snug">{product.title}</h3>
-                    <p className="text-stone-500 text-sm mb-6 flex-grow leading-relaxed">{product.description}</p>
                     
-                    <div className="flex items-center justify-between mt-auto border-t border-stone-100 pt-6">
-                      <div>
-                        <span className="text-[10px] text-stone-400 block font-bold uppercase tracking-wider">Valor</span>
-                        <div className="text-2xl font-bold font-serif text-emerald-800">{product.price}</div>
+                    {/* Conteúdo do Card com limite de caracteres */}
+                    <div className="p-7 md:p-8 flex flex-col flex-grow">
+                      <h3 
+                        onClick={() => handleOpenDrawer(product)}
+                        className="text-xl md:text-2xl font-serif text-stone-900 mb-3 group-hover:text-emerald-700 transition-colors leading-snug cursor-pointer line-clamp-2"
+                        title={product.title}
+                      >
+                        {product.title}
+                      </h3>
+                      
+                      {/* Descrição truncada em 165 caracteres + Botão Leia mais / Mais detalhes */}
+                      <div className="mb-6 flex-grow flex flex-col justify-between">
+                        <p className="text-stone-500 text-sm leading-relaxed">
+                          {shortDesc}
+                        </p>
+                        
+                        <button
+                          type="button"
+                          onClick={() => handleOpenDrawer(product)}
+                          className="cursor-pointer text-emerald-700 hover:text-emerald-900 font-bold text-xs inline-flex items-center gap-1.5 transition-colors mt-3 w-fit group/btn"
+                        >
+                          <span>{isLong ? 'Leia mais' : 'Mais detalhes'}</span>
+                          <svg className="w-3.5 h-3.5 transform group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </button>
                       </div>
                       
-                      <button 
-                        onClick={() => handleOpenCheckout(product)}
-                        className="cursor-pointer bg-emerald-700 text-white px-6 py-3 rounded-xl text-sm font-bold hover:bg-emerald-800 transition-all active:scale-95 shadow-md flex items-center gap-2"
-                      >
-                        <span>Comprar</span>
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                      </button>
+                      {/* Rodapé do Card com Preço e Botão de Compra */}
+                      <div className="flex items-center justify-between mt-auto border-t border-stone-100 pt-5">
+                        <div>
+                          <span className="text-[10px] text-stone-400 block font-bold uppercase tracking-wider">Valor</span>
+                          <div className="text-2xl font-bold font-serif text-emerald-800">{product.price}</div>
+                        </div>
+                        
+                        <button 
+                          onClick={() => handleOpenCheckout(product)}
+                          className="cursor-pointer bg-emerald-700 text-white px-5 py-3 rounded-xl text-sm font-bold hover:bg-emerald-800 transition-all active:scale-95 shadow-md flex items-center gap-2"
+                        >
+                          <span>Comprar</span>
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                          </svg>
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>
       </section>
+
+      {/* Drawer Lateral com Detalhes Completos do Produto */}
+      <ProductDrawer 
+        product={drawerProduct}
+        isOpen={isDrawerOpen}
+        onClose={handleCloseDrawer}
+        onBuy={handleBuyFromDrawer}
+      />
 
       {/* Modal de Checkout */}
       <CheckoutModal
