@@ -168,10 +168,33 @@ function emailClienteAprovado($pedido) {
 // ============================================================
 // ROTAS GET
 // ============================================================
+// ROTAS GET
+// ============================================================
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     if ($action === 'products' || empty($action)) {
         $data = file_get_contents($produtosFile);
+        if ($data !== false && trim($data) !== '') {
+            $items = json_decode($data, true);
+            if (is_array($items)) {
+                $changed = false;
+                foreach ($items as &$it) {
+                    if (isset($it['category'])) {
+                        $cat = trim($it['category']);
+                        if ($cat === 'Livros & Apostilas' || $cat === 'Livros e Apostilas' || stripos($cat, 'livros & apostilas') !== false || stripos($cat, 'livros e apostilas') !== false) {
+                            $title = strtolower($it['title'] ?? '');
+                            $it['category'] = (strpos($title, 'manual') !== false || strpos($title, 'apostil') !== false) ? 'Apostila' : 'Livro';
+                            $changed = true;
+                        }
+                    }
+                }
+                unset($it);
+                if ($changed) {
+                    file_put_contents($produtosFile, json_encode($items, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+                    $data = json_encode($items, JSON_UNESCAPED_UNICODE);
+                }
+            }
+        }
         echo ($data === false || trim($data) === '') ? '[]' : $data;
         exit;
     }
@@ -229,6 +252,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // 1. Salvar produtos (Admin)
     if ($action === 'save_products') {
         if (!is_array($body)) { http_response_code(400); echo json_encode(['error' => 'Array inválido']); exit; }
+        foreach ($body as &$it) {
+            if (isset($it['category'])) {
+                $cat = trim($it['category']);
+                if ($cat === 'Livros & Apostilas' || $cat === 'Livros e Apostilas' || stripos($cat, 'livros & apostilas') !== false || stripos($cat, 'livros e apostilas') !== false) {
+                    $title = strtolower($it['title'] ?? '');
+                    $it['category'] = (strpos($title, 'manual') !== false || strpos($title, 'apostil') !== false) ? 'Apostila' : 'Livro';
+                }
+            }
+        }
+        unset($it);
         file_put_contents($produtosFile, json_encode($body, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
         echo json_encode(['success' => true, 'count' => count($body)]);
         exit;

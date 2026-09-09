@@ -51,6 +51,24 @@ type StoreFilter = typeof STORE_FILTERS[number];
 
 const MAX_DESC_CHARS = 165;
 
+export const cleanCategory = (category?: string, title?: string): string => {
+  if (!category) return 'Livro';
+  const trimmed = category.trim();
+  const lower = trimmed.toLowerCase();
+  if (lower.includes('livros & apostilas') || lower.includes('livros e apostilas') || lower === 'livros e apostilas' || lower === 'livros & apostilas') {
+    const t = (title || '').toLowerCase();
+    return (t.includes('manual') || t.includes('apostil')) ? 'Apostila' : 'Livro';
+  }
+  return trimmed;
+};
+
+const sanitizeProductList = (items: ProductItem[]): ProductItem[] => {
+  return items.map(p => ({
+    ...p,
+    category: cleanCategory(p.category, p.title)
+  }));
+};
+
 export default function LojaPage() {
   const [products, setProducts] = useState<ProductItem[]>([]);
   const [activeFilter, setActiveFilter] = useState<StoreFilter>('Todos');
@@ -85,9 +103,10 @@ export default function LojaPage() {
         if (res.ok) {
           const data = await res.json();
           if (Array.isArray(data) && data.length > 0) {
-            const activeOnly = data.filter((p: ProductItem) => p.status === 'Ativo');
+            const sanitized = sanitizeProductList(data);
+            const activeOnly = sanitized.filter((p: ProductItem) => p.status === 'Ativo');
             setProducts(activeOnly);
-            localStorage.setItem('alba_loja_produtos_server', JSON.stringify(data));
+            localStorage.setItem('alba_loja_produtos_server', JSON.stringify(sanitized));
             setIsLoading(false);
             return;
           }
@@ -102,8 +121,10 @@ export default function LojaPage() {
         try {
           const parsed = JSON.parse(saved);
           if (Array.isArray(parsed) && parsed.length > 0) {
-            const activeOnly = parsed.filter((p: ProductItem) => p.status === 'Ativo');
+            const sanitized = sanitizeProductList(parsed);
+            const activeOnly = sanitized.filter((p: ProductItem) => p.status === 'Ativo');
             setProducts(activeOnly);
+            localStorage.setItem('alba_loja_produtos_server', JSON.stringify(sanitized));
             setIsLoading(false);
             return;
           }
@@ -111,7 +132,7 @@ export default function LojaPage() {
       }
 
       // Fallback padrão
-      setProducts(defaultProducts);
+      setProducts(sanitizeProductList(defaultProducts));
       setIsLoading(false);
     };
 
@@ -121,7 +142,7 @@ export default function LojaPage() {
   // Lógica de correspondência de categoria por filtro
   const isCategoryMatch = (product: ProductItem, filter: StoreFilter): boolean => {
     if (filter === 'Todos') return true;
-    const cat = (product.category || '').toLowerCase().trim();
+    const cat = cleanCategory(product.category, product.title).toLowerCase().trim();
     if (filter === 'Apostilas') {
       return cat.includes('apostil') || cat.includes('manual');
     }
@@ -260,9 +281,9 @@ export default function LojaPage() {
                         </div>
                       )}
                       
-                      {/* Badge de Categoria */}
-                      <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-xs px-3 py-1 rounded-full text-xs font-bold text-stone-800 shadow-sm">
-                        {product.category}
+                      {/* Badge de Tipo de Produto / Tag */}
+                      <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-xs px-3 py-1 rounded-full text-xs font-bold text-stone-800 shadow-sm border border-stone-100">
+                        {cleanCategory(product.category, product.title)}
                       </div>
 
                       {/* Badge de Tipo (Digital vs Físico) */}

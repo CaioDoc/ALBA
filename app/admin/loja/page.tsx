@@ -99,6 +99,24 @@ export default function AdminLojaPage() {
     return `/${clean}`;
   };
 
+  const cleanCategory = (cat?: string, title?: string): string => {
+    if (!cat) return 'Livro';
+    const trimmed = cat.trim();
+    const lower = trimmed.toLowerCase();
+    if (lower.includes('livros & apostilas') || lower.includes('livros e apostilas')) {
+      const t = (title || '').toLowerCase();
+      return (t.includes('manual') || t.includes('apostil')) ? 'Apostila' : 'Livro';
+    }
+    return trimmed;
+  };
+
+  const sanitizeProductList = (items: ProductItem[]): ProductItem[] => {
+    return items.map(p => ({
+      ...p,
+      category: cleanCategory(p.category, p.title)
+    }));
+  };
+
   // Estados de Produtos
   const [products, setProducts] = useState<ProductItem[]>([]);
   const [productSearch, setProductSearch] = useState('');
@@ -106,8 +124,8 @@ export default function AdminLojaPage() {
   const [productFormData, setProductFormData] = useState<ProductItem>({
     id: '',
     title: '',
-    category: 'E-book',
-    type: 'digital',
+    category: 'Livro',
+    type: 'fisico',
     price: '',
     image: '',
     description: '',
@@ -132,18 +150,28 @@ export default function AdminLojaPage() {
       if (res.ok) {
         const data = await res.json();
         if (Array.isArray(data) && data.length > 0) {
-          setProducts(data);
-          localStorage.setItem('alba_loja_produtos_server', JSON.stringify(data));
+          const sanitized = sanitizeProductList(data);
+          setProducts(sanitized);
+          localStorage.setItem('alba_loja_produtos_server', JSON.stringify(sanitized));
+          // Se houver qualquer categoria antiga, limpa no servidor automaticamente
+          if (JSON.stringify(data) !== JSON.stringify(sanitized)) {
+            saveProductsToServer(sanitized);
+          }
         } else {
-          setProducts(defaultProducts);
+          setProducts(sanitizeProductList(defaultProducts));
         }
       }
     } catch (e) {
       const saved = localStorage.getItem('alba_loja_produtos_server');
       if (saved) {
-        try { setProducts(JSON.parse(saved)); } catch (err) {}
+        try { 
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            setProducts(sanitizeProductList(parsed));
+          }
+        } catch (err) {}
       } else {
-        setProducts(defaultProducts);
+        setProducts(sanitizeProductList(defaultProducts));
       }
     }
 
@@ -189,8 +217,8 @@ export default function AdminLojaPage() {
     setProductFormData({
       id: '',
       title: '',
-      category: 'E-book',
-      type: 'digital',
+      category: 'Livro',
+      type: 'fisico',
       price: '',
       image: '',
       description: '',
@@ -201,7 +229,10 @@ export default function AdminLojaPage() {
   };
 
   const handleEditProduct = (p: ProductItem) => {
-    setProductFormData(p);
+    setProductFormData({
+      ...p,
+      category: cleanCategory(p.category, p.title)
+    });
     setProductView('form');
   };
 
@@ -218,7 +249,11 @@ export default function AdminLojaPage() {
 
     // Parse do valor numérico
     const priceNum = parseFloat(productFormData.price.replace(/[^\d,.-]/g, '').replace(',', '.')) || 0;
-    const finalProduct = { ...productFormData, priceNumber: priceNum };
+    const finalProduct = { 
+      ...productFormData, 
+      category: cleanCategory(productFormData.category, productFormData.title),
+      priceNumber: priceNum 
+    };
 
     if (productFormData.id) {
       updated = products.map(p => p.id === productFormData.id ? finalProduct : p);
@@ -677,7 +712,8 @@ export default function AdminLojaPage() {
                   <thead>
                     <tr className="bg-white border-b border-stone-200 text-stone-500 text-xs uppercase tracking-wider">
                       <th className="p-6 font-medium">Produto</th>
-                      <th className="p-6 font-medium">Tipo</th>
+                      <th className="p-6 font-medium">Tipo / Tag na Loja</th>
+                      <th className="p-6 font-medium">Formato</th>
                       <th className="p-6 font-medium">Preço</th>
                       <th className="p-6 font-medium">Link do Google Drive</th>
                       <th className="p-6 font-medium">Status</th>
@@ -708,12 +744,16 @@ export default function AdminLojaPage() {
                             <div className="font-bold text-stone-900 max-w-xs truncate" title={product.title}>
                               {product.title}
                             </div>
-                            <div className="text-stone-400 text-xs">{product.category}</div>
                           </div>
                         </td>
                         <td className="p-6">
+                          <span className="px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                            {cleanCategory(product.category, product.title)}
+                          </span>
+                        </td>
+                        <td className="p-6">
                           <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${
-                            product.type === 'digital' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'
+                            product.type === 'digital' ? 'bg-teal-100 text-teal-800' : 'bg-amber-100 text-amber-800'
                           }`}>
                             {product.type === 'digital' ? '✨ Digital' : '📦 Físico'}
                           </span>
@@ -782,33 +822,42 @@ export default function AdminLojaPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-stone-700 mb-2">Tipo de Produto *</label>
+                  <label className="block text-sm font-bold text-emerald-950 mb-2 flex items-center justify-between">
+                    <span>Tipo de Produto (Tag na Loja) *</span>
+                    <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">Exibido na Tag do Card</span>
+                  </label>
+                  <select 
+                    value={productFormData.category}
+                    onChange={e => setProductFormData({...productFormData, category: e.target.value})}
+                    className="cursor-pointer w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm font-bold text-stone-900 focus:outline-none focus:border-emerald-500 transition-all"
+                  >
+                    <option value="Livro">Livro</option>
+                    <option value="Apostila">Apostila</option>
+                    <option value="E-book">E-book</option>
+                    <option value="Produtos Corporais">Produtos Corporais</option>
+                    <option value="Culinária &amp; Ervas">Culinária &amp; Ervas</option>
+                    <option value="Ferramenta / Planner">Ferramenta / Planner</option>
+                    <option value="Mentoria &amp; Aulas">Mentoria &amp; Aulas</option>
+                    <option value="Outros">Outros</option>
+                  </select>
+                  <p className="text-xs text-stone-500 mt-1.5">
+                    🏷️ Define a tag apresentada no card da loja (ex: <strong>Livro</strong> ou <strong>Apostila</strong>, nunca juntos).
+                  </p>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-stone-700 mb-2">Formato de Entrega *</label>
                   <select 
                     value={productFormData.type}
                     onChange={e => setProductFormData({...productFormData, type: e.target.value as any})}
                     className="cursor-pointer w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm font-bold text-emerald-900 focus:outline-none focus:border-emerald-500 transition-all"
                   >
-                    <option value="digital">✨ Produto Digital (Libera Google Drive / Download)</option>
+                    <option value="digital">✨ Conteúdo Digital (Libera Google Drive / Download)</option>
                     <option value="fisico">📦 Produto Físico (Requer Endereço de Envio)</option>
                   </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-stone-700 mb-2">Categoria</label>
-                  <select 
-                    value={productFormData.category}
-                    onChange={e => setProductFormData({...productFormData, category: e.target.value})}
-                    className="cursor-pointer w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition-all"
-                  >
-                    <option>E-book</option>
-                    <option>Livro</option>
-                    <option>Apostila</option>
-                    <option>Produtos Corporais</option>
-                    <option>Culinária &amp; Ervas</option>
-                    <option>Ferramenta / Planner</option>
-                    <option>Mentoria &amp; Aulas</option>
-                    <option>Outros</option>
-                  </select>
+                  <p className="text-xs text-stone-500 mt-1.5">
+                    📦 Físico solicita dados de envio no checkout; digital libera acesso ao Drive.
+                  </p>
                 </div>
 
                 <div>

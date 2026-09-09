@@ -46,6 +46,17 @@ export const ProductDrawer = ({ product, isOpen, onClose, onBuy }: ProductDrawer
     return `/${clean}`;
   };
 
+  const cleanCategory = (cat?: string, title?: string) => {
+    if (!cat) return 'Livro';
+    const trimmed = cat.trim();
+    const lower = trimmed.toLowerCase();
+    if (lower.includes('livros & apostilas') || lower.includes('livros e apostilas')) {
+      const t = (title || '').toLowerCase();
+      return (t.includes('manual') || t.includes('apostil')) ? 'Apostila' : 'Livro';
+    }
+    return trimmed;
+  };
+
   return (
     <>
       {/* Backdrop com blur */}
@@ -83,7 +94,7 @@ export const ProductDrawer = ({ product, isOpen, onClose, onBuy }: ProductDrawer
 
           <div className="flex flex-wrap items-center gap-2 mb-2">
             <span className="text-xs font-bold text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full uppercase tracking-wider">
-              {product.category}
+              {cleanCategory(product.category, product.title)}
             </span>
             <span className={`text-xs font-bold px-3 py-1 rounded-full ${
               product.type === 'digital' 
