@@ -98,3 +98,17 @@ try {
 } catch (err) {
   console.error('Erro ao criar a pasta uploads/loja:', err);
 }
+
+// 5. Criar pasta uploads/profissionais em out/ (fotos dos profissionais)
+const profUploadsDir = path.join(__dirname, 'out', 'uploads', 'profissionais');
+try {
+  if (!fs.existsSync(profUploadsDir)) {
+    fs.mkdirSync(profUploadsDir, { recursive: true });
+    console.log('✓ Pasta out/uploads/profissionais criada com sucesso.');
+  } else {
+    console.log('✓ Pasta out/uploads/profissionais já existe.');
+  }
+} catch (err) {
+  console.error('Erro ao criar a pasta uploads/profissionais:', err);
+}
+

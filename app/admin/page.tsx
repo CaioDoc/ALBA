@@ -17,8 +17,8 @@ export default function AdminDashboard() {
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
           </div>
           <div>
-            <p className="text-sm text-stone-500 font-medium">Associados Ativos</p>
-            <p className="text-2xl font-bold text-stone-900">412</p>
+            <p className="text-sm text-stone-500 font-medium">Profissionais</p>
+            <p className="text-2xl font-bold text-stone-900">Ativo</p>
           </div>
         </div>
 
@@ -52,9 +52,9 @@ export default function AdminDashboard() {
           </h3>
           
           <div className="grid grid-cols-2 gap-4">
-            <Link href="/admin/associados" className="cursor-pointer bg-stone-50 border border-stone-200 p-4 rounded-2xl text-left hover:bg-emerald-50 hover:border-emerald-200 transition-colors group block">
-              <span className="block font-bold text-stone-800 group-hover:text-emerald-800 mb-1">Novo Associado</span>
-              <span className="text-xs text-stone-500">Cadastrar terapeuta</span>
+            <Link href="/admin/profissionais" className="cursor-pointer bg-stone-50 border border-stone-200 p-4 rounded-2xl text-left hover:bg-emerald-50 hover:border-emerald-200 transition-colors group block">
+              <span className="block font-bold text-stone-800 group-hover:text-emerald-800 mb-1">Gerir Profissionais</span>
+              <span className="text-xs text-stone-500">Alterar página de Profissionais</span>
             </Link>
             
             <Link href="/admin/cursos" className="cursor-pointer bg-stone-50 border border-stone-200 p-4 rounded-2xl text-left hover:bg-emerald-50 hover:border-emerald-200 transition-colors group block">

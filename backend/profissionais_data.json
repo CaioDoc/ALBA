@@ -1,0 +1,27 @@
+{
+  "headerBadge": "Corpo Docente & Responsável Técnico",
+  "headerTitle": "Profissional Responsável",
+  "headerDescription": "Conheça a trajetória e formação do fundador da Associação Luso-Brasileira de Ayurveda (ALBA).",
+  "name": "Valter Carlos Cardim",
+  "spiritualName": "(Swami Gyanesh)",
+  "roleBadge": "Fundador & Mestre Ayurvédico",
+  "photo": "/images/profissional/valter.jpeg",
+  "contactEmail": "info@ayurvedica.org",
+  "contactPhone": "",
+  "bioBadge": "Biografia & Trajetória",
+  "bioTitle": "Valter Carlos Cardim (Swami Gyanesh)",
+  "quote": "Dedicação contínua ao estudo e à aplicação prática das artes corporais e da Medicina Ayurvédica desde 1970.",
+  "bioText": "Valter Carlos Cardim (Swami Gyanesh) dedica-se ao estudo de técnicas que trabalham o corpo desde 1970. Em 1980 é iniciado pessoalmente pelo seu mestre Osho (Bagwan Shree Rajneesh). Em 1981 viaja para os Estados Unidos onde permanece e participa do Festival Vida Internacional na comunidade do seu mestre.\n\nEm 1989 viaja para a Índia onde aprofunda os seus conhecimentos sobre Ayurvédica em Poona. Participou em vários workshops na Rajneesh Foundation International nos Estados Unidos e na Índia. Estudou no Instituto Corpo de São Paulo, no Instituto Soma de São Paulo, e na Escola de Massagens Amor.\n\nPossui curso de Medicina Ayurvédica, com pós-graduação pela Universidade de Maimónides, com certificação pela Universidade de Gujarat, Índia. Concluiu pós-doutorado em Cultura e Comunicação, onde estudou a aplicação da Medicina Ayurvédica na Cultura Contemporânea.",
+  "specialtiesTitle": "Áreas de Atendimento & Especialidades",
+  "specialtiesDescription": "Atendimentos na área da arte da massagem corporal Ayurvédica, Nutrição e Estilo de Vida segundo a Ayurveda e Naturopatia Ayurvédica. Também possui conhecimento sobre análise do sangue vivo.",
+  "specialtiesList": [
+    "Massagem Corporativa Ayurvédica",
+    "Nutrição & Estilo de Vida",
+    "Naturopatia Ayurvédica",
+    "Análise do Sangue Vivo"
+  ],
+  "ctaTitle": "Deseja agendar um atendimento ou solicitar mais informações?",
+  "ctaSubtitle": "Entre em contacto direto através do nosso suporte oficial por e-mail.",
+  "ctaButtonText": "Enviar E-mail",
+  "ctaButtonEmail": "info@ayurvedica.org"
+}
