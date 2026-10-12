@@ -548,7 +548,7 @@ function ProfissionaisContent() {
                   className="group bg-white rounded-[2.5rem] border border-stone-200/90 overflow-hidden shadow-sm hover:shadow-2xl hover:border-emerald-300 transition-all duration-500 flex flex-col cursor-pointer transform hover:-translate-y-1.5"
                   title={`Clique para ver a página de ${prof.name}`}
                 >
-                  {/* Foto com Efeito e Badge */}
+                  {/* Foto do Profissional */}
                   <div className="relative h-80 w-full overflow-hidden bg-stone-100 flex items-center justify-center">
                     <img 
                       src={getImagePath(prof.photo)} 
@@ -558,18 +558,6 @@ function ProfissionaisContent() {
                         (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop';
                       }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-stone-950/70 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
-
-                    {/* Badge do Tipo de Profissional */}
-                    <div className="absolute top-4 left-4">
-                      <span className={`px-3.5 py-1 rounded-full text-xs font-bold shadow-md backdrop-blur-xs ${
-                        prof.isFounder 
-                          ? 'bg-emerald-800 text-white border border-emerald-700' 
-                          : 'bg-white/95 text-stone-800 border border-stone-100'
-                      }`}>
-                        {prof.isFounder ? '👑 Fundador' : '🌿 Terapeuta'}
-                      </span>
-                    </div>
                   </div>
 
                   {/* Informações do Card */}
