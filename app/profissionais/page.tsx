@@ -3,7 +3,15 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from '../../components/Navbar';
 
-interface ProfissionalData {
+export interface TeamMember {
+  id: string;
+  name: string;
+  role: string;
+  description: string;
+  photo: string;
+}
+
+export interface ProfissionalData {
   headerBadge: string;
   headerTitle: string;
   headerDescription: string;
@@ -24,6 +32,7 @@ interface ProfissionalData {
   ctaSubtitle: string;
   ctaButtonText: string;
   ctaButtonEmail: string;
+  outrosProfissionais?: TeamMember[];
 }
 
 const defaultProfissional: ProfissionalData = {
@@ -51,7 +60,30 @@ const defaultProfissional: ProfissionalData = {
   ctaTitle: "Deseja agendar um atendimento ou solicitar mais informações?",
   ctaSubtitle: "Entre em contacto direto através do nosso suporte oficial por e-mail.",
   ctaButtonText: "Enviar E-mail",
-  ctaButtonEmail: "info@ayurvedica.org"
+  ctaButtonEmail: "info@ayurvedica.org",
+  outrosProfissionais: [
+    {
+      id: "prof-1",
+      name: "Dra. Mariana Fernandes",
+      role: "Terapeuta Ayurvédica & Panchakarma",
+      description: "Especialista em terapias de desintoxicação e rejuvenescimento corporal segundo os textos clássicos da Ayurveda. Atendimentos integrativos focados no alívio do estresse e reequilíbrio dos doshas.",
+      photo: "https://images.unsplash.com/photo-1594824406951-31823095b27b?q=80&w=600&auto=format&fit=crop"
+    },
+    {
+      id: "prof-2",
+      name: "Carlos Alberto Mendonça",
+      role: "Instrutor de Yoga & Meditação Ayurvédica",
+      description: "Facilitador de práticas de Hatha Yoga e técnicas milenares de respiração (Pranayama). Integra a sabedoria védica no cultivo da clareza mental e vitalidade física diária.",
+      photo: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=600&auto=format&fit=crop"
+    },
+    {
+      id: "prof-3",
+      name: "Juliana Silveira",
+      role: "Nutrição Ayurvédica & Fitoterapia",
+      description: "Consultoria nutricional individualizada respeitando a constituição individual (Prakriti). Orientação no uso culinário de ervas medicinais e especiarias para digestão e imunidade.",
+      photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop"
+    }
+  ]
 };
 
 const API_URL = '/api/profissionais.php';
@@ -60,7 +92,7 @@ export default function ProfissionaisPage() {
   const [data, setData] = useState<ProfissionalData>(defaultProfissional);
 
   const getImagePath = (path: string) => {
-    if (!path) return '/images/profissional/valter.jpeg';
+    if (!path) return 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop';
     if (path.startsWith('http://') || path.startsWith('https://')) return path;
     const clean = path.replace(/^\//, '');
     if (typeof window !== 'undefined') {
@@ -79,7 +111,11 @@ export default function ProfissionaisPage() {
         if (res.ok) {
           const json = await res.json();
           if (json && json.name) {
-            setData(json);
+            setData(prev => ({
+              ...defaultProfissional,
+              ...json,
+              outrosProfissionais: json.outrosProfissionais || prev.outrosProfissionais || []
+            }));
             localStorage.setItem('alba_profissionais_data', JSON.stringify(json));
             return;
           }
@@ -93,7 +129,11 @@ export default function ProfissionaisPage() {
         try {
           const parsed = JSON.parse(saved);
           if (parsed && parsed.name) {
-            setData(parsed);
+            setData(prev => ({
+              ...defaultProfissional,
+              ...parsed,
+              outrosProfissionais: parsed.outrosProfissionais || prev.outrosProfissionais || []
+            }));
           }
         } catch (err) {}
       }
@@ -102,16 +142,17 @@ export default function ProfissionaisPage() {
     loadProfissionalData();
   }, []);
 
-  // Divide a biografia em parágrafos separados
+  // Divide a biografia de Valter em parágrafos separados
   const bioParagraphs = (data.bioText || '')
     .split(/\n\s*\n|\n/)
     .map(p => p.trim())
     .filter(p => p.length > 0);
 
   const emailDestino = data.ctaButtonEmail || data.contactEmail || 'info@ayurvedica.org';
+  const outros = data.outrosProfissionais || [];
 
   return (
-    <div className="min-h-screen bg-stone-50 font-sans text-stone-800">
+    <div className="min-h-screen bg-stone-50 font-sans text-stone-800 flex flex-col">
       <Navbar />
       
       {/* Cabeçalho da Página */}
@@ -133,7 +174,7 @@ export default function ProfissionaisPage() {
         </div>
       </section>
 
-      {/* Seção Principal em Duas Colunas */}
+      {/* 1. SEÇÃO PRINCIPAL: PERFIL DO VALTER CARLOS CARDIM (MANTIDO 100% COMO É HOJE) */}
       <section className="py-16 px-4 md:px-8 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
@@ -279,6 +320,75 @@ export default function ProfissionaisPage() {
 
         </div>
       </section>
+
+      {/* 2. NOVA SEÇÃO: GRID 3x3 DE OUTROS PROFISSIONAIS */}
+      {outros.length > 0 && (
+        <section className="py-20 px-4 md:px-8 bg-stone-100/70 border-t border-stone-200 flex-grow">
+          <div className="max-w-7xl mx-auto space-y-12">
+            
+            {/* Título da Seção do Grid */}
+            <div className="text-center max-w-3xl mx-auto">
+              <span className="text-emerald-800 font-bold uppercase tracking-widest text-xs mb-3 block">
+                Corpo Docente & Terapeutas
+              </span>
+              <h2 className="text-3xl md:text-4xl font-serif text-stone-900 font-bold mb-4">
+                Profissionais & Terapeutas Credenciados
+              </h2>
+              <p className="text-stone-600 text-base md:text-lg">
+                Conheça nossa equipe de especialistas dedicados à difusão e atendimento das artes ayurvédicas.
+              </p>
+            </div>
+
+            {/* Grid 3x3 Responsivo */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {outros.map((member) => (
+                <div 
+                  key={member.id}
+                  className="group bg-white rounded-[2rem] border border-stone-200 overflow-hidden shadow-sm hover:shadow-xl hover:border-emerald-200 transition-all duration-300 flex flex-col"
+                >
+                  {/* Foto do Profissional */}
+                  <div className="relative h-72 w-full overflow-hidden bg-stone-100 flex items-center justify-center">
+                    {member.photo ? (
+                      <img 
+                        src={getImagePath(member.photo)} 
+                        alt={member.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        onError={(e) => {
+                          (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop';
+                        }}
+                      />
+                    ) : (
+                      <div className="w-full h-full flex flex-col items-center justify-center text-stone-400 gap-2">
+                        <span className="text-5xl">🧘</span>
+                        <span className="text-xs font-semibold">Sem foto</span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Informações: Nome, Área de Atuação (subtítulo) e Descrição */}
+                  <div className="p-7 md:p-8 flex flex-col flex-grow">
+                    <h3 className="text-2xl font-serif font-bold text-stone-900 group-hover:text-emerald-800 transition-colors mb-1.5 leading-snug">
+                      {member.name}
+                    </h3>
+                    
+                    {/* Área de Atuação como subtítulo */}
+                    <p className="text-xs font-bold text-emerald-800 uppercase tracking-wider mb-4 pb-3 border-b border-stone-100">
+                      {member.role}
+                    </p>
+
+                    {/* Descrição para explicar sobre o profissional */}
+                    <p className="text-stone-600 text-sm leading-relaxed whitespace-pre-line flex-grow">
+                      {member.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </section>
+      )}
+
     </div>
   );
 }

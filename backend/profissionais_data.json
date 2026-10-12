@@ -23,5 +23,28 @@
   "ctaTitle": "Deseja agendar um atendimento ou solicitar mais informações?",
   "ctaSubtitle": "Entre em contacto direto através do nosso suporte oficial por e-mail.",
   "ctaButtonText": "Enviar E-mail",
-  "ctaButtonEmail": "info@ayurvedica.org"
+  "ctaButtonEmail": "info@ayurvedica.org",
+  "outrosProfissionais": [
+    {
+      "id": "prof-1",
+      "name": "Dra. Mariana Fernandes",
+      "role": "Terapeuta Ayurvédica & Panchakarma",
+      "description": "Especialista em terapias de desintoxicação e rejuvenescimento corporal segundo os textos clássicos da Ayurveda. Atendimentos integrativos focados no alívio do estresse e reequilíbrio dos doshas.",
+      "photo": "https://images.unsplash.com/photo-1594824406951-31823095b27b?q=80&w=600&auto=format&fit=crop"
+    },
+    {
+      "id": "prof-2",
+      "name": "Carlos Alberto Mendonça",
+      "role": "Instrutor de Yoga & Meditação Ayurvédica",
+      "description": "Facilitador de práticas de Hatha Yoga e técnicas milenares de respiração (Pranayama). Integra a sabedoria védica no cultivo da clareza mental e vitalidade física diária.",
+      "photo": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=600&auto=format&fit=crop"
+    },
+    {
+      "id": "prof-3",
+      "name": "Juliana Silveira",
+      "role": "Nutrição Ayurvédica & Fitoterapia",
+      "description": "Consultoria nutricional individualizada respeitando a constituição individual (Prakriti). Orientação no uso culinário de ervas medicinais e especiarias para digestão e imunidade.",
+      "photo": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop"
+    }
+  ]
 }
